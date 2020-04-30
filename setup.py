@@ -5,33 +5,43 @@ from distutils.core import setup, Extension
 from setuptools.command.develop import develop
 from subprocess import check_call
 
-###########################################################
-# Utils for submodule
-##########################################################
-class update_submodules(develop):
-    def run(self):
-        if os.path.exists('.git'):
-            check_call(['git', 'submodule', 'update', '--init', '--recursive'])
-        develop.run(self)
-
 
 ###########################################################
 # Variables 
 ##########################################################
-
 OS_NAME = 'linux'
+BOOST_DIR = '../boost_static'
+LIBGEODA_DIR = '../libgeoda_src'
+EIGEN_DIR = '../eigen3'
 
-if sys.platform == "darwin":
+if sys.platform == "win32":
+    BOOST_DIR = '..\\boost_static'
+    LIBGEODA_DIR = '..\\libgeoda_src'
+    EIGEN_DIR = '..\\eigen3'
+
+    OS_NAME = 'win64' if sys.maxsize > 2**32 else 'win32'
+
+elif sys.platform == "darwin":
     OS_NAME = 'osx'
     #os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.14'
     os.environ["ARCHFLAGS"] = "-arch x86_64"
-elif sys.platform == "win32":
-    if sys.maxsize > 2**32:
-        OS_NAME = 'win64'
-    else:
-        OS_NAME = 'win32'
+
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
+
+pyversion = sys.version[:3]
+# 14.X 3.5, 3.6, 3.7, 3.8
+# 10.0 3.3, 3.4
+# 9.0 2.6, 2.7, 3.0, 3.1, 3.2
+MSVC_VER = ''
+BOOST_VER = '1_64'
+
+if pyversion in ['2.6', '2.7', '3.0', '3.1', '3.2']:
+    MSVC_VER = 'vc90'
+elif pyversion in ['3.3', '3.4']:
+    MSVC_VER = 'vc100'
+elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
+    MSVC_VER = 'vc140'
 
 ###########################################################
 # INCLUDE_DIRS
@@ -39,30 +49,26 @@ elif sys.platform == "linux2":
 INCLUDE_DIRS = []
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
-        '..\\3rd_party\\boost_static\\include',
-        '..\\libgeoda',
-        '..\\src\\weights',
-        '..\\src\\sa',
-        '..\\src\\shape',
-        '..\\src',
-        '..\\postgeoda\\src',
-        '..\\..\\eigen3',
+        BOOST_DIR + '\\include',
+        EIGEN_DIR,
+        '..\\libgeoda_src\\weights',
+        '..\\libgeoda_src\\sa',
+        '..\\libgeoda_src\\shape',
+        '..\\libgeoda_src\\pg',
+        '..\\libgeoda_src',
     ]
 
 else:
     INCLUDE_DIRS = [
-        '../3rd_party/boost_static/include',
-        '../libgeoda',
-        '../src/weights',
-        '../src/sa',
-        '../src',
-        '../postgeoda/src',
-        '../../eigen3',
+        BOOST_DIR + '/include',
+        EIGEN_DIR,
+        '../libgeoda_src/weights',
+        LIBGEODA_DIR + '/sa',
+        LIBGEODA_DIR + '/pg',
+        LIBGEODA_DIR,
     ]
 
 
-print(OS_NAME)
-print(INCLUDE_DIRS)
 ###########################################################
 # LIBRARIES and INCLUDE_DIRS
 ###########################################################
@@ -77,7 +83,7 @@ if OS_NAME == 'linux':
     LIBRARIES = []
 elif OS_NAME == 'osx':
     LIBRARY_DIRS += ['/usr/lib']
-    LIBRARIES = ['curl', 'iconv']
+    LIBRARIES = []
 
 ###########################################################
 # SWIG_OPTS and Compiler args
@@ -91,7 +97,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     ]
 else:
     EXTRA_COMPILE_ARGS = [
-        '-std=c++11',
+        #'-std=c++11',
     ]
 
 
@@ -113,16 +119,16 @@ EXTRA_OBJECTS = []
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     EXTRA_OBJECTS = [
-        '..\\3rd_party\\boost_static\\lib\\' + OS_NAME + '\\libboost_thread-vc100-mt-1_57.lib',
-        '..\\3rd_party\\boost_static\\lib\\' + OS_NAME + '\\libboost_system-vc100-mt-1_57.lib',
-        '..\\3rd_party\\boost_static\\lib\\' + OS_NAME + '\\libboost_date_time-vc100-mt-1_57.lib',
-        '..\\3rd_party\\boost_static\\lib\\' + OS_NAME + '\\libboost_chrono-vc100-mt-1_57.lib', 
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [
-        '../3rd_party/boost_static/lib/' + OS_NAME + '/libboost_thread.a',
-        '../3rd_party/boost_static/lib/' + OS_NAME + '/libboost_system.a',
-        '../3rd_party/boost_static/lib/' + OS_NAME + '/libboost_date_time.a',
+        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_thread.a',
+        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_system.a',
+        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_date_time.a',
     ]
 
 ###########################################################
@@ -130,37 +136,37 @@ else:
 ###########################################################
 SOURCE_FILES  = [
     'pygeoda/libgeoda.cpp',
-    '../src/SpatialIndAlgs.cpp',
-    '../src/gda_sa.cpp',
-    '../src/gda_data.cpp',
-    '../src/gda_clustering.cpp',
-    '../src/gda_algorithms.cpp',
-    '../src/gda_weights.cpp',
-    '../src/GenGeomAlgs.cpp',
-    '../src/GenUtils.cpp',
-    '../src/clustering/cluster.cpp',
-    '../src/clustering/maxp.cpp',
-    '../src/clustering/maxp_wrapper.cpp',
-    '../src/clustering/mds.cpp',
-    '../src/clustering/pca.cpp',
-    '../src/clustering/redcap.cpp',
-    '../src/clustering/redcap_wrapper.cpp',
-    '../src/sa/LISA.cpp',
-    '../src/sa/MultiGeary.cpp',
-    '../src/sa/MultiJoinCount.cpp',
-    '../src/sa/UniG.cpp',
-    '../src/sa/UniGeary.cpp',
-    '../src/sa/UniGstar.cpp',
-    '../src/sa/UniJoinCount.cpp',
-    '../src/sa/UniLocalMoran.cpp',
-    '../src/weights/VoronoiUtils.cpp',
-    '../src/weights/PolysToContigWeights.cpp',
-    '../src/weights/GalWeight.cpp',
-    '../src/weights/GeodaWeight.cpp',
-    '../src/weights/GwtWeight.cpp',
-    '../src/pg/geoms.c',
-    '../src/pg/utils.c',
-    '../src/libgeoda.cpp',
+    LIBGEODA_DIR + '/SpatialIndAlgs.cpp',
+    LIBGEODA_DIR + '/gda_sa.cpp',
+    LIBGEODA_DIR + '/gda_data.cpp',
+    LIBGEODA_DIR + '/gda_clustering.cpp',
+    LIBGEODA_DIR + '/gda_algorithms.cpp',
+    LIBGEODA_DIR + '/gda_weights.cpp',
+    LIBGEODA_DIR + '/GenGeomAlgs.cpp',
+    LIBGEODA_DIR + '/GenUtils.cpp',
+    LIBGEODA_DIR + '/clustering/cluster.cpp',
+    LIBGEODA_DIR + '/clustering/maxp.cpp',
+    LIBGEODA_DIR + '/clustering/maxp_wrapper.cpp',
+    LIBGEODA_DIR + '/clustering/mds.cpp',
+    LIBGEODA_DIR + '/clustering/pca.cpp',
+    LIBGEODA_DIR + '/clustering/redcap.cpp',
+    LIBGEODA_DIR + '/clustering/redcap_wrapper.cpp',
+    LIBGEODA_DIR + '/sa/LISA.cpp',
+    LIBGEODA_DIR + '/sa/MultiGeary.cpp',
+    LIBGEODA_DIR + '/sa/MultiJoinCount.cpp',
+    LIBGEODA_DIR + '/sa/UniG.cpp',
+    LIBGEODA_DIR + '/sa/UniGeary.cpp',
+    LIBGEODA_DIR + '/sa/UniGstar.cpp',
+    LIBGEODA_DIR + '/sa/UniJoinCount.cpp',
+    LIBGEODA_DIR + '/sa/UniLocalMoran.cpp',
+    LIBGEODA_DIR + '/weights/VoronoiUtils.cpp',
+    LIBGEODA_DIR + '/weights/PolysToContigWeights.cpp',
+    LIBGEODA_DIR + '/weights/GalWeight.cpp',
+    LIBGEODA_DIR + '/weights/GeodaWeight.cpp',
+    LIBGEODA_DIR + '/weights/GwtWeight.cpp',
+    LIBGEODA_DIR + '/pg/geoms.c',
+    LIBGEODA_DIR + '/pg/utils.c',
+    LIBGEODA_DIR + '/libgeoda.cpp',
 ]
 
 
