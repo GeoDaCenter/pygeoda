@@ -1,0 +1,3 @@
+[submodule "libgeoda_src"]
+	path = libgeoda_src
+	url = https://gitee.com/lixun910/libgeoda_src.git
