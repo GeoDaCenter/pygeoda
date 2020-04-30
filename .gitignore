@@ -2,4 +2,6 @@
 *.pyc
 *.so
 build/
+dist/
+pygeoda.egg-info/
 .vscode/

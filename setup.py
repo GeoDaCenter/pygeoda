@@ -10,8 +10,7 @@ from subprocess import check_call
 # Variables 
 ##########################################################
 OS_NAME = 'linux'
-BOOST_DIR = '../boost_static'
-LIBGEODA_DIR = '../libgeoda_src'
+BOOST_DIR = '../pygeoda_boost'
 EIGEN_DIR = '../eigen3'
 
 if sys.platform == "win32":
@@ -51,21 +50,21 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
         BOOST_DIR + '\\include',
         EIGEN_DIR,
-        '..\\libgeoda_src\\weights',
-        '..\\libgeoda_src\\sa',
-        '..\\libgeoda_src\\shape',
-        '..\\libgeoda_src\\pg',
-        '..\\libgeoda_src',
+        '.\\libgeoda_src\\weights',
+        '.\\libgeoda_src\\sa',
+        '.\\libgeoda_src\\shape',
+        '.\\libgeoda_src\\pg',
+        '.\\libgeoda_src',
     ]
 
 else:
     INCLUDE_DIRS = [
         BOOST_DIR + '/include',
         EIGEN_DIR,
-        '../libgeoda_src/weights',
-        LIBGEODA_DIR + '/sa',
-        LIBGEODA_DIR + '/pg',
-        LIBGEODA_DIR,
+        './libgeoda_src',
+        './libgeoda_src/weights',
+        './libgeoda_src/sa',
+        './libgeoda_src/pg',
     ]
 
 
@@ -98,6 +97,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 else:
     EXTRA_COMPILE_ARGS = [
         #'-std=c++11',
+        '-fvisibility=hidden'
     ]
 
 
@@ -136,37 +136,37 @@ else:
 ###########################################################
 SOURCE_FILES  = [
     'pygeoda/libgeoda.cpp',
-    LIBGEODA_DIR + '/SpatialIndAlgs.cpp',
-    LIBGEODA_DIR + '/gda_sa.cpp',
-    LIBGEODA_DIR + '/gda_data.cpp',
-    LIBGEODA_DIR + '/gda_clustering.cpp',
-    LIBGEODA_DIR + '/gda_algorithms.cpp',
-    LIBGEODA_DIR + '/gda_weights.cpp',
-    LIBGEODA_DIR + '/GenGeomAlgs.cpp',
-    LIBGEODA_DIR + '/GenUtils.cpp',
-    LIBGEODA_DIR + '/clustering/cluster.cpp',
-    LIBGEODA_DIR + '/clustering/maxp.cpp',
-    LIBGEODA_DIR + '/clustering/maxp_wrapper.cpp',
-    LIBGEODA_DIR + '/clustering/mds.cpp',
-    LIBGEODA_DIR + '/clustering/pca.cpp',
-    LIBGEODA_DIR + '/clustering/redcap.cpp',
-    LIBGEODA_DIR + '/clustering/redcap_wrapper.cpp',
-    LIBGEODA_DIR + '/sa/LISA.cpp',
-    LIBGEODA_DIR + '/sa/MultiGeary.cpp',
-    LIBGEODA_DIR + '/sa/MultiJoinCount.cpp',
-    LIBGEODA_DIR + '/sa/UniG.cpp',
-    LIBGEODA_DIR + '/sa/UniGeary.cpp',
-    LIBGEODA_DIR + '/sa/UniGstar.cpp',
-    LIBGEODA_DIR + '/sa/UniJoinCount.cpp',
-    LIBGEODA_DIR + '/sa/UniLocalMoran.cpp',
-    LIBGEODA_DIR + '/weights/VoronoiUtils.cpp',
-    LIBGEODA_DIR + '/weights/PolysToContigWeights.cpp',
-    LIBGEODA_DIR + '/weights/GalWeight.cpp',
-    LIBGEODA_DIR + '/weights/GeodaWeight.cpp',
-    LIBGEODA_DIR + '/weights/GwtWeight.cpp',
-    LIBGEODA_DIR + '/pg/geoms.c',
-    LIBGEODA_DIR + '/pg/utils.c',
-    LIBGEODA_DIR + '/libgeoda.cpp',
+    './libgeoda_src/SpatialIndAlgs.cpp',
+    './libgeoda_src/gda_sa.cpp',
+    './libgeoda_src/gda_data.cpp',
+    './libgeoda_src/gda_clustering.cpp',
+    './libgeoda_src/gda_algorithms.cpp',
+    './libgeoda_src/gda_weights.cpp',
+    './libgeoda_src/GenGeomAlgs.cpp',
+    './libgeoda_src/GenUtils.cpp',
+    './libgeoda_src/clustering/cluster.cpp',
+    './libgeoda_src/clustering/maxp.cpp',
+    './libgeoda_src/clustering/maxp_wrapper.cpp',
+    './libgeoda_src/clustering/mds.cpp',
+    './libgeoda_src/clustering/pca.cpp',
+    './libgeoda_src/clustering/redcap.cpp',
+    './libgeoda_src/clustering/redcap_wrapper.cpp',
+    './libgeoda_src/sa/LISA.cpp',
+    './libgeoda_src/sa/MultiGeary.cpp',
+    './libgeoda_src/sa/MultiJoinCount.cpp',
+    './libgeoda_src/sa/UniG.cpp',
+    './libgeoda_src/sa/UniGeary.cpp',
+    './libgeoda_src/sa/UniGstar.cpp',
+    './libgeoda_src/sa/UniJoinCount.cpp',
+    './libgeoda_src/sa/UniLocalMoran.cpp',
+    './libgeoda_src/weights/VoronoiUtils.cpp',
+    './libgeoda_src/weights/PolysToContigWeights.cpp',
+    './libgeoda_src/weights/GalWeight.cpp',
+    './libgeoda_src/weights/GeodaWeight.cpp',
+    './libgeoda_src/weights/GwtWeight.cpp',
+    './libgeoda_src/pg/geoms.c',
+    './libgeoda_src/pg/utils.c',
+    './libgeoda_src/libgeoda.cpp',
 ]
 
 
@@ -196,7 +196,7 @@ setup (name = 'pygeoda',
        description = """pygeoda is a python library for spatial data analysis based on GeoDa and libgeoda.""",
        ext_modules = extensions,
        package_data = package_data,
-       cmdclass = {"develop": update_submodules},
+       #cmdclass = {"develop": update_submodules},
        include_package_data = include_package_data,
        packages=['pygeoda','pygeoda.weights','pygeoda.sa','pygeoda.clustering', 'pygeoda.classify']
       )
