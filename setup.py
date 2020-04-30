@@ -10,13 +10,8 @@ from subprocess import check_call
 # Variables 
 ##########################################################
 OS_NAME = 'linux'
-BOOST_DIR = './pygeoda_boost'
-EIGEN_DIR = './eigen3'
 
 if sys.platform == "win32":
-    BOOST_DIR = '.\\pygeoda_boost'
-    EIGEN_DIR = '.\\eigen3'
-
     OS_NAME = 'win64' if sys.maxsize > 2**32 else 'win32'
 
 elif sys.platform == "darwin":
@@ -36,8 +31,8 @@ elif sys.platform == "linux2":
 INCLUDE_DIRS = []
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
-        BOOST_DIR + '\\include',
-        EIGEN_DIR,
+        '.\\pygeoda_boost\\include',
+        '.\\eigen3',
         '.\\libgeoda_src\\weights',
         '.\\libgeoda_src\\sa',
         '.\\libgeoda_src\\shape',
@@ -47,8 +42,8 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 
 else:
     INCLUDE_DIRS = [
-        BOOST_DIR + '/include',
-        EIGEN_DIR,
+        './pygeoda_boost/include',
+        './eigen3',
         './libgeoda_src',
         './libgeoda_src/weights',
         './libgeoda_src/sa',
@@ -63,7 +58,9 @@ LIBRARY_DIRS = []
 LIBRARIES = [] # -lxxx
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
-    LIBRARIES = ['comctl32','rpcrt4']
+    LIBRARIES = [
+        #'comctl32','rpcrt4'
+        ]
 
 if OS_NAME == 'linux':
     LIBRARY_DIRS += ['/usr/lib', '/usr/lib/x86_64-linux-gnu']
@@ -80,7 +77,7 @@ EXTRA_COMPILE_ARGS = []
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     EXTRA_COMPILE_ARGS += [
-        '/EHsc', #MSVC is not throwing exceptions and you need to enable it in your vcproj.
+        #'/EHsc', #MSVC is not throwing exceptions and you need to enable it in your vcproj.
     ]
 else:
     EXTRA_COMPILE_ARGS = [
@@ -116,18 +113,18 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
         MSVC_VER = 'vc100'
     elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
         MSVC_VER = 'vc140'
-        
+
     EXTRA_OBJECTS = [
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
+        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [
-        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_thread.a',
-        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_system.a',
-        BOOST_DIR + '/lib/' + OS_NAME + '/libboost_date_time.a',
+        './pygeoda_boost/lib/' + OS_NAME + '/libboost_thread.a',
+        './pygeoda_boost/lib/' + OS_NAME + '/libboost_system.a',
+        './pygeoda_boost/lib/' + OS_NAME + '/libboost_date_time.a',
     ]
 
 ###########################################################
