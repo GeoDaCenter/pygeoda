@@ -198,6 +198,6 @@ setup (name = 'pygeoda',
        package_data = package_data,
        #cmdclass = {"develop": update_submodules},
        include_package_data = include_package_data,
-       packages=['pygeoda','pygeoda.weights','pygeoda.sa','pygeoda.clustering', 'pygeoda.classify']
+       packages=['pygeoda','pygeoda.weights','pygeoda.sa','pygeoda.clustering', 'pygeoda.classify', 'pygeoda.data']
       )
 
