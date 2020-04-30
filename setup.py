@@ -10,37 +10,25 @@ from subprocess import check_call
 # Variables 
 ##########################################################
 OS_NAME = 'linux'
-BOOST_DIR = '../pygeoda_boost'
-EIGEN_DIR = '../eigen3'
+BOOST_DIR = './pygeoda_boost'
+EIGEN_DIR = './eigen3'
 
 if sys.platform == "win32":
-    BOOST_DIR = '..\\boost_static'
-    LIBGEODA_DIR = '..\\libgeoda_src'
-    EIGEN_DIR = '..\\eigen3'
+    BOOST_DIR = '.\\pygeoda_boost'
+    EIGEN_DIR = '.\\eigen3'
 
     OS_NAME = 'win64' if sys.maxsize > 2**32 else 'win32'
 
 elif sys.platform == "darwin":
     OS_NAME = 'osx'
-    #os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.14'
     os.environ["ARCHFLAGS"] = "-arch x86_64"
+    mac_ver = platform.mac_ver()[0]
+    os.environ['MACOSX_DEPLOYMENT_TARGET'] = mac_ver
 
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
 
-pyversion = sys.version[:3]
-# 14.X 3.5, 3.6, 3.7, 3.8
-# 10.0 3.3, 3.4
-# 9.0 2.6, 2.7, 3.0, 3.1, 3.2
-MSVC_VER = ''
-BOOST_VER = '1_64'
 
-if pyversion in ['2.6', '2.7', '3.0', '3.1', '3.2']:
-    MSVC_VER = 'vc90'
-elif pyversion in ['3.3', '3.4']:
-    MSVC_VER = 'vc100'
-elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
-    MSVC_VER = 'vc140'
 
 ###########################################################
 # INCLUDE_DIRS
@@ -96,7 +84,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     ]
 else:
     EXTRA_COMPILE_ARGS = [
-        #'-std=c++11',
+        '-stdlib=libc++',
         '-fvisibility=hidden'
     ]
 
@@ -118,11 +106,22 @@ elif OS_NAME == 'osx':
 EXTRA_OBJECTS = []
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
+    BOOST_ARC = 'x32' if OS_NAME == 'win32' else 'x64'
+    pyversion = sys.version[:3]
+    MSVC_VER = ''
+    BOOST_VER = '1_69'
+    if pyversion in ['2.6', '2.7', '3.0', '3.1', '3.2']:
+        MSVC_VER = 'vc90'
+    elif pyversion in ['3.3', '3.4']:
+        MSVC_VER = 'vc100'
+    elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
+        MSVC_VER = 'vc140'
+        
     EXTRA_OBJECTS = [
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib',
-        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_VER + '.lib', 
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        BOOST_DIR + '\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [
