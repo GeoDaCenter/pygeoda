@@ -27,7 +27,7 @@ def local_multijoincount(w, data):
         data (tuple): A 1d tuple of float type values of selected variable
 
     Rrturns:
-        lisa: An instance of lisa class represents the results of multivariate local join count
+        lisa: An instance of lisa class represents the results of multivariate local join count
     """
     if w == None:
         raise("Weights is None.")

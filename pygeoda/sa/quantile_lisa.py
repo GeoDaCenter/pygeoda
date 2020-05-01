@@ -15,7 +15,7 @@ def quantile_lisa(w, k, q, data):
         data (tuple): A tuple with values of the selected variable
 
     Returns:
-        lisa: An instance of lisa class represents the results of quantile lisa
+        lisa: An instance of lisa class represents the results of quantile lisa
     """
     if w == None:
         raise("Weights is None.")

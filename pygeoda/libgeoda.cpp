@@ -6584,7 +6584,7 @@ SWIGINTERN std::vector< std::vector< char > >::iterator std_vector_Sl_std_vector
 SWIGINTERN void std_vector_Sl_std_vector_Sl_char_Sg__Sg__insert__SWIG_1(std::vector< std::vector< char > > *self,std::vector< std::vector< char > >::iterator pos,std::vector< std::vector< char > >::size_type n,std::vector< std::vector< char > >::value_type const &x){ self->insert(pos, n, x); }
 
 #include <string>
-#include <stdint.h>
+//#include <stdint.h>
 #include <GeodaWeight.h>
 #include <LISA.h>
 #include <gda_interface.h>

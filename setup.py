@@ -77,7 +77,7 @@ EXTRA_COMPILE_ARGS = []
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     EXTRA_COMPILE_ARGS += [
-        #'/EHsc', #MSVC is not throwing exceptions and you need to enable it in your vcproj.
+        '/EHsc', #MSVC is not throwing exceptions, boost::throw_exception error
     ]
 else:
     EXTRA_COMPILE_ARGS = [
