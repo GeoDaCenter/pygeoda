@@ -103,7 +103,7 @@ elif OS_NAME == 'osx':
 EXTRA_OBJECTS = []
 
 if OS_NAME == 'win32' or OS_NAME == 'win64':
-    BOOST_ARC = 'x32' if OS_NAME == 'win32' else 'x64'
+    BOOST_ARC = 'x32' if OS_NAME == 'win32' else 's-x64'
     pyversion = sys.version[:3]
     MSVC_VER = ''
     BOOST_VER = '1_69'
@@ -112,7 +112,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     elif pyversion in ['3.3', '3.4']:
         MSVC_VER = 'vc100'
     elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
-        MSVC_VER = 'vc140'
+        MSVC_VER = 'vc141'
 
     EXTRA_OBJECTS = [
         '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
