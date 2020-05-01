@@ -26,6 +26,14 @@ def find_vcvarsall(version):
         return None
 ```
 
+#### Build for Python 3.7 
+
+* Download and install Visual studio 2017
+
+* Start a terminal using Visual Studio 2017 menu: "X64 native tools command prompt"
+
+
+
 ## Clone pygeoda repository
 
 The repository  is at https://gitee.com/lixun910/pygeoda
@@ -40,6 +48,27 @@ git submodule update --init --recursive
 
 Note: The last command will get the submodules "libgeoda_sr" and "pygeoda_boost"s
 
+## Build pygeoda
 
+* Build pygeoda c++ wrapper  and test it
+```
+cd pygeoda
+python setup.py build_ext --inplace
+```
+
+To install
+```
+python setup.py install
+````
+
+* Create binary (windows installer or pip wheels)
+```
+python setup.py bdist_wheel
+```
+
+For windows:
+```
+python setup.py bdist_wininst
+```
 
 
