@@ -5,22 +5,7 @@ Description
 pygeoda is a python library for spatial data analysis based on libgeoda and GeoDa
 
 
-#### Software Architecture
-Software architecture description
-
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
+#### How to contribute
 
 1.  Fork the repository
 2.  Create Feat_xxx branch
@@ -29,9 +14,9 @@ Software architecture description
 
 #### Contributors
 
-@lixun910
-@ZH345
-@harperhan
+* @lixun910
+* @zh345
+* @yeqing_han
 
 
 #### Gitee Feature
