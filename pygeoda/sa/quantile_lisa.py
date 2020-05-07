@@ -1,4 +1,5 @@
 from ..libgeoda import gda_quantilelisa
+from .lisa import lisa
 
 __author__ = "Hang Zhang <zhanghanggis@163.com>, "
 
@@ -31,4 +32,5 @@ def quantile_lisa(w, k, q, data):
     elif q >= k:
         raise("The value of q needs to be smaller than the max value of k")
 
-    return gda_quantilelisa(w.gda_w, k, q, data)
+    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data)
+    return lisa(lisa_obj)

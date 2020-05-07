@@ -1,6 +1,6 @@
 from ..libgeoda import LISA
 
-__author__ = "Xun Li <lixun910@gmail.com>"
+__author__ = "Xun Li <lixun910@gmail.com>, Yeqing Han <yeqinghan_geo@163.com>"
 
 class lisa:
     """A LISA class wrappers the results of LISA computation
@@ -100,3 +100,15 @@ class lisa:
                 e.g. local moran, local geary etc.
         """
         return self.gda_lisa.GetColors()
+
+    def GetFDR(self,p):
+        '''
+        Get the False Discovery Rate (FDR) in LISA.
+        Args:
+            p: The current p-value of significance breakpoint
+            
+        Returns:
+            :A p-value (breakpoint) computed as the False Discovery Rate value
+        '''
+        
+        return self.gda_lisa.GetFDR(p)

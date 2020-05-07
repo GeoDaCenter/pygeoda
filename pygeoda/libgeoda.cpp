@@ -6584,9 +6584,10 @@ SWIGINTERN std::vector< std::vector< char > >::iterator std_vector_Sl_std_vector
 SWIGINTERN void std_vector_Sl_std_vector_Sl_char_Sg__Sg__insert__SWIG_1(std::vector< std::vector< char > > *self,std::vector< std::vector< char > >::iterator pos,std::vector< std::vector< char > >::size_type n,std::vector< std::vector< char > >::value_type const &x){ self->insert(pos, n, x); }
 
 #include <string>
-//#include <stdint.h>
-#include <GeodaWeight.h>
-#include <LISA.h>
+#include <stdint.h>
+#include <weights/GeodaWeight.h>
+#include <sa/LISA.h>
+#include <pg/geoms.h>
 #include <gda_interface.h>
 #include <libgeoda.h>
 #include <gda_sa.h>
@@ -6594,7 +6595,6 @@ SWIGINTERN void std_vector_Sl_std_vector_Sl_char_Sg__Sg__insert__SWIG_1(std::vec
 #include <gda_weights.h>
 #include <gda_clustering.h>
 #include <gda_algorithms.h>
-#include <geoms.h>
 
 
 
@@ -39009,6 +39009,66 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GeoDaColumn_undefs_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaColumn *arg1 = (GeoDaColumn *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg2 = (std::vector< bool,std::allocator< bool > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeoDaColumn_undefs_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaColumn, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaColumn_undefs_set" "', argument " "1"" of type '" "GeoDaColumn *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaColumn * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeoDaColumn_undefs_set" "', argument " "2"" of type '" "std::vector< bool,std::allocator< bool > > *""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp2);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    if (arg1) (arg1)->undefs = *arg2;
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaColumn_undefs_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaColumn *arg1 = (GeoDaColumn *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< bool,std::allocator< bool > > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaColumn, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaColumn_undefs_get" "', argument " "1"" of type '" "GeoDaColumn *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaColumn * >(argp1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (std::vector< bool,std::allocator< bool > > *)& ((arg1)->undefs);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_GeoDaColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
@@ -39782,7 +39842,76 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeoDaTable_AddIntColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddIntColumn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  GeoDaTable *arg1 = (GeoDaTable *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< long long,std::allocator< long long > > *arg3 = 0 ;
+  std::vector< bool,std::allocator< bool > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddIntColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaTable * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeoDaTable_AddIntColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddIntColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::vector< long long,std::allocator< long long > > *ptr = (std::vector< long long,std::allocator< long long > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeoDaTable_AddIntColumn" "', argument " "3"" of type '" "std::vector< long long,std::allocator< long long > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddIntColumn" "', argument " "3"" of type '" "std::vector< long long,std::allocator< long long > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeoDaTable_AddIntColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddIntColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    (arg1)->AddIntColumn((std::string const &)*arg2,(std::vector< long long,std::allocator< long long > > const &)*arg3,(std::vector< bool,std::allocator< bool > > const &)*arg4);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddIntColumn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   GeoDaTable *arg1 = (GeoDaTable *) 0 ;
   std::string *arg2 = 0 ;
@@ -39791,9 +39920,8 @@ SWIGINTERN PyObject *_wrap_GeoDaTable_AddIntColumn(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   int res3 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GeoDaTable_AddIntColumn", 3, 3, swig_obj)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddIntColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
@@ -39837,7 +39965,132 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeoDaTable_AddStringColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddIntColumn(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GeoDaTable_AddIntColumn", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< long long,std::allocator< long long > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_GeoDaTable_AddIntColumn__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< long long,std::allocator< long long > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = swig::asptr(argv[3], (std::vector<bool,std::allocator< bool > >**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GeoDaTable_AddIntColumn__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GeoDaTable_AddIntColumn'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    GeoDaTable::AddIntColumn(std::string const &,std::vector< long long,std::allocator< long long > > const &,std::vector< bool,std::allocator< bool > > const &)\n"
+    "    GeoDaTable::AddIntColumn(std::string const &,std::vector< long long,std::allocator< long long > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddStringColumn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  GeoDaTable *arg1 = (GeoDaTable *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg3 = 0 ;
+  std::vector< bool,std::allocator< bool > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddStringColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaTable * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeoDaTable_AddStringColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddStringColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeoDaTable_AddStringColumn" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddStringColumn" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeoDaTable_AddStringColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddStringColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    (arg1)->AddStringColumn((std::string const &)*arg2,(std::vector< std::string,std::allocator< std::string > > const &)*arg3,(std::vector< bool,std::allocator< bool > > const &)*arg4);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddStringColumn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   GeoDaTable *arg1 = (GeoDaTable *) 0 ;
   std::string *arg2 = 0 ;
@@ -39846,9 +40099,8 @@ SWIGINTERN PyObject *_wrap_GeoDaTable_AddStringColumn(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   int res3 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GeoDaTable_AddStringColumn", 3, 3, swig_obj)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddStringColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
@@ -39892,7 +40144,132 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeoDaTable_AddRealColumn(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddStringColumn(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GeoDaTable_AddStringColumn", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< std::string,std::allocator< std::string > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_GeoDaTable_AddStringColumn__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< std::string,std::allocator< std::string > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = swig::asptr(argv[3], (std::vector<bool,std::allocator< bool > >**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GeoDaTable_AddStringColumn__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GeoDaTable_AddStringColumn'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    GeoDaTable::AddStringColumn(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,std::vector< bool,std::allocator< bool > > const &)\n"
+    "    GeoDaTable::AddStringColumn(std::string const &,std::vector< std::string,std::allocator< std::string > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddRealColumn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  GeoDaTable *arg1 = (GeoDaTable *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< double,std::allocator< double > > *arg3 = 0 ;
+  std::vector< bool,std::allocator< bool > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddRealColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaTable * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeoDaTable_AddRealColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddRealColumn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeoDaTable_AddRealColumn" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddRealColumn" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeoDaTable_AddRealColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaTable_AddRealColumn" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    (arg1)->AddRealColumn((std::string const &)*arg2,(std::vector< double,std::allocator< double > > const &)*arg3,(std::vector< bool,std::allocator< bool > > const &)*arg4);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddRealColumn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   GeoDaTable *arg1 = (GeoDaTable *) 0 ;
   std::string *arg2 = 0 ;
@@ -39901,9 +40278,8 @@ SWIGINTERN PyObject *_wrap_GeoDaTable_AddRealColumn(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   int res3 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GeoDaTable_AddRealColumn", 3, 3, swig_obj)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaTable_AddRealColumn" "', argument " "1"" of type '" "GeoDaTable *""'"); 
@@ -39944,6 +40320,62 @@ fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaTable_AddRealColumn(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GeoDaTable_AddRealColumn", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< double,std::allocator< double > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_GeoDaTable_AddRealColumn__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< double,std::allocator< double > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = swig::asptr(argv[3], (std::vector<bool,std::allocator< bool > >**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GeoDaTable_AddRealColumn__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GeoDaTable_AddRealColumn'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    GeoDaTable::AddRealColumn(std::string const &,std::vector< double,std::allocator< double > > const &,std::vector< bool,std::allocator< bool > > const &)\n"
+    "    GeoDaTable::AddRealColumn(std::string const &,std::vector< double,std::allocator< double > > const &)\n");
+  return 0;
 }
 
 
@@ -40800,7 +41232,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeoDa_GetUndefinesCol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GeoDa_GetNullValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   GeoDa *arg1 = (GeoDa *) 0 ;
   std::string arg2 ;
@@ -40809,24 +41241,24 @@ SWIGINTERN PyObject *_wrap_GeoDa_GetUndefinesCol(PyObject *SWIGUNUSEDPARM(self),
   PyObject *swig_obj[2] ;
   std::vector< bool,std::allocator< bool > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GeoDa_GetUndefinesCol", 2, 2, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "GeoDa_GetNullValues", 2, 2, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDa, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDa_GetUndefinesCol" "', argument " "1"" of type '" "GeoDa *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDa_GetNullValues" "', argument " "1"" of type '" "GeoDa *""'"); 
   }
   arg1 = reinterpret_cast< GeoDa * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "GeoDa_GetUndefinesCol" "', argument " "2"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "GeoDa_GetNullValues" "', argument " "2"" of type '" "std::string""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (arg1)->GetUndefinesCol(arg2);
+    result = (arg1)->GetNullValues(arg2);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector<bool,std::allocator< bool > > >(result));
@@ -54788,6 +55220,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeoDaColumn_field_length_get", _wrap_GeoDaColumn_field_length_get, METH_O, NULL},
 	 { "GeoDaColumn_field_decimals_set", _wrap_GeoDaColumn_field_decimals_set, METH_VARARGS, NULL},
 	 { "GeoDaColumn_field_decimals_get", _wrap_GeoDaColumn_field_decimals_get, METH_O, NULL},
+	 { "GeoDaColumn_undefs_set", _wrap_GeoDaColumn_undefs_set, METH_VARARGS, NULL},
+	 { "GeoDaColumn_undefs_get", _wrap_GeoDaColumn_undefs_get, METH_O, NULL},
 	 { "new_GeoDaColumn", _wrap_new_GeoDaColumn, METH_VARARGS, NULL},
 	 { "delete_GeoDaColumn", _wrap_delete_GeoDaColumn, METH_O, NULL},
 	 { "GeoDaColumn_swigregister", GeoDaColumn_swigregister, METH_O, NULL},
@@ -54837,7 +55271,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeoDa_GetNumericCol", _wrap_GeoDa_GetNumericCol, METH_VARARGS, NULL},
 	 { "GeoDa_GetIntegerCol", _wrap_GeoDa_GetIntegerCol, METH_VARARGS, NULL},
 	 { "GeoDa_GetStringCol", _wrap_GeoDa_GetStringCol, METH_VARARGS, NULL},
-	 { "GeoDa_GetUndefinesCol", _wrap_GeoDa_GetUndefinesCol, METH_VARARGS, NULL},
+	 { "GeoDa_GetNullValues", _wrap_GeoDa_GetNullValues, METH_VARARGS, NULL},
 	 { "GeoDa_swigregister", GeoDa_swigregister, METH_O, NULL},
 	 { "GeoDa_swiginit", GeoDa_swiginit, METH_VARARGS, NULL},
 	 { "test", _wrap_test, METH_NOARGS, NULL},

@@ -23,7 +23,7 @@ elif sys.platform == "darwin":
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
 
-LIBGEODA_SRC = 'libgeoda_local'
+LIBGEODA_SRC = 'libgeoda_src'
 
 ###########################################################
 # INCLUDE_DIRS
@@ -33,21 +33,14 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
         '.\\pygeoda_boost\\include',
         '.\\eigen3',
-        '.\\' + LIBGEODA_SRC + '\\weights',
-        '.\\' + LIBGEODA_SRC + '\\sa',
-        '.\\' + LIBGEODA_SRC + '\\shape',
-        '.\\' + LIBGEODA_SRC + '\\pg',
-        '.\\' + LIBGEODA_SRC + '',
+        '.\\' + LIBGEODA_SRC,
     ]
 
 else:
     INCLUDE_DIRS = [
         './pygeoda_boost/include',
         './eigen3',
-        './' + LIBGEODA_SRC + '',
-        './' + LIBGEODA_SRC + '/weights',
-        './' + LIBGEODA_SRC + '/sa',
-        './' + LIBGEODA_SRC + '/pg',
+        './' + LIBGEODA_SRC,
     ]
 
 
@@ -162,6 +155,9 @@ SOURCE_FILES  = [
     './' + LIBGEODA_SRC + '/weights/GwtWeight.cpp',
     './' + LIBGEODA_SRC + '/pg/geoms.c',
     './' + LIBGEODA_SRC + '/pg/utils.c',
+    './' + LIBGEODA_SRC + '/shapelib/shpopen.c',
+    './' + LIBGEODA_SRC + '/shapelib/dbfopen.c',
+    './' + LIBGEODA_SRC + '/shapelib/safileio.c',
     './' + LIBGEODA_SRC + '/libgeoda.cpp',
 ]
 

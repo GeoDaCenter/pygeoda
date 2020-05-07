@@ -1875,6 +1875,7 @@ class GeoDaColumn(object):
     field_type = property(_libgeoda.GeoDaColumn_field_type_get, _libgeoda.GeoDaColumn_field_type_set)
     field_length = property(_libgeoda.GeoDaColumn_field_length_get, _libgeoda.GeoDaColumn_field_length_set)
     field_decimals = property(_libgeoda.GeoDaColumn_field_decimals_get, _libgeoda.GeoDaColumn_field_decimals_set)
+    undefs = property(_libgeoda.GeoDaColumn_undefs_get, _libgeoda.GeoDaColumn_undefs_set)
 
     def __init__(self, nm, ft, flen, fdec):
         _libgeoda.GeoDaColumn_swiginit(self, _libgeoda.new_GeoDaColumn(nm, ft, flen, fdec))
@@ -1945,14 +1946,14 @@ class GeoDaTable(object):
         _libgeoda.GeoDaTable_swiginit(self, _libgeoda.new_GeoDaTable())
     __swig_destroy__ = _libgeoda.delete_GeoDaTable
 
-    def AddIntColumn(self, nm, vals):
-        return _libgeoda.GeoDaTable_AddIntColumn(self, nm, vals)
+    def AddIntColumn(self, *args):
+        return _libgeoda.GeoDaTable_AddIntColumn(self, *args)
 
-    def AddStringColumn(self, nm, vals):
-        return _libgeoda.GeoDaTable_AddStringColumn(self, nm, vals)
+    def AddStringColumn(self, *args):
+        return _libgeoda.GeoDaTable_AddStringColumn(self, *args)
 
-    def AddRealColumn(self, nm, vals):
-        return _libgeoda.GeoDaTable_AddRealColumn(self, nm, vals)
+    def AddRealColumn(self, *args):
+        return _libgeoda.GeoDaTable_AddRealColumn(self, *args)
 
     def GetColumn(self, *args):
         return _libgeoda.GeoDaTable_GetColumn(self, *args)
@@ -2005,8 +2006,8 @@ class GeoDa(AbstractGeoDa):
     def GetStringCol(self, col_name):
         return _libgeoda.GeoDa_GetStringCol(self, col_name)
 
-    def GetUndefinesCol(self, col_name):
-        return _libgeoda.GeoDa_GetUndefinesCol(self, col_name)
+    def GetNullValues(self, col_name):
+        return _libgeoda.GeoDa_GetNullValues(self, col_name)
 
 # Register GeoDa in _libgeoda:
 _libgeoda.GeoDa_swigregister(GeoDa)
