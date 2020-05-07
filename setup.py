@@ -23,7 +23,7 @@ elif sys.platform == "darwin":
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
 
-
+LIBGEODA_SRC = 'libgeoda_local'
 
 ###########################################################
 # INCLUDE_DIRS
@@ -33,21 +33,21 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
         '.\\pygeoda_boost\\include',
         '.\\eigen3',
-        '.\\libgeoda_src\\weights',
-        '.\\libgeoda_src\\sa',
-        '.\\libgeoda_src\\shape',
-        '.\\libgeoda_src\\pg',
-        '.\\libgeoda_src',
+        '.\\' + LIBGEODA_SRC + '\\weights',
+        '.\\' + LIBGEODA_SRC + '\\sa',
+        '.\\' + LIBGEODA_SRC + '\\shape',
+        '.\\' + LIBGEODA_SRC + '\\pg',
+        '.\\' + LIBGEODA_SRC + '',
     ]
 
 else:
     INCLUDE_DIRS = [
         './pygeoda_boost/include',
         './eigen3',
-        './libgeoda_src',
-        './libgeoda_src/weights',
-        './libgeoda_src/sa',
-        './libgeoda_src/pg',
+        './' + LIBGEODA_SRC + '',
+        './' + LIBGEODA_SRC + '/weights',
+        './' + LIBGEODA_SRC + '/sa',
+        './' + LIBGEODA_SRC + '/pg',
     ]
 
 
@@ -132,37 +132,37 @@ else:
 ###########################################################
 SOURCE_FILES  = [
     'pygeoda/libgeoda.cpp',
-    './libgeoda_src/SpatialIndAlgs.cpp',
-    './libgeoda_src/gda_sa.cpp',
-    './libgeoda_src/gda_data.cpp',
-    './libgeoda_src/gda_clustering.cpp',
-    './libgeoda_src/gda_algorithms.cpp',
-    './libgeoda_src/gda_weights.cpp',
-    './libgeoda_src/GenGeomAlgs.cpp',
-    './libgeoda_src/GenUtils.cpp',
-    './libgeoda_src/clustering/cluster.cpp',
-    './libgeoda_src/clustering/maxp.cpp',
-    './libgeoda_src/clustering/maxp_wrapper.cpp',
-    './libgeoda_src/clustering/mds.cpp',
-    './libgeoda_src/clustering/pca.cpp',
-    './libgeoda_src/clustering/redcap.cpp',
-    './libgeoda_src/clustering/redcap_wrapper.cpp',
-    './libgeoda_src/sa/LISA.cpp',
-    './libgeoda_src/sa/MultiGeary.cpp',
-    './libgeoda_src/sa/MultiJoinCount.cpp',
-    './libgeoda_src/sa/UniG.cpp',
-    './libgeoda_src/sa/UniGeary.cpp',
-    './libgeoda_src/sa/UniGstar.cpp',
-    './libgeoda_src/sa/UniJoinCount.cpp',
-    './libgeoda_src/sa/UniLocalMoran.cpp',
-    './libgeoda_src/weights/VoronoiUtils.cpp',
-    './libgeoda_src/weights/PolysToContigWeights.cpp',
-    './libgeoda_src/weights/GalWeight.cpp',
-    './libgeoda_src/weights/GeodaWeight.cpp',
-    './libgeoda_src/weights/GwtWeight.cpp',
-    './libgeoda_src/pg/geoms.c',
-    './libgeoda_src/pg/utils.c',
-    './libgeoda_src/libgeoda.cpp',
+    './' + LIBGEODA_SRC + '/SpatialIndAlgs.cpp',
+    './' + LIBGEODA_SRC + '/gda_sa.cpp',
+    './' + LIBGEODA_SRC + '/gda_data.cpp',
+    './' + LIBGEODA_SRC + '/gda_clustering.cpp',
+    './' + LIBGEODA_SRC + '/gda_algorithms.cpp',
+    './' + LIBGEODA_SRC + '/gda_weights.cpp',
+    './' + LIBGEODA_SRC + '/GenGeomAlgs.cpp',
+    './' + LIBGEODA_SRC + '/GenUtils.cpp',
+    './' + LIBGEODA_SRC + '/clustering/cluster.cpp',
+    './' + LIBGEODA_SRC + '/clustering/maxp.cpp',
+    './' + LIBGEODA_SRC + '/clustering/maxp_wrapper.cpp',
+    './' + LIBGEODA_SRC + '/clustering/mds.cpp',
+    './' + LIBGEODA_SRC + '/clustering/pca.cpp',
+    './' + LIBGEODA_SRC + '/clustering/redcap.cpp',
+    './' + LIBGEODA_SRC + '/clustering/redcap_wrapper.cpp',
+    './' + LIBGEODA_SRC + '/sa/LISA.cpp',
+    './' + LIBGEODA_SRC + '/sa/MultiGeary.cpp',
+    './' + LIBGEODA_SRC + '/sa/MultiJoinCount.cpp',
+    './' + LIBGEODA_SRC + '/sa/UniG.cpp',
+    './' + LIBGEODA_SRC + '/sa/UniGeary.cpp',
+    './' + LIBGEODA_SRC + '/sa/UniGstar.cpp',
+    './' + LIBGEODA_SRC + '/sa/UniJoinCount.cpp',
+    './' + LIBGEODA_SRC + '/sa/UniLocalMoran.cpp',
+    './' + LIBGEODA_SRC + '/weights/VoronoiUtils.cpp',
+    './' + LIBGEODA_SRC + '/weights/PolysToContigWeights.cpp',
+    './' + LIBGEODA_SRC + '/weights/GalWeight.cpp',
+    './' + LIBGEODA_SRC + '/weights/GeodaWeight.cpp',
+    './' + LIBGEODA_SRC + '/weights/GwtWeight.cpp',
+    './' + LIBGEODA_SRC + '/pg/geoms.c',
+    './' + LIBGEODA_SRC + '/pg/utils.c',
+    './' + LIBGEODA_SRC + '/libgeoda.cpp',
 ]
 
 
