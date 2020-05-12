@@ -146,6 +146,8 @@ SOURCE_FILES  = [
     './' + LIBGEODA_SRC + '/clustering/redcap.cpp',
     './' + LIBGEODA_SRC + '/clustering/redcap_wrapper.cpp',
     './' + LIBGEODA_SRC + '/sa/LISA.cpp',
+    './' + LIBGEODA_SRC + '/sa/BatchLISA.cpp',
+    './' + LIBGEODA_SRC + '/sa/BatchLocalMoran.cpp',
     './' + LIBGEODA_SRC + '/sa/MultiGeary.cpp',
     './' + LIBGEODA_SRC + '/sa/MultiJoinCount.cpp',
     './' + LIBGEODA_SRC + '/sa/UniG.cpp',
