@@ -28,9 +28,9 @@ def quantile_lisa(w, k, q, data):
         raise("The value of k needs to be greater than or equal to 1 ")
 
     if q == None or q < 0:
-        raise("The value of q needs to be greater than or equal to 0")
-    elif q >= k:
-        raise("The value of q needs to be smaller than the max value of k")
+        raise("The value of q needs to be greater than to 0")
+    elif q > k:
+        raise("The value of q needs to be smaller than or equal to the max value of k")
 
     lisa_obj = gda_quantilelisa(w.gda_w, k, q, data)
     return lisa(lisa_obj)

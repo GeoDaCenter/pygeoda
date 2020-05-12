@@ -3,7 +3,7 @@ __author__ = "Xun Li <lixun910@gmail.com>"
 from ..libgeoda import VecVecDouble
 from ..libgeoda import gda_skater
 
-def skater(k, w, data, bound_vals=[], min_bound=0, distance_method='euclidean', random_seed=123456789):
+def skater(k, w, data, bound_vals=[], min_bound=-1, distance_method='euclidean', random_seed=123456789):
     ''' Spatial C(K)luster Analysis by Tree Edge Removal
 
     SKATER forms clusters by spatially partitioning data that has similar values for features of interest.

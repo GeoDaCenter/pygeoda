@@ -12,12 +12,12 @@ class TestLISA(unittest.TestCase):
         self.data = [self.guerry.GetRealCol(v) for v in slect_vars]
 
     def test_quantile_lisa(self):
-        lisa = pygeoda.quantile_lisa(self.queen_w, 7, 6, self.crm_prp)
+        lisa = pygeoda.quantile_lisa(self.queen_w, 7, 7, self.crm_prp)
         
         pvals = lisa.GetPValues()
         self.assertAlmostEqual(pvals[0], 0.434000)
-        self.assertAlmostEqual(pvals[1], 0.031000)
-        self.assertAlmostEqual(pvals[3], 0.428000)
+        self.assertAlmostEqual(pvals[1], 0.001)
+        self.assertAlmostEqual(pvals[3], 0.001)
 
         nnvals = lisa.GetNumNeighbors()
         self.assertEqual(nnvals[0], 4)

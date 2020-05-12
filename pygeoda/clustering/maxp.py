@@ -27,7 +27,7 @@ def maxp(w, data, bound_vals, min_bound, local_search, **kwargs):
     '''
     
     initial = 99 if 'initial' not in kwargs else kwargs['initial']
-    tabu_length = 95 if 'tabu_length' not in kwargs else kwargs['tabu_length']
+    tabu_length = 85 if 'tabu_length' not in kwargs else kwargs['tabu_length']
     cool_rate = 0.85 if 'cool_rate' not in kwargs else kwargs['cool_rate']
     init_seeds = [] if 'init_seeds' not in kwargs else kwargs['init_seeds']
     distance_method = 'euclidean' if 'distance_method' not in kwargs else kwargs['distance_method'] 

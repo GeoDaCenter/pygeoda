@@ -38,10 +38,4 @@ class TestSpatialClustering(unittest.TestCase):
         ratio =  betweenss / totalss
 
         # todo, should add a n_cpu option for maxp so the result can be replicated in travis
-        if ratio != 0.5020739031174454:
-            self.assertAlmostEqual(ratio, 0.5092765545524383)
-        else:
-            self.assertAlmostEqual(ratio, 0.5020739031174454)
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertAlmostEqual(ratio, 0.5092391813101834)
