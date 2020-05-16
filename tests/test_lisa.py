@@ -60,6 +60,26 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[1], 2)
         self.assertEqual(cvals[2], 4)
 
+    def test_local_multigeary(self):
+        self.crm_prs = self.guerry.GetIntegerCol("Crm_prs")
+        data = [self.crm_prp, self.crm_prs]
+        lisa = pygeoda.local_multigeary(self.queen_w, data)
+
+        lvals = lisa.GetLISAValues()
+        self.assertAlmostEqual(lvals[0], 4.192904310228536)
+        self.assertAlmostEqual(lvals[1], 0.560978550546873)
+        self.assertAlmostEqual(lvals[2], 2.200847073745350)
+
+        pvals = lisa.GetPValues()
+        self.assertAlmostEqual(pvals[0], 0.226000000000000)
+        self.assertAlmostEqual(pvals[1], 0.015000000000000)
+        self.assertAlmostEqual(pvals[2], 0.111000000000000)
+
+        cvals = lisa.GetClusterIndicators()
+        self.assertEqual(cvals[0], 0)
+        self.assertEqual(cvals[1], 1)
+        self.assertEqual(cvals[2], 0)
+
     def test_local_joincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
         columbus_q = pygeoda.weights.queen(columbus)
@@ -149,5 +169,9 @@ class TestLISA(unittest.TestCase):
 
         lisa = pygeoda.local_moran(columbus_q, nsa)
 
+        #p = lisa.GetFDR(0.005)
+        #self.assertAlmostEqual(p, 0.000102041)
+        #p = lisa.GetFDR(0.001)
+        #self.assertAlmostEqual(p, 2.04082e-005)
         p = lisa.GetFDR(0.05)
-        self.assertAlmostEqual(p, 0.0132653)
+        self.assertAlmostEqual(p, 0.0122449)

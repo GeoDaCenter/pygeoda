@@ -23,8 +23,8 @@ def local_multijoincount(w, data):
     """Apply multivariate local join count statistics.
 
     Args:
-        w (Weight): An instance of Weight class.
-        data (tuple): A 1d tuple of float type values of selected variable
+        w (Weight): An instance of Weight class
+        data (list): A 2d numeric list with values of selected variables
 
     Rrturns:
         lisa: An instance of lisa class represents the results of multivariate local join count

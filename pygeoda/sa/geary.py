@@ -7,11 +7,14 @@ def local_multigeary(w, data):
     '''Apply local multi-variates geary statistics 
 
     Args:
-
+        w (Weight): An instance of Weight class
+        data (list): A 2d numeric list with values of selected variables
     Returns:
-    
+        lisa: An instance of lisa class represents the results of local multi-variates geary computations
     '''
-    # input check
+    if w == None:
+        raise("Weights is None.")
+
     lisa_obj = gda_multigeary(w.gda_w, data)
     return lisa(lisa_obj)
 
