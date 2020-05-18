@@ -1,9 +1,10 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-from ..libgeoda import gda_geary, gda_multigeary
+from ..libgeoda import gda_geary, gda_multigeary, VecBool
 from .lisa import lisa
+import multiprocessing
 
-def local_multigeary(w, data):
+def local_multigeary(w, data, **kwargs):
     '''Apply local multi-variates geary statistics 
 
     Args:
@@ -15,10 +16,15 @@ def local_multigeary(w, data):
     if w == None:
         raise("Weights is None.")
 
-    lisa_obj = gda_multigeary(w.gda_w, data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
+    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    lisa_obj = gda_multigeary(w.gda_w, data, undefs, nCPUs, perm, seed)
     return lisa(lisa_obj)
 
-def local_geary(w, data):
+def local_geary(w, data, **kwargs):
     '''Apply local geary statistics.
 
     Args:
@@ -34,5 +40,10 @@ def local_geary(w, data):
     if w.num_obs != len(data):
         raise("The size of data doesnt not match the number of observations.")
 
-    lisa_obj = gda_geary(w.gda_w, data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
+    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    lisa_obj = gda_geary(w.gda_w, data, undefs, nCPUs, perm, seed)
     return lisa(lisa_obj)

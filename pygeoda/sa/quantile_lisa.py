@@ -1,9 +1,10 @@
-from ..libgeoda import gda_quantilelisa
+from ..libgeoda import gda_quantilelisa, VecBool
 from .lisa import lisa
+import multiprocessing
 
 __author__ = "Hang Zhang <zhanghanggis@163.com>, "
 
-def quantile_lisa(w, k, q, data):
+def quantile_lisa(w, k, q, data, **kwargs):
     """
     quantile LISA
 
@@ -32,5 +33,10 @@ def quantile_lisa(w, k, q, data):
     elif q > k:
         raise("The value of q needs to be smaller than or equal to the max value of k")
 
-    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
+    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, nCPUs, perm, seed)
     return lisa(lisa_obj)

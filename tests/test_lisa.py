@@ -167,11 +167,7 @@ class TestLISA(unittest.TestCase):
         columbus_q = pygeoda.weights.queen(columbus)
         nsa = columbus.GetRealCol("nsa")
 
-        lisa = pygeoda.local_moran(columbus_q, nsa)
+        lisa = pygeoda.local_moran(columbus_q, nsa, nCPUs = 6)
 
-        #p = lisa.GetFDR(0.005)
-        #self.assertAlmostEqual(p, 0.000102041)
-        #p = lisa.GetFDR(0.001)
-        #self.assertAlmostEqual(p, 2.04082e-005)
         p = lisa.GetFDR(0.05)
         self.assertAlmostEqual(p, 0.0122449)

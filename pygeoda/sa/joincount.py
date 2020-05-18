@@ -1,9 +1,10 @@
-from ..libgeoda import gda_joincount, gda_multijoincount
+from ..libgeoda import gda_joincount, gda_multijoincount, VecBool
 from .lisa import lisa
+import multiprocessing
 
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-def local_joincount(w, data):
+def local_joincount(w, data, **kwargs):
     """Apply local join count statistics.
 
     Args:
@@ -16,10 +17,15 @@ def local_joincount(w, data):
     if w == None:
         raise("Weights is None.")
 
-    lisa_obj = gda_joincount(w.gda_w, data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
+    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    lisa_obj = gda_joincount(w.gda_w, data, undefs, nCPUs, perm, seed)
     return lisa(lisa_obj)
 
-def local_multijoincount(w, data):
+def local_multijoincount(w, data, **kwargs):
     """Apply multivariate local join count statistics.
 
     Args:
@@ -32,5 +38,10 @@ def local_multijoincount(w, data):
     if w == None:
         raise("Weights is None.")
 
-    lisa_obj = gda_multijoincount(w.gda_w, data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
+    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    lisa_obj = gda_multijoincount(w.gda_w, data, undefs, nCPUs, perm, seed)
     return lisa(lisa_obj)
