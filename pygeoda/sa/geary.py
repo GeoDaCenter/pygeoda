@@ -1,6 +1,6 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-from ..libgeoda import gda_geary, gda_multigeary, VecBool
+from ..libgeoda import gda_geary, gda_multigeary, VecBool, VecVecBool
 from .lisa import lisa
 import multiprocessing
 
@@ -16,7 +16,7 @@ def local_multigeary(w, data, **kwargs):
     if w == None:
         raise("Weights is None.")
 
-    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
     nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
     perm =  999 if 'perm' not in kwargs else kwargs['perm']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
