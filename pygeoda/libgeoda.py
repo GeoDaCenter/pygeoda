@@ -999,6 +999,112 @@ class VecBool(object):
 # Register VecBool in _libgeoda:
 _libgeoda.VecBool_swigregister(VecBool)
 
+class VecVecBool(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _libgeoda.VecVecBool_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _libgeoda.VecVecBool___nonzero__(self)
+
+    def __bool__(self):
+        return _libgeoda.VecVecBool___bool__(self)
+
+    def __len__(self):
+        return _libgeoda.VecVecBool___len__(self)
+
+    def __getslice__(self, i, j):
+        return _libgeoda.VecVecBool___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _libgeoda.VecVecBool___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _libgeoda.VecVecBool___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _libgeoda.VecVecBool___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _libgeoda.VecVecBool___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _libgeoda.VecVecBool___setitem__(self, *args)
+
+    def pop(self):
+        return _libgeoda.VecVecBool_pop(self)
+
+    def append(self, x):
+        return _libgeoda.VecVecBool_append(self, x)
+
+    def empty(self):
+        return _libgeoda.VecVecBool_empty(self)
+
+    def size(self):
+        return _libgeoda.VecVecBool_size(self)
+
+    def swap(self, v):
+        return _libgeoda.VecVecBool_swap(self, v)
+
+    def begin(self):
+        return _libgeoda.VecVecBool_begin(self)
+
+    def end(self):
+        return _libgeoda.VecVecBool_end(self)
+
+    def rbegin(self):
+        return _libgeoda.VecVecBool_rbegin(self)
+
+    def rend(self):
+        return _libgeoda.VecVecBool_rend(self)
+
+    def clear(self):
+        return _libgeoda.VecVecBool_clear(self)
+
+    def get_allocator(self):
+        return _libgeoda.VecVecBool_get_allocator(self)
+
+    def pop_back(self):
+        return _libgeoda.VecVecBool_pop_back(self)
+
+    def erase(self, *args):
+        return _libgeoda.VecVecBool_erase(self, *args)
+
+    def __init__(self, *args):
+        _libgeoda.VecVecBool_swiginit(self, _libgeoda.new_VecVecBool(*args))
+
+    def push_back(self, x):
+        return _libgeoda.VecVecBool_push_back(self, x)
+
+    def front(self):
+        return _libgeoda.VecVecBool_front(self)
+
+    def back(self):
+        return _libgeoda.VecVecBool_back(self)
+
+    def assign(self, n, x):
+        return _libgeoda.VecVecBool_assign(self, n, x)
+
+    def resize(self, *args):
+        return _libgeoda.VecVecBool_resize(self, *args)
+
+    def insert(self, *args):
+        return _libgeoda.VecVecBool_insert(self, *args)
+
+    def reserve(self, n):
+        return _libgeoda.VecVecBool_reserve(self, n)
+
+    def capacity(self):
+        return _libgeoda.VecVecBool_capacity(self)
+    __swig_destroy__ = _libgeoda.delete_VecVecBool
+
+# Register VecVecBool in _libgeoda:
+_libgeoda.VecVecBool_swigregister(VecVecBool)
+
 class VecLong(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -1842,6 +1948,128 @@ class LISA(object):
 # Register LISA in _libgeoda:
 _libgeoda.LISA_swigregister(LISA)
 
+class BatchLISA(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _libgeoda.delete_BatchLISA
+
+    def ComputeLoalSA(self):
+        return _libgeoda.BatchLISA_ComputeLoalSA(self)
+
+    def CalcPseudoP(self):
+        return _libgeoda.BatchLISA_CalcPseudoP(self)
+
+    def CalcPseudoP_threaded(self):
+        return _libgeoda.BatchLISA_CalcPseudoP_threaded(self)
+
+    def CalcPseudoP_range(self, obs_start, obs_end, seed_start):
+        return _libgeoda.BatchLISA_CalcPseudoP_range(self, obs_start, obs_end, seed_start)
+
+    def PermLocalSA(self, cnt, perm, permNeighbors, permutedSA):
+        return _libgeoda.BatchLISA_PermLocalSA(self, cnt, perm, permNeighbors, permutedSA)
+
+    def CountLargerSA(self, cnt, permutedSA):
+        return _libgeoda.BatchLISA_CountLargerSA(self, cnt, permutedSA)
+
+    def Run(self):
+        return _libgeoda.BatchLISA_Run(self)
+
+    def SetSignificanceFilter(self, filter_id):
+        return _libgeoda.BatchLISA_SetSignificanceFilter(self, filter_id)
+
+    def GetSignificanceFilter(self):
+        return _libgeoda.BatchLISA_GetSignificanceFilter(self)
+
+    def GetSignificanceCutoff(self):
+        return _libgeoda.BatchLISA_GetSignificanceCutoff(self)
+
+    def SetSignificanceCutoff(self, val):
+        return _libgeoda.BatchLISA_SetSignificanceCutoff(self, val)
+
+    def GetUserCutoff(self):
+        return _libgeoda.BatchLISA_GetUserCutoff(self)
+
+    def SetUserCutoff(self, val):
+        return _libgeoda.BatchLISA_SetUserCutoff(self, val)
+
+    def GetBO(self, current_p):
+        return _libgeoda.BatchLISA_GetBO(self, current_p)
+
+    def GetFDR(self, current_p, idx):
+        return _libgeoda.BatchLISA_GetFDR(self, current_p, idx)
+
+    def GetNumPermutations(self):
+        return _libgeoda.BatchLISA_GetNumPermutations(self)
+
+    def SetNumPermutations(self, val):
+        return _libgeoda.BatchLISA_SetNumPermutations(self, val)
+
+    def GetLastUsedSeed(self):
+        return _libgeoda.BatchLISA_GetLastUsedSeed(self)
+
+    def SetLastUsedSeed(self, seed):
+        return _libgeoda.BatchLISA_SetLastUsedSeed(self, seed)
+
+    def IsReuseLastSeed(self):
+        return _libgeoda.BatchLISA_IsReuseLastSeed(self)
+
+    def SetReuseLastSeed(self, reuse):
+        return _libgeoda.BatchLISA_SetReuseLastSeed(self, reuse)
+
+    def GetHasIsolates(self):
+        return _libgeoda.BatchLISA_GetHasIsolates(self)
+
+    def GetHasUndefined(self):
+        return _libgeoda.BatchLISA_GetHasUndefined(self)
+
+    def GetDefaultCategories(self):
+        return _libgeoda.BatchLISA_GetDefaultCategories(self)
+
+    def GetDefaultCutoffs(self):
+        return _libgeoda.BatchLISA_GetDefaultCutoffs(self)
+
+    def GetLocalSignificanceValues(self, idx):
+        return _libgeoda.BatchLISA_GetLocalSignificanceValues(self, idx)
+
+    def GetClusterIndicators(self, idx):
+        return _libgeoda.BatchLISA_GetClusterIndicators(self, idx)
+
+    def GetSigCatIndicators(self, idx):
+        return _libgeoda.BatchLISA_GetSigCatIndicators(self, idx)
+
+    def GetNumNeighbors(self):
+        return _libgeoda.BatchLISA_GetNumNeighbors(self)
+
+    def GetSpatialLagValues(self, idx):
+        return _libgeoda.BatchLISA_GetSpatialLagValues(self, idx)
+
+    def GetLISAValues(self, idx):
+        return _libgeoda.BatchLISA_GetLISAValues(self, idx)
+
+    def IsRowStandardize(self):
+        return _libgeoda.BatchLISA_IsRowStandardize(self)
+
+    def SetRowStandardize(self, rowStandardize):
+        return _libgeoda.BatchLISA_SetRowStandardize(self, rowStandardize)
+
+    def GetNumThreads(self):
+        return _libgeoda.BatchLISA_GetNumThreads(self)
+
+    def SetNumThreads(self, n_threads):
+        return _libgeoda.BatchLISA_SetNumThreads(self, n_threads)
+
+    def GetLabels(self):
+        return _libgeoda.BatchLISA_GetLabels(self)
+
+    def GetColors(self):
+        return _libgeoda.BatchLISA_GetColors(self)
+
+# Register BatchLISA in _libgeoda:
+_libgeoda.BatchLISA_swigregister(BatchLISA)
+
 class AbstractGeoDa(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -2021,6 +2249,9 @@ def ToGeoDaColumn(*args):
 
 def gda_localmoran(*args):
     return _libgeoda.gda_localmoran(*args)
+
+def gda_batchlocalmoran(*args):
+    return _libgeoda.gda_batchlocalmoran(*args)
 
 def gda_geary(*args):
     return _libgeoda.gda_geary(*args)

@@ -11,6 +11,31 @@ class TestLISA(unittest.TestCase):
         slect_vars = ['Crm_prp','Crm_prs']
         self.data = [self.guerry.GetRealCol(v) for v in slect_vars]
 
+    def test_batch_moran(self):
+        lisa = pygeoda.batch_local_moran(self.queen_w, self.data)
+
+        # get results for first variable: Crm_prp
+        lms = lisa.GetLISAValues(0) 
+        self.assertAlmostEqual(lms[0], 0.015431978309803657)
+        self.assertAlmostEqual(lms[1], 0.3270633223656033)
+        self.assertAlmostEqual(lms[2], 0.021295296214118884) 
+
+        pvals = lisa.GetPValues(0)
+        self.assertAlmostEqual(pvals[0], 0.41399999999999998)
+        self.assertAlmostEqual(pvals[1], 0.123)
+        self.assertAlmostEqual(pvals[2], 0.001)
+
+        # get results from second variable: Crm_prs
+        lms = lisa.GetLISAValues(1) 
+        self.assertAlmostEqual(lms[0], 0.516120231288079)
+        self.assertAlmostEqual(lms[1], 0.818275138495031)
+        self.assertAlmostEqual(lms[2], 0.794086559694542) 
+
+        pvals = lisa.GetPValues(1)
+        self.assertAlmostEqual(pvals[0], 0.197000000000000)
+        self.assertAlmostEqual(pvals[1], 0.013000000000000)
+        self.assertAlmostEqual(pvals[2], 0.023000000000000)
+
     def test_quantile_lisa(self):
         lisa = pygeoda.quantile_lisa(self.queen_w, 7, 7, self.crm_prp)
         
