@@ -136,5 +136,8 @@ def open(ds_path):
     """
     if not isinstance(ds_path, str) or len(ds_path) <= 0:
         raise "The input path of data source is not valid"
+    suffix = ds_path[-4:-1]+ds_path[-1]
+    if suffix != '.shp':
+        raise 'pygeoda can only open ESRI shapefile since v0.0.4'
     gda_obj = GeoDa(ds_path)
     return geoda(gda_obj)
