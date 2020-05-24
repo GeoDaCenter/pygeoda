@@ -140,5 +140,7 @@ def open(ds_path):
         raise 'Pygeoda can only open ESRI shapefile since v0.0.4'
     if not os.path.exists(ds_path[0:-3]+'dbf'):
         raise 'This shapefile miss a DBF file'
+    if not os.path.exists(ds_path[0:-3]+'shx'):
+        raise 'This shapefile miss a SHX file'
     gda_obj = GeoDa(ds_path)
     return geoda(gda_obj)
