@@ -1,5 +1,5 @@
 from .libgeoda import GeoDa
-
+import os
 __author__ = "Xun Li <lixun910@gmail.com>"
 __all__ = ['geoda', 'open']
 
@@ -136,5 +136,11 @@ def open(ds_path):
     """
     if not isinstance(ds_path, str) or len(ds_path) <= 0:
         raise "The input path of data source is not valid"
+    if not ds_path.lower().endswith('.shp'):
+        raise 'Pygeoda can only open ESRI shapefile since v0.0.4'
+    if not os.path.exists(ds_path[0:-3]+'dbf'):
+        raise 'This shapefile miss a DBF file'
+    if not os.path.exists(ds_path[0:-3]+'shx'):
+        raise 'This shapefile miss a SHX file'
     gda_obj = GeoDa(ds_path)
     return geoda(gda_obj)
