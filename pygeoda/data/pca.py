@@ -6,7 +6,7 @@ __author__ = "Hang Zhang <zhanghanggis@163.com>, "
 class PCA(object):
     ''' Principal component analysis
     Note:
-        Principal components are new variables constructed as a linear combination of the original variables, such that they capture the most variance. In a sense, the principal components can be interpreted as the best linear approximation to the multivariate point cloud of the data. The goal is to find a small number of principal components (much smaller than the number of original variables) that explains the bulk of the variance in the original variables.
+        The principal components can be interpreted as the best linear approximation to the multivariate point cloud of the data. The goal is to find a small number of principal components,that explains the bulk of the variance in the original variables.
     
     Args:
         data (tuple): A 2d numeric list with values of selected variables
@@ -25,16 +25,16 @@ class PCA(object):
         self.pca_r = gda_pca(data)
 
     def getMethod(self):
-        '''get the PCA calculation method
+        '''Get the PCA calculation method.
 
         Returns:
             a string of method description
-            e.g. 'svd'
+                e.g. 'svd'
         '''
         return self.pca_r.getMethod()               
 
     def getStandardDev(self):
-        '''get the standard deviation of PCAResult
+        '''get the standard deviation of PCAResult.
         
         Rerurns:
             :obj:`tuple` of float: a list of float values of standard deviation of PCAResult
@@ -43,7 +43,7 @@ class PCA(object):
         return self.pca_r.getStandardDev()
 
     def getPropOfVar(self):
-        '''get the Proportion of variance of PCAResult
+        '''Get the Proportion of variance of PCAResult.
         
         Returns:
             :obj:`tuple` of float: a list of float values of Proportion of variance of PCAResult
@@ -52,7 +52,7 @@ class PCA(object):
         return self.pca_r.getPropOfVar()
 
     def getCumProp(self):
-        '''get the Cumulative proportion of PCAResult
+        '''Get the Cumulative proportion of PCAResult.
 
         Returns:
             :obj:`tuple` of float: a list of float values of the Cumulative proportion of PCAResult
@@ -61,7 +61,7 @@ class PCA(object):
         return self.pca_r.getCumProp()
 
     def getKaiser(self):
-        '''get the value 0f Kaiser in PCAResult
+        '''Get the value 0f Kaiser in PCAResult.
 
         Returns:
             :obj:a `float` number: value 0f Kaiser in PCAResult
@@ -70,7 +70,7 @@ class PCA(object):
         return self.pca_r.getKaiser()
     
     def getThresh95(self):
-        '''get the value 0f  threshold criteria for contribution up to 95% in PCAResult
+        '''Get the value 0f  threshold criteria for contribution up to 95% in PCAResult.
 
         Returns:
             :obj:a `float` number:value 0f threshold criteria for contribution up to 95% in PCAResult
@@ -79,7 +79,7 @@ class PCA(object):
         return self.pca_r.getThresh95()
     
     def getEigenValues(self):
-        '''get the Eigenvalues of PCAResult of PCAResult
+        '''Get the Eigenvalues of PCAResult of PCAResult.
 
         Returns:
             :obj:`tuple` of float: a list of float values of the Eigenvalues of PCAResult
@@ -88,7 +88,7 @@ class PCA(object):
         return self.pca_r.getEigenValues()
     
     def getLoadings(self):
-        '''get a 2d numeric list with values of  PCAResult base selected variables
+        '''Get a 2d numeric list with values of  PCAResult base selected variables.
 
         Returns:
             :obj:a 2d numeric `list` of float: a 2d numeric list with values of selected variables of PCAResult
@@ -97,7 +97,7 @@ class PCA(object):
         return self.pca_r.getLoadings()
     
     def getSqCorrelations(self):
-        '''get a 2d numeric list with values of squared correlations of PCAResult base selected variables
+        '''Get a 2d numeric list with values of squared correlations of PCAResult base selected variables.
 
         Returns:
             :obj:a 2d numeric `list` of float: a 2d numeric list with values of selected variables of PCAResult
