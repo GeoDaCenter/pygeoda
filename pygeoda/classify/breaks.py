@@ -85,7 +85,7 @@ def quantile_breaks(k,data,**kwargs):
     return gda_quantilebreaks(k,data)
 
 def percentile_breaks(data,**kwargs):
-    """Percentile map
+    """Percentile breaks
 
     Note:
         The percentile breaks divides the data to  six ranges, the lowest 1%, 1-10%, 10-50%, 50-90%, 90-99% and the top 1%, returning the range boundaries as a breakpoint list. 
