@@ -38,11 +38,16 @@ pygeoda (spatial autocorrelation)
    :toctree: generated/
 
    pygeoda.lisa
+   pygeoda.batchlisa
    pygeoda.local_moran
+   pygeoda.batch_local_moran
    pygeoda.local_geary
+   pygeoda.local_multigeary
    pygeoda.local_joincount
+   pygeoda.local_multijoincount
    pygeoda.local_g
    pygeoda.local_gstar
+   pygeoda.quantile_lisa
 
 
 pygeoda (spatial clustering)
@@ -57,3 +62,27 @@ pygeoda (spatial clustering)
    pygeoda.between_sumofsquare
    pygeoda.total_sumofsquare
    pygeoda.within_sumofsquare
+
+
+pygeoda (classify)
+----------------------------
+
+.. autosummary::
+   :toctree: generated/
+
+   pygeoda.hinge15_breaks
+   pygeoda.hinge30_breaks
+   pygeoda.natural_breaks
+   pygeoda.quantile_breaks
+   pygeoda.percentile_breaks
+   pygeoda.stddev_breaks
+
+
+pygeoda (data)
+----------------------------
+
+.. autosummary::
+   :toctree: generated/
+
+   pygeoda.mds
+   pygeoda.PCA
