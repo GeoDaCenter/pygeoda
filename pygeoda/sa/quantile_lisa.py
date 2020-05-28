@@ -6,7 +6,7 @@ __author__ = "Hang Zhang <zhanghanggis@163.com>, "
 
 def quantile_lisa(w, k, q, data, **kwargs):
     """
-    quantile LISA
+    Apply quantile LISA on one select variable after we already have a weight. 
 
     Note:
         Apply quantile LISA on one select variable

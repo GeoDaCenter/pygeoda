@@ -5,7 +5,7 @@ import multiprocessing
 __author__ = "Xun Li <lixun910@gmail.com>"
 
 def local_joincount(w, data, **kwargs):
-    """Apply local join count statistics.
+    """Apply local join count statistics on one select variable after we already have a weight.
 
     Args:
         w (Weight): An instance of Weight class.
@@ -26,7 +26,7 @@ def local_joincount(w, data, **kwargs):
     return lisa(lisa_obj)
 
 def local_multijoincount(w, data, **kwargs):
-    """Apply multivariate local join count statistics.
+    """Apply multivariate local join count statistics on multi-variables, at least two variables, after we alreadt have a weight.
 
     Args:
         w (Weight): An instance of Weight class

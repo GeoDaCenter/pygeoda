@@ -5,7 +5,7 @@ from .lisa import lisa
 import multiprocessing
 
 def local_multigeary(w, data, **kwargs):
-    '''Apply local multi-variates geary statistics 
+    '''Apply local multi-variates geary statistics on multi-variables, at least two variables, after we already have a weight.
 
     Args:
         w (Weight): An instance of Weight class
@@ -25,7 +25,7 @@ def local_multigeary(w, data, **kwargs):
     return lisa(lisa_obj)
 
 def local_geary(w, data, **kwargs):
-    '''Apply local geary statistics.
+    '''Apply local geary statistics on one select variable after we already have a weight.
 
     Args:
         w (Weight): An instance of Weight class.

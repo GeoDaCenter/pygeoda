@@ -5,7 +5,7 @@ import multiprocessing
 __author__ = "Xun Li <lixun910@gmail.com>"
 
 def local_moran(w, data, **kwargs):
-    """Apply local moran statistics.
+    """Apply local moran statistics on one select variable after we already have a weight.
 
     Args:
         w (Weight): An instance of Weight class.

@@ -104,6 +104,7 @@ class lisa:
     def GetFDR(self,p):
         '''
         Get the False Discovery Rate (FDR) in LISA.
+        
         Args:
             p: The current p-value of significance breakpoint
             
