@@ -126,7 +126,7 @@ class geoda:
 def open(ds_path):
     """Create a geoda object by reading a spatial dataset
 
-    Create a geoda object by reading a spatial dataset. The dataset that pygeoda only supports ESRI Shapefile.
+    Create a geoda object by reading a spatial dataset. The dataset that pygeoda temporarily supports ESRI Shapefile only.
 
     Args:
         ds_path (str): The path of the spatial dataset
