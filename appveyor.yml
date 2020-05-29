@@ -1,3 +1,7 @@
+image: 
+  - Visual Studio 2008
+  - Visual Studio 2015
+
 environment:
   global:
     BUILD_COMMIT: master
@@ -13,14 +17,6 @@ environment:
 
     - PYTHON: "C:\\Python27-x64"
       PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "64"
-
-    - PYTHON: "C:\\Python34"
-      PYTHON_VERSION: "3.4.x"
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Python34-x64"
-      PYTHON_VERSION: "3.4.x"
       PYTHON_ARCH: "64"
 
     - PYTHON: "C:\\Python35"
@@ -55,8 +51,30 @@ environment:
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "64"
 
-# matrix:
-#   fast_finish: true
+matrix:
+  fast_finish: true
+
+  exclude:
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python35"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python35-x64"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python36"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python36-x64"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python37"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python37-x64"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python38"
+    - image: Visual Studio 2008
+      PYTHON: "C:\\Python38-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python27"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python27-x64"
 
 install:
   # Fetch submodules
