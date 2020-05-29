@@ -86,7 +86,7 @@ build_script:
   - "git submodule update --init --recursive"
   # build wheel
   - "cd %APPVEYOR_BUILD_FOLDER%"
-  - "pip wheel -v -w wheelhouse --no-deps
+  - "pip wheel -v -w wheelhouse --no-deps"
 
 test_script:
   # install from wheel
