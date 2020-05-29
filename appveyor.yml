@@ -54,6 +54,12 @@ matrix:
   fast_finish: true
 
 install:
+  # note: VS 2010 has stdint.h bundled so simply copy it. Cython should not
+  #       depend on it for py27 (works fine when compiling using C code)
+  #       but this works differently for C++ (maybe there is some other issue
+  #       with environment setup).
+  # try to do a dirty workaround for Cython with C++ for py27
+  - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
   
   # Fetch submodules
   - "git submodule update --init --recursive"
