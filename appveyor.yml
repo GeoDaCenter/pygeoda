@@ -1,3 +1,6 @@
+image:
+  - Visual Studio 2015
+
 environment:
   global:
     BUILD_COMMIT: master
@@ -10,62 +13,48 @@ environment:
     - PYTHON: "C:\\Python27"
       PYTHON_VERSION: "2.7.x"
       PYTHON_ARCH: "32"
-      MSVC_VERSION: "Visual Studio 10"
 
     - PYTHON: "C:\\Python27-x64"
       PYTHON_VERSION: "2.7.x"
       PYTHON_ARCH: "64"
-      MSVC_VERSION: "Visual Studio 10 Win64"
 
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "32"
-      MSVC_VERSION: "Visual Studio 15"
 
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "64"
-      MSVC_VERSION: "Visual Studio 15 Win64"
 
     - PYTHON: "C:\\Python36"
       PYTHON_VERSION: "3.6.x"
       PYTHON_ARCH: "32"
-      MSVC_VERSION: "Visual Studio 15"
 
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6.x"
       PYTHON_ARCH: "64"
-      MSVC_VERSION: "Visual Studio 15 Win64"
 
     - PYTHON: "C:\\Python37"
       PYTHON_VERSION: "3.7.x"
       PYTHON_ARCH: "32"
-      MSVC_VERSION: "Visual Studio 15"
 
     - PYTHON: "C:\\Python37-x64"
       PYTHON_VERSION: "3.7.x"
       PYTHON_ARCH: "64"
-      MSVC_VERSION: "Visual Studio 15 Win64"
 
     - PYTHON: "C:\\Python38"
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "32"
-      MSVC_VERSION: "Visual Studio 15"
 
     - PYTHON: "C:\\Python38-x64"
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "64"
-      MSVC_VERSION: "Visual Studio 15 Win64"
 
 matrix:
   fast_finish: true
 
 install:
-  # try to fix cython install, see:
-  # * https://matthew-brett.github.io/pydagogue/python_msvc.html
-  # * https://blog.ionelmc.ro/2014/12/21/compiling-python-extensions-on-windows/
-  - echo "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 > "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd64/vcvars64.bat"
-
+  
   # Fetch submodules
   - "git submodule update --init --recursive"
 
