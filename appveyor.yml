@@ -1,6 +1,5 @@
 environment:
   global:
-    REPO_DIR: "c:\\projects\\pygeoda"
     BUILD_COMMIT: master
     TWINE_USERNAME: "lixun910"
     TWINE_PASSWORD:
@@ -83,20 +82,17 @@ install:
   - "python -c \"import sys; print(sys.executable)\""
 
 build_script:
-  # checkout repo at build commit
-  - "cd %REPO_DIR%"
-  - "git fetch origin"
-  - "git checkout %BUILD_COMMIT%"
+  # checkout submodules
   - "git submodule update --init --recursive"
   # build wheel
   - "cd %APPVEYOR_BUILD_FOLDER%"
-  - "pip wheel -v -w wheelhouse --no-deps %REPO_DIR%"
+  - "pip wheel -v -w wheelhouse --no-deps
 
 test_script:
   # install from wheel
-  - "pip install --no-index --find-links wheelhouse brotli"
+  - "pip install --no-index --find-links wheelhouse pygeoda"
   # run tests against installed package
-  - "python -m unittest discover -v -s %REPO_DIR%\\tests -p \"test_*.py\""
+  - "python -m unittest discover -v -s tests -p \"test_*.py\""
 
 artifacts:
   # Archive the generated wheel package in the ci.appveyor.com build report.
