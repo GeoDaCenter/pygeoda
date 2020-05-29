@@ -1,0 +1,114 @@
+environment:
+  global:
+    REPO_DIR: ".\\"
+    BUILD_COMMIT: master
+    TWINE_USERNAME: "lixun910"
+    TWINE_PASSWORD:
+      secure: wAm+yGFa25JYatQr0nJbvm5h6ZTBGVPvJSnR5eUwMuU=
+
+  matrix:
+
+    - PYTHON: "C:\\Python27"
+      PYTHON_VERSION: "2.7.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python27-x64"
+      PYTHON_VERSION: "2.7.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python34"
+      PYTHON_VERSION: "3.4.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python34-x64"
+      PYTHON_VERSION: "3.4.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python35"
+      PYTHON_VERSION: "3.5.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python35-x64"
+      PYTHON_VERSION: "3.5.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python36"
+      PYTHON_VERSION: "3.6.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python37"
+      PYTHON_VERSION: "3.7.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python37-x64"
+      PYTHON_VERSION: "3.7.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python38"
+      PYTHON_VERSION: "3.8.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python38-x64"
+      PYTHON_VERSION: "3.8.x"
+      PYTHON_ARCH: "64"
+
+# matrix:
+#   fast_finish: true
+
+install:
+  # Fetch submodules
+  - "git submodule update --init --recursive"
+
+  # Prepend Python to the PATH of this build
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+
+  # Check that we have the expected version and architecture for Python
+  - "python --version"
+  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+
+  # Upgrade to the latest version of pip to avoid it displaying warnings
+  # about it being out of date.
+  - "python -m pip install --upgrade pip"
+
+  # Upgrade setuptools, wheel and virtualenv
+  - "python -m pip install --upgrade setuptools wheel virtualenv"
+
+  # Create new virtual environment and activate it
+  - "python -m virtualenv venv"
+  - "venv\\Scripts\\activate"
+  - "python -c \"import sys; print(sys.executable)\""
+
+build_script:
+  # checkout repo at build commit
+  - "cd %REPO_DIR%"
+  - "git fetch origin"
+  - "git checkout %BUILD_COMMIT%"
+  - "git submodule update --init --recursive"
+  # build wheel
+  - "cd %APPVEYOR_BUILD_FOLDER%"
+  - "pip wheel -v -w wheelhouse --no-deps %REPO_DIR%"
+
+test_script:
+  # install from wheel
+  - "pip install --no-index --find-links wheelhouse brotli"
+  # run tests against installed package
+  - "python -m unittest discover -v -s %REPO_DIR%\\tests -p \"test_*.py\""
+
+artifacts:
+  # Archive the generated wheel package in the ci.appveyor.com build report.
+  - path: wheelhouse\*.whl
+
+# deploy wheels to PyPI on tagged commits
+deploy_script:
+  - ps: >-
+      if($env:APPVEYOR_REPO_TAG -eq 'true') {
+        Write-Output ("Deploying " + $env:APPVEYOR_REPO_TAG_NAME + " to PyPI...")
+        pip install --upgrade twine
+        twine upload wheelhouse/*.whl
+      } else {
+        Write-Output "Not deploying as this is not a tagged commit"
+      }
