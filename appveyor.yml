@@ -1,6 +1,6 @@
 environment:
   global:
-    REPO_DIR: ".\\"
+    REPO_DIR: "c:\\projects\\pygeoda"
     BUILD_COMMIT: master
     TWINE_USERNAME: "lixun910"
     TWINE_PASSWORD:
