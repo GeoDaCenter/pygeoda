@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6 Spatial Clustering &mdash; pygeoda 0.0.2 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7 ESDA with pygeoda and geopandas" href="esda_geopandas.html" />
+    <link rel="prev" title="5 Spatial Autocorrelation" href="spatial_auto.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygeoda
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#live-tutorials">1.1  Live Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.2 Open Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.1 Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.2 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#import-pygeoda">2.4 Import pygeoda</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="load_data.html">3. Load Spatial Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="load_data.html#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_data.html#access-table-data">3.1 Access Table Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_weights.html">4. Spatial Weights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#queen-contiguity-weights">4.1 Queen Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#attributes-of-weight-object">4.2 Attributes of <cite>Weight</cite> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#rook-contiguity-weights">4.3 Rook Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#distance-based-weights">4.4 Distance Based Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#k-nearest-neighbor-weights">4.5 K-Nearest Neighbor Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_weights.html#kernel-weights">4.6 Kernel Weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spatial_weights.html#kernel-weights-with-fixed-bandwidth">4.6.1 Kernel Weights with fixed bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_weights.html#kernel-weights-with-adaptive-bandwidth">4.6.2 Kernel Weights with adaptive bandwidth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">5. Spatial Autocorrelation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-moran">5.1 Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#lisa-object">5.2 LISA object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">5.3 Local Geary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">5.4 Local Getis-Ord Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">5.5 Local Join Count</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Spatial Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#skater">6.1 SKATER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#redcap">6.2 REDCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#max-p">6.3 Max-p</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">7. ESDA with pygeoda and geopandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas">7.1 GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#matplotlib">7.2 Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas-pygeoda">7.2 geoPandas + pygeoda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#load-geospatial-data-in-geopandas">7.2.1 Load geospatial data in GeoPandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#create-pygeoda-object-from-geodataframe">7.2.2 Create pygeoda object from geodataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#id1">7.2.3 ESDA with pygeoda and geopandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.open.html">pygeoda.open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-weights">pygeoda.weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.Weight.html">pygeoda.weights.Weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.quantile_lisa.html">pygeoda.quantile_lisa</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.skater.html">pygeoda.skater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.quantile_breaks.html">pygeoda.quantile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-data">pygeoda (data)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.mds.html">pygeoda.mds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygeoda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>6 Spatial Clustering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/spatial_clustering.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spatial-clustering">
+<span id="spatial-clustering-ref"></span><h1>6 Spatial Clustering<a class="headerlink" href="#spatial-clustering" title="Permalink to this headline">¶</a></h1>
+<p>Spatial clustering aims to group of a large number of
+geographic areas or points into a smaller number of regions
+based on similiarities in one or more variables.
+Spatially constrained clustering is needed when clusters are
+required to be spatially contiguous.</p>
+<p>In pygeoda v0.0.3, there are three different approaches
+explicitly incorporate the contiguity constraint in the
+optimization process: SKATER, Redcap and Max-p.
+More more details, please read the lab note that
+Dr. Luc Anselin wrote:
+<a class="reference external" href="http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html">http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html</a></p>
+<p>For example, to apply spatial clustering on the Guerry dataset,
+we use the queen weights to define the spatial contiguity
+and select 6 variables for similarity measure:
+“Crm_prs”, “Crm_prp”, “Litercy”, “Donatns”, “Infants”, “Suicids”.</p>
+<p>The following code is used to get a 2D data list for
+the selected variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Crm_prs&quot;</span><span class="p">,</span> <span class="s2">&quot;Crm_prp&quot;</span><span class="p">,</span> <span class="s2">&quot;Litercy&quot;</span><span class="p">,</span> <span class="s2">&quot;Donatns&quot;</span><span class="p">,</span> <span class="s2">&quot;Infants&quot;</span><span class="p">,</span> <span class="s2">&quot;Suicids&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">select_vars</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+</pre></div>
+</div>
+<div class="section" id="skater">
+<h2>6.1 SKATER<a class="headerlink" href="#skater" title="Permalink to this headline">¶</a></h2>
+<p>The Spatial C(K)luster Analysis by Tree Edge Removal(SKATER)
+algorithm introduced by Assuncao et al. (2006) is based on
+the optimal pruning of a minimum spanning tree that reflects
+the contiguity structure among the observations. It provides
+an optimized algorithm to prune to tree into several clusters
+that their values of selected variables are as similar as possible.</p>
+<p>The SKATER function in pygeoda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">skater</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">distance_method</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="n">bound_vals</span> <span class="o">=</span> <span class="p">[],</span>  <span class="n">min_bound</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123456789</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parameters <cite>distance_method</cite>, <cite>bound_vals</cite>, <cite>min_bound</cite> and <cite>random_seed</cite> are optional.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See [Max-p] for the usage of  <cite>bound_vals</cite> and <cite>min_bound</cite>.</p>
+</div>
+<p>For example, to create 4 spatially contiguous clusters using
+<cite>skater()</cite> with Guerry dataset, the queen weights and the
+values of the 6 selected variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">skater_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">skater</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">)</span>
+<span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>
+</pre></div>
+</div>
+<p>This <cite>skater()</cite> function returns a 2D list, which represents
+4 clusters. Each cluster is composed by several contiguity areas,
+e.g. 15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80</p>
+<p>pygeoda also provides utility functions to compute some descriptive
+statistics of the clustering results, e.g. to compute the ratio
+of between to total sum of squares:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">&lt;-</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">totalss</span> <span class="o">&lt;-</span> <span class="n">total_sumofsquare</span><span class="p">(</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&lt;-</span>  <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.3156446659311204</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="redcap">
+<h2>6.2 REDCAP<a class="headerlink" href="#redcap" title="Permalink to this headline">¶</a></h2>
+<p>REDCAP (Regionalization with dynamically constrained agglomerative
+clustering and partitioning) is developed by D. Guo (2008).
+Like SKATER, REDCAP starts from building a spanning tree with
+3 different ways (single-linkage, average-linkage, and the complete-linkage).
+The single-linkage way leads to build a minimum spanning tree.
+Then,REDCAP provides 2 different ways (first‐order and full-order
+constraining) to prune the tree to find clusters. The first-order
+approach with a minimum spanning tree is exactly the same with SKATER.
+In GeoDa and pygeoda, the following methods are provided:</p>
+<ul class="simple">
+<li><p>First-order and Single-linkage</p></li>
+<li><p>Full-order and Complete-linkage</p></li>
+<li><p>Full-order and Average-linkage</p></li>
+<li><p>Full-order and Single-linkage</p></li>
+</ul>
+<p>For example, to find 4 clusters using the same dataset and weights
+as above using REDCAP with Full-order and Complete-linkage method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">redcap_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">redcap</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;fullorder-completelinkage&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">redcap_clusters</span><span class="p">)</span>
+<span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">redcap_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">totalss</span> <span class="o">=</span> <span class="n">total_sumofsquare</span><span class="p">(</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.1905641377254551</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="max-p">
+<h2>6.3 Max-p<a class="headerlink" href="#max-p" title="Permalink to this headline">¶</a></h2>
+<p>The so-called max-p regions model (outlined in Duque, Anselin, and Rey 2012)
+uses a different approach and considers the regionalization problem as
+an application of integer programming. In addition, the number of regions
+is determined endogenously.</p>
+<p>The algorithm itself consists of a search process that starts with an
+initial feasible solution and iteratively improves upon it while
+maintaining contiguity among the elements of each cluster.
+Like Geoda, pygeoda provides three different heuristic algorithms to
+find an optimal solution for max-p:</p>
+<ul class="simple">
+<li><p>greedy</p></li>
+<li><p>Tabu Search</p></li>
+<li><p>Simulated Annealing</p></li>
+</ul>
+<p>Unlike SKATER and REDCAP that one can specify the number of clusters
+as an input paramter, max-p doesn’t allow to specify the number of
+clusters explicitly, but a constrained variable and the minimum bounding
+value that each cluster should reach that are used to find an optimized
+number of clusters.</p>
+<p>For example, to use <cite>greedy</cite> algorithm in maxp function with the same
+dataset and weights as above to find optimal clusters using max-p:</p>
+<p>First, we need to specify, for example, every cluster must have
+population &gt;= 3236.67 thousands people:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bound_vals</span> <span class="o">=</span> <span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="s2">&quot;Pop1831&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">min_bound</span> <span class="o">=</span> <span class="mf">3236.67</span> <span class="c1"># 10% of Pop1831</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bound_vals</span><span class="p">)</span>
+<span class="go">(346.03, 513.0, 298.26, 155.9, 129.1, 340.73, 289.62, 253.12, 246.36, 270.13, 359.06, 359.47, 494.7, 258.59, 362.53, 445.25, 256.06, 294.83, 375.88, 598.87, 265.38, 482.75, 265.54, 299.56, 424.25, 278.82, 524.4, 357.38, 427.86, 312.16, 554.23, 346.3, 547.05, 245.29, 297.02, 550.26, 312.5, 281.5, 235.75, 391.22, 292.08, 470.09, 305.28, 283.83, 346.89, 140.35, 467.87, 591.28, 337.08, 249.83, 352.59, 415.57, 314.59, 433.52, 417.0, 282.52, 989.94, 397.73, 441.88, 655.22, 573.11, 428.4, 233.03, 157.05, 540.21, 424.26, 434.43, 338.91, 523.97, 457.37, 935.11, 693.68, 323.89, 448.18, 297.85, 543.7, 333.84, 242.51, 317.5, 239.11, 330.36, 282.73, 285.13, 397.99, 352.49)</span>
+</pre></div>
+</div>
+<p>Then, we can call the max-p function with “greedy” algorithm,
+the bound values and minimum bound value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.507018079733202</span>
+</pre></div>
+</div>
+<p>We can also specify using <cite>tabu search</cite> algorithm in maxp function
+with the parameter of tabu length:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_tabu_clusters</span> <span class="o">=</span> <span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;tabu&quot;</span><span class="p">,</span> <span class="n">tabu_length</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_tabu_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.5280299052291919</span>
+</pre></div>
+</div>
+<p>To apply <cite>simulated annealing</cite> algorithm in maxp function with
+the parameter of cooling rate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_sa_clusters</span> <span class="o">=</span> <span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;sa&quot;</span><span class="p">,</span> <span class="n">cool_rate</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">&lt;-</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_sa_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&lt;-</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.5260248902417842</span>
+</pre></div>
+</div>
+<p>We can also increase the number of iterations for local search process by specifying the parameter <cite>initial</cite> (default value is 99):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="go">The ratio of between to total sum of square: 0.5260248902417843</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="esda_geopandas.html" class="btn btn-neutral float-right" title="7 ESDA with pygeoda and geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spatial_auto.html" class="btn btn-neutral float-left" title="5 Spatial Autocorrelation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Xun Li; Luc Anselin
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

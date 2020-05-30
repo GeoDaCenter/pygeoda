@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pygeoda.quantile_breaks &mdash; pygeoda 0.0.2 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pygeoda.percentile_breaks" href="pygeoda.percentile_breaks.html" />
+    <link rel="prev" title="pygeoda.natural_breaks" href="pygeoda.natural_breaks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pygeoda
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#live-tutorials">1.1  Live Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#open-resources">1.2 Open Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">2. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#mac">2.1 Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#windows">2.2 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#import-pygeoda">2.4 Import pygeoda</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../load_data.html">3. Load Spatial Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../load_data.html#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../load_data.html#access-table-data">3.1 Access Table Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_weights.html">4. Spatial Weights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#queen-contiguity-weights">4.1 Queen Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#attributes-of-weight-object">4.2 Attributes of <cite>Weight</cite> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#rook-contiguity-weights">4.3 Rook Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#distance-based-weights">4.4 Distance Based Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#k-nearest-neighbor-weights">4.5 K-Nearest Neighbor Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_weights.html#kernel-weights">4.6 Kernel Weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_weights.html#kernel-weights-with-fixed-bandwidth">4.6.1 Kernel Weights with fixed bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_weights.html#kernel-weights-with-adaptive-bandwidth">4.6.2 Kernel Weights with adaptive bandwidth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_auto.html">5. Spatial Autocorrelation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-moran">5.1 Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#lisa-object">5.2 LISA object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-geary">5.3 Local Geary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-getis-ord-statistics">5.4 Local Getis-Ord Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-join-count">5.5 Local Join Count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_clustering.html">6. Spatial Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#skater">6.1 SKATER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#redcap">6.2 REDCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#max-p">6.3 Max-p</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../esda_geopandas.html">7. ESDA with pygeoda and geopandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#geopandas">7.1 GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#matplotlib">7.2 Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#geopandas-pygeoda">7.2 geoPandas + pygeoda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#load-geospatial-data-in-geopandas">7.2.1 Load geospatial data in GeoPandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#create-pygeoda-object-from-geodataframe">7.2.2 Create pygeoda object from geodataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#id1">7.2.3 ESDA with pygeoda and geopandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">pygeoda API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.open.html">pygeoda.open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda.html">pygeoda.geoda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-weights">pygeoda.weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.Weight.html">pygeoda.weights.Weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.lisa.html">pygeoda.lisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_geary.html">pygeoda.local_geary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_g.html">pygeoda.local_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.quantile_lisa.html">pygeoda.quantile_lisa</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.skater.html">pygeoda.skater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.redcap.html">pygeoda.redcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp.html">pygeoda.maxp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#pygeoda-classify">pygeoda (classify)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">pygeoda.quantile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-data">pygeoda (data)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.mds.html">pygeoda.mds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.PCA.html">pygeoda.PCA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pygeoda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">pygeoda API reference</a> &raquo;</li>
+        
+      <li>pygeoda.quantile_breaks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/pygeoda.quantile_breaks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pygeoda-quantile-breaks">
+<h1>pygeoda.quantile_breaks<a class="headerlink" href="#pygeoda-quantile-breaks" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pygeoda.quantile_breaks">
+<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">quantile_breaks</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/classify/breaks.html#quantile_breaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.quantile_breaks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quantile breaks</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The quantile breaks is based on sorted values for a variable that are then grouped into bins that each have the same number of observations, the so-called quantiles. Here the number of quantiles is variable.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> (<em>int</em>) – Number of breaks</p></li>
+<li><p><strong>data</strong> (<em>tuple</em>) – A tuple with values of a selected variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A numeric list of break values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pygeoda.percentile_breaks.html" class="btn btn-neutral float-right" title="pygeoda.percentile_breaks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pygeoda.natural_breaks.html" class="btn btn-neutral float-left" title="pygeoda.natural_breaks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Xun Li; Luc Anselin
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

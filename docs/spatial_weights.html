@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4 Spatial Weights &mdash; pygeoda 0.0.2 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5 Spatial Autocorrelation" href="spatial_auto.html" />
+    <link rel="prev" title="3 Load Spatial Data" href="load_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygeoda
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#live-tutorials">1.1  Live Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.2 Open Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.1 Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.2 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#import-pygeoda">2.4 Import pygeoda</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="load_data.html">3. Load Spatial Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="load_data.html#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_data.html#access-table-data">3.1 Access Table Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Spatial Weights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#queen-contiguity-weights">4.1 Queen Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes-of-weight-object">4.2 Attributes of <cite>Weight</cite> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rook-contiguity-weights">4.3 Rook Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distance-based-weights">4.4 Distance Based Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k-nearest-neighbor-weights">4.5 K-Nearest Neighbor Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kernel-weights">4.6 Kernel Weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kernel-weights-with-fixed-bandwidth">4.6.1 Kernel Weights with fixed bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kernel-weights-with-adaptive-bandwidth">4.6.2 Kernel Weights with adaptive bandwidth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">5. Spatial Autocorrelation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-moran">5.1 Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#lisa-object">5.2 LISA object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">5.3 Local Geary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">5.4 Local Getis-Ord Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">5.5 Local Join Count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">6. Spatial Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#skater">6.1 SKATER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#redcap">6.2 REDCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#max-p">6.3 Max-p</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">7. ESDA with pygeoda and geopandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas">7.1 GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#matplotlib">7.2 Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas-pygeoda">7.2 geoPandas + pygeoda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#load-geospatial-data-in-geopandas">7.2.1 Load geospatial data in GeoPandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#create-pygeoda-object-from-geodataframe">7.2.2 Create pygeoda object from geodataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#id1">7.2.3 ESDA with pygeoda and geopandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.open.html">pygeoda.open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-weights">pygeoda.weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.Weight.html">pygeoda.weights.Weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.quantile_lisa.html">pygeoda.quantile_lisa</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.skater.html">pygeoda.skater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.quantile_breaks.html">pygeoda.quantile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-data">pygeoda (data)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.mds.html">pygeoda.mds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygeoda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4 Spatial Weights</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/spatial_weights.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spatial-weights">
+<span id="spatial-weights-ref"></span><h1>4 Spatial Weights<a class="headerlink" href="#spatial-weights" title="Permalink to this headline">¶</a></h1>
+<p>Spatial weights are central components in spatial data analysis.
+The spatial weights represents the possible spatial interaction
+between observations in space. Like GeoDa desktop software,
+pygeoda provides a rich variety of methods to create several
+different types of spatial weights:</p>
+<ul class="simple">
+<li><p>Contiguity Based Weights: <cite>queen_weights()</cite>, <cite>rook_weights()</cite></p></li>
+<li><p>Distance Based Weights: <cite>distance_weights()</cite></p></li>
+<li><p>K-Nearest Neighbor Weights: <cite>knn_weights()</cite></p></li>
+<li><p>Kernel Weights: <cite>kernel_weights()</cite></p></li>
+</ul>
+<div class="section" id="queen-contiguity-weights">
+<h2>4.1 Queen Contiguity Weights<a class="headerlink" href="#queen-contiguity-weights" title="Permalink to this headline">¶</a></h2>
+<p>To create a Queen contiguity weights, we can call pygeoda’s function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">queen</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_lower_order</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>by passing the GeoDa object <cite>guerry</cite> we just created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">queen</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">queen_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:True</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:5.813148788927336</span>
+<span class="go">min neighbors:2</span>
+<span class="go">mean neighbors:4.9411764705882355</span>
+<span class="go">median neighbors:5.0</span>
+<span class="go">max neighbors:8</span>
+</pre></div>
+</div>
+<p>The function <cite>queen_weights()</cite> returns an instance of
+<cite>Weight</cite> object. One can access the meta data of the spatial
+weights by accessing the attributes of <cite>Weight</cite> object:</p>
+</div>
+<div class="section" id="attributes-of-weight-object">
+<h2>4.2 Attributes of <cite>Weight</cite> object<a class="headerlink" href="#attributes-of-weight-object" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>num_obs</p></li>
+<li><p>GetWeightsType()</p></li>
+<li><p>IsSymmetric()</p></li>
+<li><p>HasIsolates()</p></li>
+<li><p>GetSparsity()</p></li>
+<li><p>GetMinNbrs()</p></li>
+<li><p>GetMedianNbrs()</p></li>
+<li><p>GetMeanNbrs()</p></li>
+<li><p>GetMaxNbrs()</p></li>
+<li><p>GetDensity()</p></li>
+<li><p>[] GetNeighbors(idx)</p></li>
+<li><p>double SpatialLag(idx, [data])</p></li>
+<li><p>SaveToFile()</p></li>
+</ul>
+<p>We can also access the details of the weights: e.g.
+list the neighbors of a specified observation, which
+is very helpful in exploratory spatial data analysis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">GetNeighbors</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Neighbors of 0-st observation are:&quot;</span><span class="p">,</span> <span class="n">nbrs</span><span class="p">)</span>
+<span class="go">Neighbors of 0-st observation are: (35, 36, 66, 68)</span>
+</pre></div>
+</div>
+<p>We can also compute the spatial lag of a specified
+observation by passing the values of the selected variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lag0</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">SpatialLag</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spatial lag of 0-st observation is:&quot;</span><span class="p">,</span> <span class="n">lag0</span><span class="p">)</span>
+<span class="go">Spatial lag of 0-st observation is: 7899.25</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rook-contiguity-weights">
+<h2>4.3 Rook Contiguity Weights<a class="headerlink" href="#rook-contiguity-weights" title="Permalink to this headline">¶</a></h2>
+<p>To create a Rook contiguity weights, we can call pygeoda’s function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rook_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">include_lower_order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>by passing the geoda object <cite>guerry</cite> we just created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rook_w</span> <span class="o">=</span> <span class="n">geoda</span><span class="o">.</span><span class="n">rook_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rook_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:True</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:5.813148788927336</span>
+<span class="go">min neighbors:2</span>
+<span class="go">mean neighbors:4.9411764705882355</span>
+<span class="go">median neighbors:5.0</span>
+<span class="go">max neighbors:8</span>
+</pre></div>
+</div>
+<p>The weights we created are in memory, which makes it straight
+forward for spatial data analysis and also are good for
+programming your application. To save the weights to a file,
+we can call Weight’s function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SaveToFile</span><span class="p">(</span><span class="n">ofname</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>layer_name</cite> is the layer name of loaded dataset. For a ESRI shapefile,
+the layer name is the file name without the suffix (e.g. Guerry).</p>
+<p>The <cite>id_name</cite> is a key (column name), which means the associated column
+contains unique values, that makes sure that the weights are connected
+to the correct observations in the data table.</p>
+<p>The <cite>id_vec</cite> is the actual column data of <cite>id_name</cite>, it could be a tuple
+of integer or string values.</p>
+<p>For example, in Guerry dataset, the column “CODE_DE” can be used as a key
+to save a weights file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rook_w</span><span class="o">.</span><span class="n">SaveToFile</span><span class="p">(</span><span class="s1">&#39;./Guerry_r.gal&#39;</span><span class="p">,</span> <span class="s1">&#39;Guerry&#39;</span><span class="p">,</span> <span class="s1">&#39;CODE_DE&#39;</span><span class="p">,</span> <span class="n">guerry</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s1">&#39;CODE_DE&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Then, we should find the file “Guerry_r.gal” in the output directory.</p>
+</div>
+<div class="section" id="distance-based-weights">
+<h2>4.4 Distance Based Weights<a class="headerlink" href="#distance-based-weights" title="Permalink to this headline">¶</a></h2>
+<p>To create a Distance based weights, we can call pygeoda’s function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">is_inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_arc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_mile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>by passing the geoda object <cite>guerry</cite> we just created and the value
+of distance threshold. Like GeoDa, pygeoda provides a function to
+help you find a optimized distance threshold that guarantees that
+every observation has at least one neighbor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">GeoDa</span> <span class="n">gda</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist_thres</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dist_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:False</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:4.346020761245675</span>
+<span class="go">min neighbors:1</span>
+<span class="go">mean neighbors:3.6941176470588237</span>
+<span class="go">median neighbors:4.0</span>
+<span class="go">max neighbors:7</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="k-nearest-neighbor-weights">
+<h2>4.5 K-Nearest Neighbor Weights<a class="headerlink" href="#k-nearest-neighbor-weights" title="Permalink to this headline">¶</a></h2>
+<p>A special case of distance based weights is K-Nearest neighbor
+weights, in which every obersvation will have exactly k
+neighbors. To create a KNN weights, we can call pygeoda’s function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">knn_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">is_inverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For example, to create a 6-nearest neighbor weights using Guerry dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn6_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">knn_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">knn6_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:False</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:7.0588235294117645</span>
+<span class="go">min neighbors:6</span>
+<span class="go">mean neighbors:6.0</span>
+<span class="go">median neighbors:6.0</span>
+<span class="go">max neighbors:6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kernel-weights">
+<h2>4.6 Kernel Weights<a class="headerlink" href="#kernel-weights" title="Permalink to this headline">¶</a></h2>
+<p>Kernel weights apply kernel function to determine the distance
+decay in the derived continuous weights kernel. The kernel weights
+are defined as a function K(z) of the ratio between the distance
+dij from i to j, and the bandwidth hi, with z=dij/hi.</p>
+<p>The kernl functions include:
+* triangular
+* uniform
+* quadratic
+* epanechnikov
+* quartic
+* gaussian</p>
+<p>Two functions are provided in pygeoda to create kernel weights:</p>
+<div class="section" id="kernel-weights-with-fixed-bandwidth">
+<h3>4.6.1 Kernel Weights with fixed bandwidth<a class="headerlink" href="#kernel-weights-with-fixed-bandwidth" title="Permalink to this headline">¶</a></h3>
+<p>To create a kernel weights with fixed bandwith:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">kernel_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kernel_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:False</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:4.346020761245675</span>
+<span class="go">min neighbors:1</span>
+<span class="go">mean neighbors:3.6941176470588237</span>
+<span class="go">median neighbors:4.0</span>
+<span class="go">max neighbors:7</span>
+</pre></div>
+</div>
+<p>Besides the options <cite>is_inverse</cite>, <cite>power</cite>, <cite>is_arc</cite> and
+<cite>is_mile</cite> that are the same with the distance based weights,
+this kernel weights function has another option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_kernel_diagonals</span>
+<span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">FALSE</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">apply</span> <span class="n">kernel</span> <span class="n">on</span> <span class="n">the</span>
+<span class="n">diagonal</span> <span class="n">of</span> <span class="n">weights</span> <span class="n">matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kernel-weights-with-adaptive-bandwidth">
+<h3>4.6.2 Kernel Weights with adaptive bandwidth<a class="headerlink" href="#kernel-weights-with-adaptive-bandwidth" title="Permalink to this headline">¶</a></h3>
+<p>To create a kernel weights with adaptive bandwidth or using
+max KNN distance as bandwidth:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adptkernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">adptkernel_w</span><span class="p">)</span>
+<span class="go">Weights Meta-data:</span>
+
+<span class="go">is symmetric:False</span>
+<span class="go">sparsity:0.0</span>
+<span class="go">density:7.0588235294117645</span>
+<span class="go">min neighbors:6</span>
+<span class="go">mean neighbors:6.0</span>
+<span class="go">median neighbors:6.0</span>
+<span class="go">max neighbors:6</span>
+</pre></div>
+</div>
+<p>This kernel weights function two more options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adaptive_bandwidth</span>
+<span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">TRUE</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="n">FALSE</span><span class="p">:</span> <span class="n">TRUE</span> <span class="n">use</span> <span class="n">adaptive</span> <span class="n">bandwidth</span>
+<span class="n">calculated</span> <span class="n">using</span> <span class="n">distance</span> <span class="n">of</span> <span class="n">k</span><span class="o">-</span><span class="n">nearest</span> <span class="n">neithbors</span><span class="p">,</span> <span class="n">FALSE</span> <span class="n">use</span> <span class="nb">max</span>
+<span class="n">distance</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">observation</span> <span class="n">to</span> <span class="n">their</span> <span class="n">k</span><span class="o">-</span><span class="n">nearest</span> <span class="n">neighbors</span>
+
+<span class="n">use_kernel_diagonals</span>
+<span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">FALSE</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">apply</span> <span class="n">kernel</span> <span class="n">on</span> <span class="n">the</span> <span class="n">diagonal</span>
+<span class="n">of</span> <span class="n">weights</span> <span class="n">matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="spatial_auto.html" class="btn btn-neutral float-right" title="5 Spatial Autocorrelation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="load_data.html" class="btn btn-neutral float-left" title="3 Load Spatial Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Xun Li; Luc Anselin
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

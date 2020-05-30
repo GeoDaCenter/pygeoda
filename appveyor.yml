@@ -61,9 +61,6 @@ install:
   # try to do a dirty workaround for Cython with C++ for py27
   - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
   
-  # Fetch submodules
-  - "git submodule update --init --recursive"
-
   # Prepend Python to the PATH of this build
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
