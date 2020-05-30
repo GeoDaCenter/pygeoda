@@ -20,6 +20,7 @@ pygeoda.geoda
       ~geoda.GetNumCols
       ~geoda.GetNumObs
       ~geoda.GetRealCol
+      ~geoda.GetStringCol
       ~geoda.GetUndefinedVals
       ~geoda.__init__
    

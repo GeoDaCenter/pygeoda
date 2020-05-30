@@ -14,8 +14,14 @@ pygeoda.weights.Weight
    .. autosummary::
    
       ~Weight.GetDensity
+      ~Weight.GetMaxNbrs
+      ~Weight.GetMeanNbrs
+      ~Weight.GetMedianNbrs
+      ~Weight.GetMinNbrs
       ~Weight.GetNeighbors
       ~Weight.GetSparsity
+      ~Weight.GetWeightsType
+      ~Weight.HasIsolates
       ~Weight.IsSymmetric
       ~Weight.SaveToFile
       ~Weight.SpatialLag

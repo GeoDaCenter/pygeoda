@@ -15,6 +15,7 @@ pygeoda.lisa
    
       ~lisa.GetClusterIndicators
       ~lisa.GetColors
+      ~lisa.GetFDR
       ~lisa.GetLISAValues
       ~lisa.GetLabels
       ~lisa.GetNumNeighbors
