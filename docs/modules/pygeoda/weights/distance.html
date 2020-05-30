@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygeoda.classify.breaks &mdash; pygeoda 0.0.2 alpha documentation</title>
+  <title>pygeoda.weights.distance &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -241,7 +241,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pygeoda.classify.breaks</li>
+      <li>pygeoda.weights.distance</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -256,128 +256,79 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pygeoda.classify.breaks</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_hinge15breaks</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_hinge30breaks</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_naturalbreaks</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_quantilebreaks</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_percentilebreaks</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_stddevbreaks</span>
+  <h1>Source code for pygeoda.weights.distance</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Hang Zhang &lt;zhanghanggis@163.com&gt;, &quot;</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_distance_weights</span><span class="p">,</span> <span class="n">gda_min_distthreshold</span><span class="p">,</span> <span class="n">gda_knn_weights</span>
+<span class="kn">from</span> <span class="nn">.weight</span> <span class="k">import</span> <span class="n">Weight</span>
 
-<div class="viewcode-block" id="hinge15_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.hinge15_breaks.html#pygeoda.hinge15_breaks">[docs]</a><span class="k">def</span> <span class="nf">hinge15_breaks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Hinge15 box breaks (Anselin 1994)</span>
-
-<span class="sd">    Note:</span>
-<span class="sd">        Hinge15 breaks calculate a list of breakpoints, including the top, bottom, median, and two quartiles of the data. Here the hinge is equal to 1.5.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
-
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_hinge15breaks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
-<div class="viewcode-block" id="hinge30_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.hinge30_breaks.html#pygeoda.hinge30_breaks">[docs]</a><span class="k">def</span> <span class="nf">hinge30_breaks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Hinge30 box break (Anselin 1994)</span>
-
-<span class="sd">    Note:</span>
-<span class="sd">        Hinge30_breaks calculate a list of breakpoints, including the top, bottom, median, and two quartiles of the data. Here the hinge is equal to 3.0.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
-
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_hinge30breaks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="natural_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.natural_breaks.html#pygeoda.natural_breaks">[docs]</a><span class="k">def</span> <span class="nf">natural_breaks</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Natural breaks</span>
-<span class="sd">    </span>
-<span class="sd">    Note:</span>
-<span class="sd">        Natural breaks Calculate of a breakpoint list based on the fracture principle of maximum similarity within a group.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        k (int): Number of breaks</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The value of K needs to be greater than or equal to 2 &quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
-
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_naturalbreaks</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">data</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="quantile_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.quantile_breaks.html#pygeoda.quantile_breaks">[docs]</a><span class="k">def</span> <span class="nf">quantile_breaks</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Quantile breaks</span>
-
-<span class="sd">    Note:</span>
-<span class="sd">        The quantile breaks is based on sorted values for a variable that are then grouped into bins that each have the same number of observations, the so-called quantiles. Here the number of quantiles is variable.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        k (int): Number of breaks</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The value of K needs to be greater than or equal to 2 &quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
-
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_quantilebreaks</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">data</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="percentile_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.percentile_breaks.html#pygeoda.percentile_breaks">[docs]</a><span class="k">def</span> <span class="nf">percentile_breaks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Percentile breaks</span>
-
-<span class="sd">    Note:</span>
-<span class="sd">        The percentile breaks divides the data to  six ranges, the lowest 1%, 1-10%, 10-50%, 50-90%, 90-99% and the top 1%, returning the range boundaries as a breakpoint list. </span>
+<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../../generated/pygeoda.weights.distance.html#pygeoda.weights.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Create a kernel weights with fixed bandwidth. </span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
+<span class="sd">        geoda_obj (geoda): An instance of geoda class. </span>
+<span class="sd">        dist_thres (float): A positive numeric value of distance threshold used to find neighbors.</span>
+<span class="sd">            For example, one can use the pygeoda.weights.min_threshold() to get a distance that </span>
+<span class="sd">            guarantees that every observation has at least 1 neighbor.</span>
+<span class="sd">        power (float, optional): The power (or exponent) of a number indicates how many times to use the number in a multiplication.</span>
+<span class="sd">        is_inverse (bool, optional):  A bool flag indicates whether or not to apply inverse on distance value.</span>
+<span class="sd">            Defaults to False.</span>
+<span class="sd">        is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) </span>
+<span class="sd">        is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).</span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="s1">&#39;power&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;power&#39;</span><span class="p">]</span>
+    <span class="n">is_inverse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_inverse&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_inverse&#39;</span><span class="p">]</span>
+    <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_arc&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_arc&#39;</span><span class="p">]</span>
+    <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;is_mile&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_mile&#39;</span><span class="p">]</span>
 
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_percentilebreaks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+    <span class="n">poly_id</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_distance_weights</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="n">poly_id</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">is_inverse</span><span class="p">,</span> <span class="n">is_arc</span><span class="p">,</span> <span class="n">is_mile</span><span class="p">)</span>
 
-<div class="viewcode-block" id="stddev_breaks"><a class="viewcode-back" href="../../../generated/pygeoda.stddev_breaks.html#pygeoda.stddev_breaks">[docs]</a><span class="k">def</span> <span class="nf">stddev_breaks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Standard deviation breaks</span>
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span></div>
 
-<span class="sd">    Note:</span>
-<span class="sd">        Standard deviation breaks calculate the number of standard deviational units of  the range from lowest to highest, returning a breakpoint list. </span>
+
+<span class="k">def</span> <span class="nf">min_threshold</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">is_arc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_mile</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; find a minimum threshold for distance based weights. </span>
+<span class="sd">        </span>
+<span class="sd">    This value guarantees that every observation has at least 1 neighbor.</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        data (tuple): A tuple with values of a selected variable</span>
-<span class="sd">    </span>
+<span class="sd">        geoda_obj (geoda): An instance of geoda class. </span>
+<span class="sd">        is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) </span>
+<span class="sd">        is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).</span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">        list: A numeric list of break values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
+<span class="sd">        thres (float): A float value of minimum threhold for distance based weights.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">gda_min_distthreshold</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">is_arc</span><span class="p">,</span> <span class="n">is_mile</span><span class="p">)</span>
 
-    <span class="c1">#undefs = [False]*len(data) if &#39;undefs&#39; not in kwargs else kwargs[&#39;undefs&#39;]</span>
-    <span class="k">return</span> <span class="n">gda_stddevbreaks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+<div class="viewcode-block" id="knn"><a class="viewcode-back" href="../../../generated/pygeoda.weights.knn.html#pygeoda.weights.knn">[docs]</a><span class="k">def</span> <span class="nf">knn</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Create a K-Nearest Neighbors weights. </span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        geoda_obj (geoda): An instance of geoda class. </span>
+<span class="sd">        k (int): A positive integer number for k-nearest neighbors</span>
+<span class="sd">        power (float, optional): The power (or exponent) of a number indicates how many times to use the number in a multiplication.</span>
+<span class="sd">        is_inverse (bool, optional):  A bool flag indicates whether or not to apply inverse on distance value.</span>
+<span class="sd">            Defaults to False.</span>
+<span class="sd">        is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) </span>
+<span class="sd">        is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).</span>
+
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="s1">&#39;power&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;power&#39;</span><span class="p">]</span>
+    <span class="n">is_inverse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_inverse&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_inverse&#39;</span><span class="p">]</span>
+    <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_arc&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_arc&#39;</span><span class="p">]</span>
+    <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;is_mile&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_mile&#39;</span><span class="p">]</span>
+    
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_knn_weights</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">is_inverse</span><span class="p">,</span> <span class="n">is_arc</span><span class="p">,</span> <span class="n">is_mile</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

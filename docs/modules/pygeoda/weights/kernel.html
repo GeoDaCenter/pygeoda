@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygeoda.sa.quantile_lisa &mdash; pygeoda 0.0.2 alpha documentation</title>
+  <title>pygeoda.weights.kernel &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -241,7 +241,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pygeoda.sa.quantile_lisa</li>
+      <li>pygeoda.weights.kernel</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -256,49 +256,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pygeoda.sa.quantile_lisa</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_quantilelisa</span><span class="p">,</span> <span class="n">VecBool</span>
-<span class="kn">from</span> <span class="nn">.lisa</span> <span class="k">import</span> <span class="n">lisa</span>
-<span class="kn">import</span> <span class="nn">multiprocessing</span>
+  <h1>Source code for pygeoda.weights.kernel</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Hang Zhang &lt;zhanghanggis@163.com&gt;, &quot;</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_distance_weights</span><span class="p">,</span> <span class="n">gda_knn_weights</span>
+<span class="kn">from</span> <span class="nn">.weight</span> <span class="k">import</span> <span class="n">Weight</span>
 
-<div class="viewcode-block" id="quantile_lisa"><a class="viewcode-back" href="../../../generated/pygeoda.quantile_lisa.html#pygeoda.quantile_lisa">[docs]</a><span class="k">def</span> <span class="nf">quantile_lisa</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Apply quantile LISA on one select variable after we already have a weight. </span>
+<span class="k">def</span> <span class="nf">kernel_bandwidth</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Create a kernel weights with fixed bandwidth. </span>
 
-<span class="sd">    Note:</span>
-<span class="sd">        Apply quantile LISA on one select variable</span>
 <span class="sd">    Args:</span>
-<span class="sd">        w (Weight): A spatial Weights object</span>
-<span class="sd">        k (int): The number of quantiles, range[1, n-1]</span>
-<span class="sd">        q (int): The index of selected quantile for lisa, range[0, k-1]</span>
-<span class="sd">        data (tuple): A tuple with values of the selected variable</span>
+<span class="sd">        geoda_obj (geoda): An instance of geoda class. </span>
+<span class="sd">        bandwidth (float): A float value represents the distance of bandwidth used in kernel function.</span>
+<span class="sd">            For example, one can use the pygeoda.weights.min_threshold() to get a distance that </span>
+<span class="sd">            guarantees that every observation has at least 1 neighbor.</span>
+<span class="sd">        use_kernel_diagonals (bool, optional):  A bool flag indicates whether or not the lower order neighbors should be </span>
+<span class="sd">            included in the weights structure. Defaults to False.</span>
+<span class="sd">        is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) </span>
+<span class="sd">        is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        lisa: An instance of lisa class represents the results of quantile lisa</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;triangular&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;epanechnikov&#39;</span><span class="p">,</span> <span class="s1">&#39;quartic&#39;</span><span class="p">,</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">]:</span>
+        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The parameter &#39;kernel&#39; has to be one of &#39;triangular&#39;, &#39;uniform&#39;, &#39;epanechnikov&#39;, &#39;quartic&#39;, &#39;gaussian&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="n">use_kernel_diagonals</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;use_kernel_diagonals&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;use_kernel_diagonals&#39;</span><span class="p">]</span>
+    <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_arc&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_arc&#39;</span><span class="p">]</span>
+    <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;is_mile&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_mile&#39;</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
+    <span class="n">poly_id</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">is_inverse</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The value of k needs to be greater than or equal to 1 &quot;</span><span class="p">)</span>
+    
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_distance_weights</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="n">poly_id</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">is_inverse</span><span class="p">,</span> <span class="n">is_arc</span><span class="p">,</span> <span class="n">is_mile</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">use_kernel_diagonals</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The value of q needs to be greater than to 0&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">q</span> <span class="o">&gt;</span> <span class="n">k</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The value of q needs to be smaller than or equal to the max value of k&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span>
 
-    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
-    <span class="n">nCPUs</span> <span class="o">=</span>  <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;nCPUs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nCPUs&#39;</span><span class="p">]</span>
-    <span class="n">perm</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;perm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">]</span>
-    <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_quantilelisa</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span><span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
+<div class="viewcode-block" id="kernel"><a class="viewcode-back" href="../../../generated/pygeoda.weights.kernel.html#pygeoda.weights.kernel">[docs]</a><span class="k">def</span> <span class="nf">kernel</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Create a kernel weights with fixed bandwidth. </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        geoda_obj (geoda): An instance of geoda class. </span>
+<span class="sd">        bandwidth (float): A float value represents the distance of bandwidth used in kernel function.</span>
+<span class="sd">            For example, one can use the pygeoda.weights.min_threshold() to get a distance that </span>
+<span class="sd">            guarantees that every observation has at least 1 neighbor.</span>
+<span class="sd">        adaptive_bandwidth (bool, optional):  A bool flag indicates whether to use adaptive bandwidth or</span>
+<span class="sd">            the max distance of all observation to their k-nearest neighbors.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        use_kernel_diagonals (bool, optional):  A bool flag indicates whether or not the lower order neighbors should be </span>
+<span class="sd">            included in the weights structure. Defaults to False.</span>
+<span class="sd">        is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) </span>
+<span class="sd">        is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;triangular&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;epanechnikov&#39;</span><span class="p">,</span> <span class="s1">&#39;quartic&#39;</span><span class="p">,</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">]:</span>
+        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The parameter &#39;kernel&#39; has to be one of &#39;triangular&#39;, &#39;uniform&#39;, &#39;epanechnikov&#39;, &#39;quartic&#39;, &#39;gaussian&#39;&quot;</span><span class="p">)</span>
+
+    <span class="n">adaptive_bandwidth</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;adaptive_bandwidth&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adaptive_bandwidth&#39;</span><span class="p">]</span>
+    <span class="n">use_kernel_diagonals</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;use_kernel_diagonals&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;use_kernel_diagonals&#39;</span><span class="p">]</span>
+    <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;is_arc&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_arc&#39;</span><span class="p">]</span>
+    <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;is_mile&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;is_mile&#39;</span><span class="p">]</span>
+
+    <span class="n">bandwidth</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">is_inverse</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_knn_weights</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">is_inverse</span><span class="p">,</span> <span class="n">is_arc</span><span class="p">,</span> <span class="n">is_mile</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="n">adaptive_bandwidth</span><span class="p">,</span> <span class="n">use_kernel_diagonals</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

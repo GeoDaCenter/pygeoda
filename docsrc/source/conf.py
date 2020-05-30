@@ -22,7 +22,7 @@ copyright = '2019, Xun Li; Luc Anselin'
 author = 'Xun Li; Luc Anselin'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.2 alpha'
+release = '0.0.4 rc'
 
 
 # -- General configuration ---------------------------------------------------
@@ -58,7 +58,7 @@ html_theme = "sphinx_rtd_theme"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['static']
 
 html_theme_options = {
     'canonical_url': '',
