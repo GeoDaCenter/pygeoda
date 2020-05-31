@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script type="text/javascript" src="static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6 Spatial Clustering" href="spatial_clustering.html" />
@@ -118,6 +118,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#local-geary">5.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-getis-ord-statistics">5.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-join-count">5.5 Local Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantile-lisa">5.6 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-local-moran">5.7 Batch Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">6. Spatial Clustering</a><ul>
@@ -135,6 +137,14 @@
 <li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#id1">7.2.3 ESDA with pygeoda and geopandas</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_classification.html">8. Map Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#hinge-box-breaks">8.1 Hinge Box Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#natural-breaks">8.2 Natural Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#quantile-breaks">8.3 Quantile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#percentile-breaks">8.4 Percentile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#standard-deviation-breaks">8.5 Standard Deviation Breaks</a></li>
 </ul>
 </li>
 </ul>
@@ -247,7 +257,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="sources/spatial_auto.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/spatial_auto.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -262,7 +272,7 @@
             
   <div class="section" id="spatial-autocorrelation">
 <span id="spatial-sa-ref"></span><h1>5 Spatial Autocorrelation<a class="headerlink" href="#spatial-autocorrelation" title="Permalink to this headline">¶</a></h1>
-<p>pygeoda 0.0.3 provids following methods for univariate
+<p>pygeoda 0.0.4 provids following methods for univariate
 local spatial autocorrelation statistics:</p>
 <ul class="simple">
 <li><p>Local Moran: local_moran()</p></li>
@@ -301,6 +311,7 @@ computation. The functions include:</p>
 <li><p>GetLISAValues(): Get the local spatial autocorrelation values returned from LISA computation.</p></li>
 <li><p>GetNumNeighbors(): Get the number of neighbors of every observations in LISA computation.</p></li>
 <li><p>GetPValues(): Get the local pseudo-p values of significance returned from LISA computation.</p></li>
+<li><p>GetFDR(): Get the False Discovery Rate (FDR) in LISA.</p></li>
 <li><p>SetPermutations(num_perm): Set the number of permutations for the LISA computation</p></li>
 <li><p>SetThreads(num_threads): Set the number of CPU threads for the LISA computation</p></li>
 <li><p>Run(): Call to run LISA computation</p></li>
@@ -479,6 +490,73 @@ as input parameters:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="quantile-lisa">
+<h2>5.6 Quantile LISA<a class="headerlink" href="#quantile-lisa" title="Permalink to this headline">¶</a></h2>
+<p>The quantile local spatial autocorrelation converte the continuous variable
+to a binary variable that takes the value of 1 for a specific quantile.
+Then appaly a local join count to the data converted.Here a k and q need
+to be selected. More specifically, the k is the number of quantiles,
+ranging form 1 to -1, and the q is the index of selected quantile for lisa,
+ranging from 0 to k-1.</p>
+<p>For example, we can call the function <cite>quantile_lisa()</cite> with the created
+Queen weights, k is equal to 7, q is equal to 5 and the data “crm_prp” as
+input parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columbus</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/columbus.shp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crm_prp</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s2">&quot;crm_prp&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">columbus_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">columbus</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">quantile_lisa</span><span class="p">(</span><span class="n">columbus_w</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get the pseudo-p values of the quantile lisa computation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">(0.434, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.031, 0.001, 0.001, 0.431, 0.026, 0.001, 0.001)</span>
+</pre></div>
+</div>
+<p>To get the number of neighbors of the quantile lisa computation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nnvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetNumNeighbors</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nnvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">    (4, 6, 6, 4, 3, 7, 3, 3, 5, 5, 7, 3, 3, 6, 5, 5, 6, 6, 7, 3)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-local-moran">
+<h2>5.7 Batch Local Moran<a class="headerlink" href="#batch-local-moran" title="Permalink to this headline">¶</a></h2>
+<p>Batch Local Moran is a method to apply local moran statistics on
+a set of variables using a same weights. This is a convenient way
+to batch process Lisa with the same weight. Note the data is a 2d
+list of float type values of selected variables.</p>
+<p>For example, we can call the function <cite>batch_local_moran()</cite> with the
+created created Queen weights and the data was selected from the
+dataset as the input parameters. When we have multiple variables,
+we can create a list that contains the variables and then use a for
+loop to select variables.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/columbus.shp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slect_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">,</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">slect_vars</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">batch_local_moran</span><span class="p">(</span><span class="n">guerry_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get the local Moran values of one of the selected variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lms</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">(0.015, 0.327, 0.021, 0.004, -0.002, 0.414, -0.137, 0.099, 0.282, 0.121, -0.095, 0.032, 0.387, 1.188, -0.645, -0.309, 0.366, 2.037, -0.005, 0.069)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lms</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">(0.516, 0.818, 0.794, 0.733, 0.228, 0.829, 0.615, 1.627, -0.019, 0.687, 1.707, 0.821, -0.213, 0.29, -0.184, -0.047, 0.249, 0.054, 0.862, 0.835)</span>
+</pre></div>
+</div>
+<p>To get the pseudo-p values of the local moran computation of one selected variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">(0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, 0.237, 0.461, 0.248, 0.015, 0.178, 0.172, 0.149, 0.001, 0.456, 0.371)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="go">(0.197, 0.013, 0.023, 0.068, 0.111, 0.045, 0.281, 0.048, 0.183, 0.004, 0.002, 0.052, 0.106, 0.002, 0.266, 0.244, 0.008, 0.426, 0.060, 0.115)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -501,7 +579,7 @@ as input parameters:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin
+        &copy; Copyright 2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.
 
     </p>
   </div>
