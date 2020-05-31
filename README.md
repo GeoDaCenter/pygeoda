@@ -1,29 +1,66 @@
 # pygeoda
 
-#### Description
-Description 
 pygeoda is a python library for spatial data analysis based on libgeoda and GeoDa
 
+### version 0.0.4
 
-#### How to contribute
+* Map Classification
+   * NaturalBreaks
+   * QuantileBreaks
+   * Hinge15Breaks
+   * Hinge30Breaks
+   * PercentileBreaks
+   * StddevBreaks
+   
+* Spatial Weights
+    * Queen
+    * Rook
+    * Distance based
+    * K-Nearest Neighbor
+    * Kernel
+    
+* Spatial Autocorrelation
+    * Local Moran
+    * Local Geary
+    * Local Getis-Ord 
+    * Local Join Count
+    * Multivariate Local Geary
+    * Multivariate Local Join Count
+    * Quantile LISA
+    * False Discovery Rate (FDR)
+
+* Spatial Clustering
+    * SKATER
+    * REDCAP
+    * Max-p
+    
+* Others
+    * PCA
+    * MDS (multi dimensional scaling)
+
+### Installation
+
+#### Install from pip
+
+NOTE: pip wheels will be available soon.
+
+#### Install from source
+
+You can install pygeoda v0.0.4 from source by using the following command in a terminal:
+
+```
+pip install git+https://gitee.com/lixun910/pygeoda    
+```
+
+### How to contribute
 
 1.  Fork the repository
 2.  Create Feat_xxx branch
 3.  Commit your code
 4.  Create Pull Request
 
-#### Contributors
+### Contributors
 
 * @lixun910
 * @zh345
 * @yeqing_han
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
