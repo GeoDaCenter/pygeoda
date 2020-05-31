@@ -17,26 +17,26 @@
   
 
   
-  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script type="text/javascript" src="static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3 Load Spatial Data" href="load_data.html" />
-    <link rel="prev" title="1. Introduction to pygeoda 0.0.3" href="intro.html" /> 
+    <link rel="prev" title="1. Introduction to pygeoda 0.0.4" href="intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -118,6 +118,8 @@
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">5.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">5.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">5.5 Local Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">5.6 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#batch-local-moran">5.7 Batch Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">6. Spatial Clustering</a><ul>
@@ -135,6 +137,14 @@
 <li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#id1">7.2.3 ESDA with pygeoda and geopandas</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_classification.html">8. Map Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#hinge-box-breaks">8.1 Hinge Box Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#natural-breaks">8.2 Natural Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#quantile-breaks">8.3 Quantile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#percentile-breaks">8.4 Percentile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_classification.html#standard-deviation-breaks">8.5 Standard Deviation Breaks</a></li>
 </ul>
 </li>
 </ul>
@@ -247,7 +257,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="sources/install.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -333,7 +343,7 @@ be able to install pygeoda using pip:</p>
         <a href="load_data.html" class="btn btn-neutral float-right" title="3 Load Spatial Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral float-left" title="1. Introduction to pygeoda 0.0.3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="1. Introduction to pygeoda 0.0.4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -342,7 +352,7 @@ be able to install pygeoda using pip:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin
+        &copy; Copyright 2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.
 
     </p>
   </div>
