@@ -5,7 +5,7 @@
 5 Spatial Autocorrelation
 ================================
 
-pygeoda 0.0.3 provids following methods for univariate
+pygeoda 0.0.4 provids following methods for univariate
 local spatial autocorrelation statistics:
 
 * Local Moran: local_moran()
@@ -49,6 +49,7 @@ computation. The functions include:
 * GetLISAValues(): Get the local spatial autocorrelation values returned from LISA computation.
 * GetNumNeighbors(): Get the number of neighbors of every observations in LISA computation.
 * GetPValues(): Get the local pseudo-p values of significance returned from LISA computation.
+* GetFDR(): Get the False Discovery Rate (FDR) in LISA.
 * SetPermutations(num_perm): Set the number of permutations for the LISA computation
 * SetThreads(num_threads): Set the number of CPU threads for the LISA computation
 * Run(): Call to run LISA computation
@@ -256,3 +257,77 @@ To get the number of neighbors of the local Join Count computation:
     (2, 3, 4, 4, 8, 2, 4, 6, 8, 4, 5, 6, 4, 6, 6, 8, 3, 4, 3, 10)
 
 
+5.6 Quantile LISA
+-----------------
+
+The quantile local spatial autocorrelation converte the continuous variable 
+to a binary variable that takes the value of 1 for a specific quantile. 
+Then appaly a local join count to the data converted.Here a k and q need 
+to be selected. More specifically, the k is the number of quantiles, 
+ranging form 1 to -1, and the q is the index of selected quantile for lisa, 
+ranging from 0 to k-1.
+
+For example, we can call the function `quantile_lisa()` with the created 
+Queen weights, k is equal to 7, q is equal to 5 and the data “crm_prp” as 
+input parameters:
+::
+
+    >>> columbus = pygeoda.open('./data/columbus.shp')
+    >>> crm_prp = columbus.GetIntegerCol("crm_prp")
+    >>> columbus_w = pygeoda.queen_weights(columbus)
+    >>> Lisa = pygeoda.quantile_lisa(columbus_w, 7, 5, crm_prp)
+
+To get the pseudo-p values of the quantile lisa computation:
+::
+
+    >>> pvals = lisa.GetPValues()
+    >>> print(pvals[:20])
+    (0.434, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.031, 0.001, 0.001, 0.431, 0.026, 0.001, 0.001)
+
+To get the number of neighbors of the quantile lisa computation:
+::
+
+    >>> nnvals = lisa.GetNumNeighbors()
+    >>> print(nnvals[:20])
+        (4, 6, 6, 4, 3, 7, 3, 3, 5, 5, 7, 3, 3, 6, 5, 5, 6, 6, 7, 3)
+
+
+5.7 Batch Local Moran
+---------------------
+
+Batch Local Moran is a method to apply local moran statistics on 
+a set of variables using a same weights. This is a convenient way 
+to batch process Lisa with the same weight. Note the data is a 2d 
+list of float type values of selected variables.
+
+For example, we can call the function `batch_local_moran()` with the 
+created created Queen weights and the data was selected from the 
+dataset as the input parameters. When we have multiple variables, 
+we can create a list that contains the variables and then use a for 
+loop to select variables.
+::
+    >>> guerry = pygeoda.open('./data/columbus.shp')
+    >>> guerry_w = pygeoda.queen_weights(guerry)
+    >>> slect_vars = ['Crm_prp','Crm_prs']
+    >>> data = [guerry.GetRealCol(v) for v in slect_vars]
+    >>> Lisa = pygeoda.batch_local_moran(guerry_w, data)
+
+To get the local Moran values of one of the selected variables:
+::
+
+    >>> lms = lisa.GetLISAValues(0) 
+    >>> print(lms[:20])
+    (0.015, 0.327, 0.021, 0.004, -0.002, 0.414, -0.137, 0.099, 0.282, 0.121, -0.095, 0.032, 0.387, 1.188, -0.645, -0.309, 0.366, 2.037, -0.005, 0.069)
+    >>> lms = lisa.GetLISAValues(1) 
+    >>> print(lms[:20])
+    (0.516, 0.818, 0.794, 0.733, 0.228, 0.829, 0.615, 1.627, -0.019, 0.687, 1.707, 0.821, -0.213, 0.29, -0.184, -0.047, 0.249, 0.054, 0.862, 0.835)
+
+To get the pseudo-p values of the local moran computation of one selected variable:
+::
+
+    >>> pvals = lisa.GetPValues(0)
+    >>> print(pvals[:20])
+    (0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, 0.237, 0.461, 0.248, 0.015, 0.178, 0.172, 0.149, 0.001, 0.456, 0.371)
+    >>> pvals = lisa.GetPValues(1)
+    >>> print(pvals[:20])
+    (0.197, 0.013, 0.023, 0.068, 0.111, 0.045, 0.281, 0.048, 0.183, 0.004, 0.002, 0.052, 0.106, 0.002, 0.266, 0.244, 0.008, 0.426, 0.060, 0.115)

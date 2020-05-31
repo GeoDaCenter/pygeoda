@@ -5,23 +5,11 @@
 3 Load Spatial Data
 ===================
 
-The data formats that pygeoda v0.0.3 can load directly includes:
-
-* ESRI Shapefile
-* MapInfo File
-* CSV
-* GML
-* GPX
-* KML
-* GeoJSON
-* TopoJSON
-* OpenFileGDB
-* GFT Google Fusion Tables
-* CouchDB
+The data formats that pygeoda v0.0.4 can load directly ESRI Shapefile only. For other formats, please load with geopandas,and then call geopandas_to_geoda for pygeoda processing.
 
 .. note::
     In this tutorial, we only tested loading ESRI shapefiles
-    using pygeoda v0.0.3. Please create a ticket in pygeoda's
+    using pygeoda v0.0.4. Please create a ticket in pygeoda's
     repo https://github.com/lixun910/pygeoda/issues if you
     experience any issues when loading spatial data.
 

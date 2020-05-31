@@ -11,7 +11,7 @@ based on similiarities in one or more variables.
 Spatially constrained clustering is needed when clusters are
 required to be spatially contiguous.
 
-In pygeoda v0.0.3, there are three different approaches
+In pygeoda v0.0.4, there are three different approaches
 explicitly incorporate the contiguity constraint in the
 optimization process: SKATER, Redcap and Max-p.
 More more details, please read the lab note that
