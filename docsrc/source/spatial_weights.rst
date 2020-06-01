@@ -2,7 +2,7 @@
 
 .. currentmodule:: pygeoda
 
-4 Spatial Weights
+5 Spatial Weights
 =================
 
 Spatial weights are central components in spatial data analysis.
@@ -16,7 +16,7 @@ different types of spatial weights:
 * K-Nearest Neighbor Weights: `knn_weights()`
 * Kernel Weights: `kernel_weights()`
 
-4.1 Queen Contiguity Weights
+5.1 Queen Contiguity Weights
 ----------------------------
 
 To create a Queen contiguity weights, we can call pygeoda's function
@@ -44,7 +44,7 @@ The function `queen_weights()` returns an instance of
 `Weight` object. One can access the meta data of the spatial
 weights by accessing the attributes of `Weight` object:
 
-4.2 Attributes of `Weight` object
+5.2 Attributes of `Weight` object
 ---------------------------------
 
 * num_obs
@@ -79,7 +79,7 @@ observation by passing the values of the selected variable:
     Spatial lag of 0-st observation is: 7899.25
 
 
-4.3 Rook Contiguity Weights
+5.3 Rook Contiguity Weights
 ---------------------------
 
 To create a Rook contiguity weights, we can call pygeoda's function
@@ -129,7 +129,7 @@ to save a weights file:
 
 Then, we should find the file "Guerry_r.gal" in the output directory.
 
-4.4 Distance Based Weights
+5.4 Distance Based Weights
 --------------------------
 
 To create a Distance based weights, we can call pygeoda's function
@@ -160,7 +160,7 @@ every observation has at least one neighbor:
     median neighbors:4.0
     max neighbors:7
 
-4.5 K-Nearest Neighbor Weights
+5.5 K-Nearest Neighbor Weights
 ------------------------------
 
 A special case of distance based weights is K-Nearest neighbor
@@ -185,7 +185,7 @@ For example, to create a 6-nearest neighbor weights using Guerry dataset:
     median neighbors:6.0
     max neighbors:6
 
-4.6 Kernel Weights
+5.6 Kernel Weights
 ------------------
 
 Kernel weights apply kernel function to determine the distance
@@ -203,7 +203,7 @@ The kernl functions include:
 
 Two functions are provided in pygeoda to create kernel weights:
 
-4.6.1 Kernel Weights with fixed bandwidth
+5.6.1 Kernel Weights with fixed bandwidth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create a kernel weights with fixed bandwith:
@@ -231,7 +231,7 @@ this kernel weights function has another option:
     diagonal of weights matrix
 
 
-4.6.2 Kernel Weights with adaptive bandwidth
+5.6.2 Kernel Weights with adaptive bandwidth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create a kernel weights with adaptive bandwidth or using

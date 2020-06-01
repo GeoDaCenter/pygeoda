@@ -2,7 +2,7 @@
 
 .. currentmodule:: pygeoda
 
-7 ESDA with pygeoda and geopandas
+ESDA with pygeoda and geopandas
 =================================
 
 For exploratory spatial data analysis (ESDA), pygeoa provides some
@@ -12,7 +12,7 @@ analysis.
 
 In this notebook, you will learn how to do ESDA with `pygeoda`, `geopandas` and `matplotlib`/`geoplot`.
 
-7.1 GeoPandas
+1 GeoPandas
 -------------
 
 geopandas is a python library that allow users to work with geospatial
@@ -49,7 +49,7 @@ can be created using a GDAL datasource:
 Using this approach, geopandas could load any geospatial data that
 is supported by GDAL literally.
 
-7.2 Matplotlib
+2 Matplotlib
 --------------
 
 Matplotlib is a Python 2D plotting library for making plots and maps.
@@ -70,7 +70,7 @@ matplotlib can be installed using conda or pip:
         pip install descartes
 
 
-7.2 geoPandas + pygeoda
+3 geoPandas + pygeoda
 -----------------------
 
 geopandas has been an essential python library to handle geospatial data,
@@ -90,7 +90,7 @@ will be used for demonstration. You can download this dataset at:
 https://geodacenter.github.io/data-and-lab/Guerry/
 
 
-7.2.1 Load geospatial data in GeoPandas
+3.1 Load geospatial data in GeoPandas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To load this geospatial data in GeoPandas:
@@ -123,7 +123,7 @@ a map on a plot (matplotlib):
 
 .. image:: ./images/guerry1.png
 
-7.2.2 Create pygeoda object from geodataframe
+3.2 Create pygeoda object from geodataframe
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 pygeoda provides a utility function geopandas_to_geoda to easily create
@@ -156,7 +156,7 @@ contiguity weights:
     median neighbors:5.0
     max neighbors:8
 
-7.2.3 ESDA with pygeoda and geopandas
+3.3 ESDA with pygeoda and geopandas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Local Moran CLuster Map**
