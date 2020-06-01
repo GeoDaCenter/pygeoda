@@ -61,12 +61,16 @@ Indices and tables
 
 Contributors
 ==================
+
+Xun Li; Hang Zhang; Yeqing Han.
+
 Institution
 -----------
 
 .. image:: https://rgeoda.github.io/rgeoda-book/images/csds.jpg
     :target: https://spatial.uchicago.edu
     :alt: CSDS is an initiative of the Division of Social Sciences and part of the UChicago's investment in computational social science.
+    
 .. image:: http://yrcsd.henu.edu.cn/dfiles/7761/css/v2/image/logo.png
     :target: http://yrcsd.henu.edu.cn
     :alt: Yellow River Civilization Center is the key research base of Humanities and social sciences of the Ministry of Education
@@ -75,22 +79,22 @@ Personnel
 ---------
 .. image:: https://spatial.uchicago.edu/sites/spatial.uchicago.edu/files/styles/directoryimage/public/uploads/images/xunli2.png?itok=A2Al_sWF
     :target: https://spatial.uchicago.edu/directories/full/team
-    :width: 130
-    :height: 130
+    :width: 60
+    :height: 60
 .. image:: https://spatial.uchicago.edu/sites/spatial.uchicago.edu/files/styles/directoryimage/public/uploads/images/Screen%20Shot%202020-04-11%20at%2010.20.00%20AM.png?itok=1lXLfX0d
     :target: https://spatial.uchicago.edu/directories/full/fellows
-    :width: 130
-    :height: 130
+    :width: 60
+    :height: 60
 .. image:: https://spatial.uchicago.edu/sites/spatial.uchicago.edu/files/styles/directoryimage/public/uploads/images/Screen%20Shot%202020-04-11%20at%2010.20.09%20AM.png?itok=bGNGi0gW
     :target: https://spatial.uchicago.edu/directories/full/fellows
-    :width: 130
-    :height: 130
+    :width: 60
+    :height: 60
 .. image:: https://spatial.uchicago.edu/sites/spatial.uchicago.edu/files/styles/directoryimage/public/uploads/images/Screen%20Shot%202020-04-11%20at%2010.14.17%20AM.png?itok=Mf7BBQli
     :target: https://spatial.uchicago.edu/directories/full/Research-Assistants
-    :width: 130
-    :height: 130
+    :width: 60
+    :height: 60
 .. image:: https://spatial.uchicago.edu/sites/spatial.uchicago.edu/files/styles/directoryimage/public/uploads/images/Screen%20Shot%202020-04-11%20at%2010.16.50%20AM.png?itok=pKz2KWCm
     :target: https://spatial.uchicago.edu/directories/full/Research-Assistants
-    :width: 130
-    :height: 130
+    :width: 60
+    :height: 60
 Name: *Xun Li;   *Guanpeng Dong;    *Yong Liu;   *Hang Zhang;    *Yeqing Han.

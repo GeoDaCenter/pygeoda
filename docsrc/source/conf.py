@@ -18,7 +18,7 @@ print(sys.path)
 # -- Project information -----------------------------------------------------
 
 project = 'pygeoda'
-copyright = '2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.'
+copyright = '2019, Xun Li; Luc Anselin.'
 author = 'Xun Li; Luc Anselin'
 
 # The full version, including alpha/beta/rc tags

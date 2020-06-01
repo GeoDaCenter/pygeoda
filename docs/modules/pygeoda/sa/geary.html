@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygeoda.sa.getisord &mdash; pygeoda 0.0.4 rc documentation</title>
+  <title>pygeoda.sa.geary &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -251,7 +251,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pygeoda.sa.getisord</li>
+      <li>pygeoda.sa.geary</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -266,36 +266,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pygeoda.sa.getisord</h1><div class="highlight"><pre>
+  <h1>Source code for pygeoda.sa.geary</h1><div class="highlight"><pre>
 <span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_localg</span><span class="p">,</span> <span class="n">gda_localgstar</span><span class="p">,</span> <span class="n">VecBool</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_geary</span><span class="p">,</span> <span class="n">gda_multigeary</span><span class="p">,</span> <span class="n">VecBool</span><span class="p">,</span> <span class="n">VecVecBool</span>
 <span class="kn">from</span> <span class="nn">.lisa</span> <span class="k">import</span> <span class="n">lisa</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
 
-<div class="viewcode-block" id="local_g"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_g.html#pygeoda.local_g">[docs]</a><span class="k">def</span> <span class="nf">local_g</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply local Getis-Ord G statistics.</span>
+<div class="viewcode-block" id="local_multigeary"><a class="viewcode-back" href="../../../generated/pygeoda.local_multigeary.html#pygeoda.local_multigeary">[docs]</a><span class="k">def</span> <span class="nf">local_multigeary</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Apply local multi-variates geary statistics on multi-variables, at least two variables, after we already have a weight.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A 1d tuple of float type values of selected variable</span>
-
+<span class="sd">        w (Weight): An instance of Weight class</span>
+<span class="sd">        data (list): A 2d numeric list with values of selected variables</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        lisa: An instance of lisa class represents the results of local geary computations </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        lisa: An instance of lisa class represents the results of local multi-variates geary computations</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
 
-    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
+    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecVecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
     <span class="n">nCPUs</span> <span class="o">=</span>  <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;nCPUs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nCPUs&#39;</span><span class="p">]</span>
     <span class="n">perm</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;perm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span>  <span class="n">gda_localg</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_multigeary</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="local_gstar"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_gstar.html#pygeoda.local_gstar">[docs]</a><span class="k">def</span> <span class="nf">local_gstar</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply local Getis-Ord G* statistics.</span>
+<div class="viewcode-block" id="local_geary"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_geary.html#pygeoda.local_geary">[docs]</a><span class="k">def</span> <span class="nf">local_geary</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Apply local geary statistics on one select variable after we already have a weight.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class.</span>
@@ -303,16 +302,19 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        lisa: An instance of lisa class represents the results of local geary computations </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">num_obs</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The size of data doesnt not match the number of observations.&quot;</span><span class="p">)</span>
 
     <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
     <span class="n">nCPUs</span> <span class="o">=</span>  <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;nCPUs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nCPUs&#39;</span><span class="p">]</span>
     <span class="n">perm</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;perm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span>  <span class="n">gda_localgstar</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_geary</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 </pre></div>
 
@@ -326,7 +328,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.
+        &copy; Copyright 2019, Xun Li; Luc Anselin.
 
     </p>
   </div>

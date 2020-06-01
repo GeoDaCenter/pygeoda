@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygeoda.weights.queen &mdash; pygeoda 0.0.4 rc documentation</title>
+  <title>pygeoda.data.mds &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -251,7 +251,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pygeoda.weights.queen</li>
+      <li>pygeoda.data.mds</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -266,35 +266,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pygeoda.weights.queen</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_queen_weights</span> 
-<span class="kn">from</span> <span class="nn">.weight</span> <span class="k">import</span> <span class="n">Weight</span>
+  <h1>Source code for pygeoda.data.mds</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_mds</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Hang Zhang &lt;zhanghanggis@163.com&gt;, &quot;</span>
 
-<div class="viewcode-block" id="queen"><a class="viewcode-back" href="../../../generated/pygeoda.weights.queen.html#pygeoda.weights.queen">[docs]</a><span class="k">def</span> <span class="nf">queen</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> 
-    <span class="sd">&quot;&quot;&quot;Create a Queen contiguity weights. </span>
+<div class="viewcode-block" id="mds"><a class="viewcode-back" href="../../../generated/pygeoda.mds.html#pygeoda.mds">[docs]</a><span class="k">def</span> <span class="nf">mds</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Multi dimensional scale analysis</span>
 
+<span class="sd">    Note:</span>
+<span class="sd">        Multidimensional Scaling or MDS is an alternative approach to portraying a multivariate data cloud in lower dimensions.</span>
+<span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        geoda_obj (geoda): An instance of Geoda object</span>
-<span class="sd">        order (int, optional): An integer value of order of contiguity</span>
-<span class="sd">        include_lower_order (bool, optional):  A bool flag indicates whether or not the lower order neighbors should be </span>
-<span class="sd">            included in the weights structure. Defaults to False.</span>
-<span class="sd">        precision_threshold  (float, optional):  A float value represents the precision of the underlying shape file is insufficient </span>
-<span class="sd">            to allow for an exact match of coordinates to determine </span>
-<span class="sd">            which polygons are neighbors. Defaults to 0.0.</span>
+<span class="sd">        data (tuple): A 2d numeric list of selected variables.</span>
+<span class="sd">        k (int): The number of dimensions that mds returns. Value range [1,k: the number of selected variables].</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">        list: A 2d numeric list of mds results (top k components),which contains the position of each geographical unit in the rectangular coordinate system</span>
+<span class="sd">            e.g. [(-1,3.4,5,-7.32...X),(-2,3,-4,1,5,4...Y)]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">order</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="s1">&#39;order&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span>
-    <span class="n">include_lower_order</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="s1">&#39;include_lower_order&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;include_lower_order&#39;</span><span class="p">]</span>
-    <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="s1">&#39;precision_threshold&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;precision_threshold&#39;</span><span class="p">]</span>
-
-    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_queen_weights</span><span class="p">(</span><span class="n">geoda_obj</span><span class="o">.</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">include_lower_order</span><span class="p">,</span> <span class="n">precision_threshold</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span></div>
-
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">gda_mds</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">k</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -307,7 +301,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.
+        &copy; Copyright 2019, Xun Li; Luc Anselin.
 
     </p>
   </div>

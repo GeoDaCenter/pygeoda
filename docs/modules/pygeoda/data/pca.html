@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygeoda.sa.moran &mdash; pygeoda 0.0.4 rc documentation</title>
+  <title>pygeoda.data.pca &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -251,7 +251,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pygeoda.sa.moran</li>
+      <li>pygeoda.data.pca</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -266,64 +266,113 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pygeoda.sa.moran</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_localmoran</span><span class="p">,</span> <span class="n">VecBool</span><span class="p">,</span> <span class="n">gda_batchlocalmoran</span><span class="p">,</span> <span class="n">VecVecBool</span>
-<span class="kn">from</span> <span class="nn">.lisa</span> <span class="k">import</span> <span class="n">lisa</span><span class="p">,</span> <span class="n">batchlisa</span>
-<span class="kn">import</span> <span class="nn">multiprocessing</span>
+  <h1>Source code for pygeoda.data.pca</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_pca</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">PCAResult</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Hang Zhang &lt;zhanghanggis@163.com&gt;, &quot;</span>
 
-<div class="viewcode-block" id="local_moran"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_moran.html#pygeoda.local_moran">[docs]</a><span class="k">def</span> <span class="nf">local_moran</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply local moran statistics on one select variable after we already have a weight.</span>
-
+<div class="viewcode-block" id="PCA"><a class="viewcode-back" href="../../../generated/pygeoda.PCA.html#pygeoda.PCA">[docs]</a><span class="k">class</span> <span class="nc">PCA</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Principal component analysis</span>
+<span class="sd">    Note:</span>
+<span class="sd">        The principal components can be interpreted as the best linear approximation to the multivariate point cloud of the data. The goal is to find a small number of principal components,that explains the bulk of the variance in the original variables.</span>
+<span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A 1d tuple of float type values of selected variable</span>
+<span class="sd">        data (tuple): A 2d numeric list with values of selected variables</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        lisa: An instance of lisa class represents the results of local geary computations</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
+<span class="sd">        PCA_obj: A PCA object that wrappers the c++ PCAResult object containing the details of PCA computation</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<div class="viewcode-block" id="PCA.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.PCA.html#pygeoda.PCA.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Constructor of PCAResult object</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            data (tuple): A 2d numeric list with values of selected variables</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data from selected variable is empty.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span> <span class="o">=</span> <span class="n">gda_pca</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
-    <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">num_obs</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The size of data doesnt not match the number of observations.&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">getMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the PCA calculation method.</span>
 
-    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
-    <span class="n">nCPUs</span> <span class="o">=</span>  <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;nCPUs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nCPUs&#39;</span><span class="p">]</span>
-    <span class="n">perm</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;perm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">]</span>
-    <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            a string of method description</span>
+<span class="sd">                e.g. &#39;svd&#39;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getMethod</span><span class="p">()</span>               
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmoran</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">getStandardDev</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;get the standard deviation of PCAResult.</span>
+<span class="sd">        </span>
+<span class="sd">        Rerurns:</span>
+<span class="sd">            :obj:`tuple` of float: a list of float values of standard deviation of PCAResult</span>
+<span class="sd">                e.g. (1.463034,1.095819,1.049785,0.816680,0.740726,0.583971)</span>
+<span class="sd">        &#39;&#39;&#39;</span>                
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getStandardDev</span><span class="p">()</span>
 
+    <span class="k">def</span> <span class="nf">getPropOfVar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the Proportion of variance of PCAResult.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:`tuple` of float: a list of float values of Proportion of variance of PCAResult</span>
+<span class="sd">                e.g. (1.463034,1.095819,1.049785,0.816680,0.740726,0.583971)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getPropOfVar</span><span class="p">()</span>
 
-<div class="viewcode-block" id="batch_local_moran"><a class="viewcode-back" href="../../../generated/pygeoda.batch_local_moran.html#pygeoda.batch_local_moran">[docs]</a><span class="k">def</span> <span class="nf">batch_local_moran</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply local moran statistics on a set of variables using a same weights.</span>
+    <span class="k">def</span> <span class="nf">getCumProp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the Cumulative proportion of PCAResult.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A 2d list of float type values of selected variables</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:`tuple` of float: a list of float values of the Cumulative proportion of PCAResult</span>
+<span class="sd">                e.g. (1.463034,1.095819,1.049785,0.816680,0.740726,0.583971)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getCumProp</span><span class="p">()</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        lisa: An instance of BatchLisa class represents the results of local geary computations</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">getKaiser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the value 0f Kaiser in PCAResult.</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The data has to be a 2-d list of float type values of selected variables.&quot;</span><span class="p">)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:a `float` number: value 0f Kaiser in PCAResult</span>
+<span class="sd">                e.g. 3.000</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getKaiser</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">getThresh95</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the value 0f  threshold criteria for contribution up to 95% in PCAResult.</span>
 
-    <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">num_obs</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>   
-        <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The size of data doesnt not match the number of observations.&quot;</span><span class="p">)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:a `float` number:value 0f threshold criteria for contribution up to 95% in PCAResult</span>
+<span class="sd">                e.g. 5.0000</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getThresh95</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">getEigenValues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get the Eigenvalues of PCAResult of PCAResult.</span>
 
-    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecVecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
-    <span class="n">nCPUs</span> <span class="o">=</span>  <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;nCPUs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nCPUs&#39;</span><span class="p">]</span>
-    <span class="n">perm</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;perm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">]</span>
-    <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:`tuple` of float: a list of float values of the Eigenvalues of PCAResult</span>
+<span class="sd">                e.g. (1.463034,1.095819,1.049785,0.816680,0.740726,0.583971)</span>
+<span class="sd">        &#39;&#39;&#39;</span>    
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getEigenValues</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">getLoadings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get a 2d numeric list with values of  PCAResult base selected variables.</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_batchlocalmoran</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">nCPUs</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">batchlisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:a 2d numeric `list` of float: a 2d numeric list with values of selected variables of PCAResult</span>
+<span class="sd">                e.g. [[1.463034,1.095819,1.049785,0.816680,0.740726,0.583971],[0.8791, 0.0937, 0.0188, 0.006, 0.0016, 1.425]]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getLoadings</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">getSqCorrelations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Get a 2d numeric list with values of squared correlations of PCAResult base selected variables.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :obj:a 2d numeric `list` of float: a 2d numeric list with values of selected variables of PCAResult</span>
+<span class="sd">                e.g. [[1.463034,1.095819,1.049785,0.816680,0.740726,0.583971],[0.8791, 0.0937, 0.0188, 0.006, 0.0016, 1.425]]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca_r</span><span class="o">.</span><span class="n">getSqCorrelations</span><span class="p">()</span></div>
 </pre></div>
 
            </div>
@@ -336,7 +385,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin. Developers: Xun Li; Hang Zhang; Yeqing Han.
+        &copy; Copyright 2019, Xun Li; Luc Anselin.
 
     </p>
   </div>
