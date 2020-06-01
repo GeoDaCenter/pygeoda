@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -269,8 +269,8 @@
   <h1>Source code for pygeoda.weights.distance</h1><div class="highlight"><pre>
 <span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">gda_distance_weights</span><span class="p">,</span> <span class="n">gda_min_distthreshold</span><span class="p">,</span> <span class="n">gda_knn_weights</span>
-<span class="kn">from</span> <span class="nn">.weight</span> <span class="kn">import</span> <span class="n">Weight</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_distance_weights</span><span class="p">,</span> <span class="n">gda_min_distthreshold</span><span class="p">,</span> <span class="n">gda_knn_weights</span>
+<span class="kn">from</span> <span class="nn">.weight</span> <span class="k">import</span> <span class="n">Weight</span>
 
 <div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../../generated/pygeoda.weights.distance.html#pygeoda.weights.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">geoda_obj</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Create a kernel weights with fixed bandwidth. </span>

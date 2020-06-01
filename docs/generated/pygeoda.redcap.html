@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -274,9 +274,9 @@
             
   <div class="section" id="pygeoda-redcap">
 <h1>pygeoda.redcap<a class="headerlink" href="#pygeoda-redcap" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
+<dl class="function">
 <dt id="pygeoda.redcap">
-<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">redcap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="n">bound_vals</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">min_bound</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">distance_method</span><span class="o">=</span><span class="default_value">'euclidean'</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">123456789</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/clustering/redcap.html#redcap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.redcap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">redcap</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">w</em>, <em class="sig-param">data</em>, <em class="sig-param">method</em>, <em class="sig-param">bound_vals=[]</em>, <em class="sig-param">min_bound=0</em>, <em class="sig-param">distance_method='euclidean'</em>, <em class="sig-param">random_seed=123456789</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/clustering/redcap.html#redcap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.redcap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regionalization with dynamically constrained agglomerative clustering and partitioning</p>
 <p>Like SKATER, REDCAP starts from building a spanning tree with 3 different ways (single-linkage, average-linkage, and the complete-linkage).
 The single-linkage way leads to build a minimum spanning tree. Then, REDCAP provides 2 different ways to prune the tree (First-order and Full-order):

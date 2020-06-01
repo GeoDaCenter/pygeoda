@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -267,7 +267,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.gda</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.libgeoda</span> <span class="kn">import</span> <span class="n">GeoDa</span>
+<span></span><span class="kn">from</span> <span class="nn">.libgeoda</span> <span class="k">import</span> <span class="n">GeoDa</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;geoda&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">]</span>
@@ -283,7 +283,7 @@
 <span class="sd">        field_types (tuple): A list of field types {integer, real, string}</span>
 <span class="sd">        map_type (str): The map type (Point, Polygon (or LineSegment)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="geoda.__init__"><a class="viewcode-back" href="../../generated/pygeoda.geoda.html#pygeoda.geoda.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_obj</span><span class="p">):</span>
+<div class="viewcode-block" id="geoda.__init__"><a class="viewcode-back" href="../../generated/pygeoda.geoda.html#pygeoda.geoda.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of geoda object.</span>
 

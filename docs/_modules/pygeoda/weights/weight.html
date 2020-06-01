@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -267,7 +267,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.weights.weight</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">VecInt64</span>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">VecInt64</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
@@ -275,7 +275,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GeoDa Weight class </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.weights.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
+<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.weights.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of Weight class.</span>
 
@@ -448,7 +448,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_values</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="p">:</span>
             <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;Weights Meta-data:</span><span class="se">\n</span><span class="s2">&quot;</span>

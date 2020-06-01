@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -267,8 +267,8 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.data.pca</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">gda_pca</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">PCAResult</span>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_pca</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">PCAResult</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Hang Zhang &lt;zhanghanggis@163.com&gt;, &quot;</span>
 
@@ -283,7 +283,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        PCA_obj: A PCA object that wrappers the c++ PCAResult object containing the details of PCA computation</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-<div class="viewcode-block" id="PCA.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.PCA.html#pygeoda.PCA.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="PCA.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.PCA.html#pygeoda.PCA.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Constructor of PCAResult object</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
