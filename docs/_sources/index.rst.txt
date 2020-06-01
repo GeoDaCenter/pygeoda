@@ -35,11 +35,12 @@ You can try these jupyter notebooks in your browser via MyBinder (no installatio
    1. Introduction <intro>
    2. Installation <install>
    3. Load Spatial Data <load_data>
-   4. Spatial Weights <spatial_weights>
-   5. Spatial Autocorrelation<spatial_auto>
-   6. Spatial Clustering <spatial_clustering>
-   7. ESDA with pygeoda and geopandas <esda_geopandas>
-   8. Map Classification <map_classification>
+   4. Map Classification <map_classification>
+   5. Spatial Weights <spatial_weights>
+   6. Spatial Autocorrelation<spatial_auto>
+   7. Spatial Clustering <spatial_clustering>
+   ESDA with pygeoda and geopandas <esda_geopandas>
+   
 
 
 -------------
@@ -60,7 +61,10 @@ Indices and tables
 * :ref:`search`
 
 Contributors
-==================
+============
+
+Xun Li; Hang Zhang; Yeqing Han.
+
 Institution
 -----------
 
