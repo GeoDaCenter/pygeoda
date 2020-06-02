@@ -3,7 +3,7 @@
 .. currentmodule:: pygeoda
 
 4 Map Classification
-================================
+====================
 
 pygeoda 0.0.4 provids following methods for univariate
 map classification:
@@ -21,7 +21,7 @@ http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html.
 
 
 4.1 Hinge Box Breaks
----------------
+--------------------
 
 Hinge15 breaks calculate a list of breakpoints, including the top, bottom, median, 
 and two quartiles of the data. Here the hinge can be 1.5 or 3.0. For example, we can 
@@ -39,7 +39,7 @@ parameter:
 
 
 4.2 Natural Breaks
----------------
+------------------
 
 Natural breaks Calculate of a breakpoint list based on the fracture principle of 
 maximum similarity within a group. For example, we can call function `natural_breaks()` 
@@ -52,7 +52,7 @@ with the data “crm_prp” and the number of classification “k” as input pa
 
 
 4.3 Quantile Breaks
----------------
+-------------------
 
 The quantile breaks is based on sorted values for a variable that are then grouped 
 into bins that each have the same number of observations, the so-called quantiles. 
@@ -67,7 +67,7 @@ parameter:
 
 
 4.4 Percentile Breaks
----------------
+---------------------
 
 The percentile breaks divides the data to  six ranges, the lowest 1%, 1-10%, 10-50%, 
 50-90%, 90-99% and the top 1%, returning the range boundaries as a breakpoint list. 
@@ -81,7 +81,7 @@ input parameter:
 
 
 4.5 Standard Deviation Breaks
----------------
+-----------------------------
 
 Standard deviation breaks calculate the number of standard deviational units of  the 
 range from lowest to highest, returning a breakpoint list. . For example, we can 

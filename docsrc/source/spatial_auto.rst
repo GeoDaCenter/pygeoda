@@ -3,7 +3,7 @@
 .. currentmodule:: pygeoda
 
 5 Spatial Autocorrelation
-================================
+=========================
 
 pygeoda 0.0.4 provids following methods for univariate
 local spatial autocorrelation statistics:

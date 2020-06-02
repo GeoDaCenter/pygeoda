@@ -72,8 +72,8 @@ Institution
     :target: https://spatial.uchicago.edu
     :alt: CSDS is an initiative of the Division of Social Sciences and part of the UChicago's investment in computational social science.
     
-.. image:: http://yrcsd.henu.edu.cn/dfiles/7761/css/v2/image/logo.png
-    :target: http://yrcsd.henu.edu.cn
+.. image:: https://yrcsd.henu.edu.cn/dfiles/7761/css/v2/image/logo.png
+    :target: https://yrcsd.henu.edu.cn
     :alt: Yellow River Civilization Center is the key research base of Humanities and social sciences of the Ministry of Education
 
 Personnel
