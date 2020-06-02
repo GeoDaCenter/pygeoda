@@ -76,7 +76,8 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 else:
     EXTRA_COMPILE_ARGS = [
         '-stdlib=libc++',
-        '-fvisibility=hidden'
+        '-fvisibility=hidden',
+        '-D__USE_PTHREAD__'
     ]
 
 
@@ -91,8 +92,10 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
         #'/NODEFAULTLIB:msvcrt.lib'
         ]
 
-elif OS_NAME == 'osx':
-    EXTRA_LINK_ARGS = []
+else:
+    EXTRA_LINK_ARGS = [
+        '-pthread'
+    ]
 
 ###########################################################
 #  Link objects 
@@ -120,9 +123,6 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     ]
 else:
     EXTRA_OBJECTS = [
-        './pygeoda_boost/lib/' + OS_NAME + '/libboost_thread.a',
-        './pygeoda_boost/lib/' + OS_NAME + '/libboost_system.a',
-        './pygeoda_boost/lib/' + OS_NAME + '/libboost_date_time.a',
     ]
 
 ###########################################################
