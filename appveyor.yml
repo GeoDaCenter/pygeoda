@@ -1,5 +1,7 @@
 image:
   - Visual Studio 2015
+  - Visual Studio 2017
+  - macos
 
 environment:
   global:
@@ -51,7 +53,48 @@ environment:
       PYTHON_ARCH: "64"
 
 matrix:
-  fast_finish: true
+  #fast_finish: true
+
+  exclude:
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python35"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python35-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python36"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python36-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python37"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python37-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python38"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python38-x64"
+    - image: Visual Studio 2017
+      PYTHON: "C:\\Python27"
+    - image: Visual Studio 2017
+      PYTHON: "C:\\Python27-x64"
+
+for:
+-
+  matrix:
+    only:
+      - image: macos
+
+  build_script:
+    - "python -m pip install --upgrade pip"
+    - "python -m pip install --upgrade setuptools wheel virtualenv"
+    - "python -m virtualenv venv"
+    - "source ./venv/bin/activate"
+    - "python -c \"import sys; print(sys.executable)\""
+    # checkout submodules
+    - "git submodule update --init --recursive"
+    # build wheel
+    - "cd %APPVEYOR_BUILD_FOLDER%"
+    - "python setup.py build_ext --inplace"
+    - "pip wheel -v -w wheelhouse --no-deps ."
 
 install:
   # note: VS 2010 has stdint.h bundled so simply copy it. Cython should not
@@ -59,8 +102,8 @@ install:
   #       but this works differently for C++ (maybe there is some other issue
   #       with environment setup).
   # try to do a dirty workaround for Cython with C++ for py27
-  - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
-  
+  - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h" && exit 0
+
   # Prepend Python to the PATH of this build
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
