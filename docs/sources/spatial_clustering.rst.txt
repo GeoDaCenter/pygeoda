@@ -32,7 +32,7 @@ the selected variables:
     >>> data
 
 
-6.1 SKATER
+7.1 SKATER
 ----------
 
 The Spatial C(K)luster Analysis by Tree Edge Removal(SKATER)
@@ -79,7 +79,7 @@ of between to total sum of squares:
  
 
 
-6.2 REDCAP
+7.2 REDCAP
 ----------
 
 REDCAP (Regionalization with dynamically constrained agglomerative
@@ -111,7 +111,7 @@ as above using REDCAP with Full-order and Complete-linkage method:
     The ratio of between to total sum of square: 0.1905641377254551
 
 
-6.3 Max-p
+7.3 Max-p
 ---------
 
 The so-called max-p regions model (outlined in Duque, Anselin, and Rey 2012)

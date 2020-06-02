@@ -5,7 +5,9 @@
 3 Load Spatial Data
 ===================
 
-The data formats that pygeoda v0.0.4 can load directly ESRI Shapefile only. For other formats, please load with geopandas,and then call geopandas_to_geoda for pygeoda processing.
+The data formats that pygeoda v0.0.4 can load directly ESRI Shapefile only. 
+For other formats, please load with geopandas,and then call geopandas_to_geoda 
+for pygeoda processing. For details, please refer to ESDA with pygeoda and geopands.
 
 .. note::
     In this tutorial, we only tested loading ESRI shapefiles
@@ -14,7 +16,9 @@ The data formats that pygeoda v0.0.4 can load directly ESRI Shapefile only. For 
     experience any issues when loading spatial data.
 
 For example, to load the ESRI Shapefile **Guerry.shp**
-download from: https://geodacenter.github.io/data-and-lab/Guerry/
+download from: https://geodacenter.github.io/data-and-lab/Guerry/. 
+Only ESRI ShapeFile is supported. If you need to read files of other formats, 
+please use geopandas. For details, please refer to ESDA with pygeoda and geopands.
 
 ::
 

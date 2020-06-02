@@ -2,7 +2,7 @@
 
 .. currentmodule:: pygeoda
 
-8 Map Classification
+4 Map Classification
 ================================
 
 pygeoda 0.0.4 provids following methods for univariate
@@ -20,7 +20,7 @@ For more information about the map classification, please read the lab note that
 http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html. 
 
 
-8.1 Hinge Box Breaks
+4.1 Hinge Box Breaks
 ---------------
 
 Hinge15 breaks calculate a list of breakpoints, including the top, bottom, median, 
@@ -30,10 +30,15 @@ parameter:
 ::
 
     >>> breaks15 = pygeoda.hinge15_breaks(crm_prp)
+    >>> print(breaks15)
+    (1190.0, 5990.0, 7624.0, 9190.0, 13990.0)
+
     >>> breaks30 = pygeoda.hinge30_breaks(crm_prp)
+    >>> print(breaks30)
+    (-3610.0, 5990.0, 7624.0, 9190.0, 18790.0)
 
 
-8.2 Natural Breaks
+4.2 Natural Breaks
 ---------------
 
 Natural breaks Calculate of a breakpoint list based on the fracture principle of 
@@ -41,9 +46,12 @@ maximum similarity within a group. For example, we can call function `natural_br
 with the data “crm_prp” and the number of classification “k” as input parameters:
 ::
 
-    >>> breaks = pygeoda.natural_breaks(k, crm_prp)
+    >>> breaks = pygeoda.natural_breaks(5, crm_prp)
+    >>> print(breaks)
+    (5521.0, 7204.0, 10237.0, 15890.0)
 
-8.3 Quantile Breaks
+
+4.3 Quantile Breaks
 ---------------
 
 The quantile breaks is based on sorted values for a variable that are then grouped 
@@ -53,9 +61,12 @@ Here the number of quantiles is variable. For example, we can call function
 parameter:
 ::
 
-    >>> breaks = pygeoda.quantile_breaks(k, crm_prp)
+    >>> breaks = pygeoda.quantile_breaks(5, crm_prp)
+    >>> print(breaks)
+    (5439.0, 6886.0, 8205.0, 9584.5)
 
-8.4 Percentile Breaks
+
+4.4 Percentile Breaks
 ---------------
 
 The percentile breaks divides the data to  six ranges, the lowest 1%, 1-10%, 10-50%, 
@@ -65,8 +76,11 @@ input parameter:
 ::
 
     >>> breaks = pygeoda.percentile_breaks(crm_prp)
+    >>> print(breaks)
+    (1906.3, 4529.0, 7624.0, 10954.0, 19467.8)
 
-8.5 Standard Deviation Breaks
+
+4.5 Standard Deviation Breaks
 ---------------
 
 Standard deviation breaks calculate the number of standard deviational units of  the 
@@ -75,3 +89,6 @@ call function `stddev_breaks()` with the data “crm_prp” as input parameter:
 ::
 
     >>> breaks = pygeoda.stddev_breaks(crm_prp)
+    >>> print(breaks)
+    (1784.1106064421238, 4832.725891456355, 7881.341176470588, 10929.95646148482, 13978.571746499052)
+

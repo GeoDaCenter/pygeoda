@@ -25,7 +25,7 @@ note that Dr. Luc Anselin wrote:
 http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html. 
 
 
-5.1 Local Moran
+6.1 Local Moran
 ---------------
 The Local Moran statistic is a method to identify local clusters
 and local spatial outliers. For example, we can call  function
@@ -36,7 +36,7 @@ and local spatial outliers. For example, we can call  function
     >>> lisa = pygeoda.local_moran(queen_w, crm_prp)
 
 
-5.2 LISA object
+6.2 LISA object
 ---------------
 
 The `local_moran()` function will return a `lisa` object,
@@ -141,7 +141,7 @@ threads to run the computation:
     >>> print(lisa.GetPValues()[:20])
     (0.4187, 0.1265, 0.0004, 0.4679, 0.4545, 0.0728, 0.2312, 0.3071, 0.3115, 0.3088, 0.2187, 0.4834, 0.2686, 0.0102, 0.2024, 0.1795, 0.1218, 0.0025, 0.459, 0.3588)
 
-5.3 Local Geary
+6.3 Local Geary
 ---------------
 
 Local Geary is a type of LISA that focuses on squared
@@ -171,7 +171,7 @@ To get the pseudo-p values of the local Geary computation:
     >>> print(pvals[:20])
     (0.398, 0.027, 0.025, 0.126, 0.017, 0.314, 0.61, 0.141, 0.284, 0.11, 0.559, 0.462, 0.211, 0.236, 0.249, 0.229, 0.069, 0.041, 0.205, 0.02)
 
-5.4 Local Getis-Ord Statistics
+6.4 Local Getis-Ord Statistics
 ------------------------------
 
 There are two types of local Getis-Ord statistics: one is
@@ -215,7 +215,7 @@ Queen weights and the data “crm_prp” as input parameters:
     localgstar_crmprp = pygeoda.local_gstar(queen_w, crm_prp)
 
 
-5.5 Local Join Count
+6.5 Local Join Count
 --------------------
 
 Local Join Count is a method to identify local clusters
@@ -257,7 +257,7 @@ To get the number of neighbors of the local Join Count computation:
     (2, 3, 4, 4, 8, 2, 4, 6, 8, 4, 5, 6, 4, 6, 6, 8, 3, 4, 3, 10)
 
 
-5.6 Quantile LISA
+6.6 Quantile LISA
 -----------------
 
 The quantile local spatial autocorrelation converte the continuous variable 
@@ -292,7 +292,7 @@ To get the number of neighbors of the quantile lisa computation:
         (4, 6, 6, 4, 3, 7, 3, 3, 5, 5, 7, 3, 3, 6, 5, 5, 6, 6, 7, 3)
 
 
-5.7 Batch Local Moran
+6.7 Batch Local Moran
 ---------------------
 
 Batch Local Moran is a method to apply local moran statistics on 
