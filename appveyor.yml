@@ -1,4 +1,5 @@
 image:
+  - Visual Studio 2015
   - Visual Studio 2017
 
 environment:
@@ -52,6 +53,28 @@ environment:
 
 matrix:
   fast_finish: true
+  except:
+    - image: Visual Studio 2017
+      PYTHON: "C:\\Python27" 
+    - image: Visual Studio 2017
+      PYTHON: "C:\\Python27-x64" 
+
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python35"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python35-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python36"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python36-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python37"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python37-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python38"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python38-x64"
 
 install:
   # note: VS 2010 has stdint.h bundled so simply copy it. Cython should not
