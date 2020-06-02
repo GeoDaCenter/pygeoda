@@ -59,20 +59,33 @@ for:
   matrix:
     only:
       - image: Visual Studio 2015
-
     PYTHON: "C:\\Python27" 
+    only:
+      - image: Visual Studio 2015
     PYTHON: "C:\\Python27-x64" 
-
     only:
       - image: Visual Studio 2017
-
     PYTHON: "C:\\Python35"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python35-x64"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python36"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python36-x64"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python37"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python37-x64"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python38"
+    only:
+      - image: Visual Studio 2017
     PYTHON: "C:\\Python38-x64"
 
 install:
