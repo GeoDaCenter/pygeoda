@@ -18,13 +18,6 @@ __all__ = ['geopandas_to_geoda','geoda_to_geopandas']
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
-def print_crs(gdf_crs):
-    prj_str = ''
-    for k, v in gdf_crs.items():
-        param = '+' + str(k) + '=' + str(v) + ' '
-        prj_str += param
-    return prj_str
-
 def geopandas_to_geoda(gdf):
     """Create a geoda instance from geopandas object.
 
@@ -66,9 +59,9 @@ def geopandas_to_geoda(gdf):
     if gdf.geom_type[0].endswith("Polygon"):
         map_type = "map_polygons"
     elif gdf.geom_type[0].endswith("Point"):
-        map_type = "map_point" 
+        map_type = "map_points" 
     elif gdf.geom_type[0].endswith("Line"):
-        map_type = "map_line" 
+        map_type = "map_lines" 
     else:
         raise "Error: pygeoda only supports geometry type of Polygon and Point."
 
@@ -76,8 +69,7 @@ def geopandas_to_geoda(gdf):
     layer_name = id_generator()
 
     # projection will be NOT handled in libgeoda
-
-    gda = GeoDa(layer_name, map_type,  wkb_bytes, tuple(wkb_size), prj)
+    gda = GeoDa(layer_name, map_type,  wkb_bytes, tuple(wkb_size))
 
     return geoda(gda)
 

@@ -43906,27 +43906,28 @@ SWIGINTERN PyObject *GeoDaTable_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 SWIGINTERN PyObject *_wrap_new_GeoDa__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  GeoDaTable *arg1 = (GeoDaTable *) 0 ;
+  std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
-  std::string *arg3 = 0 ;
-  std::vector< unsigned char,std::allocator< unsigned char > > *arg4 = 0 ;
-  std::vector< int,std::allocator< int > > *arg5 = 0 ;
-  std::string *arg6 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  std::vector< unsigned char,std::allocator< unsigned char > > *arg3 = 0 ;
+  std::vector< int,std::allocator< int > > *arg4 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   int res3 = SWIG_OLDOBJ ;
   int res4 = SWIG_OLDOBJ ;
-  int res5 = SWIG_OLDOBJ ;
-  int res6 = SWIG_OLDOBJ ;
   GeoDa *result = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaTable, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GeoDa" "', argument " "1"" of type '" "GeoDaTable *""'"); 
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GeoDa" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  arg1 = reinterpret_cast< GeoDaTable * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
@@ -43939,67 +43940,43 @@ SWIGINTERN PyObject *_wrap_new_GeoDa__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_
     arg2 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    std::vector< unsigned char,std::allocator< unsigned char > > *ptr = (std::vector< unsigned char,std::allocator< unsigned char > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_GeoDa" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_GeoDa" "', argument " "3"" of type '" "std::vector< unsigned char,std::allocator< unsigned char > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "3"" of type '" "std::vector< unsigned char,std::allocator< unsigned char > > const &""'"); 
     }
     arg3 = ptr;
   }
   {
-    std::vector< unsigned char,std::allocator< unsigned char > > *ptr = (std::vector< unsigned char,std::allocator< unsigned char > > *)0;
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
     res4 = swig::asptr(swig_obj[3], &ptr);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_GeoDa" "', argument " "4"" of type '" "std::vector< unsigned char,std::allocator< unsigned char > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_GeoDa" "', argument " "4"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "4"" of type '" "std::vector< unsigned char,std::allocator< unsigned char > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "4"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg4 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
-    res5 = swig::asptr(swig_obj[4], &ptr);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_GeoDa" "', argument " "5"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "5"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
-    }
-    arg5 = ptr;
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    res6 = SWIG_AsPtr_std_string(swig_obj[5], &ptr);
-    if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_GeoDa" "', argument " "6"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "6"" of type '" "std::string const &""'"); 
-    }
-    arg6 = ptr;
-  }
-  {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (GeoDa *)new GeoDa(arg1,(std::string const &)*arg2,(std::string const &)*arg3,(std::vector< unsigned char,std::allocator< unsigned char > > const &)*arg4,(std::vector< int,std::allocator< int > > const &)*arg5,(std::string const &)*arg6);
+    result = (GeoDa *)new GeoDa((std::string const &)*arg1,(std::string const &)*arg2,(std::vector< unsigned char,std::allocator< unsigned char > > const &)*arg3,(std::vector< int,std::allocator< int > > const &)*arg4);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDa, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
-  if (SWIG_IsNewObj(res5)) delete arg5;
-  if (SWIG_IsNewObj(res6)) delete arg6;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
-  if (SWIG_IsNewObj(res5)) delete arg5;
-  if (SWIG_IsNewObj(res6)) delete arg6;
   return NULL;
 }
 
@@ -44009,21 +43986,16 @@ SWIGINTERN PyObject *_wrap_new_GeoDa__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
   int arg3 ;
-  GeoDaTable *arg4 = (GeoDaTable *) 0 ;
-  unsigned char *arg5 = (unsigned char *) 0 ;
-  std::vector< int,std::allocator< int > > *arg6 = 0 ;
-  std::string *arg7 = 0 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  std::vector< int,std::allocator< int > > *arg5 = 0 ;
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  int res6 = SWIG_OLDOBJ ;
-  int res7 = SWIG_OLDOBJ ;
+  int res5 = SWIG_OLDOBJ ;
   GeoDa *result = 0 ;
   
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
     res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
@@ -44051,56 +44023,38 @@ SWIGINTERN PyObject *_wrap_new_GeoDa__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_GeoDa" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_GeoDaTable, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_GeoDa" "', argument " "4"" of type '" "GeoDaTable *""'"); 
-  }
-  arg4 = reinterpret_cast< GeoDaTable * >(argp4);
   {
-    if (!PyByteArray_Check(swig_obj[4])) {
+    if (!PyByteArray_Check(swig_obj[3])) {
       SWIG_exception_fail(SWIG_TypeError, "in method '" "new_GeoDa" "', argument "
-        "5"" of type '" "unsigned char *""'");
+        "4"" of type '" "unsigned char *""'");
     }
-    arg5 = (unsigned char*) PyByteArray_AsString(swig_obj[4]);
+    arg4 = (unsigned char*) PyByteArray_AsString(swig_obj[3]);
   }
   {
     std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
-    res6 = swig::asptr(swig_obj[5], &ptr);
-    if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_GeoDa" "', argument " "6"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    res5 = swig::asptr(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_GeoDa" "', argument " "5"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "6"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "5"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
-    arg6 = ptr;
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    res7 = SWIG_AsPtr_std_string(swig_obj[6], &ptr);
-    if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "new_GeoDa" "', argument " "7"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeoDa" "', argument " "7"" of type '" "std::string const &""'"); 
-    }
-    arg7 = ptr;
+    arg5 = ptr;
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (GeoDa *)new GeoDa((std::string const &)*arg1,(std::string const &)*arg2,arg3,arg4,arg5,(std::vector< int,std::allocator< int > > const &)*arg6,(std::string const &)*arg7);
+    result = (GeoDa *)new GeoDa((std::string const &)*arg1,(std::string const &)*arg2,arg3,arg4,(std::vector< int,std::allocator< int > > const &)*arg5);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDa, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res5)) delete arg5;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res5)) delete arg5;
   return NULL;
 }
 
@@ -44174,11 +44128,11 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GeoDa(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[8] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GeoDa", 0, 7, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GeoDa", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
     int _v;
@@ -44200,36 +44154,27 @@ SWIGINTERN PyObject *_wrap_new_GeoDa(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 6) {
+  if (argc == 4) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
       _v = SWIG_CheckState(res);
       if (_v) {
-        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        int res = swig::asptr(argv[2], (std::vector< unsigned char,std::allocator< unsigned char > >**)(0));
         _v = SWIG_CheckState(res);
         if (_v) {
-          int res = swig::asptr(argv[3], (std::vector< unsigned char,std::allocator< unsigned char > >**)(0));
+          int res = swig::asptr(argv[3], (std::vector< int,std::allocator< int > >**)(0));
           _v = SWIG_CheckState(res);
           if (_v) {
-            int res = swig::asptr(argv[4], (std::vector< int,std::allocator< int > >**)(0));
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              int res = SWIG_AsPtr_std_string(argv[5], (std::string**)(0));
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                return _wrap_new_GeoDa__SWIG_0(self, argc, argv);
-              }
-            }
+            return _wrap_new_GeoDa__SWIG_0(self, argc, argv);
           }
         }
       }
     }
   }
-  if (argc == 7) {
+  if (argc == 5) {
     int _v;
     int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
@@ -44243,22 +44188,13 @@ SWIGINTERN PyObject *_wrap_new_GeoDa(PyObject *self, PyObject *args) {
         }
         if (_v) {
           void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_GeoDaTable, 0);
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_unsigned_char, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_unsigned_char, 0);
+            int res = swig::asptr(argv[4], (std::vector< int,std::allocator< int > >**)(0));
             _v = SWIG_CheckState(res);
             if (_v) {
-              int res = swig::asptr(argv[5], (std::vector< int,std::allocator< int > >**)(0));
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                int res = SWIG_AsPtr_std_string(argv[6], (std::string**)(0));
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  return _wrap_new_GeoDa__SWIG_1(self, argc, argv);
-                }
-              }
+              return _wrap_new_GeoDa__SWIG_1(self, argc, argv);
             }
           }
         }
@@ -44269,8 +44205,8 @@ SWIGINTERN PyObject *_wrap_new_GeoDa(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GeoDa'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    GeoDa::GeoDa(GeoDaTable *,std::string const &,std::string const &,std::vector< unsigned char,std::allocator< unsigned char > > const &,std::vector< int,std::allocator< int > > const &,std::string const &)\n"
-    "    GeoDa::GeoDa(std::string const &,std::string const &,int,GeoDaTable *,unsigned char *,std::vector< int,std::allocator< int > > const &,std::string const &)\n"
+    "    GeoDa::GeoDa(std::string const &,std::string const &,std::vector< unsigned char,std::allocator< unsigned char > > const &,std::vector< int,std::allocator< int > > const &)\n"
+    "    GeoDa::GeoDa(std::string const &,std::string const &,int,unsigned char *,std::vector< int,std::allocator< int > > const &)\n"
     "    GeoDa::GeoDa(char const *,char const *)\n"
     "    GeoDa::GeoDa(char const *)\n");
   return 0;

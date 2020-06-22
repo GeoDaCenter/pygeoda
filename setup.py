@@ -17,8 +17,7 @@ if sys.platform == "win32":
 elif sys.platform == "darwin":
     OS_NAME = 'osx'
     os.environ["ARCHFLAGS"] = "-arch x86_64"
-    mac_ver = platform.mac_ver()[0]
-    os.environ['MACOSX_DEPLOYMENT_TARGET'] = mac_ver
+    os.environ['MACOSX_DEPLOYMENT_TARGET'] = platform.mac_ver()[0]
 
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
