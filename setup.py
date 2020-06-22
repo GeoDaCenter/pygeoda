@@ -94,7 +94,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 
 else:
     EXTRA_LINK_ARGS = [
-        '-pthread'
+        '-pthread' # in *nix, using pthread instead of boost::thread
     ]
 
 ###########################################################

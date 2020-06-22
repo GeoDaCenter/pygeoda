@@ -28,6 +28,9 @@ def print_crs(gdf_crs):
 def geopandas_to_geoda(gdf):
     """Create a geoda instance from geopandas object.
 
+    Note: the table data are NOT copied to pygeoda for performance issue. It is
+    recommended to use table data in dataframe directly.
+
     Args:
         gdf (GeoDataFrame): An instance of geopands class.
     
@@ -39,22 +42,6 @@ def geopandas_to_geoda(gdf):
     n_rows = len(gdf)
     n_cols = gdf.columns.size
     col_nms = gdf.columns
-
-    # Table
-    gda_tbl = GeoDaTable()
-
-    for i in range(n_cols):
-        col_nm = str(col_nms[i])
-        if col_nm == 'geometry':
-            continue
-        col_type = gdf[col_nm].dtype
-        vals = gdf[col_nm].to_list()
-        if col_type == 'float64' or col_type == 'float':
-            gda_tbl.AddRealColumn(col_nm, vals)
-        elif col_type == 'int64' or col_type == 'int':
-            gda_tbl.AddIntColumn(col_nm, vals)
-        #else:
-        #    gda_tbl.AddStringColumn(col_nm, vals)
 
     # Geoms
     wkb_size = []
@@ -76,17 +63,21 @@ def geopandas_to_geoda(gdf):
         
 
     # map type
-    gdf.geom_type
-    map_type = "map_polygons"
+    if gdf.geom_type[0].endswith("Polygon"):
+        map_type = "map_polygons"
+    elif gdf.geom_type[0].endswith("Point"):
+        map_type = "map_point" 
+    elif gdf.geom_type[0].endswith("Line"):
+        map_type = "map_line" 
+    else:
+        raise "Error: pygeoda only supports geometry type of Polygon and Point."
 
-    # random file name
+    # random layer name
     layer_name = id_generator()
 
-    # projection
-    #prj = str(print_crs(gdf.crs))
-    prj = ""
+    # projection will be NOT handled in libgeoda
 
-    gda = GeoDa(gda_tbl, layer_name, map_type,  wkb_bytes, tuple(wkb_size), prj)
+    gda = GeoDa(layer_name, map_type,  wkb_bytes, tuple(wkb_size), prj)
 
     return geoda(gda)
 
