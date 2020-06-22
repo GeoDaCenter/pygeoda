@@ -1,7 +1,6 @@
 image:
   - Visual Studio 2015
   - Visual Studio 2017
-  - macos
 
 environment:
   global:
@@ -52,6 +51,7 @@ environment:
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "64"
 
+
 matrix:
   #fast_finish: true
 
@@ -76,26 +76,7 @@ matrix:
       PYTHON: "C:\\Python27"
     - image: Visual Studio 2017
       PYTHON: "C:\\Python27-x64"
-
-for:
--
-  matrix:
-    only:
-      - image: macos
-
-  build_script:
-    - "python -m pip install --upgrade pip"
-    - "python -m pip install --upgrade setuptools wheel virtualenv"
-    - "python -m virtualenv venv"
-    - "source ./venv/bin/activate"
-    - "python -c \"import sys; print(sys.executable)\""
-    # checkout submodules
-    - "git submodule update --init --recursive"
-    # build wheel
-    - "cd %APPVEYOR_BUILD_FOLDER%"
-    - "python setup.py build_ext --inplace"
-    - "pip wheel -v -w wheelhouse --no-deps ."
-
+    
 install:
   # note: VS 2010 has stdint.h bundled so simply copy it. Cython should not
   #       depend on it for py27 (works fine when compiling using C code)
@@ -103,6 +84,14 @@ install:
   #       with environment setup).
   # try to do a dirty workaround for Cython with C++ for py27
   - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h" && exit 0
+  - ps: >-
+    if($env:APPVEYOR_REPO_TAG -eq 'true') {
+      Write-Output ("Deploying " + $env:APPVEYOR_REPO_TAG_NAME + " to PyPI...")
+      pip install --upgrade twine
+      twine upload wheelhouse/*.whl
+    } else {
+      Write-Output "Not deploying as this is not a tagged commit"
+    }
 
   # Prepend Python to the PATH of this build
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
