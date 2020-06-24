@@ -5,16 +5,11 @@
 1. Introduction to pygeoda 0.0.4
 ================================
 
-pygeoda is a python library that wraps all core functions of spatial data
-analysis in GeoDa and libgeoda. Unlike the desktop software GeoDa,
-libgeoda is a non-UI and feature focused C++ library that is designed
-for programmers to do spatial data analysis using their favoriate
-programming languages (R, Python, Java etc.). It also aims to be easily
-integratd with other libraries, softwares or systems on different
-platforms.
-
-This document is used to introduce the pygeoda v0.0.4 library, includes all
-the functions that are currently provided in version 0.0.4.
+pygeoda is a python library for spatial data analysis based on libgeoda, 
+which is a non-UI and API-based C++ library designed for programmers to
+do spatial data analysis using their favoriate programming languages 
+(R, Python, Java etc.). It also aims to be easily integratd with other 
+libraries, softwares or systems on different platforms.
 
    
 1.1  Live Tutorials
