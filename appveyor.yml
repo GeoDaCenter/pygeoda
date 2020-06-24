@@ -83,15 +83,10 @@ install:
   #       but this works differently for C++ (maybe there is some other issue
   #       with environment setup).
   # try to do a dirty workaround for Cython with C++ for py27
-  - cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h" && exit 0
   - ps: >-
-    if($env:APPVEYOR_REPO_TAG -eq 'true') {
-      Write-Output ("Deploying " + $env:APPVEYOR_REPO_TAG_NAME + " to PyPI...")
-      pip install --upgrade twine
-      twine upload wheelhouse/*.whl
-    } else {
-      Write-Output "Not deploying as this is not a tagged commit"
-    }
+    if(Test-Path "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h") {
+      cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
+    } 
 
   # Prepend Python to the PATH of this build
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
