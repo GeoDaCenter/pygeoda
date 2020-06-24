@@ -84,9 +84,9 @@ install:
   #       with environment setup).
   # try to do a dirty workaround for Cython with C++ for py27
   - ps: >-
-    if(Test-Path "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h") {
-      cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
-    } 
+      if(Test-Path "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h") {
+        cp "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdint.h" "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h"
+      } 
 
   # Prepend Python to the PATH of this build
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
