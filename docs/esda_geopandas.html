@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script type="text/javascript" src="static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pygeoda API reference" href="api.html" />
@@ -257,7 +257,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="sources/esda_geopandas.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/esda_geopandas.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -314,7 +314,7 @@ is supported by GDAL literally.</p>
 <p>Matplotlib is a Python 2D plotting library for making plots and maps.
 geopandas provides functions to directly call interfaces of Matplotlib
 to visualize maps, e.g. geodataframe.plot(column=’’).</p>
-<p>matplotlib can be installed using conda or pip:</p>
+<p>matplotlib and Descartes can be installed using conda or pip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 </pre></div>
 </div>
@@ -368,7 +368,7 @@ a map on a plot (matplotlib):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry1.png" src="./images/guerry1.png" />
+<a class="reference internal image-reference" href="./images/guerry1.png"><img alt="./images/guerry1.png" src="./images/guerry1.png" style="width: 300px; height: 300px;" /></a>
 </div>
 <div class="section" id="create-pygeoda-object-from-geodataframe">
 <h3>3.2 Create pygeoda object from geodataframe<a class="headerlink" href="#create-pygeoda-object-from-geodataframe" title="Permalink to this headline">¶</a></h3>
@@ -526,8 +526,7 @@ GeoDa software when you save LISA results to a table.</p>
 <p><strong>SKATER Map</strong></p>
 <p>To create a map of SKATER clustering results, we first run skater clustering
 on the data of 6 selected variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Crm_prs&quot;</span><span class="p">,</span> <span class="s2">&quot;Crm_prp&quot;</span><span class="p">,</span> <span class="s2">&quot;Litercy&quot;</span><span class="p">,</span> <span class="s2">&quot;Donatns&quot;</span><span class="p">,</span> <span class="s2">&quot;Infants&quot;</span><span class="p">,</span> <span class="s2">&quot;Suicids&quot;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">select_vars</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">Crm_prs</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Crm_prp</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Litercy</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Donatns</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Infants</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Suicids</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">skater_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">skater</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">skater_cluster</span><span class="p">)</span>
 <span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>

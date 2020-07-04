@@ -80,3 +80,8 @@ class TestWeights(unittest.TestCase):
         self.assertFalse(w.IsSymmetric())
         self.assertEqual(w.GetSparsity(), 0)
         self.assertEqual(w.GetDensity(), 1.1939614751148575)
+    
+    def test_SaveToFile(self):
+        w = pygeoda.weights.queen(self.nat)
+        w.SaveToFile('D:/ttt/','natregimes.shp','POLY_ID',self.nat.GetIntegerCol("POLY_ID"))
+        
