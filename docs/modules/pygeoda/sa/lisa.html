@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pygeoda.sa.lisa &mdash; pygeoda 0.0.4 rc documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../static/jquery.js"></script>
+        <script type="text/javascript" src="../../../static/underscore.js"></script>
+        <script type="text/javascript" src="../../../static/doctools.js"></script>
+        <script type="text/javascript" src="../../../static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> pygeoda
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../intro.html#live-tutorials">1.1  Live Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../intro.html#open-resources">1.2 Open Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">2. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#mac">2.1 Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#windows">2.2 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#import-pygeoda">2.4 Import pygeoda</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../load_data.html">3. Load Spatial Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../load_data.html#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../load_data.html#access-table-data">3.1 Access Table Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../map_classification.html">4. Map Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../map_classification.html#hinge-box-breaks">4.1 Hinge Box Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../map_classification.html#natural-breaks">4.2 Natural Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../map_classification.html#quantile-breaks">4.3 Quantile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../map_classification.html#percentile-breaks">4.4 Percentile Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../map_classification.html#standard-deviation-breaks">4.5 Standard Deviation Breaks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spatial_weights.html">5. Spatial Weights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#queen-contiguity-weights">5.1 Queen Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#attributes-of-weight-object">5.2 Attributes of <cite>Weight</cite> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#rook-contiguity-weights">5.3 Rook Contiguity Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#distance-based-weights">5.4 Distance Based Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#k-nearest-neighbor-weights">5.5 K-Nearest Neighbor Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_weights.html#kernel-weights">5.6 Kernel Weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_weights.html#kernel-weights-with-fixed-bandwidth">5.6.1 Kernel Weights with fixed bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_weights.html#kernel-weights-with-adaptive-bandwidth">5.6.2 Kernel Weights with adaptive bandwidth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spatial_auto.html">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-moran">6.1 Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#lisa-object">6.2 LISA object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-geary">6.3 Local Geary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spatial_clustering.html">7. Spatial Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#skater">7.1 SKATER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#redcap">7.2 REDCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#max-p">7.3 Max-p</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#geopandas">1 GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#matplotlib">2 Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#geopandas-pygeoda">3 geoPandas + pygeoda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#load-geospatial-data-in-geopandas">3.1 Load geospatial data in GeoPandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#create-pygeoda-object-from-geodataframe">3.2 Create pygeoda object from geodataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#id1">3.3 ESDA with pygeoda and geopandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-weights">pygeoda.weights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.Weight.html">pygeoda.weights.Weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.quantile_lisa.html">pygeoda.quantile_lisa</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.quantile_breaks.html">pygeoda.quantile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mds.html">pygeoda.mds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pygeoda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pygeoda.sa.lisa</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pygeoda.sa.lisa</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">LISA</span><span class="p">,</span> <span class="n">BatchLISA</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;, Yeqing Han &lt;yeqinghan_geo@163.com&gt;&quot;</span>
+
+<div class="viewcode-block" id="lisa"><a class="viewcode-back" href="../../../generated/pygeoda.sa.lisa.html#pygeoda.lisa">[docs]</a><span class="k">class</span> <span class="nc">lisa</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A LISA class wrappers the results of LISA computation</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        gda_lisa An object of GeoDaLISA</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="lisa.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.sa.lisa.html#pygeoda.lisa.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lisa_obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor of lisa object</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lisa_obj (Object): An object/pointer of LISA class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span> <span class="o">=</span> <span class="n">lisa_obj</span></div>
+
+    <span class="k">def</span> <span class="nf">Run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call to run LISA computation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">SetPermutations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_perm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the number of permutations for the LISA computation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_perm (int): the number of permutations e.g. 99, 999, 9999, 999999</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num_perm</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">num_perm</span> <span class="o">&gt;</span> <span class="mi">999999</span><span class="p">:</span>
+            <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The number of permutations is a positive integer number, but has to be less than 999999.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">SetNumPermutations</span><span class="p">(</span><span class="n">num_perm</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">SetThreads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_threads</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the number of CPU threads for the LISA computation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_threads (int): the number of CPU threads</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num_threads</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The number of CPU threads has to be a positive integer number.&quot;</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">SetNumThreads</span><span class="p">(</span><span class="n">num_threads</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">GetLISAValues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local spatial autocorrelation values returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local spatial autocorrelation computation </span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetPValues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local pseudo-p values of significance returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local pseudo-p values of significance returned from LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLocalSignificanceValues</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetClusterIndicators</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local cluster indicators returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local cluster indicators returned from LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetNumNeighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the number of neighbors of every observations in LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of int: a list of integer values of the number of neighbors of every observations in LISA computation.</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetNumNeighbors</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the cluster labels of LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster labels of LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">GetColors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the cluster colors of LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster colors of LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetFDR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Get the False Discovery Rate (FDR) in LISA.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            p: The current p-value of significance breakpoint</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :A p-value (breakpoint) computed as the False Discovery Rate value</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetFDR</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="batchlisa"><a class="viewcode-back" href="../../../generated/pygeoda.batchlisa.html#pygeoda.batchlisa">[docs]</a><span class="k">class</span> <span class="nc">batchlisa</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A BatchLISA class wrappers the results of LISA computations</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        gda_lisa An object of BatchLISA</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="batchlisa.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.batchlisa.html#pygeoda.batchlisa.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lisa_obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor of lisa object</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lisa_obj (Object): An object/pointer of LISA class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span> <span class="o">=</span> <span class="n">lisa_obj</span></div>
+
+    <span class="k">def</span> <span class="nf">Run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call to run LISA computation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">SetPermutations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_perm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the number of permutations for the LISA computation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_perm (int): the number of permutations e.g. 99, 999, 9999, 999999</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num_perm</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">num_perm</span> <span class="o">&gt;</span> <span class="mi">999999</span><span class="p">:</span>
+            <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The number of permutations is a positive integer number, but has to be less than 999999.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">SetNumPermutations</span><span class="p">(</span><span class="n">num_perm</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">SetThreads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_threads</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the number of CPU threads for the LISA computation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_threads (int): the number of CPU threads</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num_threads</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;The number of CPU threads has to be a positive integer number.&quot;</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">SetNumThreads</span><span class="p">(</span><span class="n">num_threads</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">GetLISAValues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local spatial autocorrelation values returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local spatial autocorrelation computation </span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">GetPValues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local pseudo-p values of significance returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local pseudo-p values of significance returned from LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLocalSignificanceValues</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">GetClusterIndicators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the local cluster indicators returned from LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of float: a list of float values of local cluster indicators returned from LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">GetNumNeighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the number of neighbors of every observations in LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of int: a list of integer values of the number of neighbors of every observations in LISA computation.</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetNumNeighbors</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the cluster labels of LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster labels of LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">GetColors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the cluster colors of LISA computation.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster colors of LISA computation</span>
+<span class="sd">                e.g. local moran, local geary etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">GetFDR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Get the False Discovery Rate (FDR) in LISA.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            p: The current p-value of significance breakpoint</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :A p-value (breakpoint) computed as the False Discovery Rate value</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_lisa</span><span class="o">.</span><span class="n">GetFDR</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Xun Li; Luc Anselin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script type="text/javascript" src="static/jquery.js"></script>
+        <script type="text/javascript" src="static/underscore.js"></script>
+        <script type="text/javascript" src="static/doctools.js"></script>
+        <script type="text/javascript" src="static/language_data.js"></script>
     
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4 Map Classification" href="map_classification.html" />
@@ -257,7 +257,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/load_data.rst.txt" rel="nofollow"> View page source</a>
+            <a href="sources/load_data.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -272,9 +272,9 @@
             
   <div class="section" id="load-spatial-data">
 <span id="load-data-ref"></span><h1>3 Load Spatial Data<a class="headerlink" href="#load-spatial-data" title="Permalink to this headline">¶</a></h1>
-<p>The data formats that pygeoda v0.0.4 can load directly ESRI Shapefile only.
-For other formats, please load with geopandas,and then call geopandas_to_geoda
-for pygeoda processing. For details, please refer to ESDA with pygeoda and geopands.</p>
+<p>Only ESRI ShapeFile is supported in pygeoda v0.0.4. If you need to read files of other formats,
+please use <a class="reference external" href="https://geopandas.org/">geopandas</a>, and then call <cite>geopandas_to_geoda()</cite>
+to continue pygeoda workflow. For details, please see examples in <span class="xref std std-ref">ESDA with pygeoda and geopands</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this tutorial, we only tested loading ESRI shapefiles
@@ -283,9 +283,7 @@ repo <a class="reference external" href="https://github.com/lixun910/pygeoda/iss
 experience any issues when loading spatial data.</p>
 </div>
 <p>For example, to load the ESRI Shapefile <strong>Guerry.shp</strong>
-download from: <a class="reference external" href="https://geodacenter.github.io/data-and-lab/Guerry/">https://geodacenter.github.io/data-and-lab/Guerry/</a>.
-Only ESRI ShapeFile is supported. If you need to read files of other formats,
-please use geopandas. For details, please refer to ESDA with pygeoda and geopands.</p>
+download from: <a class="reference external" href="https://geodacenter.github.io/data-and-lab/Guerry/">https://geodacenter.github.io/data-and-lab/Guerry/</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pygeoda</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;./data/Guerry.shp&quot;</span><span class="p">)</span>
 </pre></div>

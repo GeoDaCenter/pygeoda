@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script type="text/javascript" src="../static/jquery.js"></script>
+        <script type="text/javascript" src="../static/underscore.js"></script>
+        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script type="text/javascript" src="../static/language_data.js"></script>
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.weights.Weight" href="pygeoda.weights.Weight.html" />
@@ -259,7 +259,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/pygeoda.geoda.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/generated/pygeoda.geoda.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -274,11 +274,11 @@
             
   <div class="section" id="pygeoda-geoda">
 <h1>pygeoda.geoda<a class="headerlink" href="#pygeoda-geoda" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
+<dl class="class">
 <dt id="pygeoda.geoda">
-<em class="property">class </em><code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">geoda</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gda_obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/gda.html#geoda"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.geoda" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">geoda</code><span class="sig-paren">(</span><em class="sig-param">gda_obj</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/gda.html#geoda"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.geoda" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper class of GeoDa class from libgeoda</p>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="pygeoda.geoda.num_obs">
 <code class="sig-name descname">num_obs</code><a class="headerlink" href="#pygeoda.geoda.num_obs" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of observations</p>
@@ -289,7 +289,7 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="pygeoda.geoda.num_cols">
 <code class="sig-name descname">num_cols</code><a class="headerlink" href="#pygeoda.geoda.num_cols" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of columns</p>
@@ -300,7 +300,7 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="pygeoda.geoda.field_names">
 <code class="sig-name descname">field_names</code><a class="headerlink" href="#pygeoda.geoda.field_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of field names</p>
@@ -311,7 +311,7 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="pygeoda.geoda.field_types">
 <code class="sig-name descname">field_types</code><a class="headerlink" href="#pygeoda.geoda.field_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of field types {integer, real, string}</p>
@@ -322,7 +322,7 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="pygeoda.geoda.map_type">
 <code class="sig-name descname">map_type</code><a class="headerlink" href="#pygeoda.geoda.map_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>The map type (Point, Polygon (or LineSegment)</p>
@@ -333,9 +333,9 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="pygeoda.geoda.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gda_obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/gda.html#geoda.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.geoda.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">gda_obj</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/gda.html#geoda.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.geoda.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of geoda object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
