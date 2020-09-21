@@ -74,10 +74,15 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     ]
 else:
     EXTRA_COMPILE_ARGS = [
-        '-stdlib=libc++',
+        '-w',
         '-fvisibility=hidden',
         '-D__USE_PTHREAD__'
     ]
+    if OS_NAME == 'osx':
+        EXTRA_COMPILE_ARGS += [
+            '-stdlib=libc++',
+        ]
+
 
 
 ###########################################################
