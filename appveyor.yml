@@ -116,8 +116,6 @@ build_script:
   - "pip wheel -v -w wheelhouse --no-deps ."
 
 test_script:
-  # install geopandas
-  - "pip install geopandas"
   # install from wheel
   - "pip install --no-index --find-links wheelhouse pygeoda"
   # run tests against installed package
