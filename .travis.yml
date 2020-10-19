@@ -1,0 +1,31 @@
+language: python
+
+jobs:
+  include:
+    # perform a linux build
+    - services: docker
+    # and a mac build
+    - os: osx
+      # PyPy 7.3.2 needs macOS >= 10.14
+      osx_image: xcode10.2
+      language: shell
+
+env:
+  global:
+    - TWINE_USERNAME=lixun910
+    # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
+
+install:
+  - python3 -m pip install twine cibuildwheel==1.6.3
+
+script:
+  # build the wheels, put them into './wheelhouse'
+  - python3 -m cibuildwheel --output-dir wheelhouse
+
+after_success:
+  # if the release was tagged, upload them to PyPI
+  - |
+    if [[ $TRAVIS_TAG ]]; then
+      python3 -m pip install twine
+      python3 -m twine upload wheelhouse/*.whl
+    fi

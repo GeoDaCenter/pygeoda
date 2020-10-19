@@ -7,7 +7,7 @@ environment:
     BUILD_COMMIT: master
     TWINE_USERNAME: "lixun910"
     TWINE_PASSWORD:
-      secure: l6ju53HT02X72js/Y0UzKuHNLsNsMQH+5WSPUnFrw+GlTHJ/cAGdQAjbBngMCjin7XHTZJ2c0sA3eJ5o0Sda0zdUMoqgCwhxUYaSwnXCz4Rc5P7F7asSiDhoYieRCjPZWYPoHmJhMY86vc8PfoqJ+Nx9Icq6xBbI23tyWpx7+UK/9qdYYY/cfMH+zDypjVDM6QWf5Ul20ZV75vGYvrVWKqWEmfcvyrAQFoXIIWpzjxPG1Ym2+p/z6SBxP3Jt6Ley2Aubz2/mYayyJ7BBsvp94A==
+      secure: l6ju53HT02X72js/Y0UzKuDWkO6CpXdK/6tcHBaVeLBDtG+RO18LzjcLjyM22olMOuN3Af/gU7aAHX8+ghhENVHhMi5IPb1/VhTDgtVPh5/OozC9ykZ05BkZiSpgLECwxb6NnPpXT6BH8rXw4DxzFh8Z9+LOsfdH/02mgb7gLkOPmpcqtuJeOBi7af6mg04Xt76/t43NXG+G+nUAgrGh9MkVlJYDLsqnGZPASkZ1qwJDUzjJF6z4RdBwmtx2YCH/zpBzUpYaXFhRBtSjtE/irw==
 
   matrix:
 
@@ -116,6 +116,8 @@ build_script:
   - "pip wheel -v -w wheelhouse --no-deps ."
 
 test_script:
+  # install geopandas
+  - "pip install geopandas"
   # install from wheel
   - "pip install --no-index --find-links wheelhouse pygeoda"
   # run tests against installed package
