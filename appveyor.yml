@@ -12,7 +12,7 @@ environment:
     BUILD_COMMIT: master
     TWINE_USERNAME: "lixun910"
     TWINE_PASSWORD:
-      secure: l6ju53HT02X72js/Y0UzKuDWkO6CpXdK/6tcHBaVeLBDtG+RO18LzjcLjyM22olMOuN3Af/gU7aAHX8+ghhENVHhMi5IPb1/VhTDgtVPh5/OozC9ykZ05BkZiSpgLECwxb6NnPpXT6BH8rXw4DxzFh8Z9+LOsfdH/02mgb7gLkOPmpcqtuJeOBi7af6mg04Xt76/t43NXG+G+nUAgrGh9MkVlJYDLsqnGZPASkZ1qwJDUzjJF6z4RdBwmtx2YCH/zpBzUpYaXFhRBtSjtE/irw==
+      secure: r1f70+i5UeM8tQYITBMMkQ==
 
   matrix:
 
