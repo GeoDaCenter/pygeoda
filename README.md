@@ -1,5 +1,10 @@
 # pygeoda
 
+[![Build Status](https://travis-ci.org/lixun910/pygeoda.svg?branch=master)](https://travis-ci.org/lixun910/pygeoda)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/lixun910/pygeoda?svg=true)](https://ci.appveyor.com/project/lixun910/pygeoda)
+[![PyPI version](https://badge.fury.io/py/pygeoda.svg)](https://badge.fury.io/py/pygeoda)
+
+
 pygeoda is a python library for spatial data analysis based on libgeoda and GeoDa
 
 ### version 0.0.4
