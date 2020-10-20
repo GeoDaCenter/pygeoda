@@ -9,6 +9,28 @@ pygeoda is a python library for spatial data analysis based on libgeoda and GeoD
 
 ### version 0.0.4
 
+### Installation
+
+#### Install from pip
+
+```
+pip install pygeoda
+```
+
+#### Install from source
+
+You can install pygeoda v0.0.4 from source by using the following command in a terminal:
+
+```
+pip install git+https://gitee.com/lixun910/pygeoda    
+```
+
+#### Docs
+
+[https://lixun910.github.io/pygeoda/install.html](https://lixun910.github.io/pygeoda/install.html)
+
+#### Features
+
 * Map Classification
    * NaturalBreaks
    * QuantileBreaks
@@ -43,26 +65,7 @@ pygeoda is a python library for spatial data analysis based on libgeoda and GeoD
     * PCA
     * MDS (multi dimensional scaling)
 
-### Installation
 
-#### Install from pip
-
-NOTE: pip wheels will be available soon.
-
-#### Install from source
-
-You can install pygeoda v0.0.4 from source by using the following command in a terminal:
-
-```
-pip install git+https://gitee.com/lixun910/pygeoda    
-```
-
-### How to contribute
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
 
 ### Contributors
 
