@@ -24,7 +24,7 @@ elif sys.platform == "darwin":
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
 
-LIBGEODA_SRC = 'libgeoda_src'
+LIBGEODA_SRC = 'libgeoda/src/libgeoda_src'
 
 ###########################################################
 # INCLUDE_DIRS

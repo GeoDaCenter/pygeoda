@@ -1,0 +1,6 @@
+[submodule "boost"]
+	path = boost
+	url = https://github.com/lixun910/pygeoda_boost
+[submodule "libgeoda"]
+	path = libgeoda
+	url = https://github.com/geodacenter/rgeoda

@@ -1,1 +1,1 @@
-swig -python -c++ -threads -I./libgeoda_src -o ./pygeoda/libgeoda.cpp ./libgeoda_src/libgeoda.i
+swig -python -c++ -threads -I./libgeoda/src/libgeoda_src -o ./pygeoda/libgeoda.cpp ./libgeoda.i
