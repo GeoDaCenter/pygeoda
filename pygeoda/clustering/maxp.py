@@ -34,16 +34,16 @@ def maxp(w, data, bound_vals, min_bound, local_search, **kwargs):
     random_seed = 123456789 if 'random_seed' not in kwargs else kwargs['random_seed']
 
     if w.num_obs < 1:
-        raise "The weights is not valid."
+        raise ValueError("The weights is not valid.")
 
     if len(data) < 1:
-        raise "The data from selected variable is empty."
+        raise ValueError("The data from selected variable is empty.")
 
     if len(bound_vals) != w.num_obs:
-        raise "The bound_vals has to be a list of numeric values, e.g. a column of input table."
+        raise ValueError("The bound_vals has to be a list of numeric values, e.g. a column of input table.")
 
     if min_bound <= 0:
-        raise "The min_bound has to be a positive numeric value."
+        raise ValueError("The min_bound has to be a positive numeric value.")
     
     in_data = VecVecDouble()
     for d in data:

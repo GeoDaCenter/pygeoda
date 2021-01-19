@@ -86,7 +86,7 @@ class geoda:
             :obj:`list` of int: a list of integer values of selected column
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
-            raise "The column name is not valid or not existed."
+            raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetIntegerCol(col_name)
 
     def GetRealCol(self, col_name):
@@ -97,7 +97,7 @@ class geoda:
             :obj:`list` of float: a list of float values of selected column
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
-            raise "The column name is not valid or not existed."
+            raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetNumericCol(col_name)
 
     def GetStringCol(self, col_name):
@@ -108,7 +108,7 @@ class geoda:
             :obj:`list` of :obj:`str`: a list of string values of selected column
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
-            raise "The column name is not valid or not existed."
+            raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetStringCol(col_name)
 
     def GetUndefinedVals(self, col_name):
@@ -119,7 +119,7 @@ class geoda:
             :obj:`list` of :obj:`bool`: a list of bool flags indicating if the values are undefined of selected column
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
-            raise "The column name is not valid or not existed."
+            raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetUndefinesCol(col_name)
 
 
@@ -137,12 +137,12 @@ def open(ds_path):
         :obj:`Object`: An object of geoda instance
     """
     if not isinstance(ds_path, str) or len(ds_path) <= 0:
-        raise "The input path of data source is not valid"
+        raise ValueError("The input path of data source is not valid")
     if not ds_path.lower().endswith('.shp'):
-        raise 'Pygeoda can only open ESRI shapefile since v0.0.4'
+        raise ValueError('Pygeoda can only open ESRI shapefile since v0.0.4')
     if not os.path.exists(ds_path[0:-3]+'dbf'):
-        raise 'This shapefile miss a DBF file'
+        raise ValueError('This shapefile miss a DBF file')
     if not os.path.exists(ds_path[0:-3]+'shx'):
-        raise 'This shapefile miss a SHX file'
+        raise ValueError('This shapefile miss a SHX file')
     gda_obj = GeoDa(ds_path)
     return geoda(gda_obj)

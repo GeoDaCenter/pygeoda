@@ -63,7 +63,7 @@ def geopandas_to_geoda(gdf):
     elif gdf.geom_type[0].endswith("Line"):
         map_type = "map_lines" 
     else:
-        raise "Error: pygeoda only supports geometry type of Polygon and Point."
+        raise ValueError("Error: pygeoda only supports geometry type of Polygon and Point.")
 
     # random layer name
     layer_name = id_generator()
