@@ -6,3 +6,4 @@ dist/
 pygeoda.egg-info/
 .vscode/
 libgeoda_local
+*.pyd
