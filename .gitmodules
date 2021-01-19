@@ -1,6 +1,0 @@
-[submodule "libgeoda_src"]
-	path = libgeoda_src
-	url = https://gitee.com/lixun910/libgeoda_src.git
-[submodule "pygeoda_boost"]
-	path = pygeoda_boost
-	url = https://gitee.com/lixun910/pygeoda_boost
