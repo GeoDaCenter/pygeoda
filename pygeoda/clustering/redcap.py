@@ -37,7 +37,7 @@ def redcap(k, w, data, method, **kwargs):
     random_seed = 123456789 if 'random_seed' not in kwargs else kwargs['random_seed']
     cpu_threads = 6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
 
-    if method not in ['firstorder-singlelinkage', 'fullorder-singlelinkage', 'fullorder-averagelinkage', 'fullorder-singlelinkage', 'fullorder-wardlinkage']:
+    if method not in ['firstorder-singlelinkage', 'fullorder-singlelinkage', 'fullorder-averagelinkage', 'fullorder-completelinkage', 'fullorder-wardlinkage']:
         raise ValueError('The method has to be one of {"firstorder-singlelinkage", "fullorder-completelinkage", "fullorder-averagelinkage","fullorder-singlelinkage", "fullorder-wardlinkage"}')
 
     in_data = VecVecDouble()

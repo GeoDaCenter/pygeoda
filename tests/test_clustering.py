@@ -21,14 +21,50 @@ class TestSpatialClustering(unittest.TestCase):
 
         self.assertAlmostEqual(ratio, 0.3156446659311205)
 
-    def test_REDCAP(self):
+    def test_REDCAP_firstsingle(self):
+        k = 4
+        clusters = pygeoda.redcap(k, self.queen_w, self.data, "firstorder-singlelinkage")
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.3156446659311204)
+
+    def test_REDCAP_fullsingle(self):
+        k = 4
+        clusters = pygeoda.redcap(k, self.queen_w, self.data, "fullorder-singlelinkage")
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.29002543000953057)
+
+    def test_REDCAP_fullcomplete(self):
         k = 4
         clusters = pygeoda.redcap(k, self.queen_w, self.data, "fullorder-completelinkage")
         betweenss = pygeoda.between_sumofsquare(clusters, self.data)
         totalss = pygeoda.total_sumofsquare( self.data)
         ratio =  betweenss / totalss
 
-        self.assertAlmostEqual(ratio, 0.25712705781933565)
+        self.assertAlmostEqual(ratio, 0.35109901091774076)
+
+    def test_REDCAP_fullaverage(self):
+        k = 4
+        clusters = pygeoda.redcap(k, self.queen_w, self.data, "fullorder-averagelinkage")
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.30578249025454063)
+
+    def test_REDCAP_fullward(self):
+        k = 4
+        clusters = pygeoda.redcap(k, self.queen_w, self.data, "fullorder-wardlinkage")
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.379025557025986)
 
     def test_MAXP_greedy(self):
         clusters = pygeoda.maxp_greedy(self.queen_w, self.data, self.bound_vals, self.min_bound)
@@ -36,5 +72,22 @@ class TestSpatialClustering(unittest.TestCase):
         totalss = pygeoda.total_sumofsquare( self.data)
         ratio =  betweenss / totalss
 
-        # todo, should add a n_cpu option for maxp so the result can be replicated in travis
-        self.assertAlmostEqual(ratio, 0.5092391813101834)
+        self.assertAlmostEqual(ratio, 0.4499671067502017)
+
+    def test_MAXP_sa(self):
+        cooling_rate = 0.85
+        clusters = pygeoda.maxp_sa(self.queen_w, self.data, self.bound_vals, self.min_bound, cooling_rate)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.4585352223033848)
+
+    def test_MAXP_tabu(self):
+        tabu_length = 10
+        clusters = pygeoda.maxp_tabu(self.queen_w, self.data, self.bound_vals, self.min_bound, tabu_length)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.4893668149272537)
