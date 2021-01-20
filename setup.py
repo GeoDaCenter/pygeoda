@@ -32,14 +32,14 @@ LIBGEODA_SRC = 'libgeoda/src/libgeoda_src'
 INCLUDE_DIRS = []
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
-        '.\\pygeoda_boost\\include',
+        '.\\boost\\include',
         '.\\eigen3',
         '.\\' + LIBGEODA_SRC,
     ]
 
 else:
     INCLUDE_DIRS = [
-        './pygeoda_boost/include',
+        './boost/include',
         './eigen3',
         './' + LIBGEODA_SRC,
     ]
@@ -122,10 +122,10 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 
 
     EXTRA_OBJECTS = [
-        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        '.\\pygeoda_boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [

@@ -1,6 +1,6 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-from ..libgeoda import VecVecDouble, VecPair, VecDouble, VecInt
+from ..libgeoda import VecVecDouble, VecPair, VecDouble, VecInt, Pair
 from ..libgeoda import gda_maxp_greedy, gda_maxp_sa, gda_maxp_tabu
 
 def maxp_greedy(w, data, bound_vals, min_bound, **kwargs):
@@ -47,7 +47,8 @@ def maxp_greedy(w, data, bound_vals, min_bound, **kwargs):
         in_data.push_back(d)
 
     in_bound_vals = VecDouble(bound_vals)
-    min_bounds = VecPair((min_bound, in_bound_vals))
+    min_bounds = VecPair()
+    min_bounds.push_back(Pair(min_bound, in_bound_vals))
     max_bounds = VecPair()
 
     in_init_regions = VecInt(init_regions)

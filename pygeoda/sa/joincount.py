@@ -1,4 +1,4 @@
-from ..libgeoda import gda_joincount, gda_multijoincount, VecBool, VecVecBool
+from ..libgeoda import gda_localjoincount, gda_localmultijoincount, VecBool, VecVecBool
 from .lisa import lisa
 import multiprocessing
 

@@ -30,9 +30,8 @@ class TestSpatialClustering(unittest.TestCase):
 
         self.assertAlmostEqual(ratio, 0.25712705781933565)
 
-    def test_MAXP(self):
-        method = "greedy"
-        clusters = pygeoda.maxp(self.queen_w, self.data, self.bound_vals, self.min_bound, method)
+    def test_MAXP_greedy(self):
+        clusters = pygeoda.maxp_greedy(self.queen_w, self.data, self.bound_vals, self.min_bound)
         betweenss = pygeoda.between_sumofsquare(clusters, self.data)
         totalss = pygeoda.total_sumofsquare( self.data)
         ratio =  betweenss / totalss

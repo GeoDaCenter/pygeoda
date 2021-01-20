@@ -3,7 +3,7 @@ __author__ = "Xun Li <lixun910@gmail.com>"
 from ..libgeoda import VecVecDouble, VecDouble
 from ..libgeoda import gda_skater
 
-def redcap(k, w, data, **kwargs):
+def skater(k, w, data, **kwargs):
     ''' Spatial C(K)luster Analysis by Tree Edge Removal
 
     SKATER forms clusters by spatially partitioning data that has similar values for features of interest.

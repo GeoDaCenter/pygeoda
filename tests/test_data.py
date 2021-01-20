@@ -3,7 +3,7 @@ import pygeoda
 
 __author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>, "
 
-class TestAlgorithms(unittest.TestCase):
+class TestTransform(unittest.TestCase):
     def setUp(self):
         self.guerry = pygeoda.open("./data/Guerry.shp")
         self.queen_w = pygeoda.weights.queen(self.guerry)

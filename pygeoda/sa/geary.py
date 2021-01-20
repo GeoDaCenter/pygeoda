@@ -1,6 +1,7 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-from ..libgeoda import gda_geary, gda_multigeary, VecBool, VecVecBool
+from ..libgeoda import VecBool, VecVecBool
+from ..libgeoda import gda_localgeary, gda_localmultigeary
 from .lisa import lisa
 import multiprocessing
 
