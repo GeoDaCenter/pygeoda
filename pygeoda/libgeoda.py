@@ -1741,6 +1741,33 @@ class VecVecChar(object):
 # Register VecVecChar in _libgeoda:
 _libgeoda.VecVecChar_swigregister(VecVecChar)
 
+class Pair(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _libgeoda.Pair_swiginit(self, _libgeoda.new_Pair(*args))
+    first = property(_libgeoda.Pair_first_get, _libgeoda.Pair_first_set)
+    second = property(_libgeoda.Pair_second_get, _libgeoda.Pair_second_set)
+    def __len__(self):
+        return 2
+    def __repr__(self):
+        return str((self.first, self.second))
+    def __getitem__(self, index): 
+        if not (index % 2):
+            return self.first
+        else:
+            return self.second
+    def __setitem__(self, index, val):
+        if not (index % 2):
+            self.first = val
+        else:
+            self.second = val
+    __swig_destroy__ = _libgeoda.delete_Pair
+
+# Register Pair in _libgeoda:
+_libgeoda.Pair_swigregister(Pair)
+
 class VecPair(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
