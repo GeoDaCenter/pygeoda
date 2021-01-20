@@ -23,8 +23,8 @@
 %template(VecUINT8) std::vector<unsigned char>;
 %template(VecVecUINT8) std::vector<std::vector<unsigned char> >;
 %template(VecVecChar) std::vector<std::vector<char> >;
-%template(Pair) std::pair<int, std::vector<double> >;
-%template(VecPair) std::vector<std::pair<int,std::vector<double> > >;
+%template(Pair) std::pair<double, std::vector<double> >;
+%template(VecPair) std::vector<std::pair<double, std::vector<double> > >;
 
 
 #if defined(SWIGPYTHON)
