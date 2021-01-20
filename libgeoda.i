@@ -5,6 +5,8 @@
 %include "stl.i"
 %include "std_string.i"
 %include "std_vector.i"
+%include "std_pair.i"
+
 
 %template(VecVoid) std::vector<void*>;
 %template(VecFloat) std::vector<float>;
@@ -21,6 +23,8 @@
 %template(VecUINT8) std::vector<unsigned char>;
 %template(VecVecUINT8) std::vector<std::vector<unsigned char> >;
 %template(VecVecChar) std::vector<std::vector<char> >;
+%template(VecPair) std::vector<std::pair<int,std::vector<double> > >;
+
 
 #if defined(SWIGPYTHON)
 
