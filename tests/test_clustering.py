@@ -120,3 +120,14 @@ class TestSpatialClustering(unittest.TestCase):
         ratio =  betweenss / totalss
 
         self.assertAlmostEqual(ratio, 0.3674042224788964)
+
+
+    def test_SCHC(self):
+        p = 4
+        linkage_method = 'ward'
+        clusters = pygeoda.schc(p, self.queen_w, self.data, linkage_method)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.3805127681618678)

@@ -12,8 +12,7 @@ def skater(k, w, data, **kwargs):
         k (int): number of clusters
         w (Weight): An instance of Weight class
         data (tuple):   A list of numeric vectors of selected variable
-        bound_vals (tuple): A numeric vector of selected bounding variable
-        min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than
+        bound_vals (tuple, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
         distance_method (str, optional): {"euclidean", "manhattan"} the distance method used to compute the distance betwen observation i and j. Defaults to "euclidean". Options are "euclidean" and "manhattan"
         random_seed (int,optional): the seed for random number generator. Defaults to 123456789. 

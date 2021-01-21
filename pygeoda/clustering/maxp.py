@@ -11,9 +11,8 @@ Changes:
 def maxp_greedy(w, data, bound_vals, min_bound, **kwargs):
     ''' A greedy algorithm to solve the max-p-region problem 
     
-    Note: 
-        The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas, n, are aggregated into the maximum number of regions, p, such that each region satisfies the following const raints: 1. The areas within a region must be geographically connected.
-        
+    The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas are aggregated into the maximum number of regions (max-p-regions), such that each region is geographically connected and the clusters could maximize internal homogeneity.
+
     Arguments:
         w (Weight): an instance of Weight class
         data (tuple):   A list of numeric vectors of selected variable
@@ -63,8 +62,7 @@ def maxp_greedy(w, data, bound_vals, min_bound, **kwargs):
 def maxp_sa(w, data, bound_vals, min_bound, cooling_rate=0.85, **kwargs):
     ''' A simulated annealing algorithm to solve the max-p-region problem 
     
-    Note: 
-        The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas, n, are aggregated into the maximum number of regions, p, such that each region satisfies the following const raints: 1. The areas within a region must be geographically connected.
+    The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas are aggregated into the maximum number of regions (max-p-regions), such that each region is geographically connected and the clusters could maximize internal homogeneity.
         
     Arguments:
         w (Weight): an instance of Weight class
@@ -121,8 +119,7 @@ def maxp_sa(w, data, bound_vals, min_bound, cooling_rate=0.85, **kwargs):
 def maxp_tabu(w, data, bound_vals, min_bound, tabu_length=10, **kwargs):
     ''' A tabu-search algorithm to solve the max-p-region problem 
     
-    Note: 
-        The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas, n, are aggregated into the maximum number of regions, p, such that each region satisfies the following const raints: 1. The areas within a region must be geographically connected.
+    The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas are aggregated into the maximum number of regions (max-p-regions), such that each region is geographically connected and the clusters could maximize internal homogeneity.
         
     Arguments:
         w (Weight): an instance of Weight class
