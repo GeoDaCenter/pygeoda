@@ -3,26 +3,36 @@ __author__ = "Xun Li <lixun910@gmail.com>"
 from ..libgeoda import VecBool, VecVecBool
 from ..libgeoda import gda_localgeary, gda_localmultigeary
 from .lisa import lisa
-import multiprocessing
+
+'''
+Changes:
+1/21/2021 Update local_multigeary, local_geary for 0.0.6
+'''
 
 def local_multigeary(w, data, **kwargs):
     '''Apply local multi-variates geary statistics on multi-variables, at least two variables, after we already have a weight.
 
     Args:
         w (Weight): An instance of Weight class
-        data (list): A 2d numeric list with values of selected variables
+        data (list): A list of numeric arry with values of selected variables
+        permutations (int, optional): The number of permutations for the LISA computation
+        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
+        cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
+        seed (int, optional): The seed for random number generator
+
     Returns:
-        lisa: An instance of lisa class represents the results of local multi-variates geary computations
+        lisa: An instance of lisa class represents the results of lisa computations
     '''
     if w == None:
-        raise("Weights is None.")
+        raise ValueError("Weights is None.")
 
     undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
-    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
-    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
+    permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
-    lisa_obj = gda_multigeary(w.gda_w, data, undefs, nCPUs, perm, seed)
+    lisa_obj = gda_localmultigeary(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
     return lisa(lisa_obj)
 
 def local_geary(w, data, **kwargs):
@@ -36,15 +46,16 @@ def local_geary(w, data, **kwargs):
         lisa: An instance of lisa class represents the results of local geary computations 
     '''
     if w == None:
-        raise("Weights is None.")
+        raise ValueError("Weights is None.")
 
     if w.num_obs != len(data):
-        raise("The size of data doesnt not match the number of observations.")
+        raise ValueError("The size of data doesnt not match the number of observations.")
 
     undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
-    nCPUs =  multiprocessing.cpu_count() if 'nCPUs' not in kwargs else kwargs['nCPUs']
-    perm =  999 if 'perm' not in kwargs else kwargs['perm']
+    significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
+    permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
-    lisa_obj = gda_geary(w.gda_w, data, undefs, nCPUs, perm, seed)
+    lisa_obj = gda_localgeary(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
     return lisa(lisa_obj)

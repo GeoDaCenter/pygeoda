@@ -12,11 +12,29 @@ class TestTransform(unittest.TestCase):
         self.Crm_prs = self.guerry.GetRealCol('Crm_prs')
         self.Crm_prp = self.guerry.GetRealCol('Crm_prp')
 
-    def test_demean(self):
+    def test_DEMEAN(self):
         results = pygeoda.demean(self.data)
-        self.assertAlmostEqual(results[0][0],-111.87257059039554)
-        self.assertAlmostEqual(results[1][0],15015.23673870141)
-        self.assertAlmostEqual(results[2][0],-7873.386080811686)
-        self.assertAlmostEqual(results[3][0],5595.705423843862)
-        self.assertAlmostEqual(results[4][0],-5424.030975546458)
-        self.assertAlmostEqual(results[5][0],13.250852266896509)
+        self.assertAlmostEqual(results[0][0], 8909.058823529413)
+        self.assertAlmostEqual(results[1][0], 8008.658823529412)
+        self.assertAlmostEqual(results[2][0], -2.141176470588235)
+        self.assertAlmostEqual(results[3][0], -1625.3176470588232)
+        self.assertAlmostEqual(results[4][0], 14137.070588235296)
+        self.assertAlmostEqual(results[5][0], -1477.800000000003)
+
+    def test_STANDARDIZE(self):
+        results = pygeoda.standardize(self.data)
+        self.assertAlmostEqual(results[0][0], 1.220545786363259)
+        self.assertAlmostEqual(results[1][0], 2.626982441141971)
+        self.assertAlmostEqual(results[2][0], -0.12281377647044796)
+        self.assertAlmostEqual(results[3][0], -0.3342044000744191)
+        self.assertAlmostEqual(results[4][0], 1.5973093769164821)
+        self.assertAlmostEqual(results[5][0], -0.04691678974541437)
+
+    def test_MAD(self):
+        results = pygeoda.mad(self.data)
+        self.assertAlmostEqual(results[0][0], 1.4834982357401478)
+        self.assertAlmostEqual(results[1][0], 3.657995001677823)
+        self.assertAlmostEqual(results[2][0], -0.14598471265452484)
+        self.assertAlmostEqual(results[3][0], -0.43856444476347173)
+        self.assertAlmostEqual(results[4][0], 2.288114647653677)
+        self.assertAlmostEqual(results[5][0], -0.06627296020171916)

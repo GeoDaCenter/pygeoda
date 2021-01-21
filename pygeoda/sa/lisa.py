@@ -30,7 +30,7 @@ class lisa:
             num_perm (int): the number of permutations e.g. 99, 999, 9999, 999999
         """
         if num_perm < 1 or num_perm > 999999:
-            raise("The number of permutations is a positive integer number, but has to be less than 999999.")
+            raise ValueError("The number of permutations is a positive integer number, but has to be less than 999999.")
 
         return self.gda_lisa.SetNumPermutations(num_perm)
 
@@ -41,7 +41,7 @@ class lisa:
             num_threads (int): the number of CPU threads
         """
         if num_threads < 1: 
-            raise("The number of CPU threads has to be a positive integer number.")
+            raise ValueError("The number of CPU threads has to be a positive integer number.")
             
         return self.gda_lisa.SetNumThreads(num_threads)
 
@@ -143,7 +143,7 @@ class batchlisa:
             num_perm (int): the number of permutations e.g. 99, 999, 9999, 999999
         """
         if num_perm < 1 or num_perm > 999999:
-            raise("The number of permutations is a positive integer number, but has to be less than 999999.")
+            raise ValueError("The number of permutations is a positive integer number, but has to be less than 999999.")
 
         return self.gda_lisa.SetNumPermutations(num_perm)
 
@@ -154,7 +154,7 @@ class batchlisa:
             num_threads (int): the number of CPU threads
         """
         if num_threads < 1: 
-            raise("The number of CPU threads has to be a positive integer number.")
+            raise ValueError("The number of CPU threads has to be a positive integer number.")
             
         return self.gda_lisa.SetNumThreads(num_threads)
 

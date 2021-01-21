@@ -8,6 +8,7 @@ class TestLISA(unittest.TestCase):
         self.guerry = pygeoda.open("./data/Guerry.shp")
         self.queen_w = pygeoda.weights.queen(self.guerry)
         self.crm_prp = self.guerry.GetIntegerCol("Crm_prp")
+        self.litercy = self.guerry.GetIntegerCol("Litercy")
         slect_vars = ['Crm_prp','Crm_prs']
         self.data = [self.guerry.GetRealCol(v) for v in slect_vars]
 
@@ -49,6 +50,25 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(nnvals[1], 6)
         self.assertEqual(nnvals[2], 6)
         
+    """
+    def test_multiquantile_lisa(self):
+        quantile_data = [
+            {'k': 4, 'q': 1, 'data': self.crm_prp},
+            {'k': 4, 'q': 1, 'data': self.litercy}
+        ]
+        lisa = pygeoda.multiquantile_lisa(self.queen_w, quantile_data)
+        
+        pvals = lisa.GetPValues()
+        self.assertAlmostEqual(pvals[0], 0.434000)
+        self.assertAlmostEqual(pvals[1], 0.001)
+        self.assertAlmostEqual(pvals[3], 0.001)
+
+        nnvals = lisa.GetNumNeighbors()
+        self.assertEqual(nnvals[0], 4)
+        self.assertEqual(nnvals[1], 6)
+        self.assertEqual(nnvals[2], 6)
+    """
+
     def test_local_moran(self):
         lisa = pygeoda.local_moran(self.queen_w, self.crm_prp)
 
