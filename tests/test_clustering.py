@@ -91,3 +91,32 @@ class TestSpatialClustering(unittest.TestCase):
         ratio =  betweenss / totalss
 
         self.assertAlmostEqual(ratio, 0.4893668149272537)
+
+    def test_AZP_greedy(self):
+        p = 4
+        clusters = pygeoda.azp_greedy(p, self.queen_w, self.data, self.bound_vals, self.min_bound)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.34772404545345587)
+
+    def test_AZP_sa(self):
+        p = 4
+        cooling_rate = 0.85
+        clusters = pygeoda.azp_sa(p, self.queen_w, self.data, self.bound_vals, self.min_bound, cooling_rate)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.3806147863501549)
+
+    def test_AZP_tabu(self):
+        p = 4
+        tabu_length = 10
+        clusters = pygeoda.azp_tabu(p, self.queen_w, self.data, self.bound_vals, self.min_bound, tabu_length)
+        betweenss = pygeoda.between_sumofsquare(clusters, self.data)
+        totalss = pygeoda.total_sumofsquare( self.data)
+        ratio =  betweenss / totalss
+
+        self.assertAlmostEqual(ratio, 0.3674042224788964)
