@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
-        <script type="text/javascript" src="../static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.between_sumofsquare" href="pygeoda.between_sumofsquare.html" />
@@ -259,7 +259,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/generated/pygeoda.maxp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/pygeoda.maxp.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -276,36 +276,8 @@
 <h1>pygeoda.maxp<a class="headerlink" href="#pygeoda-maxp" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="pygeoda.maxp">
-<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">maxp</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">data</em>, <em class="sig-param">bound_vals</em>, <em class="sig-param">min_bound</em>, <em class="sig-param">local_search</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/clustering/maxp.html#maxp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.maxp" title="Permalink to this definition">¶</a></dt>
-<dd><p>An algorithm to solve the max-p-region problem</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The max-p-region problem is a special case of constrained clustering where a finite number of geographical areas, n, are aggregated into the maximum number of regions, p, such that each region satisfies the following const raints: 1. The areas within a region must be geographically connected.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.weights.Weight.html#pygeoda.weights.Weight" title="pygeoda.weights.Weight"><em>Weight</em></a>) – an instance of Weight class</p></li>
-<li><p><strong>data</strong> (<em>tuple</em>) – A 2d numeric list of selected variable</p></li>
-<li><p><strong>bound_vals</strong> (<em>tuple</em>) – A 1-d vector of selected bounding variable</p></li>
-<li><p><strong>min_bound</strong> (<em>float</em>) – A minimum value that the sum value of bounding variable int each cluster should be greater than</p></li>
-<li><p><strong>local_search</strong> (<em>str</em>) – The name of the heurist algorithm to find a optimal solution. Default to “greedy”. Options are “greedy”, “tabu” and “sa” (simulated annealing)</p></li>
-<li><p><strong>distance_method</strong> (<em>str</em><em>, </em><em>optional</em>) – The distance method used to compute the distance betwen observation i and j. Defaults to “euclidean”. Options are “euclidean” and “manhattan”</p></li>
-<li><p><strong>random_seed</strong> (<em>int</em><em>,</em><em>optional</em>) – The seed for random number generator. Defaults to 123456789. It is the same as GeoDa software</p></li>
-<li><p><strong>initial</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of iterations of greedy algorithm. Defaults to 99.</p></li>
-<li><p><strong>tabu_length</strong> (<em>int</em>) – The length of a tabu search heuristic of tabu algorithm. Defaults to 95.</p></li>
-<li><p><strong>cool_rate</strong> (<em>float</em>) – The cooling rate of a simulated annealing algorithm. Defaults to 0.85</p></li>
-<li><p><strong>init_seeds</strong> (<em>tuple</em>) – The initial clusters that the local search starts with, e.g. one can assign the LISA cluster as the init_seeds for max-p method. Default is empty. means the local search starts with a random process to “grow” clusters</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a 2d tuple represents a group of clusters</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
+<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">maxp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygeoda.maxp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 

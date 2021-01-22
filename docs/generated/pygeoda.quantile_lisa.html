@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
-        <script type="text/javascript" src="../static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.skater" href="pygeoda.skater.html" />
@@ -259,7 +259,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/generated/pygeoda.quantile_lisa.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/pygeoda.quantile_lisa.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -276,19 +276,19 @@
 <h1>pygeoda.quantile_lisa<a class="headerlink" href="#pygeoda-quantile-lisa" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="pygeoda.quantile_lisa">
-<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">quantile_lisa</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">k</em>, <em class="sig-param">q</em>, <em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/sa/quantile_lisa.html#quantile_lisa"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.quantile_lisa" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply quantile LISA on one select variable after we already have a weight.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Apply quantile LISA on one select variable</p>
-</div>
+<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">quantile_lisa</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">k</em>, <em class="sig-param">q</em>, <em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/quantile_lisa.html#quantile_lisa"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.quantile_lisa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply local quantile LISA statistics</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.weights.Weight.html#pygeoda.weights.Weight" title="pygeoda.weights.Weight"><em>Weight</em></a>) – A spatial Weights object</p></li>
 <li><p><strong>k</strong> (<em>int</em>) – The number of quantiles, range[1, n-1]</p></li>
 <li><p><strong>q</strong> (<em>int</em>) – The index of selected quantile for lisa, range[0, k-1]</p></li>
-<li><p><strong>data</strong> (<em>tuple</em>) – A tuple with values of the selected variable</p></li>
+<li><p><strong>data</strong> (<em>tuple</em>) – A array of numeric values of selected variable</p></li>
+<li><p><strong>permutations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of permutations for the LISA computation</p></li>
+<li><p><strong>significance_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – A cutoff value for significance p-values to filter not-significant clusters</p></li>
+<li><p><strong>cpu_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of cpu threads used for parallel LISA computation</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – The seed for random number generator</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

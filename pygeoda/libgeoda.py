@@ -2437,38 +2437,38 @@ def gda_standardize(data):
 def gda_standardize_mad(data):
     return _libgeoda.gda_standardize_mad(data)
 
-def gda_naturalbreaks(*args):
-    return _libgeoda.gda_naturalbreaks(*args)
+def gda_naturalbreaks(k, data, undefs):
+    return _libgeoda.gda_naturalbreaks(k, data, undefs)
 
-def gda_quantilebreaks(*args):
-    return _libgeoda.gda_quantilebreaks(*args)
+def gda_quantilebreaks(k, data, undefs):
+    return _libgeoda.gda_quantilebreaks(k, data, undefs)
 
-def gda_hinge15breaks(*args):
-    return _libgeoda.gda_hinge15breaks(*args)
+def gda_hinge15breaks(data, undefs):
+    return _libgeoda.gda_hinge15breaks(data, undefs)
 
-def gda_hinge30breaks(*args):
-    return _libgeoda.gda_hinge30breaks(*args)
+def gda_hinge30breaks(data, undefs):
+    return _libgeoda.gda_hinge30breaks(data, undefs)
 
-def gda_percentilebreaks(*args):
-    return _libgeoda.gda_percentilebreaks(*args)
+def gda_percentilebreaks(data, undefs):
+    return _libgeoda.gda_percentilebreaks(data, undefs)
 
-def gda_stddevbreaks(*args):
-    return _libgeoda.gda_stddevbreaks(*args)
+def gda_stddevbreaks(data, undefs):
+    return _libgeoda.gda_stddevbreaks(data, undefs)
 
-def gda_queen_weights(geoda, order=1, include_lower_order=False, precision_threshold=0):
+def gda_queen_weights(geoda, order, include_lower_order, precision_threshold):
     return _libgeoda.gda_queen_weights(geoda, order, include_lower_order, precision_threshold)
 
-def gda_rook_weights(geoda, order=1, include_lower_order=False, precision_threshold=0):
+def gda_rook_weights(geoda, order, include_lower_order, precision_threshold):
     return _libgeoda.gda_rook_weights(geoda, order, include_lower_order, precision_threshold)
 
-def gda_knn_weights(*args):
-    return _libgeoda.gda_knn_weights(*args)
+def gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagnals, polyid):
+    return _libgeoda.gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagnals, polyid)
 
-def gda_min_distthreshold(geoda, is_arc=False, is_mile=True):
+def gda_min_distthreshold(geoda, is_arc, is_mile):
     return _libgeoda.gda_min_distthreshold(geoda, is_arc, is_mile)
 
-def gda_distance_weights(*args):
-    return _libgeoda.gda_distance_weights(*args)
+def gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals):
+    return _libgeoda.gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals)
 
 def gda_azp_greedy(p, w, data, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
     return _libgeoda.gda_azp_greedy(p, w, data, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)

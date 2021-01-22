@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
-        <script type="text/javascript" src="../static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="pygeoda.mds" href="pygeoda.mds.html" /> 
@@ -258,7 +258,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/generated/pygeoda.PCA.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/pygeoda.PCA.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -273,74 +273,6 @@
             
   <div class="section" id="pygeoda-pca">
 <h1>pygeoda.PCA<a class="headerlink" href="#pygeoda-pca" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pygeoda.PCA">
-<em class="property">class </em><code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">PCA</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/data/pca.html#PCA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.PCA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Principal component analysis
-.. note:: The principal components can be interpreted as the best linear approximation to the multivariate point cloud of the data. The goal is to find a small number of principal components,that explains the bulk of the variance in the original variables.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>tuple</em>) – A 2d numeric list with values of selected variables</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A PCA object that wrappers the c++ PCAResult object containing the details of PCA computation</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>PCA_obj</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="pygeoda.PCA.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/data/pca.html#PCA.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.PCA.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor of PCAResult object</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>tuple</em>) – A 2d numeric list with values of selected variables</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pygeoda.PCA.__init__" title="pygeoda.PCA.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(data)</p></td>
-<td><p>Constructor of PCAResult object</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCumProp</span></code>()</p></td>
-<td><p>Get the Cumulative proportion of PCAResult.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getEigenValues</span></code>()</p></td>
-<td><p>Get the Eigenvalues of PCAResult of PCAResult.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getKaiser</span></code>()</p></td>
-<td><p>Get the value 0f Kaiser in PCAResult.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLoadings</span></code>()</p></td>
-<td><p>Get a 2d numeric list with values of  PCAResult base selected variables.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMethod</span></code>()</p></td>
-<td><p>Get the PCA calculation method.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPropOfVar</span></code>()</p></td>
-<td><p>Get the Proportion of variance of PCAResult.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSqCorrelations</span></code>()</p></td>
-<td><p>Get a 2d numeric list with values of squared correlations of PCAResult base selected variables.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStandardDev</span></code>()</p></td>
-<td><p>get the standard deviation of PCAResult.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getThresh95</span></code>()</p></td>
-<td><p>Get the value 0f  threshold criteria for contribution up to 95% in PCAResult.</p></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </div>
 
 

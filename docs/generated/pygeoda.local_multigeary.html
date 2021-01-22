@@ -17,22 +17,22 @@
   
 
   
-  <script type="text/javascript" src="../static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
-        <script type="text/javascript" src="../static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.local_joincount" href="pygeoda.local_joincount.html" />
@@ -259,7 +259,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/generated/pygeoda.local_multigeary.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/pygeoda.local_multigeary.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -276,17 +276,21 @@
 <h1>pygeoda.local_multigeary<a class="headerlink" href="#pygeoda-local-multigeary" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="pygeoda.local_multigeary">
-<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">local_multigeary</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../modules/pygeoda/sa/geary.html#local_multigeary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.local_multigeary" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">local_multigeary</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/geary.html#local_multigeary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.local_multigeary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply local multi-variates geary statistics on multi-variables, at least two variables, after we already have a weight.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.weights.Weight.html#pygeoda.weights.Weight" title="pygeoda.weights.Weight"><em>Weight</em></a>) – An instance of Weight class</p></li>
-<li><p><strong>data</strong> (<em>list</em>) – A 2d numeric list with values of selected variables</p></li>
+<li><p><strong>data</strong> (<em>list</em>) – A list of numeric arry with values of selected variables</p></li>
+<li><p><strong>permutations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of permutations for the LISA computation</p></li>
+<li><p><strong>significance_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – A cutoff value for significance p-values to filter not-significant clusters</p></li>
+<li><p><strong>cpu_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of cpu threads used for parallel LISA computation</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – The seed for random number generator</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An instance of lisa class represents the results of local multi-variates geary computations</p>
+<dd class="field-even"><p>An instance of lisa class represents the results of lisa computations</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="pygeoda.lisa.html#pygeoda.lisa" title="pygeoda.lisa">lisa</a></p>
