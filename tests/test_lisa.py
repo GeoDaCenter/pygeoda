@@ -145,12 +145,38 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(nnvals[1], 3)
         self.assertEqual(nnvals[2], 4)
 
+    def test_local_bijoincount(self):
+        columbus = pygeoda.open("./data/columbus.shp")
+        columbus_q = pygeoda.weights.queen(columbus)
+        nsa = columbus.GetRealCol("nsa")
+        nsa_inv = [1-i for i in nsa]
+        lisa = pygeoda.local_bijoincount(columbus_q, nsa, nsa_inv)
+
+        jc = lisa.GetLISAValues()
+        self.assertEqual(jc[7], 0)
+        self.assertEqual(jc[8], 1)
+        self.assertEqual(jc[9], 1)
+
+        pvals = lisa.GetPValues()
+        self.assertEqual(pvals[7], 0.0)
+        self.assertEqual(pvals[8], 0.002)
+        self.assertEqual(pvals[9], 0.034)
+
+        nn = lisa.GetNumNeighbors()
+        self.assertEqual(nn[0], 2)
+        self.assertEqual(nn[1], 3)
+        self.assertEqual(nn[2], 4)
+
     def test_local_multijoincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
         columbus_q = pygeoda.weights.queen(columbus)
         nsa = columbus.GetRealCol("nsa")
         nsb = columbus.GetRealCol("nsb")
         nndata = (nsa, nsb)
+
+        #The following two lines will raise warning to use local_bijoincount()
+        #nsa_inv = [1-i for i in nsa]
+        #lisa = pygeoda.local_multijoincount(columbus_q, (nsa, nsa_inv))
 
         lisa = pygeoda.local_multijoincount(columbus_q, nndata)
 
