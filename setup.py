@@ -3,7 +3,6 @@ import sys, os, platform
 import setuptools
 from distutils.core import setup, Extension
 from setuptools.command.develop import develop
-from subprocess import check_call
 
 
 ###########################################################
@@ -78,11 +77,10 @@ else:
     EXTRA_COMPILE_ARGS = [
         '-w',
         '-fvisibility=hidden',
-        '-D__USE_PTHREAD__'
+        '-D__USE_PTHREAD__' # use pthread!!! on *nix
     ]
     if OS_NAME == 'osx':
         EXTRA_COMPILE_ARGS += [
-            '-stdlib=libc++',
         ]
 
 
@@ -173,6 +171,20 @@ SOURCE_FILES  = [
     './' + LIBGEODA_SRC + '/clustering/azp_wrapper.cpp',
     './' + LIBGEODA_SRC + '/clustering/schc_wrapper.cpp',
     './' + LIBGEODA_SRC + '/clustering/cluster.cpp',
+    './' + LIBGEODA_SRC + '/knn/ANN.cpp',
+	'./' + LIBGEODA_SRC + '/knn/perf.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_util.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_tree.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_split.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_search.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_pr_search.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_fix_rad_search.cpp',
+	'./' + LIBGEODA_SRC + '/knn/kd_dump.cpp',
+	'./' + LIBGEODA_SRC + '/knn/brute.cpp',
+	'./' + LIBGEODA_SRC + '/knn/bd_tree.cpp',
+	'./' + LIBGEODA_SRC + '/knn/bd_search.cpp',
+	'./' + LIBGEODA_SRC + '/knn/bd_pr_search.cpp',
+	'./' + LIBGEODA_SRC + '/knn/bd_fix_rad_search.cpp',
 ]
 
 
@@ -198,7 +210,7 @@ setup (name = 'pygeoda',
        version = '0.0.4',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
-       url = "https://github.com/lixun910/libgeoda",
+       url = "https://github.com/geodacenter/pygeoda",
        description = """pygeoda is a python library for spatial data analysis based on GeoDa and libgeoda.""",
        ext_modules = extensions,
        package_data = package_data,
