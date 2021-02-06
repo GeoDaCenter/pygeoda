@@ -123,6 +123,13 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[1], 1)
         self.assertEqual(cvals[2], 0)
 
+    def test_local_joincount_9999(self):
+        snow = pygeoda.open("/Users/xun/Github/pygeoda_lixun910/perf/data/deaths_nd_by_house.shp")
+        w20 = pygeoda.weights.distance(snow, 20.0)
+        x = snow.GetIntegerCol("death_dum")
+        lisa = pygeoda.local_joincount(w20, x, permutations=99999, cpu_threads=6)
+        pvals = lisa.GetPValues()
+
     def test_local_joincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
         columbus_q = pygeoda.weights.queen(columbus)

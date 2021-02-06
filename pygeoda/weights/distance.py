@@ -26,7 +26,9 @@ def distance(geoda_obj, dist_thres, **kwargs):
     is_mile = True if 'is_mile' not in kwargs else kwargs['is_mile']
 
     poly_id = ""
-    gda_w = gda_distance_weights(geoda_obj.gda, dist_thres, poly_id, power, is_inverse, is_arc, is_mile)
+    kernel = ""
+    diagonal = False
+    gda_w = gda_distance_weights(geoda_obj.gda, dist_thres, poly_id, power, is_inverse, is_arc, is_mile, kernel, diagonal)
 
     return Weight(gda_w)
 
