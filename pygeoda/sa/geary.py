@@ -22,7 +22,7 @@ def local_multigeary(w, data, **kwargs):
         seed (int, optional): The seed for random number generator
 
     Returns:
-        lisa: An instance of lisa class represents the results of lisa computations
+        lisa: An instance of lisa class.
     '''
     if w == None:
         raise ValueError("Weights is None.")

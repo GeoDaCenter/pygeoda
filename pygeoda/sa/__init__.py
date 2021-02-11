@@ -4,3 +4,4 @@ from .joincount import local_joincount, local_multijoincount, local_bijoincount
 from .getisord import local_g, local_gstar
 from .lisa import lisa, batchlisa
 from .quantile_lisa import quantile_lisa, multiquantile_lisa
+from .neighbor_match_test import local_neighbormatchtest
