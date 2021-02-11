@@ -7011,6 +7011,13 @@ SWIGINTERN void std_vector_Sl_std_pair_Sl_double_Sc_std_vector_Sl_double_Sg__Sg_
 
 
 
+SWIGINTERNINLINE PyObject * 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 {
@@ -42189,6 +42196,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ReadIdField(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject *swig_obj[1] ;
+  char *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ReadIdField" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (char *)WeightUtils::ReadIdField((char const *)arg1);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_LISA(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   LISA *arg1 = (LISA *) 0 ;
@@ -48658,8 +48695,7 @@ SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *SWIGUNUSEDPARM(self
   int ecode5 = 0 ;
   bool val6 ;
   int ecode6 = 0 ;
-  void *argp7 = 0 ;
-  int res7 = 0 ;
+  int res7 = SWIG_OLDOBJ ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
   PyObject *swig_obj[9] ;
@@ -48696,14 +48732,17 @@ SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_neighbor_match_test" "', argument " "6"" of type '" "bool""'");
   } 
   arg6 = static_cast< bool >(val6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t,  0 );
-  if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_neighbor_match_test" "', argument " "7"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > &""'"); 
+  {
+    std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *ptr = (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *)0;
+    res7 = swig::asptr(swig_obj[6], &ptr);
+    if (!SWIG_IsOK(res7)) {
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_neighbor_match_test" "', argument " "7"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_neighbor_match_test" "', argument " "7"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &""'"); 
+    }
+    arg7 = ptr;
   }
-  if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_neighbor_match_test" "', argument " "7"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > &""'"); 
-  }
-  arg7 = reinterpret_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > * >(argp7);
   {
     std::string *ptr = (std::string *)0;
     res8 = SWIG_AsPtr_std_string(swig_obj[7], &ptr);
@@ -48728,14 +48767,16 @@ SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *SWIGUNUSEDPARM(self
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_neighbor_match_test(arg1,arg2,arg3,arg4,arg5,arg6,*arg7,(std::string const &)*arg8,(std::string const &)*arg9);
+    result = gda_neighbor_match_test(arg1,arg2,arg3,arg4,arg5,arg6,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg7,(std::string const &)*arg8,(std::string const &)*arg9);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(result));
+  if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   return NULL;
@@ -49627,34 +49668,66 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_gda_load_weights(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject *swig_obj[1] ;
+  GeoDaWeight *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_weights" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_weights((char const *)arg1);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_gda_azp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
-  int arg4 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg5 = 0 ;
+  std::string *arg4 = 0 ;
+  int arg5 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg6 = 0 ;
-  std::vector< int,std::allocator< int > > *arg7 = 0 ;
-  std::string *arg8 = 0 ;
-  int arg9 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg7 = 0 ;
+  std::vector< int,std::allocator< int > > *arg8 = 0 ;
+  std::string *arg9 = 0 ;
+  int arg10 ;
   int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int res3 = SWIG_OLDOBJ ;
-  int val4 ;
-  int ecode4 = 0 ;
-  int res5 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  int val5 ;
+  int ecode5 = 0 ;
   int res6 = SWIG_OLDOBJ ;
   int res7 = SWIG_OLDOBJ ;
   int res8 = SWIG_OLDOBJ ;
-  int val9 ;
-  int ecode9 = 0 ;
-  PyObject *swig_obj[9] ;
+  int res9 = SWIG_OLDOBJ ;
+  int val10 ;
+  int ecode10 = 0 ;
+  PyObject *swig_obj[10] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_azp_greedy", 9, 9, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_azp_greedy", 10, 10, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_azp_greedy" "', argument " "1"" of type '" "int""'");
@@ -49676,22 +49749,22 @@ SWIGINTERN PyObject *_wrap_gda_azp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
     arg3 = ptr;
   }
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_azp_greedy" "', argument " "4"" of type '" "int""'");
-  } 
-  arg4 = static_cast< int >(val4);
   {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res5 = swig::asptr(swig_obj[4], &ptr);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "gda_azp_greedy" "', argument " "5"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "gda_azp_greedy" "', argument " "4"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "5"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "4"" of type '" "std::string const &""'"); 
     }
-    arg5 = ptr;
+    arg4 = ptr;
   }
+  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_azp_greedy" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res6 = swig::asptr(swig_obj[5], &ptr);
@@ -49704,50 +49777,63 @@ SWIGINTERN PyObject *_wrap_gda_azp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObje
     arg6 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res7 = swig::asptr(swig_obj[6], &ptr);
     if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_azp_greedy" "', argument " "7"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_azp_greedy" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "7"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg7 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res8 = SWIG_AsPtr_std_string(swig_obj[7], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res8 = swig::asptr(swig_obj[7], &ptr);
     if (!SWIG_IsOK(res8)) {
-      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_azp_greedy" "', argument " "8"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_azp_greedy" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "8"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg8 = ptr;
   }
-  ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
-  if (!SWIG_IsOK(ecode9)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "gda_azp_greedy" "', argument " "9"" of type '" "int""'");
+  {
+    std::string *ptr = (std::string *)0;
+    res9 = SWIG_AsPtr_std_string(swig_obj[8], &ptr);
+    if (!SWIG_IsOK(res9)) {
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_azp_greedy" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_greedy" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    arg9 = ptr;
+  }
+  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
+  if (!SWIG_IsOK(ecode10)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_azp_greedy" "', argument " "10"" of type '" "int""'");
   } 
-  arg9 = static_cast< int >(val9);
+  arg10 = static_cast< int >(val10);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_azp_greedy(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,arg4,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg5,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg6,(std::vector< int,std::allocator< int > > const &)*arg7,(std::string const &)*arg8,arg9);
+    result = gda_azp_greedy(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,arg5,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< int,std::allocator< int > > const &)*arg8,(std::string const &)*arg9,arg10);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res5)) delete arg5;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res6)) delete arg6;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
+  if (SWIG_IsNewObj(res9)) delete arg9;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res5)) delete arg5;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res6)) delete arg6;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
+  if (SWIG_IsNewObj(res9)) delete arg9;
   return NULL;
 }
 
@@ -49757,35 +49843,37 @@ SWIGINTERN PyObject *_wrap_gda_azp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject *
   int arg1 ;
   GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
-  int arg4 ;
-  double arg5 ;
-  int arg6 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg7 = 0 ;
+  std::string *arg4 = 0 ;
+  int arg5 ;
+  double arg6 ;
+  int arg7 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg8 = 0 ;
-  std::vector< int,std::allocator< int > > *arg9 = 0 ;
-  std::string *arg10 = 0 ;
-  int arg11 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg9 = 0 ;
+  std::vector< int,std::allocator< int > > *arg10 = 0 ;
+  std::string *arg11 = 0 ;
+  int arg12 ;
   int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int res3 = SWIG_OLDOBJ ;
-  int val4 ;
-  int ecode4 = 0 ;
-  double val5 ;
+  int res4 = SWIG_OLDOBJ ;
+  int val5 ;
   int ecode5 = 0 ;
-  int val6 ;
+  double val6 ;
   int ecode6 = 0 ;
-  int res7 = SWIG_OLDOBJ ;
+  int val7 ;
+  int ecode7 = 0 ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
   int res10 = SWIG_OLDOBJ ;
-  int val11 ;
-  int ecode11 = 0 ;
-  PyObject *swig_obj[11] ;
+  int res11 = SWIG_OLDOBJ ;
+  int val12 ;
+  int ecode12 = 0 ;
+  PyObject *swig_obj[12] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_azp_sa", 11, 11, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_azp_sa", 12, 12, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_azp_sa" "', argument " "1"" of type '" "int""'");
@@ -49807,32 +49895,32 @@ SWIGINTERN PyObject *_wrap_gda_azp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject *
     }
     arg3 = ptr;
   }
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_azp_sa" "', argument " "4"" of type '" "int""'");
-  } 
-  arg4 = static_cast< int >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_azp_sa" "', argument " "5"" of type '" "double""'");
-  } 
-  arg5 = static_cast< double >(val5);
-  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_azp_sa" "', argument " "6"" of type '" "int""'");
-  } 
-  arg6 = static_cast< int >(val6);
   {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res7 = swig::asptr(swig_obj[6], &ptr);
-    if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_azp_sa" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "gda_azp_sa" "', argument " "4"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "4"" of type '" "std::string const &""'"); 
     }
-    arg7 = ptr;
+    arg4 = ptr;
   }
+  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_azp_sa" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
+  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_azp_sa" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_azp_sa" "', argument " "7"" of type '" "int""'");
+  } 
+  arg7 = static_cast< int >(val7);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res8 = swig::asptr(swig_obj[7], &ptr);
@@ -49845,50 +49933,63 @@ SWIGINTERN PyObject *_wrap_gda_azp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject *
     arg8 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res9 = swig::asptr(swig_obj[8], &ptr);
     if (!SWIG_IsOK(res9)) {
-      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_azp_sa" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_azp_sa" "', argument " "9"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "9"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg9 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res10 = SWIG_AsPtr_std_string(swig_obj[9], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res10 = swig::asptr(swig_obj[9], &ptr);
     if (!SWIG_IsOK(res10)) {
-      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_azp_sa" "', argument " "10"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_azp_sa" "', argument " "10"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "10"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "10"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg10 = ptr;
   }
-  ecode11 = SWIG_AsVal_int(swig_obj[10], &val11);
-  if (!SWIG_IsOK(ecode11)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "gda_azp_sa" "', argument " "11"" of type '" "int""'");
+  {
+    std::string *ptr = (std::string *)0;
+    res11 = SWIG_AsPtr_std_string(swig_obj[10], &ptr);
+    if (!SWIG_IsOK(res11)) {
+      SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "gda_azp_sa" "', argument " "11"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_sa" "', argument " "11"" of type '" "std::string const &""'"); 
+    }
+    arg11 = ptr;
+  }
+  ecode12 = SWIG_AsVal_int(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "gda_azp_sa" "', argument " "12"" of type '" "int""'");
   } 
-  arg11 = static_cast< int >(val11);
+  arg12 = static_cast< int >(val12);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_azp_sa(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,arg4,arg5,arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< int,std::allocator< int > > const &)*arg9,(std::string const &)*arg10,arg11);
+    result = gda_azp_sa(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,arg5,arg6,arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg9,(std::vector< int,std::allocator< int > > const &)*arg10,(std::string const &)*arg11,arg12);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   if (SWIG_IsNewObj(res10)) delete arg10;
+  if (SWIG_IsNewObj(res11)) delete arg11;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   if (SWIG_IsNewObj(res10)) delete arg10;
+  if (SWIG_IsNewObj(res11)) delete arg11;
   return NULL;
 }
 
@@ -49898,35 +49999,37 @@ SWIGINTERN PyObject *_wrap_gda_azp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObject
   int arg1 ;
   GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
-  int arg4 ;
+  std::string *arg4 = 0 ;
   int arg5 ;
   int arg6 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg7 = 0 ;
+  int arg7 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg8 = 0 ;
-  std::vector< int,std::allocator< int > > *arg9 = 0 ;
-  std::string *arg10 = 0 ;
-  int arg11 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg9 = 0 ;
+  std::vector< int,std::allocator< int > > *arg10 = 0 ;
+  std::string *arg11 = 0 ;
+  int arg12 ;
   int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int res3 = SWIG_OLDOBJ ;
-  int val4 ;
-  int ecode4 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
   int val5 ;
   int ecode5 = 0 ;
   int val6 ;
   int ecode6 = 0 ;
-  int res7 = SWIG_OLDOBJ ;
+  int val7 ;
+  int ecode7 = 0 ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
   int res10 = SWIG_OLDOBJ ;
-  int val11 ;
-  int ecode11 = 0 ;
-  PyObject *swig_obj[11] ;
+  int res11 = SWIG_OLDOBJ ;
+  int val12 ;
+  int ecode12 = 0 ;
+  PyObject *swig_obj[12] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_azp_tabu", 11, 11, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_azp_tabu", 12, 12, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_azp_tabu" "', argument " "1"" of type '" "int""'");
@@ -49948,11 +50051,17 @@ SWIGINTERN PyObject *_wrap_gda_azp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
     arg3 = ptr;
   }
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_azp_tabu" "', argument " "4"" of type '" "int""'");
-  } 
-  arg4 = static_cast< int >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "gda_azp_tabu" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
   ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_azp_tabu" "', argument " "5"" of type '" "int""'");
@@ -49963,17 +50072,11 @@ SWIGINTERN PyObject *_wrap_gda_azp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_azp_tabu" "', argument " "6"" of type '" "int""'");
   } 
   arg6 = static_cast< int >(val6);
-  {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res7 = swig::asptr(swig_obj[6], &ptr);
-    if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_azp_tabu" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "7"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
-    }
-    arg7 = ptr;
-  }
+  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_azp_tabu" "', argument " "7"" of type '" "int""'");
+  } 
+  arg7 = static_cast< int >(val7);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res8 = swig::asptr(swig_obj[7], &ptr);
@@ -49986,50 +50089,63 @@ SWIGINTERN PyObject *_wrap_gda_azp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObject
     arg8 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res9 = swig::asptr(swig_obj[8], &ptr);
     if (!SWIG_IsOK(res9)) {
-      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_azp_tabu" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_azp_tabu" "', argument " "9"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "9"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg9 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res10 = SWIG_AsPtr_std_string(swig_obj[9], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res10 = swig::asptr(swig_obj[9], &ptr);
     if (!SWIG_IsOK(res10)) {
-      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_azp_tabu" "', argument " "10"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_azp_tabu" "', argument " "10"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "10"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "10"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg10 = ptr;
   }
-  ecode11 = SWIG_AsVal_int(swig_obj[10], &val11);
-  if (!SWIG_IsOK(ecode11)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "gda_azp_tabu" "', argument " "11"" of type '" "int""'");
+  {
+    std::string *ptr = (std::string *)0;
+    res11 = SWIG_AsPtr_std_string(swig_obj[10], &ptr);
+    if (!SWIG_IsOK(res11)) {
+      SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "gda_azp_tabu" "', argument " "11"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_azp_tabu" "', argument " "11"" of type '" "std::string const &""'"); 
+    }
+    arg11 = ptr;
+  }
+  ecode12 = SWIG_AsVal_int(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "gda_azp_tabu" "', argument " "12"" of type '" "int""'");
   } 
-  arg11 = static_cast< int >(val11);
+  arg12 = static_cast< int >(val12);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_azp_tabu(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,arg4,arg5,arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< int,std::allocator< int > > const &)*arg9,(std::string const &)*arg10,arg11);
+    result = gda_azp_tabu(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,arg5,arg6,arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg9,(std::vector< int,std::allocator< int > > const &)*arg10,(std::string const &)*arg11,arg12);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   if (SWIG_IsNewObj(res10)) delete arg10;
+  if (SWIG_IsNewObj(res11)) delete arg11;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   if (SWIG_IsNewObj(res10)) delete arg10;
+  if (SWIG_IsNewObj(res11)) delete arg11;
   return NULL;
 }
 
@@ -50038,30 +50154,32 @@ SWIGINTERN PyObject *_wrap_gda_maxp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg2 = 0 ;
-  int arg3 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg4 = 0 ;
+  std::string *arg3 = 0 ;
+  int arg4 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg5 = 0 ;
-  std::vector< int,std::allocator< int > > *arg6 = 0 ;
-  std::string *arg7 = 0 ;
-  int arg8 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg6 = 0 ;
+  std::vector< int,std::allocator< int > > *arg7 = 0 ;
+  std::string *arg8 = 0 ;
   int arg9 ;
+  int arg10 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  int val3 ;
-  int ecode3 = 0 ;
-  int res4 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  int val4 ;
+  int ecode4 = 0 ;
   int res5 = SWIG_OLDOBJ ;
   int res6 = SWIG_OLDOBJ ;
   int res7 = SWIG_OLDOBJ ;
-  int val8 ;
-  int ecode8 = 0 ;
+  int res8 = SWIG_OLDOBJ ;
   int val9 ;
   int ecode9 = 0 ;
-  PyObject *swig_obj[9] ;
+  int val10 ;
+  int ecode10 = 0 ;
+  PyObject *swig_obj[10] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_greedy", 9, 9, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_greedy", 10, 10, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_maxp_greedy" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
@@ -50078,22 +50196,22 @@ SWIGINTERN PyObject *_wrap_gda_maxp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     arg2 = ptr;
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "gda_maxp_greedy" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
   {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res4 = swig::asptr(swig_obj[3], &ptr);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "gda_maxp_greedy" "', argument " "4"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "gda_maxp_greedy" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "4"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg4 = ptr;
+    arg3 = ptr;
   }
+  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_maxp_greedy" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res5 = swig::asptr(swig_obj[4], &ptr);
@@ -50106,55 +50224,68 @@ SWIGINTERN PyObject *_wrap_gda_maxp_greedy(PyObject *SWIGUNUSEDPARM(self), PyObj
     arg5 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res6 = swig::asptr(swig_obj[5], &ptr);
     if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_maxp_greedy" "', argument " "6"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_maxp_greedy" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "6"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg6 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res7 = SWIG_AsPtr_std_string(swig_obj[6], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res7 = swig::asptr(swig_obj[6], &ptr);
     if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_maxp_greedy" "', argument " "7"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_maxp_greedy" "', argument " "7"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "7"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "7"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg7 = ptr;
   }
-  ecode8 = SWIG_AsVal_int(swig_obj[7], &val8);
-  if (!SWIG_IsOK(ecode8)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_maxp_greedy" "', argument " "8"" of type '" "int""'");
-  } 
-  arg8 = static_cast< int >(val8);
+  {
+    std::string *ptr = (std::string *)0;
+    res8 = SWIG_AsPtr_std_string(swig_obj[7], &ptr);
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_maxp_greedy" "', argument " "8"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_greedy" "', argument " "8"" of type '" "std::string const &""'"); 
+    }
+    arg8 = ptr;
+  }
   ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
   if (!SWIG_IsOK(ecode9)) {
     SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "gda_maxp_greedy" "', argument " "9"" of type '" "int""'");
   } 
   arg9 = static_cast< int >(val9);
+  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
+  if (!SWIG_IsOK(ecode10)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_maxp_greedy" "', argument " "10"" of type '" "int""'");
+  } 
+  arg10 = static_cast< int >(val10);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_maxp_greedy(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,arg3,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg4,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg5,(std::vector< int,std::allocator< int > > const &)*arg6,(std::string const &)*arg7,arg8,arg9);
+    result = gda_maxp_greedy(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,(std::string const &)*arg3,arg4,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg5,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg6,(std::vector< int,std::allocator< int > > const &)*arg7,(std::string const &)*arg8,arg9,arg10);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res4)) delete arg4;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
   if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res8)) delete arg8;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res4)) delete arg4;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
   if (SWIG_IsNewObj(res7)) delete arg7;
+  if (SWIG_IsNewObj(res8)) delete arg8;
   return NULL;
 }
 
@@ -50163,36 +50294,38 @@ SWIGINTERN PyObject *_wrap_gda_maxp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject *resultobj = 0;
   GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg2 = 0 ;
-  int arg3 ;
-  double arg4 ;
-  int arg5 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg6 = 0 ;
+  std::string *arg3 = 0 ;
+  int arg4 ;
+  double arg5 ;
+  int arg6 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg7 = 0 ;
-  std::vector< int,std::allocator< int > > *arg8 = 0 ;
-  std::string *arg9 = 0 ;
-  int arg10 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg8 = 0 ;
+  std::vector< int,std::allocator< int > > *arg9 = 0 ;
+  std::string *arg10 = 0 ;
   int arg11 ;
+  int arg12 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  int val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
+  int res3 = SWIG_OLDOBJ ;
+  int val4 ;
   int ecode4 = 0 ;
-  int val5 ;
+  double val5 ;
   int ecode5 = 0 ;
-  int res6 = SWIG_OLDOBJ ;
+  int val6 ;
+  int ecode6 = 0 ;
   int res7 = SWIG_OLDOBJ ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
-  int val10 ;
-  int ecode10 = 0 ;
+  int res10 = SWIG_OLDOBJ ;
   int val11 ;
   int ecode11 = 0 ;
-  PyObject *swig_obj[11] ;
+  int val12 ;
+  int ecode12 = 0 ;
+  PyObject *swig_obj[12] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_sa", 11, 11, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_sa", 12, 12, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_maxp_sa" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
@@ -50209,32 +50342,32 @@ SWIGINTERN PyObject *_wrap_gda_maxp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject 
     }
     arg2 = ptr;
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "gda_maxp_sa" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_maxp_sa" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_maxp_sa" "', argument " "5"" of type '" "int""'");
-  } 
-  arg5 = static_cast< int >(val5);
   {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res6 = swig::asptr(swig_obj[5], &ptr);
-    if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_maxp_sa" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "gda_maxp_sa" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "3"" of type '" "std::string const &""'"); 
     }
-    arg6 = ptr;
+    arg3 = ptr;
   }
+  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_maxp_sa" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_maxp_sa" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_maxp_sa" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res7 = swig::asptr(swig_obj[6], &ptr);
@@ -50247,55 +50380,68 @@ SWIGINTERN PyObject *_wrap_gda_maxp_sa(PyObject *SWIGUNUSEDPARM(self), PyObject 
     arg7 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res8 = swig::asptr(swig_obj[7], &ptr);
     if (!SWIG_IsOK(res8)) {
-      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_maxp_sa" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_maxp_sa" "', argument " "8"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "8"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg8 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res9 = SWIG_AsPtr_std_string(swig_obj[8], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res9 = swig::asptr(swig_obj[8], &ptr);
     if (!SWIG_IsOK(res9)) {
-      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_maxp_sa" "', argument " "9"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_maxp_sa" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "9"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg9 = ptr;
   }
-  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
-  if (!SWIG_IsOK(ecode10)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_maxp_sa" "', argument " "10"" of type '" "int""'");
-  } 
-  arg10 = static_cast< int >(val10);
+  {
+    std::string *ptr = (std::string *)0;
+    res10 = SWIG_AsPtr_std_string(swig_obj[9], &ptr);
+    if (!SWIG_IsOK(res10)) {
+      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_maxp_sa" "', argument " "10"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_sa" "', argument " "10"" of type '" "std::string const &""'"); 
+    }
+    arg10 = ptr;
+  }
   ecode11 = SWIG_AsVal_int(swig_obj[10], &val11);
   if (!SWIG_IsOK(ecode11)) {
     SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "gda_maxp_sa" "', argument " "11"" of type '" "int""'");
   } 
   arg11 = static_cast< int >(val11);
+  ecode12 = SWIG_AsVal_int(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "gda_maxp_sa" "', argument " "12"" of type '" "int""'");
+  } 
+  arg12 = static_cast< int >(val12);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_maxp_sa(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,arg3,arg4,arg5,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< int,std::allocator< int > > const &)*arg8,(std::string const &)*arg9,arg10,arg11);
+    result = gda_maxp_sa(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,(std::string const &)*arg3,arg4,arg5,arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< int,std::allocator< int > > const &)*arg9,(std::string const &)*arg10,arg11,arg12);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res10)) delete arg10;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res10)) delete arg10;
   return NULL;
 }
 
@@ -50304,36 +50450,38 @@ SWIGINTERN PyObject *_wrap_gda_maxp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject *resultobj = 0;
   GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg2 = 0 ;
-  int arg3 ;
+  std::string *arg3 = 0 ;
   int arg4 ;
   int arg5 ;
-  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg6 = 0 ;
+  int arg6 ;
   std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg7 = 0 ;
-  std::vector< int,std::allocator< int > > *arg8 = 0 ;
-  std::string *arg9 = 0 ;
-  int arg10 ;
+  std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *arg8 = 0 ;
+  std::vector< int,std::allocator< int > > *arg9 = 0 ;
+  std::string *arg10 = 0 ;
   int arg11 ;
+  int arg12 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  int val3 ;
-  int ecode3 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   int val4 ;
   int ecode4 = 0 ;
   int val5 ;
   int ecode5 = 0 ;
-  int res6 = SWIG_OLDOBJ ;
+  int val6 ;
+  int ecode6 = 0 ;
   int res7 = SWIG_OLDOBJ ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
-  int val10 ;
-  int ecode10 = 0 ;
+  int res10 = SWIG_OLDOBJ ;
   int val11 ;
   int ecode11 = 0 ;
-  PyObject *swig_obj[11] ;
+  int val12 ;
+  int ecode12 = 0 ;
+  PyObject *swig_obj[12] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_tabu", 11, 11, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_maxp_tabu", 12, 12, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_maxp_tabu" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
@@ -50350,11 +50498,17 @@ SWIGINTERN PyObject *_wrap_gda_maxp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObjec
     }
     arg2 = ptr;
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "gda_maxp_tabu" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "gda_maxp_tabu" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
   ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_maxp_tabu" "', argument " "4"" of type '" "int""'");
@@ -50365,17 +50519,11 @@ SWIGINTERN PyObject *_wrap_gda_maxp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_maxp_tabu" "', argument " "5"" of type '" "int""'");
   } 
   arg5 = static_cast< int >(val5);
-  {
-    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
-    res6 = swig::asptr(swig_obj[5], &ptr);
-    if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_maxp_tabu" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "6"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
-    }
-    arg6 = ptr;
-  }
+  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_maxp_tabu" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
   {
     std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res7 = swig::asptr(swig_obj[6], &ptr);
@@ -50388,55 +50536,68 @@ SWIGINTERN PyObject *_wrap_gda_maxp_tabu(PyObject *SWIGUNUSEDPARM(self), PyObjec
     arg7 = ptr;
   }
   {
-    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *ptr = (std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > *)0;
     res8 = swig::asptr(swig_obj[7], &ptr);
     if (!SWIG_IsOK(res8)) {
-      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_maxp_tabu" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "gda_maxp_tabu" "', argument " "8"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "8"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "8"" of type '" "std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &""'"); 
     }
     arg8 = ptr;
   }
   {
-    std::string *ptr = (std::string *)0;
-    res9 = SWIG_AsPtr_std_string(swig_obj[8], &ptr);
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res9 = swig::asptr(swig_obj[8], &ptr);
     if (!SWIG_IsOK(res9)) {
-      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_maxp_tabu" "', argument " "9"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_maxp_tabu" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "9"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "9"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
     }
     arg9 = ptr;
   }
-  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
-  if (!SWIG_IsOK(ecode10)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_maxp_tabu" "', argument " "10"" of type '" "int""'");
-  } 
-  arg10 = static_cast< int >(val10);
+  {
+    std::string *ptr = (std::string *)0;
+    res10 = SWIG_AsPtr_std_string(swig_obj[9], &ptr);
+    if (!SWIG_IsOK(res10)) {
+      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "gda_maxp_tabu" "', argument " "10"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_maxp_tabu" "', argument " "10"" of type '" "std::string const &""'"); 
+    }
+    arg10 = ptr;
+  }
   ecode11 = SWIG_AsVal_int(swig_obj[10], &val11);
   if (!SWIG_IsOK(ecode11)) {
     SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "gda_maxp_tabu" "', argument " "11"" of type '" "int""'");
   } 
   arg11 = static_cast< int >(val11);
+  ecode12 = SWIG_AsVal_int(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "gda_maxp_tabu" "', argument " "12"" of type '" "int""'");
+  } 
+  arg12 = static_cast< int >(val12);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_maxp_tabu(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,arg3,arg4,arg5,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< int,std::allocator< int > > const &)*arg8,(std::string const &)*arg9,arg10,arg11);
+    result = gda_maxp_tabu(arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2,(std::string const &)*arg3,arg4,arg5,arg6,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg7,(std::vector< std::pair< double,std::vector< double,std::allocator< double > > >,std::allocator< std::pair< double,std::vector< double,std::allocator< double > > > > > const &)*arg8,(std::vector< int,std::allocator< int > > const &)*arg9,(std::string const &)*arg10,arg11,arg12);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res10)) delete arg10;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
-  if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res7)) delete arg7;
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res10)) delete arg10;
   return NULL;
 }
 
@@ -50448,10 +50609,11 @@ SWIGINTERN PyObject *_wrap_gda_redcap(PyObject *SWIGUNUSEDPARM(self), PyObject *
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
   std::string *arg4 = 0 ;
   std::string *arg5 = 0 ;
-  std::vector< double,std::allocator< double > > *arg6 = 0 ;
-  double arg7 ;
-  int arg8 ;
+  std::string *arg6 = 0 ;
+  std::vector< double,std::allocator< double > > *arg7 = 0 ;
+  double arg8 ;
   int arg9 ;
+  int arg10 ;
   unsigned int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
@@ -50460,16 +50622,17 @@ SWIGINTERN PyObject *_wrap_gda_redcap(PyObject *SWIGUNUSEDPARM(self), PyObject *
   int res4 = SWIG_OLDOBJ ;
   int res5 = SWIG_OLDOBJ ;
   int res6 = SWIG_OLDOBJ ;
-  double val7 ;
-  int ecode7 = 0 ;
-  int val8 ;
+  int res7 = SWIG_OLDOBJ ;
+  double val8 ;
   int ecode8 = 0 ;
   int val9 ;
   int ecode9 = 0 ;
-  PyObject *swig_obj[9] ;
+  int val10 ;
+  int ecode10 = 0 ;
+  PyObject *swig_obj[10] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_redcap", 9, 9, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_redcap", 10, 10, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_redcap" "', argument " "1"" of type '" "unsigned int""'");
@@ -50514,34 +50677,45 @@ SWIGINTERN PyObject *_wrap_gda_redcap(PyObject *SWIGUNUSEDPARM(self), PyObject *
     arg5 = ptr;
   }
   {
-    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
-    res6 = swig::asptr(swig_obj[5], &ptr);
+    std::string *ptr = (std::string *)0;
+    res6 = SWIG_AsPtr_std_string(swig_obj[5], &ptr);
     if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_redcap" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_redcap" "', argument " "6"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_redcap" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_redcap" "', argument " "6"" of type '" "std::string const &""'"); 
     }
     arg6 = ptr;
   }
-  ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
-  if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_redcap" "', argument " "7"" of type '" "double""'");
-  } 
-  arg7 = static_cast< double >(val7);
-  ecode8 = SWIG_AsVal_int(swig_obj[7], &val8);
+  {
+    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+    res7 = swig::asptr(swig_obj[6], &ptr);
+    if (!SWIG_IsOK(res7)) {
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_redcap" "', argument " "7"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_redcap" "', argument " "7"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    arg7 = ptr;
+  }
+  ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
   if (!SWIG_IsOK(ecode8)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_redcap" "', argument " "8"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_redcap" "', argument " "8"" of type '" "double""'");
   } 
-  arg8 = static_cast< int >(val8);
+  arg8 = static_cast< double >(val8);
   ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
   if (!SWIG_IsOK(ecode9)) {
     SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "gda_redcap" "', argument " "9"" of type '" "int""'");
   } 
   arg9 = static_cast< int >(val9);
+  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
+  if (!SWIG_IsOK(ecode10)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_redcap" "', argument " "10"" of type '" "int""'");
+  } 
+  arg10 = static_cast< int >(val10);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_redcap(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5,(std::vector< double,std::allocator< double > > const &)*arg6,arg7,arg8,arg9);
+    result = gda_redcap(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5,(std::string const &)*arg6,(std::vector< double,std::allocator< double > > const &)*arg7,arg8,arg9,arg10);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
@@ -50549,12 +50723,14 @@ SWIGINTERN PyObject *_wrap_gda_redcap(PyObject *SWIGUNUSEDPARM(self), PyObject *
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res7)) delete arg7;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res7)) delete arg7;
   return NULL;
 }
 
@@ -50565,10 +50741,11 @@ SWIGINTERN PyObject *_wrap_gda_skater(PyObject *SWIGUNUSEDPARM(self), PyObject *
   GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
   std::string *arg4 = 0 ;
-  std::vector< double,std::allocator< double > > *arg5 = 0 ;
-  double arg6 ;
-  int arg7 ;
+  std::string *arg5 = 0 ;
+  std::vector< double,std::allocator< double > > *arg6 = 0 ;
+  double arg7 ;
   int arg8 ;
+  int arg9 ;
   unsigned int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
@@ -50576,16 +50753,17 @@ SWIGINTERN PyObject *_wrap_gda_skater(PyObject *SWIGUNUSEDPARM(self), PyObject *
   int res3 = SWIG_OLDOBJ ;
   int res4 = SWIG_OLDOBJ ;
   int res5 = SWIG_OLDOBJ ;
-  double val6 ;
-  int ecode6 = 0 ;
-  int val7 ;
+  int res6 = SWIG_OLDOBJ ;
+  double val7 ;
   int ecode7 = 0 ;
   int val8 ;
   int ecode8 = 0 ;
-  PyObject *swig_obj[8] ;
+  int val9 ;
+  int ecode9 = 0 ;
+  PyObject *swig_obj[9] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_skater", 8, 8, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_skater", 9, 9, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_skater" "', argument " "1"" of type '" "unsigned int""'");
@@ -50619,45 +50797,58 @@ SWIGINTERN PyObject *_wrap_gda_skater(PyObject *SWIGUNUSEDPARM(self), PyObject *
     arg4 = ptr;
   }
   {
-    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
-    res5 = swig::asptr(swig_obj[4], &ptr);
+    std::string *ptr = (std::string *)0;
+    res5 = SWIG_AsPtr_std_string(swig_obj[4], &ptr);
     if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "gda_skater" "', argument " "5"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "gda_skater" "', argument " "5"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_skater" "', argument " "5"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_skater" "', argument " "5"" of type '" "std::string const &""'"); 
     }
     arg5 = ptr;
   }
-  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_skater" "', argument " "6"" of type '" "double""'");
-  } 
-  arg6 = static_cast< double >(val6);
-  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  {
+    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+    res6 = swig::asptr(swig_obj[5], &ptr);
+    if (!SWIG_IsOK(res6)) {
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_skater" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_skater" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    arg6 = ptr;
+  }
+  ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
   if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_skater" "', argument " "7"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_skater" "', argument " "7"" of type '" "double""'");
   } 
-  arg7 = static_cast< int >(val7);
+  arg7 = static_cast< double >(val7);
   ecode8 = SWIG_AsVal_int(swig_obj[7], &val8);
   if (!SWIG_IsOK(ecode8)) {
     SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_skater" "', argument " "8"" of type '" "int""'");
   } 
   arg8 = static_cast< int >(val8);
+  ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
+  if (!SWIG_IsOK(ecode9)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "gda_skater" "', argument " "9"" of type '" "int""'");
+  } 
+  arg9 = static_cast< int >(val9);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_skater(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::vector< double,std::allocator< double > > const &)*arg5,arg6,arg7,arg8);
+    result = gda_skater(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5,(std::vector< double,std::allocator< double > > const &)*arg6,arg7,arg8,arg9);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
+  if (SWIG_IsNewObj(res6)) delete arg6;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
+  if (SWIG_IsNewObj(res6)) delete arg6;
   return NULL;
 }
 
@@ -50669,8 +50860,9 @@ SWIGINTERN PyObject *_wrap_gda_schc(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
   std::string *arg4 = 0 ;
   std::string *arg5 = 0 ;
-  std::vector< double,std::allocator< double > > *arg6 = 0 ;
-  double arg7 ;
+  std::string *arg6 = 0 ;
+  std::vector< double,std::allocator< double > > *arg7 = 0 ;
+  double arg8 ;
   unsigned int val1 ;
   int ecode1 = 0 ;
   void *argp2 = 0 ;
@@ -50679,12 +50871,13 @@ SWIGINTERN PyObject *_wrap_gda_schc(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   int res4 = SWIG_OLDOBJ ;
   int res5 = SWIG_OLDOBJ ;
   int res6 = SWIG_OLDOBJ ;
-  double val7 ;
-  int ecode7 = 0 ;
-  PyObject *swig_obj[7] ;
+  int res7 = SWIG_OLDOBJ ;
+  double val8 ;
+  int ecode8 = 0 ;
+  PyObject *swig_obj[8] ;
   std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_schc", 7, 7, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "gda_schc", 8, 8, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "gda_schc" "', argument " "1"" of type '" "unsigned int""'");
@@ -50729,24 +50922,35 @@ SWIGINTERN PyObject *_wrap_gda_schc(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
     arg5 = ptr;
   }
   {
-    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
-    res6 = swig::asptr(swig_obj[5], &ptr);
+    std::string *ptr = (std::string *)0;
+    res6 = SWIG_AsPtr_std_string(swig_obj[5], &ptr);
     if (!SWIG_IsOK(res6)) {
-      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_schc" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "gda_schc" "', argument " "6"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_schc" "', argument " "6"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_schc" "', argument " "6"" of type '" "std::string const &""'"); 
     }
     arg6 = ptr;
   }
-  ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
-  if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_schc" "', argument " "7"" of type '" "double""'");
+  {
+    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+    res7 = swig::asptr(swig_obj[6], &ptr);
+    if (!SWIG_IsOK(res7)) {
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "gda_schc" "', argument " "7"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_schc" "', argument " "7"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    arg7 = ptr;
+  }
+  ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_schc" "', argument " "8"" of type '" "double""'");
   } 
-  arg7 = static_cast< double >(val7);
+  arg8 = static_cast< double >(val8);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = gda_schc(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5,(std::vector< double,std::allocator< double > > const &)*arg6,arg7);
+    result = gda_schc(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5,(std::string const &)*arg6,(std::vector< double,std::allocator< double > > const &)*arg7,arg8);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = swig::from(static_cast< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > >(result));
@@ -50754,12 +50958,14 @@ SWIGINTERN PyObject *_wrap_gda_schc(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res7)) delete arg7;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res3)) delete arg3;
   if (SWIG_IsNewObj(res4)) delete arg4;
   if (SWIG_IsNewObj(res5)) delete arg5;
   if (SWIG_IsNewObj(res6)) delete arg6;
+  if (SWIG_IsNewObj(res7)) delete arg7;
   return NULL;
 }
 
@@ -50839,7 +51045,7 @@ SWIGINTERN PyObject *_wrap_gda_withinsumofsquare(PyObject *SWIGUNUSEDPARM(self),
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
-  double result;
+  std::vector< double,std::allocator< double > > result;
   
   if (!SWIG_Python_UnpackTuple(args, "gda_withinsumofsquare", 2, 2, swig_obj)) SWIG_fail;
   {
@@ -50866,10 +51072,10 @@ SWIGINTERN PyObject *_wrap_gda_withinsumofsquare(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double)gda_withinsumofsquare((std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > const &)*arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2);
+    result = gda_withinsumofsquare((std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > const &)*arg1,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg2);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_From_double(static_cast< double >(result));
+  resultobj = swig::from(static_cast< std::vector< double,std::allocator< double > > >(result));
   if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -53543,6 +53749,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeoDaWeight_uid_get", _wrap_GeoDaWeight_uid_get, METH_O, NULL},
 	 { "GeoDaWeight_swigregister", GeoDaWeight_swigregister, METH_O, NULL},
 	 { "WeightsIntersection", _wrap_WeightsIntersection, METH_O, NULL},
+	 { "ReadIdField", _wrap_ReadIdField, METH_O, NULL},
 	 { "delete_LISA", _wrap_delete_LISA, METH_O, NULL},
 	 { "LISA_ComputeLoalSA", _wrap_LISA_ComputeLoalSA, METH_O, NULL},
 	 { "LISA_CalcPseudoP", _wrap_LISA_CalcPseudoP, METH_O, NULL},
@@ -53723,6 +53930,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "gda_knn_weights", _wrap_gda_knn_weights, METH_VARARGS, NULL},
 	 { "gda_min_distthreshold", _wrap_gda_min_distthreshold, METH_VARARGS, NULL},
 	 { "gda_distance_weights", _wrap_gda_distance_weights, METH_VARARGS, NULL},
+	 { "gda_load_weights", _wrap_gda_load_weights, METH_O, NULL},
 	 { "gda_azp_greedy", _wrap_gda_azp_greedy, METH_VARARGS, NULL},
 	 { "gda_azp_sa", _wrap_gda_azp_sa, METH_VARARGS, NULL},
 	 { "gda_azp_tabu", _wrap_gda_azp_tabu, METH_VARARGS, NULL},

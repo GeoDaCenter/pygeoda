@@ -15,13 +15,14 @@ def local_multigeary(w, data, **kwargs):
     Args:
         w (Weight): An instance of Weight class
         data (list): A list of numeric arry with values of selected variables
+        undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
 
     Returns:
-        lisa: An instance of lisa class represents the results of lisa computations
+        lisa: An instance of lisa class.
     '''
     if w == None:
         raise ValueError("Weights is None.")

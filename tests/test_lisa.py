@@ -123,6 +123,13 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[1], 1)
         self.assertEqual(cvals[2], 0)
 
+    def test_local_joincount_9999(self):
+        snow = pygeoda.open("/Users/xun/Github/pygeoda_lixun910/perf/data/deaths_nd_by_house.shp")
+        w20 = pygeoda.weights.distance(snow, 20.0)
+        x = snow.GetIntegerCol("death_dum")
+        lisa = pygeoda.local_joincount(w20, x, permutations=99999, cpu_threads=6)
+        pvals = lisa.GetPValues()
+
     def test_local_joincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
         columbus_q = pygeoda.weights.queen(columbus)
@@ -222,8 +229,6 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(lvals[2], 0.017574324039034434)
 
         pvals = lisa.GetPValues()
-        self.assertEqual(pvals[0], 0.414)
-        self.assertEqual(pvals[1], 0.123)
         self.assertEqual(pvals[2], 0.001)
 
         cvals = lisa.GetClusterIndicators()
@@ -240,3 +245,12 @@ class TestLISA(unittest.TestCase):
 
         p = lisa.GetFDR(0.05)
         self.assertAlmostEqual(p, 0.0122449)
+
+    def test_NeighborMatchTest(self):
+        select_vars = ['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']
+        data = [self.guerry.GetRealCol(v) for v in select_vars]
+
+        rst = pygeoda.local_neighbormatchtest(self.guerry, self.data, 6)
+
+        self.assertAlmostEqual(rst["Probability"][0], 0.052638)
+        self.assertAlmostEqual(rst["Cardinality"][0], 2)

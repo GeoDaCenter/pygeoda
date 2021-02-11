@@ -1935,6 +1935,9 @@ _libgeoda.GeoDaWeight_swigregister(GeoDaWeight)
 
 def WeightsIntersection(ws):
     return _libgeoda.WeightsIntersection(ws)
+
+def ReadIdField(w_fname):
+    return _libgeoda.ReadIdField(w_fname)
 class LISA(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
@@ -2452,32 +2455,35 @@ def gda_min_distthreshold(geoda, is_arc, is_mile):
 def gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals):
     return _libgeoda.gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals)
 
-def gda_azp_greedy(p, w, data, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
-    return _libgeoda.gda_azp_greedy(p, w, data, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
+def gda_load_weights(weights_path):
+    return _libgeoda.gda_load_weights(weights_path)
 
-def gda_azp_sa(p, w, data, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
-    return _libgeoda.gda_azp_sa(p, w, data, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
+def gda_azp_greedy(p, w, _data, scale_method, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
+    return _libgeoda.gda_azp_greedy(p, w, _data, scale_method, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
 
-def gda_azp_tabu(p, w, data, inits, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
-    return _libgeoda.gda_azp_tabu(p, w, data, inits, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
+def gda_azp_sa(p, w, _data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
+    return _libgeoda.gda_azp_sa(p, w, _data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
 
-def gda_maxp_greedy(w, data, iterations, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
-    return _libgeoda.gda_maxp_greedy(w, data, iterations, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
+def gda_azp_tabu(p, w, _data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
+    return _libgeoda.gda_azp_tabu(p, w, _data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
 
-def gda_maxp_sa(w, data, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
-    return _libgeoda.gda_maxp_sa(w, data, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
+def gda_maxp_greedy(w, _data, scale_method, iterations, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
+    return _libgeoda.gda_maxp_greedy(w, _data, scale_method, iterations, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
 
-def gda_maxp_tabu(w, data, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
-    return _libgeoda.gda_maxp_tabu(w, data, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
+def gda_maxp_sa(w, _data, scale_method, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
+    return _libgeoda.gda_maxp_sa(w, _data, scale_method, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
 
-def gda_redcap(k, w, data, redcap_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads):
-    return _libgeoda.gda_redcap(k, w, data, redcap_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads)
+def gda_maxp_tabu(w, _data, scale_method, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads):
+    return _libgeoda.gda_maxp_tabu(w, _data, scale_method, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, init_regions, distance_method, rnd_seed, cpu_threads)
 
-def gda_skater(k, w, data, distance_method, bound_vals, min_bound, rand_seed, cpu_threads):
-    return _libgeoda.gda_skater(k, w, data, distance_method, bound_vals, min_bound, rand_seed, cpu_threads)
+def gda_redcap(k, w, _data, scale_method, redcap_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads):
+    return _libgeoda.gda_redcap(k, w, _data, scale_method, redcap_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads)
 
-def gda_schc(k, w, data, linkage_method, distance_method, bound_vals, min_bound):
-    return _libgeoda.gda_schc(k, w, data, linkage_method, distance_method, bound_vals, min_bound)
+def gda_skater(k, w, _data, scale_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads):
+    return _libgeoda.gda_skater(k, w, _data, scale_method, distance_method, bound_vals, min_bound, rand_seed, cpu_threads)
+
+def gda_schc(k, w, _data, scale_method, linkage_method, distance_method, bound_vals, min_bound):
+    return _libgeoda.gda_schc(k, w, _data, scale_method, linkage_method, distance_method, bound_vals, min_bound)
 
 def gda_sumofsquares(vals):
     return _libgeoda.gda_sumofsquares(vals)
