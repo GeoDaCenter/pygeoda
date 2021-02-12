@@ -1,4 +1,5 @@
 from ..libgeoda import LISA, BatchLISA
+import math
 
 __author__ = "Xun Li <lixun910@gmail.com>, Yeqing Han <yeqinghan_geo@163.com>"
 
@@ -62,7 +63,9 @@ class lisa:
             :obj:`list` of float: a list of float values of local pseudo-p values of significance returned from LISA computation
                 e.g. local moran, local geary etc.
         """
-        return self.gda_lisa.GetLocalSignificanceValues()
+        vals = self.gda_lisa.GetLocalSignificanceValues()
+        clean_vals = [math.nan if v < 0 else v for v in vals]
+        return clean_vals
 
     def GetClusterIndicators(self):
         """Get the local cluster indicators returned from LISA computation.

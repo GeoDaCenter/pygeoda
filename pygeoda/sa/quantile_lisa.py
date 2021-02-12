@@ -2,21 +2,23 @@ from ..libgeoda import gda_quantilelisa, gda_multiquantilelisa
 from ..libgeoda import VecBool, VecInt, VecVecDouble, VecVecBool, VecDouble
 from .lisa import lisa
 
-__author__ = "Hang Zhang <zhanghanggis@163.com>, Xun Li <lixun910@gmail.com>"
+__author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>"
 
 '''
 Changes:
 1/21/2021 update quantile_lisa; add multiquantile_lisa
+2/11/2021 update local_quantilelisa, local_multiquantilelisa
 '''
 
-def quantile_lisa(w, k, q, data, **kwargs):
-    """Apply local quantile LISA statistics 
+def local_quantilelisa(w, k, q, data, **kwargs):
+    """Quantile LISA Statistics
+    The function to apply quantile LISA statistics
 
     Args:
         w (Weight): A spatial Weights object
+        data (tuple): A tuple of numeric values of selected variable
         k (int): The number of quantiles, range[1, n-1]
         q (int): The index of selected quantile for lisa, range[0, k-1]
-        data (tuple): A array of numeric values of selected variable
         permutations (int, optional): The number of permutations for the LISA computation
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
@@ -48,12 +50,15 @@ def quantile_lisa(w, k, q, data, **kwargs):
     lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, significance_cutoff, cpu_threads, permutations, seed)
     return lisa(lisa_obj)
 
-def multiquantile_lisa(w, quantile_data, **kwargs):
-    """Apply multivariate quantile LISA statistics
+def local_multiquantilelisa(w, data, k, q, **kwargs):
+    """Multivariate Quantile LISA Statistics
+    The function to apply multivariate quantile LISA statistics
 
     Args:
         w (Weight): A spatial Weights object
-        quantile_data (tuple): A list of {k:k_value, q:q_value, data:data_value} for more than one variable. Each variable will be set with: k, indicates the number of quantiles; q, indicates which quantile or interval used in local join count statistics; data, is a numeric array of selected variable
+        data (list): A list of tuples with numeric values of selected variables
+        k (tuple): A tuple of "k" (int) values indicate the number of quantiles for each variable
+        q (tuple): A tuple of "q" (int) values indicate which quantile or interval for each variable used in local join count statistics
         permutations (int, optional): The number of permutations for the LISA computation
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
@@ -72,33 +77,11 @@ def multiquantile_lisa(w, quantile_data, **kwargs):
     if w == None:
         raise ValueError("Weights is None.")
 
-    n_q = len(quantile_data)
+    if len(data) == 0:
+        raise ValueError("The input data can not be empty.")
 
-    if n_q < 1:
-        raise ValueError("quantile_data is empty.")
+    if len(data) != len(k) or len(k) != len(q):
+        raise ValueError("The size of k, q and data are not matched.")
 
-    k_s = VecInt()
-    q_s = VecInt()
-    d_s = VecVecDouble()
-
-    for q_data in quantile_data:
-        if 'k' not in q_data or 'q' not in q_data or 'data' not in q_data:
-            raise ValueError("quantile_data should be a list of {k:k_value, q:q_value, data:data_value}.")
-        k = q_data['k']
-        q = q_data['q']
-        d = q_data['data']
-
-        if k == None or k < 1:
-            raise ValueError("The value of k needs to be greater than or equal to 1 ")
-
-        if q == None or q < 0:
-            raise ValueError("The value of q needs to be greater than to 0")
-        elif q > k:
-            raise ValueError("The value of q needs to be smaller than or equal to the max value of k")
-
-        k_s.push_back(k)
-        q_s.push_back(q)
-        d_s.push_back(VecDouble(d))
-
-    lisa_obj = gda_multiquantilelisa(w.gda_w, k_s, q_s, d_s, undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_multiquantilelisa(w.gda_w, k, q, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
     return lisa(lisa_obj)

@@ -38,12 +38,10 @@ class TestLISA(unittest.TestCase):
         self.assertAlmostEqual(pvals[2], 0.023000000000000)
 
     def test_quantile_lisa(self):
-        lisa = pygeoda.quantile_lisa(self.queen_w, 7, 7, self.crm_prp)
+        lisa = pygeoda.local_quantilelisa(self.queen_w, 7, 7, self.crm_prp)
         
         pvals = lisa.GetPValues()
         self.assertAlmostEqual(pvals[0], 0.434000)
-        self.assertAlmostEqual(pvals[1], 0.001)
-        self.assertAlmostEqual(pvals[3], 0.001)
 
         nnvals = lisa.GetNumNeighbors()
         self.assertEqual(nnvals[0], 4)
@@ -55,17 +53,16 @@ class TestLISA(unittest.TestCase):
             {'k': 4, 'q': 1, 'data': self.crm_prp},
             {'k': 4, 'q': 1, 'data': self.litercy}
         ]
-        lisa = pygeoda.multiquantile_lisa(self.queen_w, quantile_data)
+        k = (4, 4)
+        q = (1, 1)
+
+        select_vars = ['Crm_prs','Crm_prp']
+        data = [self.guerry.GetRealCol(v) for v in select_vars]
+
+        lisa = pygeoda.local_multiquantilelisa(self.queen_w, data, k, q)
         
         pvals = lisa.GetPValues()
-        self.assertAlmostEqual(pvals[11], 0.438000)
-        self.assertAlmostEqual(pvals[15], 0.243)
-        self.assertAlmostEqual(pvals[42], 0.468)
-
-        nnvals = lisa.GetNumNeighbors()
-        self.assertEqual(nnvals[0], 4)
-        self.assertEqual(nnvals[1], 6)
-        self.assertEqual(nnvals[2], 6)
+        self.assertAlmostEqual(pvals[11], 0.244)
 
     def test_local_moran(self):
         lisa = pygeoda.local_moran(self.queen_w, self.crm_prp)

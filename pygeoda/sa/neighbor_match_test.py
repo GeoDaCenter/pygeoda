@@ -9,7 +9,7 @@ Changes:
 1/21/2021 Update local_multigeary, local_geary for 0.0.6
 '''
 
-def local_neighbormatchtest(geoda_obj, data, k, **kwargs):
+def neighbor_match_test(geoda_obj, data, k, **kwargs):
     '''Local Neighbor Match Test
     The local neighbor match test is to assess the extent of overlap between k-nearest neighbors in geographical space and k-nearest neighbors in multi-attribute space.
 
@@ -25,7 +25,7 @@ def local_neighbormatchtest(geoda_obj, data, k, **kwargs):
         is_mile (bool, optional) TRUE (default) or FALSE, convert distance unit from mile to km.
 
     Returns:
-        dict: A dict with values of "Cardinality" and "Probability".
+        dict: A dict with tuple values for keys "Cardinality" and "Probability".
     '''
     scale_method = 'standardize' if 'scale_method' not in kwargs else kwargs['scale_method']
     distance_method = 'euclidean' if 'distance_method' not in kwargs else kwargs['distance_method']
