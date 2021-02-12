@@ -18,7 +18,7 @@ class Weight:
         self.gda_w = gda_w
         self.num_obs = gda_w.num_obs
 
-    def IsSymmetric(self):
+    def is_symmetric(self):
         """
         Check if weights matrix is symmetric
 
@@ -35,7 +35,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.is_symmetric
 
-    def HasIsolates(self):
+    def has_isolates(self):
         """
         Check if any observation has no neighbors 
 
@@ -52,7 +52,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.HasIsolates()
 
-    def GetSparsity(self):
+    def weights_sparsity(self):
         """
         Get sparsity computed from weights matrix
 
@@ -64,7 +64,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.sparsity
 
-    def GetMinNbrs(self):
+    def min_neighbors(self):
         """Get minmum number of neighbors
 
         Returns:
@@ -73,7 +73,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.min_nbrs
 
-    def GetMedianNbrs(self):
+    def median_neighbors(self):
         """Get the median number of neighbors
 
         Returns:
@@ -82,7 +82,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.median_nbrs
 
-    def GetMeanNbrs(self):
+    def mean_neighbors(self):
         """Get the mean number of neighbors
 
         Returns:
@@ -91,7 +91,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.mean_nbrs
 
-    def GetMaxNbrs(self):
+    def max_neighbors(self):
         """Get the maximum number of neighbors
 
         Returns:
@@ -100,7 +100,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.max_nbrs
 
-    def GetWeightsType(self):
+    def weights_type(self):
         """Get Weights type
 
         Returns:
@@ -108,18 +108,6 @@ class Weight:
         """
         if self.gda_w != None:
             return self.gda_w.weight_type
-
-    def GetDensity(self):
-        """
-        Get density computed from weights matrix
-
-        Returns
-        -------
-        density : float
-            density is computed as:
-        """
-        if self.gda_w != None:
-            return self.gda_w.density
 
 
     def GetNeighbors(self, idx):
@@ -183,11 +171,12 @@ class Weight:
         if self.gda_w:
             info = ""
             info += "Weights Meta-data:\n"
-            info += "\nis symmetric:" + str(self.IsSymmetric()) 
-            info += "\nsparsity:" + str(self.GetSparsity())
-            info += "\ndensity:" + str(self.GetDensity())
-            info += "\nmin neighbors:" + str(self.GetMinNbrs())
-            info += "\nmean neighbors:" + str(self.GetMeanNbrs())
-            info += "\nmedian neighbors:" + str(self.GetMedianNbrs())
-            info += "\nmax neighbors:" + str(self.GetMaxNbrs())
+            info += '{0:>24} {1:>20}\n'.format("number of observations:", self.num_obs) 
+            info += '{0:>24} {1:>20}\n'.format("is symmetric:", "True" if self.is_symmetric() else "False") 
+            info += '{0:>24} {1:>20}\n'.format("sparsity:", self.weights_sparsity()) 
+            info += '{0:>24} {1:>20}\n'.format("# min neighbors:", self.min_neighbors()) 
+            info += '{0:>24} {1:>20}\n'.format("# max neighbors:", self.max_neighbors()) 
+            info += '{0:>24} {1:>20}\n'.format("# mean neighbors:", self.mean_neighbors()) 
+            info += '{0:>24} {1:>20}\n'.format("# median neighbors:", self.median_neighbors()) 
+            info += '{0:>24} {1:>20}\n'.format("has isolates:", "True" if self.has_isolates() else "False") 
             return info

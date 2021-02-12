@@ -3,9 +3,10 @@ from .weight import Weight
 
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-def queen(geoda_obj, **kwargs): 
-    """Create a Queen contiguity weights. 
-
+def queen_weights(geoda_obj, **kwargs): 
+    """Queen Contiguity Spatial Weights
+    Create a Queen contiguity weights with options of "order", "include lower order" and "precision threshold"
+    
     Args:
         geoda_obj (geoda): An instance of Geoda object
         order (int, optional): An integer value of order of contiguity

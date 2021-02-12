@@ -3,9 +3,10 @@ from .weight import Weight
 
 __author__ = "Xun Li <lixun910@gmail.com>"
 
-def rook(geoda_obj, **kwargs):
-    '''Create a Rook contiguity weights. 
-
+def rook_weights(geoda_obj, **kwargs):
+    '''Rook Contiguity Spatial Weights
+    Create a Rook contiguity weights with options of "order", "include lower order" and "precision threshold"
+    
     Args:
         geoda_obj (geoda): An instance of geoda class
         order (int, optional): order of contiguity

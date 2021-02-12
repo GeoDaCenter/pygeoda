@@ -1,4 +1,5 @@
 from ..libgeoda import LISA, BatchLISA
+import math
 
 __author__ = "Xun Li <lixun910@gmail.com>, Yeqing Han <yeqinghan_geo@163.com>"
 
@@ -17,13 +18,13 @@ class lisa:
         """
         self.gda_lisa = lisa_obj
 
-    def Run(self):
+    def run(self):
         """Call to run LISA computation
         """
         return self.gda_lisa.Run()
 
 
-    def SetPermutations(self, num_perm):
+    def set_permutations(self, num_perm):
         """Set the number of permutations for the LISA computation
 
         Args:
@@ -34,7 +35,7 @@ class lisa:
 
         return self.gda_lisa.SetNumPermutations(num_perm)
 
-    def SetThreads(self, num_threads):
+    def set_threads(self, num_threads):
         """Set the number of CPU threads for the LISA computation
 
         Args:
@@ -46,34 +47,36 @@ class lisa:
         return self.gda_lisa.SetNumThreads(num_threads)
 
 
-    def GetLISAValues(self):
-        """Get the local spatial autocorrelation values returned from LISA computation.
+    def lisa_values(self):
+        """Get LISA values
+        Get the local spatial autocorrelation values returned from LISA computation.
 
         Return:
-            :obj:`list` of float: a list of float values of local spatial autocorrelation computation 
-                e.g. local moran, local geary etc.
+            tuple: A numeric vector of local spatial autocorrelation
         """
         return self.gda_lisa.GetLISAValues()
 
-    def GetPValues(self):
-        """Get the local pseudo-p values of significance returned from LISA computation.
+    def lisa_pvalues(self):
+        """Get pseudo-p values of LISA
+        Get the local pseudo-p values of significance returned from LISA computation.
 
         Return:
-            :obj:`list` of float: a list of float values of local pseudo-p values of significance returned from LISA computation
-                e.g. local moran, local geary etc.
+            A numeric vector of pseudo-p values of local spatial autocorrelation
         """
-        return self.gda_lisa.GetLocalSignificanceValues()
+        vals = self.gda_lisa.GetLocalSignificanceValues()
+        clean_vals = [math.nan if v < 0 else v for v in vals]
+        return clean_vals
 
-    def GetClusterIndicators(self):
-        """Get the local cluster indicators returned from LISA computation.
+    def lisa_clusters(self):
+        """Get local cluster indicators
+        Get the local cluster indicators returned from LISA computation.
 
         Return:
-            :obj:`list` of float: a list of float values of local cluster indicators returned from LISA computation
-                e.g. local moran, local geary etc.
+            A numeric vector of LISA cluster indicator
         """
         return self.gda_lisa.GetClusterIndicators()
 
-    def GetNumNeighbors(self):
+    def lisa_num_nbrs(self):
         """Get the number of neighbors of every observations in LISA computation.
 
         Return:
@@ -82,7 +85,7 @@ class lisa:
         """
         return self.gda_lisa.GetNumNeighbors()
 
-    def GetLabels(self):
+    def lisa_labels(self):
         """Get the cluster labels of LISA computation.
 
         Return:
@@ -92,7 +95,7 @@ class lisa:
         return self.gda_lisa.GetLabels()
 
 
-    def GetColors(self):
+    def lisa_colors(self):
         """Get the cluster colors of LISA computation.
 
         Return:
@@ -101,18 +104,31 @@ class lisa:
         """
         return self.gda_lisa.GetColors()
 
-    def GetFDR(self,p):
-        '''
-        Get the False Discovery Rate (FDR) in LISA.
+    def lisa_fdr(self, p):
+        '''False Discovery Rate value of local spatial autocorrelation
+        Get False Discovery Rate value based on current LISA computation and current significant p-value
         
         Args:
-            p: The current p-value of significance breakpoint
+            p: A value of current siginificant p-value
             
         Returns:
-            :A p-value (breakpoint) computed as the False Discovery Rate value
+            float: A numeric vector of False Discovery Rate
         '''
         
         return self.gda_lisa.GetFDR(p)
+
+    def lisa_bo(self, p):
+        '''Bonferroni bound value
+        Get Bonferroni bound value based on current LISA computation and current significat p-value
+        
+        Args:
+            p: A value of current siginificant p-value
+            
+        Returns:
+            A numeric value of Bonferroni bound
+        '''
+        
+        return self.gda_lisa.GetBO(p)
 
 
 class batchlisa:
@@ -130,13 +146,13 @@ class batchlisa:
         """
         self.gda_lisa = lisa_obj
 
-    def Run(self):
+    def run(self):
         """Call to run LISA computation
         """
         return self.gda_lisa.Run()
 
 
-    def SetPermutations(self, num_perm):
+    def set_permutations(self, num_perm):
         """Set the number of permutations for the LISA computation
 
         Args:
@@ -147,7 +163,7 @@ class batchlisa:
 
         return self.gda_lisa.SetNumPermutations(num_perm)
 
-    def SetThreads(self, num_threads):
+    def set_threads(self, num_threads):
         """Set the number of CPU threads for the LISA computation
 
         Args:
@@ -159,16 +175,7 @@ class batchlisa:
         return self.gda_lisa.SetNumThreads(num_threads)
 
 
-    def GetLISAValues(self, idx):
-        """Get the local spatial autocorrelation values returned from LISA computation.
-
-        Return:
-            :obj:`list` of float: a list of float values of local spatial autocorrelation computation 
-                e.g. local moran, local geary etc.
-        """
-        return self.gda_lisa.GetLISAValues(idx)
-
-    def GetPValues(self, idx):
+    def lisa_pvalues(self, idx):
         """Get the local pseudo-p values of significance returned from LISA computation.
 
         Return:
@@ -177,7 +184,7 @@ class batchlisa:
         """
         return self.gda_lisa.GetLocalSignificanceValues(idx)
 
-    def GetClusterIndicators(self, idx):
+    def lisa_clusters(self, idx):
         """Get the local cluster indicators returned from LISA computation.
 
         Return:
@@ -186,42 +193,56 @@ class batchlisa:
         """
         return self.gda_lisa.GetClusterIndicators(idx)
 
-    def GetNumNeighbors(self):
-        """Get the number of neighbors of every observations in LISA computation.
+    def lisa_num_nbrs(self):
+        """Get numbers of neighbors for all observations
+        Get the number of neighbors of every observations in LISA computation.
 
         Return:
-            :obj:`list` of int: a list of integer values of the number of neighbors of every observations in LISA computation.
-                e.g. local moran, local geary etc.
+            A numeric vector of the number of neighbors
         """
         return self.gda_lisa.GetNumNeighbors()
 
-    def GetLabels(self):
-        """Get the cluster labels of LISA computation.
+    def lisa_labels(self):
+        """Get cluster labels
+        Get the cluster labels of LISA computation.
 
         Return:
-            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster labels of LISA computation
-                e.g. local moran, local geary etc.
+            A string vector of cluster labels
         """
         return self.gda_lisa.GetLabels()
 
 
-    def GetColors(self):
-        """Get the cluster colors of LISA computation.
+    def lisa_colors(self):
+        """Get cluster colors
+        Get the cluster colors of LISA computation.
 
         Return:
-            :obj:`list` of :obj:`str`: a list of string values of the number of the cluster colors of LISA computation
-                e.g. local moran, local geary etc.
+            A string vector of cluster colors
         """
         return self.gda_lisa.GetColors()
 
-    def GetFDR(self,p):
-        '''
-        Get the False Discovery Rate (FDR) in LISA.
+    def lisa_fdr(self, p):
+        '''False Discovery Rate value of local spatial autocorrelation
+        Get False Discovery Rate value based on current LISA computation and current significant p-value
+        
         Args:
-            p: The current p-value of significance breakpoint
+            p: A value of current siginificant p-value
             
         Returns:
-            :A p-value (breakpoint) computed as the False Discovery Rate value
+            float: A numeric vector of False Discovery Rate
         '''
         
         return self.gda_lisa.GetFDR(p)
+
+    def lisa_bo(self, p):
+        '''Bonferroni bound value
+        Get Bonferroni bound value based on current LISA computation and current significat p-value
+        
+        Args:
+            p: A value of current siginificant p-value
+            
+        Returns:
+            A numeric value of Bonferroni bound
+        '''
+        
+        return self.gda_lisa.GetBO(p)
