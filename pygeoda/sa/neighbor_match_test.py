@@ -36,13 +36,14 @@ def neighbor_match_test(geoda_obj, data, k, **kwargs):
     is_mile =  False if 'is_mile' not in kwargs else kwargs['is_mile']
 
     result = gda_neighbor_match_test(geoda_obj.gda, k, power, is_inverse, is_arc, is_mile, data, scale_method, distance_method)
-    card = list(result[0])
+    card = result[0]
     prob = result[1]
 
+    new_card = [int(i) for i in card]
     # check p value
     new_prob = [p if p >= 0 else math.nan for p in prob]
 
     return {
-        "Cardinality": card,
+        "Cardinality": new_card,
         "Probability": new_prob
     }
