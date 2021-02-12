@@ -59,11 +59,11 @@ def local_bijoincount(w, data, **kwargs):
         >>> nsa = columbus.GetRealCol("nsa")
         >>> nsa_inv = [1-i for i in nsa]
         >>> lisa = pygeoda.local_bijoincount(columbus_q, nsa, nsa_inv)
-        >>> jc = lisa.GetLISAValues()
+        >>> jc = lisa.lisa_values()
         (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 3.0, 3.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-        >>> pvals = lisa.GetPValues()
+        >>> pvals = lisa.lisa_pvalues()
         (nan, nan, nan, nan, nan, nan, nan, nan, 0.002, 0.034, nan, nan, nan, nan, nan, nan, 0.44, nan, nan, nan, nan, 0.262, nan, 0.125, 0.079, 0.053, nan, nan, nan, nan, 0.093, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan)
-        >>> nn = lisa.GetNumNeighbors()
+        >>> nn = lisa.lisa_num_nbrs()
         (2, 3, 4, 4, 8, 2, 4, 6, 8, 4, 5, 6, 4, 6, 6, 8, 3, 4, 3, 10, 3, 6, 3, 7, 8, 6, 4, 9, 7, 5, 3, 4, 4, 4, 7, 5, 6, 6, 3, 5, 3, 2, 6, 5, 4, 2, 2, 4, 3)
     """
     if w == None:

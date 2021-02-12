@@ -10,5 +10,5 @@ lisa = pygeoda.local_joincount(w20, x, permutations=99999, cpu_threads=6)
 
 print("--- %s seconds ---" % (time.time() - start_time))
 
-pvals = lisa.GetPValues()
+pvals = lisa.lisa_pvalues()
 print(pvals)
