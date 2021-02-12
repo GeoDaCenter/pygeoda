@@ -5,18 +5,20 @@ from .lisa import lisa
 import multiprocessing
 
 def local_g(w, data, **kwargs):
-    """Apply local Getis-Ord G statistics.
+    """Local Getis-Ord's G Statistics
 
+    The function to apply Getis-Ord's local G statistics
+    
     Args:
         w (Weight): An instance of Weight class.
-        data (tuple): A array of numeric values of selected variable
+        data (tuple): A tuple of numeric values of selected variable
         permutations (int, optional): The number of permutations for the LISA computation
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
 
     Returns:
-        lisa: An instance of lisa class. 
+        lisa: An instance of lisa class
     """
     if w == None:
         raise ValueError("Weights is None.")
@@ -31,18 +33,19 @@ def local_g(w, data, **kwargs):
     return lisa(lisa_obj)
 
 def local_gstar(w, data, **kwargs):
-    """Apply local Getis-Ord G* statistics.
+    """Local Getis-Ord's G* Statistics
+    The function to apply Getis-Ord's local G* statistics
 
     Args:
         w (Weight): An instance of Weight class.
-        data (tuple): A array of numeric values of selected variable
+        data (tuple): A tuple of numeric values of selected variable
         permutations (int, optional): The number of permutations for the LISA computation
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
 
     Returns:
-        lisa: An instance of lisa class. 
+        lisa: An instance of lisa class
     """
     if w == None:
         raise ValueError("Weights is None.")

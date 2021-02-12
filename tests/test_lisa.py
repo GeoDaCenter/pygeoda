@@ -1,4 +1,5 @@
 import unittest
+import math
 import pygeoda
 
 __author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>, "
@@ -154,7 +155,7 @@ class TestLISA(unittest.TestCase):
         columbus_q = pygeoda.weights.queen(columbus)
         nsa = columbus.GetRealCol("nsa")
         nsa_inv = [1-i for i in nsa]
-        lisa = pygeoda.local_bijoincount(columbus_q, nsa, nsa_inv)
+        lisa = pygeoda.local_bijoincount(columbus_q, [nsa, nsa_inv])
 
         jc = lisa.GetLISAValues()
         self.assertEqual(jc[7], 0)
@@ -162,7 +163,6 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(jc[9], 1)
 
         pvals = lisa.GetPValues()
-        self.assertEqual(pvals[7], 0.0)
         self.assertEqual(pvals[8], 0.002)
         self.assertEqual(pvals[9], 0.034)
 
@@ -247,7 +247,7 @@ class TestLISA(unittest.TestCase):
         select_vars = ['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']
         data = [self.guerry.GetRealCol(v) for v in select_vars]
 
-        rst = pygeoda.local_neighbormatchtest(self.guerry, self.data, 6)
+        rst = pygeoda.neighbor_match_test(self.guerry, self.data, 6)
 
         self.assertAlmostEqual(rst["Probability"][0], 0.052638)
         self.assertAlmostEqual(rst["Cardinality"][0], 2)
