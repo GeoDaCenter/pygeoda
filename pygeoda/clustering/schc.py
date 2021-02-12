@@ -1,5 +1,6 @@
 from ..libgeoda import VecVecDouble, VecDouble
 from ..libgeoda import gda_schc
+from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare
 
 __author__ = "Xun Li <lixun910@gmail.com>, "
 
@@ -18,16 +19,18 @@ def schc(k, w, data, linkage_method, **kwargs):
         w (Weight): An instance of Weight class
         data (tuple): A list of numeric vectors of selected variable
         linkage_method (str): The method of agglomerative hierarchical clustering: {"single", "complete", "average","ward"}. Defaults to "ward".
-        bound_vals (tuple, optional): A numeric vector of selected bounding variable
+        bound_variable (tuple, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
+        scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
         distance_method (str, optional): {"euclidean", "manhattan"} the distance method used to compute the distance betwen observation i and j. Defaults to "euclidean". Options are "euclidean" and "manhattan"
 
     Returns:
-        list: A list of numeric vectors represents a group of clusters
+        dict: A dict with keys {"Clusters", "TotalSS", "Within-clusterSS", "TotalWithin-clusterSS", "Ratio"}
     '''
 
     min_bound = 0 if 'min_bound' not in kwargs else kwargs['min_bound']
-    bound_vals = [] if 'bound_vals' not in kwargs else kwargs['bound_vals']
+    bound_variable = [] if 'bound_variable' not in kwargs else kwargs['bound_variable']
+    scale_method = "standardize" if "scale_method" not in kwargs else kwargs['scale_method']
     distance_method = 'euclidean' if 'distance_method' not in kwargs else kwargs['distance_method'] 
 
     if linkage_method not in ["single", "complete", "average","ward"]:
@@ -37,6 +40,17 @@ def schc(k, w, data, linkage_method, **kwargs):
     for d in data:
         in_data.push_back(d)
     
-    #in_bound_vals = VecDouble(bound_vals)
+    cluster_ids = gda_schc(k, w.gda_w, in_data, linkage_method, scale_method, distance_method, bound_variable, min_bound)
 
-    return gda_schc(k, w.gda_w, in_data, linkage_method, distance_method, bound_vals, min_bound)
+    between_ss = gda_betweensumofsquare(cluster_ids, in_data)
+    total_ss = gda_totalsumofsquare(in_data)
+    ratio = between_ss / total_ss
+    within_ss = gda_withinsumofsquare(cluster_ids, in_data)
+
+    return {
+        "Clusters" : cluster_ids,
+        "TotalSS" : total_ss,
+        "Within-clusterSS" : within_ss,
+        "TotalWithin-clusterSS" : between_ss,
+        "Ratio" : ratio
+    }

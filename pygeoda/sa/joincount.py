@@ -55,7 +55,7 @@ def local_bijoincount(w, data, **kwargs):
     Examples:
         >>> import pygeoda
         >>> columbus = pygeoda.open("./data/columbus.shp")
-        >>> columbus_q = pygeoda.weights.queen(columbus)
+        >>> columbus_q = pygeoda.queen_weights(columbus)
         >>> nsa = columbus.GetRealCol("nsa")
         >>> nsa_inv = [1-i for i in nsa]
         >>> lisa = pygeoda.local_bijoincount(columbus_q, nsa, nsa_inv)

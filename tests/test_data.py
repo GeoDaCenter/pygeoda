@@ -6,7 +6,7 @@ __author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>, "
 class TestTransform(unittest.TestCase):
     def setUp(self):
         self.guerry = pygeoda.open("./data/Guerry.shp")
-        self.queen_w = pygeoda.weights.queen(self.guerry)
+        self.queen_w = pygeoda.queen_weights(self.guerry)
         select_vars = ["Crm_prs", "Crm_prp", "Litercy", "Donatns", "Infants", "Suicids"]
         self.data = [self.guerry.GetRealCol(v) for v in select_vars]
         self.Crm_prs = self.guerry.GetRealCol('Crm_prs')

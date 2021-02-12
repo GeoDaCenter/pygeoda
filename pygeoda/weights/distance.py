@@ -70,6 +70,13 @@ def knn_weights(geoda_obj, k, **kwargs):
     is_arc = False if 'is_arc' not in kwargs else kwargs['is_arc']
     is_mile = True if 'is_mile' not in kwargs else kwargs['is_mile']
     
-    gda_w = gda_knn_weights(geoda_obj.gda, k, power, is_inverse, is_arc, is_mile)
+    # not used
+    kernel = "" 
+    bandwidth = 0 
+    adaptive_bandwidth = False 
+    use_kernel_diagnals = False 
+    polyid = ""
+
+    gda_w = gda_knn_weights(geoda_obj.gda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagnals, polyid)
 
     return Weight(gda_w)

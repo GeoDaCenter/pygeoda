@@ -4,14 +4,15 @@ from ..libgeoda import gda_naturalbreaks
 from ..libgeoda import gda_quantilebreaks
 from ..libgeoda import gda_percentilebreaks
 from ..libgeoda import gda_stddevbreaks
+from ..libgeoda import VecBool
 
-__author__ = "Hang Zhang <zhanghanggis@163.com>, "
+__author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>, "
 
 def hinge15_breaks(data,**kwargs):
-    """Hinge15 box breaks (Anselin 1994)
+    """(Box) Hinge15 Breaks
+    
+    Hinge15 breaks data into 6 groups like box plot groups (Lower outlier, < 25%, 25-50%, 50-75%, >75%, Upper outlier) with hinge=1.5
 
-    Note:
-        Hinge15 breaks calculate a list of breakpoints, including the top, bottom, median, and two quartiles of the data. Here the hinge is equal to 1.5.
     Args:
         data (tuple): A tuple with values of a selected variable
     
@@ -21,14 +22,15 @@ def hinge15_breaks(data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_hinge15breaks(data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+
+    return gda_hinge15breaks(data, undefs)
+
 def hinge30_breaks(data,**kwargs):
-    """Hinge30 box break (Anselin 1994)
+    """(Box) Hinge30 Breaks
 
-    Note:
-        Hinge30_breaks calculate a list of breakpoints, including the top, bottom, median, and two quartiles of the data. Here the hinge is equal to 3.0.
-    
+    Hinge30 breaks data into 6 groups like box plot groups (Lower outlier, < 25%, 25-50%, 50-75%, >75%, Upper outlier) with hinge=3.0
+
     Args:
         data (tuple): A tuple with values of a selected variable
     
@@ -38,15 +40,15 @@ def hinge30_breaks(data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_hinge30breaks(data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+
+    return gda_hinge30breaks(data, undefs)
 
 def natural_breaks(k,data,**kwargs):
-    """Natural breaks
+    """Natural Breaks (Jenks)
     
-    Note:
-        Natural breaks Calculate of a breakpoint list based on the fracture principle of maximum similarity within a group.
-    
+    Natural Breaks group data whose boundaries are set where there are relatively big differences.
+
     Args:
         k (int): Number of breaks
         data (tuple): A tuple with values of a selected variable
@@ -60,14 +62,14 @@ def natural_breaks(k,data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_naturalbreaks(k,data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    return gda_naturalbreaks(k, data, undefs)
 
 def quantile_breaks(k,data,**kwargs):
     """Quantile breaks
 
-    Note:
-        The quantile breaks is based on sorted values for a variable that are then grouped into bins that each have the same number of observations, the so-called quantiles. Here the number of quantiles is variable.
+    Quantile breaks data into groups that each have the same number of observations
+
     Args:
         k (int): Number of breaks
         data (tuple): A tuple with values of a selected variable
@@ -81,8 +83,8 @@ def quantile_breaks(k,data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_quantilebreaks(k,data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    return gda_quantilebreaks(k, data, undefs)
 
 def percentile_breaks(data,**kwargs):
     """Percentile breaks
@@ -99,8 +101,8 @@ def percentile_breaks(data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_percentilebreaks(data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+    return gda_percentilebreaks(data, undefs)
 
 def stddev_breaks(data,**kwargs):
     """Standard deviation breaks
@@ -116,6 +118,7 @@ def stddev_breaks(data,**kwargs):
     if data is None:
         raise("The data from selected variable is empty.")
 
-    #undefs = [False]*len(data) if 'undefs' not in kwargs else kwargs['undefs']
-    return gda_stddevbreaks(data)
+    undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
+
+    return gda_stddevbreaks(data, undefs)
 

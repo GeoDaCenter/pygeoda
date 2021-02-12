@@ -7,33 +7,33 @@ __author__ = "Xun Li <lixun910@gmail.com>, Hang Zhang <zhanghanggis@163.com>, "
 class TestLISA(unittest.TestCase):
     def setUp(self):
         self.guerry = pygeoda.open("./data/Guerry.shp")
-        self.queen_w = pygeoda.weights.queen(self.guerry)
+        self.queen_w = pygeoda.queen_weights(self.guerry)
         self.crm_prp = self.guerry.GetIntegerCol("Crm_prp")
         self.litercy = self.guerry.GetIntegerCol("Litercy")
         slect_vars = ['Crm_prp','Crm_prs']
         self.data = [self.guerry.GetRealCol(v) for v in slect_vars]
 
     def test_batch_moran(self):
-        lisa = pygeoda.batch_local_moran(self.queen_w, self.data)
+        blm = pygeoda.batch_local_moran(self.queen_w, self.data)
 
         # get results for first variable: Crm_prp
-        lms = lisa.lisa_values(0) 
+        lms = blm.lisa_values(0) 
         self.assertAlmostEqual(lms[0], 0.015431978309803657)
         self.assertAlmostEqual(lms[1], 0.3270633223656033)
         self.assertAlmostEqual(lms[2], 0.021295296214118884) 
 
-        pvals = lisa.lisa_pvalues(0)
+        pvals = blm.lisa_pvalues(0)
         self.assertAlmostEqual(pvals[0], 0.41399999999999998)
         self.assertAlmostEqual(pvals[1], 0.123)
         self.assertAlmostEqual(pvals[2], 0.001)
 
         # get results from second variable: Crm_prs
-        lms = lisa.lisa_values(1) 
+        lms = blm.lisa_values(1) 
         self.assertAlmostEqual(lms[0], 0.516120231288079)
         self.assertAlmostEqual(lms[1], 0.818275138495031)
         self.assertAlmostEqual(lms[2], 0.794086559694542) 
 
-        pvals = lisa.lisa_pvalues(1)
+        pvals = blm.lisa_pvalues(1)
         self.assertAlmostEqual(pvals[0], 0.197000000000000)
         self.assertAlmostEqual(pvals[1], 0.013000000000000)
         self.assertAlmostEqual(pvals[2], 0.023000000000000)
@@ -121,16 +121,9 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[1], 1)
         self.assertEqual(cvals[2], 0)
 
-    def test_local_joincount_9999(self):
-        snow = pygeoda.open("/Users/xun/Github/pygeoda_lixun910/perf/data/deaths_nd_by_house.shp")
-        w20 = pygeoda.weights.distance(snow, 20.0)
-        x = snow.GetIntegerCol("death_dum")
-        lisa = pygeoda.local_joincount(w20, x, permutations=99999, cpu_threads=6)
-        pvals = lisa.lisa_pvalues()
-
     def test_local_joincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
-        columbus_q = pygeoda.weights.queen(columbus)
+        columbus_q = pygeoda.queen_weights(columbus)
         nsa = columbus.GetRealCol("nsa")
 
         lisa = pygeoda.local_joincount(columbus_q, nsa)
@@ -152,7 +145,7 @@ class TestLISA(unittest.TestCase):
 
     def test_local_bijoincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
-        columbus_q = pygeoda.weights.queen(columbus)
+        columbus_q = pygeoda.queen_weights(columbus)
         nsa = columbus.GetRealCol("nsa")
         nsa_inv = [1-i for i in nsa]
         lisa = pygeoda.local_bijoincount(columbus_q, [nsa, nsa_inv])
@@ -173,7 +166,7 @@ class TestLISA(unittest.TestCase):
 
     def test_local_multijoincount(self):
         columbus = pygeoda.open("./data/columbus.shp")
-        columbus_q = pygeoda.weights.queen(columbus)
+        columbus_q = pygeoda.queen_weights(columbus)
         nsa = columbus.GetRealCol("nsa")
         nsb = columbus.GetRealCol("nsb")
         nndata = (nsa, nsb)
@@ -234,14 +227,10 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[2], 1)
 
     def test_GetFDR(self):
-        columbus = pygeoda.open("./data/columbus.shp")
-        columbus_q = pygeoda.weights.queen(columbus)
-        nsa = columbus.GetRealCol("nsa")
+        lm = pygeoda.local_moran(self.queen_w, self.crm_prp)
 
-        lisa = pygeoda.local_moran(columbus_q, nsa, nCPUs = 6)
-
-        p = lisa.GetFDR(0.05)
-        self.assertAlmostEqual(p, 0.0122449)
+        p = lm.lisa_fdr(0.05)
+        self.assertAlmostEqual(p, 0.000588235)
 
     def test_NeighborMatchTest(self):
         select_vars = ['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']

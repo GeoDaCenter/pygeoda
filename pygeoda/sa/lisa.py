@@ -156,10 +156,10 @@ class batchlisa:
         """Set the number of permutations for the LISA computation
 
         Args:
-            num_perm (int): the number of permutations e.g. 99, 999, 9999, 999999
+            num_perm (int): the number of permutations e.g. 999, 9999, 999999
         """
-        if num_perm < 1 or num_perm > 999999:
-            raise ValueError("The number of permutations is a positive integer number, but has to be less than 999999.")
+        if num_perm < 1:
+            raise ValueError("The number of permutations is a positive integer number.")
 
         return self.gda_lisa.SetNumPermutations(num_perm)
 
@@ -175,21 +175,36 @@ class batchlisa:
         return self.gda_lisa.SetNumThreads(num_threads)
 
 
+    def lisa_values(self, idx):
+        """Get LISA values
+        Get the local spatial autocorrelation values returned from LISA computation.
+
+        Args:
+            idx (int): The index of input data list
+        Return:
+            tuple: A numeric vector of local spatial autocorrelation
+        """
+        return self.gda_lisa.GetLISAValues(idx)
+
     def lisa_pvalues(self, idx):
         """Get the local pseudo-p values of significance returned from LISA computation.
 
+        Args:
+            idx (int): The index of input data list
+
         Return:
             :obj:`list` of float: a list of float values of local pseudo-p values of significance returned from LISA computation
-                e.g. local moran, local geary etc.
         """
         return self.gda_lisa.GetLocalSignificanceValues(idx)
 
     def lisa_clusters(self, idx):
         """Get the local cluster indicators returned from LISA computation.
 
+        Args:
+            idx (int): The index of input data list
+
         Return:
             :obj:`list` of float: a list of float values of local cluster indicators returned from LISA computation
-                e.g. local moran, local geary etc.
         """
         return self.gda_lisa.GetClusterIndicators(idx)
 
@@ -242,7 +257,7 @@ class batchlisa:
             p: A value of current siginificant p-value
             
         Returns:
-            A numeric value of Bonferroni bound
+            float: A numeric value of Bonferroni bound
         '''
         
         return self.gda_lisa.GetBO(p)

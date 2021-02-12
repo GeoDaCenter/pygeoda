@@ -3,7 +3,7 @@ try:
     import pandas
     import shapely
 except ImportError:
-    print("GeoPandas is not found. Please install GeoPandas for ESDA features.")
+    print("(Optional) GeoPandas is not found. Please install GeoPandas for ESDA features.")
 
 import sys
 import string
