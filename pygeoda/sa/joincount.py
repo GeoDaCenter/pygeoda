@@ -13,6 +13,7 @@ def local_joincount(w, data, **kwargs):
         w (Weight): An instance of Weight class.
         data (tuple): A tuple of numeric values of selected variable
         permutations (int, optional): The number of permutations for the LISA computation
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -26,6 +27,7 @@ def local_joincount(w, data, **kwargs):
     undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
@@ -33,7 +35,7 @@ def local_joincount(w, data, **kwargs):
         if i != 0 and i != 1:
             raise ValueError("The input data is not binary.")
 
-    lisa_obj = gda_localjoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_localjoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
 
 def local_bijoincount(w, data, **kwargs):
@@ -45,6 +47,7 @@ def local_bijoincount(w, data, **kwargs):
         w (Weight): An instance of Weight class
         data (list): A list of tuples with values of two selected variables
         permutations (int, optional): The number of permutations for the LISA computation
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -75,6 +78,7 @@ def local_bijoincount(w, data, **kwargs):
     undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
@@ -101,7 +105,7 @@ def local_bijoincount(w, data, **kwargs):
     if has_colocation:
         raise ValueError("The bivariate local join count only applies on two variables with no-colocation.")
 
-    lisa_obj = gda_localmultijoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_localmultijoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
 
 def local_multijoincount(w, data, **kwargs):
@@ -113,6 +117,7 @@ def local_multijoincount(w, data, **kwargs):
         w (Weight): An instance of Weight class
         data (list): A list of tuples with values of selected variables
         permutations (int, optional): The number of permutations for the LISA computation
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -126,6 +131,7 @@ def local_multijoincount(w, data, **kwargs):
     undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
@@ -150,5 +156,5 @@ def local_multijoincount(w, data, **kwargs):
         if no_colocation: 
             raise ValueError("The input two variables have no colocations. Please use bivariate local join count: local_bijoincount().")
 
-    lisa_obj = gda_localmultijoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_localmultijoincount(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)

@@ -20,6 +20,7 @@ def local_quantilelisa(w, k, q, data, **kwargs):
         k (int): The number of quantiles, range[1, n-1]
         q (int): The index of selected quantile for lisa, range[0, k-1]
         permutations (int, optional): The number of permutations for the LISA computation
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -44,10 +45,11 @@ def local_quantilelisa(w, k, q, data, **kwargs):
     undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
-    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
 
 def local_multiquantilelisa(w, data, k, q, **kwargs):
@@ -60,6 +62,7 @@ def local_multiquantilelisa(w, data, k, q, **kwargs):
         k (tuple): A tuple of "k" (int) values indicate the number of quantiles for each variable
         q (tuple): A tuple of "q" (int) values indicate which quantile or interval for each variable used in local join count statistics
         permutations (int, optional): The number of permutations for the LISA computation
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -71,6 +74,7 @@ def local_multiquantilelisa(w, data, k, q, **kwargs):
     undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
+    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
@@ -83,5 +87,5 @@ def local_multiquantilelisa(w, data, k, q, **kwargs):
     if len(data) != len(k) or len(k) != len(q):
         raise ValueError("The size of k, q and data are not matched.")
 
-    lisa_obj = gda_multiquantilelisa(w.gda_w, k, q, data, undefs, significance_cutoff, cpu_threads, permutations, seed)
+    lisa_obj = gda_multiquantilelisa(w.gda_w, k, q, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
