@@ -10,13 +10,13 @@ Changes:
 1/21/2021 Update local_multigeary, local_geary for 0.0.6
 '''
 
-def neighbor_match_test(geoda_obj, data, k, **kwargs):
+def neighbor_match_test(geoda_obj, variable_names, k, **kwargs):
     '''Local Neighbor Match Test
     The local neighbor match test is to assess the extent of overlap between k-nearest neighbors in geographical space and k-nearest neighbors in multi-attribute space.
 
     Args:
         geoda_obj (geoda): An instance of geoda class. 
-        data (list): A list of numeric tuples with values of selected variables
+        variable_names (tuple): A tuple of the names of selected variables
         k (int): A positive integer number for k-nearest neighbors searching.
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
         distance_method (str, optional): The type of distance metrics used to measure the distance between input data. Options are {'euclidean', 'manhattan'}. Default is 'euclidean'.
@@ -35,14 +35,16 @@ def neighbor_match_test(geoda_obj, data, k, **kwargs):
     is_arc =  False if 'is_arc' not in kwargs else kwargs['is_arc']
     is_mile =  False if 'is_mile' not in kwargs else kwargs['is_mile']
 
+    data = [geoda_obj.GetRealCol(v) for v in variable_names]
     result = gda_neighbor_match_test(geoda_obj.gda, k, power, is_inverse, is_arc, is_mile, data, scale_method, distance_method)
-    card = list(result[0])
+    card = result[0]
     prob = result[1]
 
+    new_card = [int(i) for i in card]
     # check p value
     new_prob = [p if p >= 0 else math.nan for p in prob]
 
     return {
-        "Cardinality": card,
+        "Cardinality": new_card,
         "Probability": new_prob
     }

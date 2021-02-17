@@ -1958,8 +1958,20 @@ class LISA(object):
     def CalcPseudoP_range(self, obs_start, obs_end, seed_start):
         return _libgeoda.LISA_CalcPseudoP_range(self, obs_start, obs_end, seed_start)
 
-    def PermLocalSA(self, cnt, perm, permNeighbors, permutedSA):
-        return _libgeoda.LISA_PermLocalSA(self, cnt, perm, permNeighbors, permutedSA)
+    def PermCreateTable_threaded(self):
+        return _libgeoda.LISA_PermCreateTable_threaded(self)
+
+    def PermCreateRange(self, perm_start, perm_end, max_neighbor, seed_start):
+        return _libgeoda.LISA_PermCreateRange(self, perm_start, perm_end, max_neighbor, seed_start)
+
+    def PermCalcPseudoP_threaded(self):
+        return _libgeoda.LISA_PermCalcPseudoP_threaded(self)
+
+    def PermCalcPseudoP_range(self, obs_start, obs_end, seed_start):
+        return _libgeoda.LISA_PermCalcPseudoP_range(self, obs_start, obs_end, seed_start)
+
+    def PermLocalSA(self, *args):
+        return _libgeoda.LISA_PermLocalSA(self, *args)
 
     def CountLargerSA(self, cnt, permutedSA):
         return _libgeoda.LISA_CountLargerSA(self, cnt, permutedSA)
@@ -2365,38 +2377,38 @@ def CreateGeoDaFromGPD(layer_name, map_type, wkbs, wkb_bytes_len):
 def CreateGeoDaFromSHP(pDsPath, layer_name=None):
     return _libgeoda.CreateGeoDaFromSHP(pDsPath, layer_name)
 
-def gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_batchlocalmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_batchlocalmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_batchlocalmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_batchlocalmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localgeary(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localgeary(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localgeary(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localgeary(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localmultigeary(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localmultigeary(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localmultigeary(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localmultigeary(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localjoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localjoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localjoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localjoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localmultijoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localmultijoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localmultijoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localmultijoincount(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localg(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localg(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localg(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localg(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_localgstar(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_localgstar(w, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_localgstar(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_localgstar(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_quantilelisa(w, k, quantile, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_quantilelisa(w, k, quantile, data, undefs, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_quantilelisa(w, k, quantile, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_quantilelisa(w, k, quantile, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
-def gda_multiquantilelisa(w, k_s, quantile_s, data_s, undefs_s, significance_cutoff, nCPUs, permutations, last_seed_used):
-    return _libgeoda.gda_multiquantilelisa(w, k_s, quantile_s, data_s, undefs_s, significance_cutoff, nCPUs, permutations, last_seed_used)
+def gda_multiquantilelisa(w, k_s, quantile_s, data_s, undefs_s, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_multiquantilelisa(w, k_s, quantile_s, data_s, undefs_s, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
 def gda_fdr(lisa, current_p):
     return _libgeoda.gda_fdr(lisa, current_p)
