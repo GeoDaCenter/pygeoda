@@ -19,7 +19,7 @@ def local_multigeary(w, data, **kwargs):
         data (list): A list of numeric tuples with values of selected variables
         undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
-        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -33,7 +33,7 @@ def local_multigeary(w, data, **kwargs):
     undefs = VecVecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
-    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
+    permutation_method = 'complete' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
@@ -50,7 +50,7 @@ def local_geary(w, data, **kwargs):
         data (tuple): A tuple of numeric values of selected variable
         undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
-        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'brutal-force', 'lookup-table'}. Default is 'brutal-force'.
+        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
         cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation
         seed (int, optional): The seed for random number generator
@@ -67,7 +67,7 @@ def local_geary(w, data, **kwargs):
     undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']
     permutations =  999 if 'permutations' not in kwargs else kwargs['permutations']
-    permutation_method = 'brutal-force' if 'permutation_method' not in kwargs else kwargs['permutation_method']
+    permutation_method = 'complete' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 

@@ -66,7 +66,7 @@ class TestLISA(unittest.TestCase):
         self.assertAlmostEqual(pvals[11], 0.244)
 
     def test_local_moran(self):
-        lisa = pygeoda.local_moran(self.queen_w, self.crm_prp)
+        lisa = pygeoda.local_moran(self.queen_w, self.crm_prp, permutation_method="complete")
 
         lms = lisa.lisa_values()
         self.assertEqual(lms[0], 0.015431978309803657)
