@@ -23,7 +23,7 @@ elif sys.platform == "darwin":
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
 
-LIBGEODA_SRC = 'libgeoda/src/libgeoda_src'
+LIBGEODA_SRC = 'libgeoda'
 
 ###########################################################
 # INCLUDE_DIRS
@@ -32,14 +32,12 @@ INCLUDE_DIRS = []
 if OS_NAME == 'win32' or OS_NAME == 'win64':
     INCLUDE_DIRS = [
         '.\\boost\\include',
-        '.\\eigen3',
         '.\\' + LIBGEODA_SRC,
     ]
 
 else:
     INCLUDE_DIRS = [
         './boost/include',
-        './eigen3',
         './' + LIBGEODA_SRC,
     ]
 
@@ -115,7 +113,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
         MSVC_VER = 'vc90'
     elif pyversion in ['3.3', '3.4']:
         MSVC_VER = 'vc100'
-    elif pyversion in ['3.5', '3.6', '3.7', '3.8']:
+    elif pyversion in ['3.5', '3.6', '3.7', '3.8', '3.9']:
         MSVC_VER = 'vc141'
 
 
@@ -207,7 +205,7 @@ extensions = [Extension('pygeoda._libgeoda',
                         extra_objects=EXTRA_OBJECTS),]
 
 setup (name = 'pygeoda',
-       version = '0.0.4',
+       version = '0.0.6',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
        url = "https://github.com/geodacenter/pygeoda",
