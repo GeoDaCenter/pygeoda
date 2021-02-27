@@ -13,6 +13,7 @@
 %template(VecString) std::vector<std::string>;
 %template(VecDouble) std::vector<double>;
 %template(VecChar) std::vector<char>;
+%template(VecCharPointer) std::vector<char*>;
 %template(VecVecDouble) std::vector<std::vector<double> >;
 %template(VecInt) std::vector<int>;
 %template(VecBool) std::vector<bool>;
@@ -34,6 +35,7 @@
 }
 
 %typemap(in) (unsigned char*) {
+  // used by GeoDa() constructor for pygeoda
   if (!PyByteArray_Check($input)) {
     SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument "
                        "$argnum"" of type '" "$type""'");
@@ -41,17 +43,14 @@
   $1 = (unsigned char*) PyByteArray_AsString($input);
 }
 
-/*
-%typemap(in) (const std::vector<std::string>& ) {
-    // vector of string from unicode string list
+%typemap(in) (std::vector<char*>) {
+    // vector of bytes for geopands_to_geoda() 
     int iLen = PySequence_Length($input);
-    std::cout << iLen << "dafadfa" << std::endl;
     for(unsigned int i = 0; i < iLen; i++) {
         PyObject *o = PySequence_GetItem($input, i);
-        $1->push_back(PyUnicode_AS_DATA(o));
+        $1.push_back((char*)(PyBytes_AsString(o)));
     }
 }
-*/
 #endif
 
 %{
