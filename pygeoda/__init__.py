@@ -7,7 +7,6 @@ __author__ = "Xun Li <lixun910@gmail.com>, "
 from .weights import *
 from .clustering import *
 from .sa import *
-from .geopds import *
 from .gda import *
 from .classify import *
 from .data import *
