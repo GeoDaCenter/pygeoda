@@ -8,6 +8,7 @@ except ImportError:
 import sys
 import string
 import random
+import math
 
 from .libgeoda import GeoDa, GeoDaTable, VecString, VecBool, VecInt64, VecDouble
 
@@ -80,7 +81,15 @@ class geoda:
         Return:
             :obj:`list` of :obj:`str`: a list of field types
         """
-        return self.gda.GetFieldTypes()
+        fnames = self.GetFieldNames()
+        ftypes = self.gda.GetFieldTypes()
+
+        newtypes = {}
+        for i, ft in enumerate(ftypes):
+            fn = fnames[i]
+            newtypes[fn] = ft
+
+        return newtypes 
 
     def GetMapType(self):
         """Get the map type
@@ -89,6 +98,22 @@ class geoda:
             :obj:`str`: map type
         """
         return self.gda.GetMapType()
+
+    def __getitem__(self, col_name):
+        """Get the values from a column using [] operator
+        Args:
+            :obj:`str`: the name of selected column
+        Return:
+            :obj:`list` of :obj:`str`: a list of string values of selected column
+        """
+        ftypes = self.GetFieldTypes()
+        ft = ftypes[col_name]
+        if ft == "integer":
+            return self.GetIntegerCol(col_name)
+        elif ft == "real":
+            return self.GetRealCol(col_name)
+        else:
+            return self.GetStringCol(col_name)
 
     def GetIntegerCol(self, col_name):
         """Get the integer values from a column
@@ -133,6 +158,15 @@ class geoda:
         if not isinstance(col_name, str) or len(col_name) <= 0:
             raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetUndefinesCol(col_name)
+
+    def __str__(self):
+        info = ""
+        info += "geoda object:\n"
+        info += '{0:>24} {1:>28}\n'.format("field name:", "field type (shapfile):") 
+        ftypes = self.GetFieldTypes()
+        for fn, ft in ftypes.items():
+            info += '{0:>24} {1:>28}\n'.format(fn, ft)
+        return info
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -274,7 +308,8 @@ def geoda_to_geopandas(geoda_obj):
 
 class geodaGpd(geoda):
     def __init__(self, gpd_obj):
-        self.gda = geopandas_to_geoda(gpd_obj)
+        self.gp = geopandas_to_geoda(gpd_obj)
+        self.gda = self.gp.gda
         self.df = gpd_obj
 
     def GetNumCols(self):
@@ -310,7 +345,8 @@ class geodaGpd(geoda):
         Return:
             :obj:`str`: map type
         """
-        return self.gda.GetMapType()
+        geom_types = tuple(set(self.df.geometry.type))
+        return geom_types
 
     def GetIntegerCol(self, col_name):
         """Get the integer values from a column
@@ -322,7 +358,7 @@ class geodaGpd(geoda):
         if not isinstance(col_name, str) or len(col_name) <= 0:
             raise ValueError("The column name is not valid or not existed.")
 
-        return self.gda.GetIntegerCol(col_name)
+        return self.df[col_name].astype('int64').to_list()
 
     def GetRealCol(self, col_name):
         """Get the real values from a column
@@ -333,7 +369,8 @@ class geodaGpd(geoda):
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
             raise ValueError("The column name is not valid or not existed.")
-        return self.gda.GetNumericCol(col_name)
+
+        return self.df[col_name].astype('float64').to_list()
 
     def GetStringCol(self, col_name):
         """Get the string values from a column
@@ -344,7 +381,17 @@ class geodaGpd(geoda):
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
             raise ValueError("The column name is not valid or not existed.")
-        return self.gda.GetStringCol(col_name)
+
+        return self.df[col_name].astype('str').to_list()
+
+    def __getitem__(self, col_name):
+        """Get the values from a column using [] operator
+        Args:
+            :obj:`str`: the name of selected column
+        Return:
+            :obj:`list` of :obj:`str`: a list of string values of selected column
+        """
+        return self.df[col_name]
 
     def GetUndefinedVals(self, col_name):
         """Get the undefined flags from a column
@@ -355,15 +402,24 @@ class geodaGpd(geoda):
         """
         if not isinstance(col_name, str) or len(col_name) <= 0:
             raise ValueError("The column name is not valid or not existed.")
-        return self.gda.GetUndefinesCol(col_name)
 
+        return [i==math.nan for i in self.df[col_name]]
+
+    def __str__(self):
+        info = ""
+        info += "geoda object:\n"
+        info += '{0:>24} {1:>30}\n'.format("field name:", "field type (numpy.dtype):") 
+        ftypes = self.GetFieldTypes()
+        for fn, ft in ftypes.items():
+            info += '{0:>24} {1:>30}\n'.format(fn, ft.name)
+        return info
 
 def open(data_source):
     """Create a geoda object by reading a spatial dataset: either ESRI Shapefile or GeoPandas object.
 
-    Since pygeoda v0.0.4, it only supports ESRI Shapefile. It is recommended to use 
-    geopandas to load spatial dataset, and then use `geopandas_to_geoda()` to 
-    create a geoda object. See :ref:`geopandas-pygeoda`
+    Since pygeoda v0.0.4, it only supports ESRI Shapefile. In pygeoda v0.0.8, one can use 
+    geopandas to load spatial dataset, and then use `open()` function to 
+    create a geoda object. 
 
     Args:
         data_source (object): The data_source could be either the file path of the ESRI shapefile or a geopandas dataframe object.
@@ -384,12 +440,11 @@ def open(data_source):
         gda_obj = GeoDa(ds_path)
 
         return geoda(gda_obj)
-    else:
-        try:
-            import geopandas
-            if isinstance(data_source, geopandas.GeoDataFrame):
-                pass
-        except:
-            pass
-
-    return ValueError("pygeoda can't open current data source. Please use either a file path of an ESRI shapefile or a GeoPandas instance.")
+        
+    # else try to open a geopandas object
+    try:
+        import geopandas
+        if isinstance(data_source, geopandas.GeoDataFrame):
+            return geodaGpd(data_source)
+    except:
+        raise ValueError("pygeoda can't open current data source. Please use either a file path of an ESRI shapefile or a GeoPandas instance.")
