@@ -87,20 +87,19 @@
               <p class="caption"><span class="caption-text">USER GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#live-tutorials">1.1  Live Tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.2 Open Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.1 Mac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.2 Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.1 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.2 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.3 Mac</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#import-pygeoda">2.4 Import pygeoda</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Load Spatial Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#access-table-data">3.1 Access Table Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-table-data">3.2 Access Table Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="map_classification.html">4. Map Classification</a><ul>
@@ -269,33 +268,55 @@
             
   <div class="section" id="load-spatial-data">
 <span id="load-data-ref"></span><h1>3 Load Spatial Data<a class="headerlink" href="#load-spatial-data" title="Permalink to this headline">¶</a></h1>
-<p>Only ESRI ShapeFile is supported in pygeoda v0.0.4. If you need to read files of other formats,
-please use <a class="reference external" href="https://geopandas.org/">geopandas</a>, and then call <cite>geopandas_to_geoda()</cite>
-to continue pygeoda workflow. For details, please see examples in <span class="xref std std-ref">ESDA with pygeoda and geopands</span>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In this tutorial, we only tested loading ESRI shapefiles
-using pygeoda v0.0.4. Please create a ticket in pygeoda’s
-repo <a class="reference external" href="https://github.com/lixun910/pygeoda/issues">https://github.com/lixun910/pygeoda/issues</a> if you
-experience any issues when loading spatial data.</p>
-</div>
+<p>pygeoda supports reading the ESRI ShapeFiles. For other data formats,
+please use <a class="reference external" href="https://geopandas.org/">geopandas</a> to load the spatial data first,
+then pass the geopandas object to function <cite>pygeoda.open()</cite>.</p>
 <p>For example, to load the ESRI Shapefile <strong>Guerry.shp</strong>
 download from: <a class="reference external" href="https://geodacenter.github.io/data-and-lab/Guerry/">https://geodacenter.github.io/data-and-lab/Guerry/</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pygeoda</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;./data/Guerry.shp&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span>
+<span class="go">geoda object:</span>
+<span class="go">    Number of observations: 85</span>
+<span class="go">    Number of fields: 27</span>
+<span class="go">    Geometry type(s): Polygon</span>
+<span class="go">        field name:       field type (shapfile):</span>
+<span class="go">        CODE_DE                       string</span>
+<span class="go">        COUNT                         real</span>
+<span class="go">        AVE_ID_                         real</span>
+<span class="go">        ...</span>
 </pre></div>
 </div>
-<p>The <cite>pygeoda.open()</cite> function returns a geoda object, which
-can be used to access the meta-data, fields, and columns of the input dataset.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span>
-<span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">ds_path</span><span class="p">)</span>
-
-<span class="n">Arguments</span>
-<span class="n">ds_path</span>     <span class="p">(</span><span class="n">character</span><span class="p">)</span> <span class="n">The</span> <span class="n">path</span> <span class="n">of</span> <span class="n">the</span> <span class="n">spatial</span> <span class="n">dataset</span>
-
-<span class="n">Value</span>
-<span class="n">gda_obj</span> <span class="n">An</span> <span class="nb">object</span> <span class="n">of</span> <span class="n">geoda</span> <span class="k">class</span>
+<p>The geopandas can be used to load or manipulate spatial data first.
+Then, the geopandas object can be used to create a geoda object using
+the same function <cite>pygeoda.open()</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;./data/Guerry.shp&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pygeoda</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span>
+<span class="go">geoda object:</span>
+<span class="go">    Number of observations: 85</span>
+<span class="go">    Number of fields: 27</span>
+<span class="go">    Geometry type(s): (&#39;MultiPolygon&#39;, &#39;Polygon&#39;)</span>
+<span class="go">        field name:       field type (numpy.dtype):</span>
+<span class="go">        CODE_DE                       object</span>
+<span class="go">        COUNT                         float64</span>
+<span class="go">        AVE_ID_                         float64</span>
+<span class="go">        ...</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “Geometry type(s)” and “field type” are different from using
+pygeoda.open() function to open an ESRI shapefile and a geopandas object.
+When opening an ESRI shapefile, the “Geometry type” could be one of
+{‘Polygon’, ‘Point’, ‘Line’} and the “field type” could be one of
+{‘real’, ‘string’, ‘integer’}. When opening a geopandas object, the
+“Geometry type” is the defined by <a class="reference external" href="https://geopandas.org/docs/user_guide/data_structures.html">GeoSeries</a>
+(e.g. MultiPolygon, Polygon, etc.) and the “field type” is defined by <cite>numpy.dtype</cite>
+(e.g. object, float64, int64, etc.)</p>
 </div>
 <div class="section" id="attributes-of-geoda-object">
 <h2>3.1 Attributes of geoda object<a class="headerlink" href="#attributes-of-geoda-object" title="Permalink to this headline">¶</a></h2>
@@ -316,23 +337,43 @@ can be used to access the meta-data, fields, and columns of the input dataset.</
 <span class="go">field names: (&#39;CODE_DE&#39;, &#39;COUNT&#39;, &#39;AVE_ID_&#39;, &#39;dept&#39;, &#39;Region&#39;, &#39;Dprtmnt&#39;, &#39;Crm_prs&#39;, &#39;Crm_prp&#39;, &#39;Litercy&#39;, &#39;Donatns&#39;, &#39;Infants&#39;, &#39;Suicids&#39;, &#39;MainCty&#39;, &#39;Wealth&#39;, &#39;Commerc&#39;, &#39;Clergy&#39;, &#39;Crm_prn&#39;, &#39;Infntcd&#39;, &#39;Dntn_cl&#39;, &#39;Lottery&#39;, &#39;Desertn&#39;, &#39;Instrct&#39;, &#39;Prsttts&#39;, &#39;Distanc&#39;, &#39;Area&#39;, &#39;Pop1831&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;field types:&quot;</span><span class="p">,</span> <span class="n">guerry</span><span class="o">.</span><span class="n">field_types</span><span class="p">)</span>
-<span class="go">field types: (&#39;string&#39;, &#39;numeric&#39;, &#39;numeric&#39;, &#39;integer&#39;, &#39;string&#39;, &#39;string&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;integer&#39;, &#39;numeric&#39;, &#39;integer&#39;, &#39;numeric&#39;)</span>
+<span class="go">field types: {&#39;CODE_DE&#39;: &#39;string&#39;, &#39;COUNT&#39;:&#39;real&#39;, &#39;AVE_ID_&#39;: &#39;real&#39;,...}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using geopandas object in <cite>pygeoda.open()</cite>, there will be a geometry column “geometry” with data type “geometry”.</p>
 </div>
 </div>
 <div class="section" id="access-table-data">
-<h2>3.1 Access Table Data<a class="headerlink" href="#access-table-data" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>geoda</cite> instance also provide functions to get data from the dataset:</p>
-<ul class="simple">
-<li><p>GetIntegerCol(col_name)</p></li>
-<li><p>GetRealCol(col_name)</p></li>
-<li><p>GetStringCol(col_name)</p></li>
-</ul>
-<p>For example, to get the integer values of the “Crm_prp” column:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">crm_prp</span> <span class="o">=</span> <span class="n">guerry</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s2">&quot;Crm_prp&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;firs 10 values of Crm_prp:&quot;</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-<span class="go">firs 10 values of Crm_prp: (15890, 5521, 7925, 7289, 8174, 10263, 8847, 9597, 4086, 10431)</span>
+<h2>3.2 Access Table Data<a class="headerlink" href="#access-table-data" title="Permalink to this headline">¶</a></h2>
+<p>One can use the bracket <cite>[ ]</cite> operator to access the table data:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/Guerry.shp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">]</span>
+<span class="go">(28870.0,  26226.0,  26747.0, 12935.0,...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span><span class="p">[[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">,</span> <span class="s1">&#39;Litercy&#39;</span><span class="p">]]</span>
+<span class="go">[(28870.0,  26226.0,  26747.0, 12935.0,...), (37.0,  51.0,  13.0,...)]</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using geopandas object in <cite>pygeoda.open()</cite>, there output of <cite>[[ ]]</cite> operator is a dataframe object, which can be
+used as an input parameter in pygeoda functions like <cite>skater()</cite>, <cite>neighbor_match_test()</cite>, etc.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">]</span>
+<span class="go">[28870.0,  26226.0,  26747.0, 12935.0,...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span><span class="p">[[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">,</span> <span class="s1">&#39;Litercy&#39;</span><span class="p">]]</span>
+<span class="go">  Crm_prs    Litercy</span>
+<span class="go">--------------------</span>
+<span class="go">0 28880      37</span>
+<span class="go">1 26226      51</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In pygeoda, to pass the values of a single variable to a pygeoda function, one can use either a tuple or list;
+to pass the values of multiple variables, one can use either a list of tuples/lists or a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">dataframe</a>.</p>
 </div>
 </div>
 </div>
