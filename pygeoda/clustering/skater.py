@@ -12,7 +12,7 @@ def skater(k, w, data, **kwargs):
     Arguments:
         k (int): number of clusters
         w (Weight): An instance of Weight class
-        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame os selected variables e.g. guerry[['Crm_prs', 'Literacy']]
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
@@ -45,7 +45,7 @@ def skater(k, w, data, **kwargs):
     total_ss = gda_totalsumofsquare(in_data)
     ratio = between_ss / total_ss
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
-    
+
     return {
         "Total sum of squares" : total_ss,
         "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),

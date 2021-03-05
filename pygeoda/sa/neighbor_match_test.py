@@ -16,7 +16,7 @@ def neighbor_match_test(geoda_obj, data, k, **kwargs):
 
     Args:
         geoda_obj (geoda): An instance of geoda class. 
-        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame os selected variables e.g. guerry[['Crm_prs', 'Literacy']]
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         k (int): A positive integer number for k-nearest neighbors searching.
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
         distance_method (str, optional): The type of distance metrics used to measure the distance between input data. Options are {'euclidean', 'manhattan'}. Default is 'euclidean'.

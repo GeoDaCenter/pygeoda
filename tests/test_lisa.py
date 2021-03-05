@@ -39,7 +39,7 @@ class TestLISA(unittest.TestCase):
         self.assertAlmostEqual(pvals[2], 0.023000000000000)
 
     def test_quantile_lisa(self):
-        lisa = pygeoda.local_quantilelisa(self.queen_w, 7, 7, self.crm_prp)
+        lisa = pygeoda.local_quantilelisa(self.queen_w, self.guerry["Crm_prp"], 7, 7)
         
         pvals = lisa.lisa_pvalues()
         self.assertAlmostEqual(pvals[0], 0.434000)
@@ -50,15 +50,10 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(nnvals[2], 6)
         
     def test_multiquantile_lisa(self):
-        quantile_data = [
-            {'k': 4, 'q': 1, 'data': self.crm_prp},
-            {'k': 4, 'q': 1, 'data': self.litercy}
-        ]
         k = (4, 4)
         q = (1, 1)
 
-        select_vars = ['Crm_prs','Crm_prp']
-        data = [self.guerry.GetRealCol(v) for v in select_vars]
+        data = self.guerry[['Crm_prs','Crm_prp']]
 
         lisa = pygeoda.local_multiquantilelisa(self.queen_w, data, k, q)
         
@@ -233,8 +228,8 @@ class TestLISA(unittest.TestCase):
         self.assertAlmostEqual(p, 0.000588235)
 
     def test_NeighborMatchTest(self):
-        select_vars = ['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']
-        rst = pygeoda.neighbor_match_test(self.guerry, select_vars, 6)
+        data = self.guerry[['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']]
+        rst = pygeoda.neighbor_match_test(self.guerry, data, 6)
 
         self.assertAlmostEqual(rst["Probability"][0], 0.052638)
         self.assertAlmostEqual(rst["Cardinality"][0], 2)

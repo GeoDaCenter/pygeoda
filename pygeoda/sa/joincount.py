@@ -45,7 +45,7 @@ def local_bijoincount(w, data, **kwargs):
 
     Args:
         w (Weight): An instance of Weight class
-        data (list): A list of tuples with values of two selected variables
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         permutations (int, optional): The number of permutations for the LISA computation
         permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
@@ -61,7 +61,7 @@ def local_bijoincount(w, data, **kwargs):
         >>> columbus_q = pygeoda.queen_weights(columbus)
         >>> nsa = columbus.GetRealCol("nsa")
         >>> nsa_inv = [1-i for i in nsa]
-        >>> lisa = pygeoda.local_bijoincount(columbus_q, nsa, nsa_inv)
+        >>> lisa = pygeoda.local_bijoincount(columbus_q, [nsa, nsa_inv])
         >>> jc = lisa.lisa_values()
         (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 3.0, 3.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
         >>> pvals = lisa.lisa_pvalues()
@@ -71,6 +71,9 @@ def local_bijoincount(w, data, **kwargs):
     """
     if w == None:
         raise ValueError("Weights is None.")
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
 
     if len(data) != 2:
         raise ValueError("The input data should be a list of tuples of two selected variables.")
@@ -115,7 +118,7 @@ def local_multijoincount(w, data, **kwargs):
 
     Args:
         w (Weight): An instance of Weight class
-        data (list): A list of tuples with values of selected variables
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         permutations (int, optional): The number of permutations for the LISA computation
         permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
@@ -134,6 +137,9 @@ def local_multijoincount(w, data, **kwargs):
     permutation_method = 'complete' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
 
     n_vars = len(data)
     if n_vars <= 1:
