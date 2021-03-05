@@ -1,8 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update \
-    && apt-get install -y git python3-pip python3-dev build-essential \
-    && pip3 install git+https://github.com/geodacenter/pygeoda
+    && apt-get install -y git python3-pip python3-dev build-essential
 
 WORKDIR /tmp/pygeoda
 

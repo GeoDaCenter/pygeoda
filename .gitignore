@@ -8,3 +8,7 @@ pygeoda.egg-info/
 libgeoda_local
 *.pyd
 *.DS_Store
+temp/
+test.ipynb
+.ipynb_checkpoints/
+Untitled.ipynb
