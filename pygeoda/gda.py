@@ -42,11 +42,11 @@ class geoda:
 
         self.num_cols = gda_obj.GetNumCols()
 
-        self.field_names = gda_obj.GetFieldNames()
+        self.field_names = self.GetFieldNames()
 
-        self.field_types = gda_obj.GetFieldTypes()
+        self.field_types = self.GetFieldTypes()
 
-        self.map_type = gda_obj.GetMapType()
+        self.map_type = self.GetMapType()
 
     def GetNumCols(self):
         """
@@ -97,7 +97,7 @@ class geoda:
         Return:
             :obj:`str`: map type
         """
-        return self.gda.GetMapType()
+        return self.gda.GetMapTypeName()
 
     def __getitem__(self, col_name):
         """Get the values from a column using [] operator
@@ -312,6 +312,16 @@ class geodaGpd(geoda):
         self.gda = self.gp.gda
         self.df = gpd_obj
 
+        self.num_obs = len(self.df)
+
+        self.num_cols = self.GetNumCols()
+
+        self.field_names = self.GetFieldNames()
+
+        self.field_types = self.GetFieldTypes()
+
+        self.map_type = self.GetMapType()
+
     def GetNumCols(self):
         """
         Get the number of columns
@@ -337,7 +347,7 @@ class geodaGpd(geoda):
         Return:
             :obj:`list` of :obj:`str`: a list of field types
         """
-        return self.df.dtypes
+        return self.df.dtypes.to_dict()
 
     def GetMapType(self):
         """Get the map type
