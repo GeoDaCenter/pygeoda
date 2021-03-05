@@ -6,21 +6,43 @@
 ==============
 
 Like GeoDa desktop software, pygeoda are avaiable to
-different platforms including: Mac, Linux and Windows.
-
-
-2.1 Mac
--------
-
-If you are running Mac OSX, you should be able to install pygeoda using pip:
+different platforms including Mac, Linux, and Windows. 
+You can install pygeoda using pip:
 ::
 
     pip install pygeoda
 
-Otherwise, you can install pygeoda from source:
+
+To install pygeoda from source:
+
+2.1 Windows
+-----------
+
+For Windows users, Microsoft Visual C++ needs to be installed first. 
+Please see https://wiki.python.org/moin/WindowsCompilers to find which Visual 
+C++ compiler to use with a specific python version.
+
+Install pygeoda from source using pip:
 ::
 
-    pip install git+https://github.com/lixun910/pygeoda
+    pip install git+https://github.com/GeoDaCenter/pygeoda
+
+2.2 Linux
+---------
+
+For Linux users, the “Build Essential Tools” needs to be installed first:
+::
+
+    sudo apt-get update
+    sudo apt-get install build-essential
+
+Install pygeoda from source using pip:
+::
+
+    pip install git+https://github.com/GeoDaCenter/pygeoda
+
+2.3 Mac
+-------
 
 For Mac users, the “Xcode Command Line Tools” needs to be
 installed for installing pygeoda from source.
@@ -30,49 +52,15 @@ by using the following command in a terminal:
 
     xcode-select --install
 
-
-
-2.2 Windows
------------
-
-Since v0.0.4, you should be able to install pygeoda using pip on Windows:
+Install pygeoda from source using pip:
 ::
 
-    pip install pygeoda
-    
-Or, you can install pygeoda from source:
-::
-
-    pip installgit+https://github.com/lixun910/pygeoda
-
-.. note::
-    Install pygeoda on windows from source code requires either visual studio or mingw.
-
-
-2.3 Linux
----------
-
-If you are running Ubuntu systems (other linux system were not tested), 
-you should be able to install pygeoda using pip:
-::
-
-    pip install pygeoda
-
-Otherwise, please install pygeoda from source:
-::
-
-    pip install git+https://github.com/lixun910/pygeoda
-
-For Linux users, the “Build Essential Tools” needs to be installed first:
-::
-
-    sudo apt-get update
-    sudo apt-get install build-essential
+    pip install git+https://github.com/GeoDaCenter/pygeoda
 
 2.4 Import pygeoda 
 ------------------
 
-If everything installed without error, you should be able to load pygeoda:
+If everything installed without error, you should be able to import pygeoda in Python:
 ::
 
     import pygeoda
