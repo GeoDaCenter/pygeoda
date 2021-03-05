@@ -167,7 +167,7 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.Save(out_path, layer_name, id_name, id_values)
 
-    def __str__(self):
+    def __repr__(self):
         if self.gda_w:
             info = ""
             info += "Weights Meta-data:\n"

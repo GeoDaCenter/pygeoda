@@ -66,6 +66,7 @@
 #include <gda_data.h>
 #include <gda_weights.h>
 #include <gda_clustering.h>
+#include <GenUtils.h>
 %}
 
 // release memory for some function to prevent memory leaking
@@ -100,6 +101,7 @@
 %include <gda_data.h>
 %include <gda_weights.h>
 %include <gda_clustering.h>
+%include <GenUtils.h>
 
 %template(VecGeoDaColumn) std::vector<GeoDaColumn*>;
 

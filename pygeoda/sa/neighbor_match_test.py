@@ -1,7 +1,7 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
 from ..libgeoda import VecBool, VecVecBool
-from ..libgeoda import gda_neighbor_match_test
+from ..libgeoda import gda_neighbor_match_test, VecVecDouble
 from .lisa import lisa
 import math
 
@@ -10,13 +10,13 @@ Changes:
 1/21/2021 Update local_multigeary, local_geary for 0.0.6
 '''
 
-def neighbor_match_test(geoda_obj, variable_names, k, **kwargs):
+def neighbor_match_test(geoda_obj, data, k, **kwargs):
     '''Local Neighbor Match Test
     The local neighbor match test is to assess the extent of overlap between k-nearest neighbors in geographical space and k-nearest neighbors in multi-attribute space.
 
     Args:
         geoda_obj (geoda): An instance of geoda class. 
-        variable_names (tuple): A tuple of the names of selected variables
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         k (int): A positive integer number for k-nearest neighbors searching.
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
         distance_method (str, optional): The type of distance metrics used to measure the distance between input data. Options are {'euclidean', 'manhattan'}. Default is 'euclidean'.
@@ -35,7 +35,9 @@ def neighbor_match_test(geoda_obj, variable_names, k, **kwargs):
     is_arc =  False if 'is_arc' not in kwargs else kwargs['is_arc']
     is_mile =  False if 'is_mile' not in kwargs else kwargs['is_mile']
 
-    data = [geoda_obj.GetRealCol(v) for v in variable_names]
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     result = gda_neighbor_match_test(geoda_obj.gda, k, power, is_inverse, is_arc, is_mile, data, scale_method, distance_method)
     card = result[0]
     prob = result[1]

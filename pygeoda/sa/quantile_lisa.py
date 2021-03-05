@@ -10,13 +10,13 @@ Changes:
 2/11/2021 update local_quantilelisa, local_multiquantilelisa
 '''
 
-def local_quantilelisa(w, k, q, data, **kwargs):
+def local_quantilelisa(w, data, k, q, **kwargs):
     """Quantile LISA Statistics
     The function to apply quantile LISA statistics
 
     Args:
         w (Weight): A spatial Weights object
-        data (tuple): A tuple of numeric values of selected variable
+        data (list or dataframe):   A numeric vectors of selected variable or a data frame of selected variable e.g. guerry['Crm_prs']
         k (int): The number of quantiles, range[1, n-1]
         q (int): The index of selected quantile for lisa, range[0, k-1]
         permutations (int, optional): The number of permutations for the LISA computation
@@ -48,6 +48,9 @@ def local_quantilelisa(w, k, q, data, **kwargs):
     permutation_method = 'complete' if 'permutation_method' not in kwargs else kwargs['permutation_method']
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
 
     lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)

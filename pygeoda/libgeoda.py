@@ -2620,6 +2620,338 @@ def gda_withinsumofsquare(solution, vals):
 
 def gda_betweensumofsquare(solution, data):
     return _libgeoda.gda_betweensumofsquare(solution, data)
+
+def utf8_strlen(str):
+    return _libgeoda.utf8_strlen(str)
+
+def SuggestDoubleParams(length, decimals, suggest_len, suggest_dec):
+    return _libgeoda.SuggestDoubleParams(length, decimals, suggest_len, suggest_dec)
+
+def GetMaxDouble(length, decimals, suggest_len=None, suggest_dec=None):
+    return _libgeoda.GetMaxDouble(length, decimals, suggest_len, suggest_dec)
+
+def GetMaxDoubleString(length, decimals):
+    return _libgeoda.GetMaxDoubleString(length, decimals)
+
+def GetMinDouble(length, decimals, suggest_len=None, suggest_dec=None):
+    return _libgeoda.GetMinDouble(length, decimals, suggest_len, suggest_dec)
+
+def GetMinDoubleString(length, decimals):
+    return _libgeoda.GetMinDoubleString(length, decimals)
+
+def GetMaxInt(length):
+    return _libgeoda.GetMaxInt(length)
+
+def GetMaxIntString(length):
+    return _libgeoda.GetMaxIntString(length)
+
+def GetMinInt(length):
+    return _libgeoda.GetMinInt(length)
+
+def GetMinIntString(length):
+    return _libgeoda.GetMinIntString(length)
+
+def ThomasWangHashUInt64(key):
+    return _libgeoda.ThomasWangHashUInt64(key)
+
+def ThomasWangHashDouble(key):
+    return _libgeoda.ThomasWangHashDouble(key)
+
+def ThomasWangDouble(key):
+    return _libgeoda.ThomasWangDouble(key)
+
+def IsNaN(x):
+    return _libgeoda.IsNaN(x)
+
+def IsFinite(x):
+    return _libgeoda.IsFinite(x)
+
+def factorial(n):
+    return _libgeoda.factorial(n)
+
+def combinatorial(n, r):
+    return _libgeoda.combinatorial(n, r)
+
+def CreateUUID(nSize):
+    return _libgeoda.CreateUUID(nSize)
+
+def dbl_int_pair_cmp_less(ind1, ind2):
+    return _libgeoda.dbl_int_pair_cmp_less(ind1, ind2)
+
+def dbl_int_pair_cmp_greater(ind1, ind2):
+    return _libgeoda.dbl_int_pair_cmp_greater(ind1, ind2)
+
+def dbl_int_pair_cmp_second_less(ind1, ind2):
+    return _libgeoda.dbl_int_pair_cmp_second_less(ind1, ind2)
+
+def dbl_int_pair_cmp_second_greater(ind1, ind2):
+    return _libgeoda.dbl_int_pair_cmp_second_greater(ind1, ind2)
+
+def percentile(*args):
+    return _libgeoda.percentile(*args)
+class HingeStats(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _libgeoda.HingeStats_swiginit(self, _libgeoda.new_HingeStats())
+
+    def CalculateHingeStats(self, *args):
+        return _libgeoda.HingeStats_CalculateHingeStats(self, *args)
+    num_obs = property(_libgeoda.HingeStats_num_obs_get, _libgeoda.HingeStats_num_obs_set)
+    min_val = property(_libgeoda.HingeStats_min_val_get, _libgeoda.HingeStats_min_val_set)
+    max_val = property(_libgeoda.HingeStats_max_val_get, _libgeoda.HingeStats_max_val_set)
+    is_even_num_obs = property(_libgeoda.HingeStats_is_even_num_obs_get, _libgeoda.HingeStats_is_even_num_obs_set)
+    Q1 = property(_libgeoda.HingeStats_Q1_get, _libgeoda.HingeStats_Q1_set)
+    Q1_ind = property(_libgeoda.HingeStats_Q1_ind_get, _libgeoda.HingeStats_Q1_ind_set)
+    Q2 = property(_libgeoda.HingeStats_Q2_get, _libgeoda.HingeStats_Q2_set)
+    Q2_ind = property(_libgeoda.HingeStats_Q2_ind_get, _libgeoda.HingeStats_Q2_ind_set)
+    Q3 = property(_libgeoda.HingeStats_Q3_get, _libgeoda.HingeStats_Q3_set)
+    Q3_ind = property(_libgeoda.HingeStats_Q3_ind_get, _libgeoda.HingeStats_Q3_ind_set)
+    min_IQR_ind = property(_libgeoda.HingeStats_min_IQR_ind_get, _libgeoda.HingeStats_min_IQR_ind_set)
+    max_IQR_ind = property(_libgeoda.HingeStats_max_IQR_ind_get, _libgeoda.HingeStats_max_IQR_ind_set)
+    IQR = property(_libgeoda.HingeStats_IQR_get, _libgeoda.HingeStats_IQR_set)
+    extreme_lower_val_15 = property(_libgeoda.HingeStats_extreme_lower_val_15_get, _libgeoda.HingeStats_extreme_lower_val_15_set)
+    extreme_lower_val_30 = property(_libgeoda.HingeStats_extreme_lower_val_30_get, _libgeoda.HingeStats_extreme_lower_val_30_set)
+    extreme_upper_val_15 = property(_libgeoda.HingeStats_extreme_upper_val_15_get, _libgeoda.HingeStats_extreme_upper_val_15_set)
+    extreme_upper_val_30 = property(_libgeoda.HingeStats_extreme_upper_val_30_get, _libgeoda.HingeStats_extreme_upper_val_30_set)
+    __swig_destroy__ = _libgeoda.delete_HingeStats
+
+# Register HingeStats in _libgeoda:
+_libgeoda.HingeStats_swigregister(HingeStats)
+
+class SampleStatistics(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _libgeoda.SampleStatistics_swiginit(self, _libgeoda.new_SampleStatistics(*args))
+
+    def CalculateFromSample(self, *args):
+        return _libgeoda.SampleStatistics_CalculateFromSample(self, *args)
+
+    def ToString(self):
+        return _libgeoda.SampleStatistics_ToString(self)
+    sample_size = property(_libgeoda.SampleStatistics_sample_size_get, _libgeoda.SampleStatistics_sample_size_set)
+    min = property(_libgeoda.SampleStatistics_min_get, _libgeoda.SampleStatistics_min_set)
+    max = property(_libgeoda.SampleStatistics_max_get, _libgeoda.SampleStatistics_max_set)
+    mean = property(_libgeoda.SampleStatistics_mean_get, _libgeoda.SampleStatistics_mean_set)
+    var_with_bessel = property(_libgeoda.SampleStatistics_var_with_bessel_get, _libgeoda.SampleStatistics_var_with_bessel_set)
+    var_without_bessel = property(_libgeoda.SampleStatistics_var_without_bessel_get, _libgeoda.SampleStatistics_var_without_bessel_set)
+    sd_with_bessel = property(_libgeoda.SampleStatistics_sd_with_bessel_get, _libgeoda.SampleStatistics_sd_with_bessel_set)
+    sd_without_bessel = property(_libgeoda.SampleStatistics_sd_without_bessel_get, _libgeoda.SampleStatistics_sd_without_bessel_set)
+
+    @staticmethod
+    def CalcMin(data):
+        return _libgeoda.SampleStatistics_CalcMin(data)
+
+    @staticmethod
+    def CalcMax(data):
+        return _libgeoda.SampleStatistics_CalcMax(data)
+
+    @staticmethod
+    def CalcMinMax(data, min, max):
+        return _libgeoda.SampleStatistics_CalcMinMax(data, min, max)
+
+    @staticmethod
+    def CalcMean(*args):
+        return _libgeoda.SampleStatistics_CalcMean(*args)
+    __swig_destroy__ = _libgeoda.delete_SampleStatistics
+
+# Register SampleStatistics in _libgeoda:
+_libgeoda.SampleStatistics_swigregister(SampleStatistics)
+
+def SampleStatistics_CalcMin(data):
+    return _libgeoda.SampleStatistics_CalcMin(data)
+
+def SampleStatistics_CalcMax(data):
+    return _libgeoda.SampleStatistics_CalcMax(data)
+
+def SampleStatistics_CalcMinMax(data, min, max):
+    return _libgeoda.SampleStatistics_CalcMinMax(data, min, max)
+
+def SampleStatistics_CalcMean(*args):
+    return _libgeoda.SampleStatistics_CalcMean(*args)
+
+class SimpleLinearRegression(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _libgeoda.SimpleLinearRegression_swiginit(self, _libgeoda.new_SimpleLinearRegression(*args))
+
+    def CalculateRegression(self, X, Y, meanX, meanY, varX, varY):
+        return _libgeoda.SimpleLinearRegression_CalculateRegression(self, X, Y, meanX, meanY, varX, varY)
+
+    @staticmethod
+    def TScoreTo2SidedPValue(tscore, df):
+        return _libgeoda.SimpleLinearRegression_TScoreTo2SidedPValue(tscore, df)
+
+    def ToString(self):
+        return _libgeoda.SimpleLinearRegression_ToString(self)
+    n = property(_libgeoda.SimpleLinearRegression_n_get, _libgeoda.SimpleLinearRegression_n_set)
+    covariance = property(_libgeoda.SimpleLinearRegression_covariance_get, _libgeoda.SimpleLinearRegression_covariance_set)
+    correlation = property(_libgeoda.SimpleLinearRegression_correlation_get, _libgeoda.SimpleLinearRegression_correlation_set)
+    alpha = property(_libgeoda.SimpleLinearRegression_alpha_get, _libgeoda.SimpleLinearRegression_alpha_set)
+    beta = property(_libgeoda.SimpleLinearRegression_beta_get, _libgeoda.SimpleLinearRegression_beta_set)
+    r_squared = property(_libgeoda.SimpleLinearRegression_r_squared_get, _libgeoda.SimpleLinearRegression_r_squared_set)
+    std_err_of_estimate = property(_libgeoda.SimpleLinearRegression_std_err_of_estimate_get, _libgeoda.SimpleLinearRegression_std_err_of_estimate_set)
+    std_err_of_beta = property(_libgeoda.SimpleLinearRegression_std_err_of_beta_get, _libgeoda.SimpleLinearRegression_std_err_of_beta_set)
+    std_err_of_alpha = property(_libgeoda.SimpleLinearRegression_std_err_of_alpha_get, _libgeoda.SimpleLinearRegression_std_err_of_alpha_set)
+    t_score_alpha = property(_libgeoda.SimpleLinearRegression_t_score_alpha_get, _libgeoda.SimpleLinearRegression_t_score_alpha_set)
+    t_score_beta = property(_libgeoda.SimpleLinearRegression_t_score_beta_get, _libgeoda.SimpleLinearRegression_t_score_beta_set)
+    p_value_alpha = property(_libgeoda.SimpleLinearRegression_p_value_alpha_get, _libgeoda.SimpleLinearRegression_p_value_alpha_set)
+    p_value_beta = property(_libgeoda.SimpleLinearRegression_p_value_beta_get, _libgeoda.SimpleLinearRegression_p_value_beta_set)
+    valid = property(_libgeoda.SimpleLinearRegression_valid_get, _libgeoda.SimpleLinearRegression_valid_set)
+    valid_correlation = property(_libgeoda.SimpleLinearRegression_valid_correlation_get, _libgeoda.SimpleLinearRegression_valid_correlation_set)
+    valid_std_err = property(_libgeoda.SimpleLinearRegression_valid_std_err_get, _libgeoda.SimpleLinearRegression_valid_std_err_set)
+    error_sum_squares = property(_libgeoda.SimpleLinearRegression_error_sum_squares_get, _libgeoda.SimpleLinearRegression_error_sum_squares_set)
+    __swig_destroy__ = _libgeoda.delete_SimpleLinearRegression
+
+# Register SimpleLinearRegression in _libgeoda:
+_libgeoda.SimpleLinearRegression_swigregister(SimpleLinearRegression)
+
+def SimpleLinearRegression_TScoreTo2SidedPValue(tscore, df):
+    return _libgeoda.SimpleLinearRegression_TScoreTo2SidedPValue(tscore, df)
+
+class AxisScale(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _libgeoda.AxisScale_swiginit(self, _libgeoda.new_AxisScale(*args))
+
+    def CalculateScale(self, data_min_s, data_max_s, ticks=5):
+        return _libgeoda.AxisScale_CalculateScale(self, data_min_s, data_max_s, ticks)
+
+    def SkipEvenTics(self):
+        return _libgeoda.AxisScale_SkipEvenTics(self)
+
+    def ShowAllTics(self):
+        return _libgeoda.AxisScale_ShowAllTics(self)
+
+    def ToString(self):
+        return _libgeoda.AxisScale_ToString(self)
+    data_min = property(_libgeoda.AxisScale_data_min_get, _libgeoda.AxisScale_data_min_set)
+    data_max = property(_libgeoda.AxisScale_data_max_get, _libgeoda.AxisScale_data_max_set)
+    scale_min = property(_libgeoda.AxisScale_scale_min_get, _libgeoda.AxisScale_scale_min_set)
+    scale_max = property(_libgeoda.AxisScale_scale_max_get, _libgeoda.AxisScale_scale_max_set)
+    scale_range = property(_libgeoda.AxisScale_scale_range_get, _libgeoda.AxisScale_scale_range_set)
+    tic_inc = property(_libgeoda.AxisScale_tic_inc_get, _libgeoda.AxisScale_tic_inc_set)
+    lbl_precision = property(_libgeoda.AxisScale_lbl_precision_get, _libgeoda.AxisScale_lbl_precision_set)
+    lbl_prec_fixed_point = property(_libgeoda.AxisScale_lbl_prec_fixed_point_get, _libgeoda.AxisScale_lbl_prec_fixed_point_set)
+    ticks = property(_libgeoda.AxisScale_ticks_get, _libgeoda.AxisScale_ticks_set)
+    p = property(_libgeoda.AxisScale_p_get, _libgeoda.AxisScale_p_set)
+    tics = property(_libgeoda.AxisScale_tics_get, _libgeoda.AxisScale_tics_set)
+    tics_str = property(_libgeoda.AxisScale_tics_str_get, _libgeoda.AxisScale_tics_str_set)
+    tics_str_show = property(_libgeoda.AxisScale_tics_str_show_get, _libgeoda.AxisScale_tics_str_show_set)
+    __swig_destroy__ = _libgeoda.delete_AxisScale
+
+# Register AxisScale in _libgeoda:
+_libgeoda.AxisScale_swigregister(AxisScale)
+
+
+def flat_2dclusters(n, clusters):
+    return _libgeoda.flat_2dclusters(n, clusters)
+
+def BoolToStr(b):
+    return _libgeoda.BoolToStr(b)
+
+def StrToBool(s):
+    return _libgeoda.StrToBool(s)
+
+def Pad(s, width, pad_left=True):
+    return _libgeoda.Pad(s, width, pad_left)
+
+def PadTrim(s, width, pad_left=True):
+    return _libgeoda.PadTrim(s, width, pad_left)
+
+def DblToStr(x, precision=3, fixed_point=False):
+    return _libgeoda.DblToStr(x, precision, fixed_point)
+
+def IntToStr(x, precision=0):
+    return _libgeoda.IntToStr(x, precision)
+
+def Transformation(trans_type, data, undef):
+    return _libgeoda.Transformation(trans_type, data, undef)
+
+def MeanAbsoluteDeviation(*args):
+    return _libgeoda.MeanAbsoluteDeviation(*args)
+
+def DeviationFromMean(*args):
+    return _libgeoda.DeviationFromMean(*args)
+
+def Sum(data):
+    return _libgeoda.Sum(data)
+
+def SumOfSquares(data):
+    return _libgeoda.SumOfSquares(data)
+
+def Median(data):
+    return _libgeoda.Median(data)
+
+def StandardizeData(*args):
+    return _libgeoda.StandardizeData(*args)
+
+def RangeAdjust(*args):
+    return _libgeoda.RangeAdjust(*args)
+
+def RangeStandardize(*args):
+    return _libgeoda.RangeStandardize(*args)
+
+def NaturalBreaks(k, data, undef):
+    return _libgeoda.NaturalBreaks(k, data, undef)
+
+def QuantileBreaks(k, data, undef):
+    return _libgeoda.QuantileBreaks(k, data, undef)
+
+def Hinge15Breaks(data, undef):
+    return _libgeoda.Hinge15Breaks(data, undef)
+
+def Hinge30Breaks(data, undef):
+    return _libgeoda.Hinge30Breaks(data, undef)
+
+def PercentileBreaks(data, undef):
+    return _libgeoda.PercentileBreaks(data, undef)
+
+def StddevBreaks(data, undef):
+    return _libgeoda.StddevBreaks(data, undef)
+
+def Correlation(x, y):
+    return _libgeoda.Correlation(x, y)
+
+def GetVariance(data):
+    return _libgeoda.GetVariance(data)
+
+def Reverse(val):
+    return _libgeoda.Reverse(val)
+
+def ReverseInt(val):
+    return _libgeoda.ReverseInt(val)
+
+def SkipTillNumber(s):
+    return _libgeoda.SkipTillNumber(s)
+
+def longToString(d, Id, base):
+    return _libgeoda.longToString(d, Id, base)
+
+def doubleToString(val, precision):
+    return _libgeoda.doubleToString(val, precision)
+
+def strToInt64(*args):
+    return _libgeoda.strToInt64(*args)
+
+def validInt(*args):
+    return _libgeoda.validInt(*args)
+
+def isEmptyOrSpaces(*args):
+    return _libgeoda.isEmptyOrSpaces(*args)
+
+def FindLongestSubString(strings, case_sensitive=False):
+    return _libgeoda.FindLongestSubString(strings, case_sensitive)
+
+def less_vectors(a, b):
+    return _libgeoda.less_vectors(a, b)
 class VecGeoDaColumn(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr

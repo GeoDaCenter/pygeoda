@@ -2,7 +2,7 @@ __author__ = "Xun Li <lixun910@gmail.com>"
 
 from ..libgeoda import VecVecDouble, VecDouble
 from ..libgeoda import gda_skater
-from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare
+from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare, flat_2dclusters
 
 def skater(k, w, data, **kwargs):
     ''' Spatial C(K)luster Analysis by Tree Edge Removal
@@ -12,7 +12,7 @@ def skater(k, w, data, **kwargs):
     Arguments:
         k (int): number of clusters
         w (Weight): An instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
@@ -32,6 +32,10 @@ def skater(k, w, data, **kwargs):
     cpu_threads = 6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
 
     in_data = VecVecDouble()
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     for d in data:
         in_data.push_back(d)
 
@@ -43,9 +47,9 @@ def skater(k, w, data, **kwargs):
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
 
     return {
-        "Clusters" : cluster_ids,
-        "TotalSS" : total_ss,
-        "Within-clusterSS" : within_ss,
-        "TotalWithin-clusterSS" : between_ss,
-        "Ratio" : ratio
+        "Total sum of squares" : total_ss,
+        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Total within-cluster sum of squares" : between_ss,
+        "The ratio of between to total sum of squares" : ratio,
+        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
     }
