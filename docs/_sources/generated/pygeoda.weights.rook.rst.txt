@@ -1,6 +1,29 @@
-pygeoda.weights.rook
+﻿pygeoda.weights.rook
 ====================
 
-.. currentmodule:: pygeoda.weights
+.. automodule:: pygeoda.weights.rook
 
-.. autofunction:: rook
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      rook_weights
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

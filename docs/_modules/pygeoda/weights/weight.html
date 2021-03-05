@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pygeoda.weights.weight &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -71,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -151,8 +155,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -161,7 +163,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -183,9 +184,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -197,11 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -209,6 +203,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -243,11 +238,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -267,7 +264,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.weights.weight</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">VecInt64</span>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">VecInt64</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
@@ -275,7 +272,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GeoDa Weight class </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.weights.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
+<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.weights.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of Weight class.</span>
 
@@ -287,7 +284,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_w</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_obs</span> <span class="o">=</span> <span class="n">gda_w</span><span class="o">.</span><span class="n">num_obs</span></div>
 
-    <span class="k">def</span> <span class="nf">IsSymmetric</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_symmetric</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if weights matrix is symmetric</span>
 
@@ -304,7 +301,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">is_symmetric</span>
 
-    <span class="k">def</span> <span class="nf">HasIsolates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">has_isolates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if any observation has no neighbors </span>
 
@@ -321,7 +318,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">HasIsolates</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">GetSparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">weights_sparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get sparsity computed from weights matrix</span>
 
@@ -333,7 +330,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">sparsity</span>
 
-    <span class="k">def</span> <span class="nf">GetMinNbrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">min_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get minmum number of neighbors</span>
 
 <span class="sd">        Returns:</span>
@@ -342,7 +339,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">min_nbrs</span>
 
-    <span class="k">def</span> <span class="nf">GetMedianNbrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">median_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the median number of neighbors</span>
 
 <span class="sd">        Returns:</span>
@@ -351,7 +348,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">median_nbrs</span>
 
-    <span class="k">def</span> <span class="nf">GetMeanNbrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mean_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the mean number of neighbors</span>
 
 <span class="sd">        Returns:</span>
@@ -360,7 +357,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">mean_nbrs</span>
 
-    <span class="k">def</span> <span class="nf">GetMaxNbrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">max_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the maximum number of neighbors</span>
 
 <span class="sd">        Returns:</span>
@@ -369,7 +366,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">max_nbrs</span>
 
-    <span class="k">def</span> <span class="nf">GetWeightsType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">weights_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get Weights type</span>
 
 <span class="sd">        Returns:</span>
@@ -377,18 +374,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">weight_type</span>
-
-    <span class="k">def</span> <span class="nf">GetDensity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get density computed from weights matrix</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        density : float</span>
-<span class="sd">            density is computed as:</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">density</span>
 
 
     <span class="k">def</span> <span class="nf">GetNeighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
@@ -448,17 +433,18 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_values</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="p">:</span>
             <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;Weights Meta-data:</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">is symmetric:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IsSymmetric</span><span class="p">())</span> 
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">sparsity:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSparsity</span><span class="p">())</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">density:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetDensity</span><span class="p">())</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">min neighbors:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetMinNbrs</span><span class="p">())</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">mean neighbors:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetMeanNbrs</span><span class="p">())</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">median neighbors:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetMedianNbrs</span><span class="p">())</span>
-            <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">max neighbors:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetMaxNbrs</span><span class="p">())</span>
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;number of observations:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_obs</span><span class="p">)</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;is symmetric:&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_symmetric</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;sparsity:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_sparsity</span><span class="p">())</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;# min neighbors:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_neighbors</span><span class="p">())</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;# max neighbors:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_neighbors</span><span class="p">())</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;# mean neighbors:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_neighbors</span><span class="p">())</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;# median neighbors:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">median_neighbors</span><span class="p">())</span> 
+            <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;has isolates:&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_isolates</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span> 
             <span class="k">return</span> <span class="n">info</span></div>
 </pre></div>
 
@@ -466,20 +452,25 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -487,7 +478,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -506,6 +496,7 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

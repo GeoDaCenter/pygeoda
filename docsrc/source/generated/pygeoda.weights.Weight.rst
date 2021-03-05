@@ -1,4 +1,4 @@
-pygeoda.weights.Weight
+﻿pygeoda.weights.Weight
 ======================
 
 .. currentmodule:: pygeoda.weights
@@ -13,19 +13,18 @@ pygeoda.weights.Weight
 
    .. autosummary::
    
-      ~Weight.GetDensity
-      ~Weight.GetMaxNbrs
-      ~Weight.GetMeanNbrs
-      ~Weight.GetMedianNbrs
-      ~Weight.GetMinNbrs
       ~Weight.GetNeighbors
-      ~Weight.GetSparsity
-      ~Weight.GetWeightsType
-      ~Weight.HasIsolates
-      ~Weight.IsSymmetric
       ~Weight.SaveToFile
       ~Weight.SpatialLag
       ~Weight.__init__
+      ~Weight.has_isolates
+      ~Weight.is_symmetric
+      ~Weight.max_neighbors
+      ~Weight.mean_neighbors
+      ~Weight.median_neighbors
+      ~Weight.min_neighbors
+      ~Weight.weights_sparsity
+      ~Weight.weights_type
    
    
 

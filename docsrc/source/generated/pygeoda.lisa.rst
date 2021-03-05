@@ -1,4 +1,4 @@
-pygeoda.lisa
+﻿pygeoda.lisa
 ============
 
 .. currentmodule:: pygeoda
@@ -13,17 +13,18 @@ pygeoda.lisa
 
    .. autosummary::
    
-      ~lisa.GetClusterIndicators
-      ~lisa.GetColors
-      ~lisa.GetFDR
-      ~lisa.GetLISAValues
-      ~lisa.GetLabels
-      ~lisa.GetNumNeighbors
-      ~lisa.GetPValues
-      ~lisa.Run
-      ~lisa.SetPermutations
-      ~lisa.SetThreads
       ~lisa.__init__
+      ~lisa.lisa_bo
+      ~lisa.lisa_clusters
+      ~lisa.lisa_colors
+      ~lisa.lisa_fdr
+      ~lisa.lisa_labels
+      ~lisa.lisa_num_nbrs
+      ~lisa.lisa_pvalues
+      ~lisa.lisa_values
+      ~lisa.run
+      ~lisa.set_permutations
+      ~lisa.set_threads
    
    
 

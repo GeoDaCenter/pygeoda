@@ -1,4 +1,4 @@
-pygeoda.batchlisa
+﻿pygeoda.batchlisa
 =================
 
 .. currentmodule:: pygeoda
@@ -13,17 +13,18 @@ pygeoda.batchlisa
 
    .. autosummary::
    
-      ~batchlisa.GetClusterIndicators
-      ~batchlisa.GetColors
-      ~batchlisa.GetFDR
-      ~batchlisa.GetLISAValues
-      ~batchlisa.GetLabels
-      ~batchlisa.GetNumNeighbors
-      ~batchlisa.GetPValues
-      ~batchlisa.Run
-      ~batchlisa.SetPermutations
-      ~batchlisa.SetThreads
       ~batchlisa.__init__
+      ~batchlisa.lisa_bo
+      ~batchlisa.lisa_clusters
+      ~batchlisa.lisa_colors
+      ~batchlisa.lisa_fdr
+      ~batchlisa.lisa_labels
+      ~batchlisa.lisa_num_nbrs
+      ~batchlisa.lisa_pvalues
+      ~batchlisa.lisa_values
+      ~batchlisa.run
+      ~batchlisa.set_permutations
+      ~batchlisa.set_threads
    
    
 

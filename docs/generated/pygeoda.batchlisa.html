@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pygeoda.batchlisa &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.local_moran" href="pygeoda.local_moran.html" />
@@ -73,6 +76,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -153,8 +157,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">pygeoda API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -163,7 +165,6 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -185,9 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.redcap.html">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -199,11 +197,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -211,6 +205,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -245,11 +240,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../api.html">pygeoda API reference</a> &raquo;</li>
         
@@ -258,7 +255,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/generated/pygeoda.batchlisa.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -274,18 +271,18 @@
             
   <div class="section" id="pygeoda-batchlisa">
 <h1>pygeoda.batchlisa<a class="headerlink" href="#pygeoda-batchlisa" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="pygeoda.batchlisa">
-<em class="property">class </em><code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">batchlisa</code><span class="sig-paren">(</span><em class="sig-param">lisa_obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/lisa.html#batchlisa"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.batchlisa" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygeoda.</span></code><code class="sig-name descname"><span class="pre">batchlisa</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lisa_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/lisa.html#batchlisa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.batchlisa" title="Permalink to this definition">¶</a></dt>
 <dd><p>A BatchLISA class wrappers the results of LISA computations</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt>
-<code class="sig-name descname">gda_lisa An object of BatchLISA</code></dt>
+<code class="sig-name descname"><span class="pre">gda_lisa</span> <span class="pre">An</span> <span class="pre">object</span> <span class="pre">of</span> <span class="pre">BatchLISA</span></code></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pygeoda.batchlisa.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">lisa_obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/lisa.html#batchlisa.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.batchlisa.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lisa_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/lisa.html#batchlisa.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.batchlisa.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of lisa object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -301,38 +298,41 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetClusterIndicators</span></code>(idx)</p></td>
-<td><p>Get the local cluster indicators returned from LISA computation.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetColors</span></code>()</p></td>
-<td><p>Get the cluster colors of LISA computation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetFDR</span></code>(p)</p></td>
-<td><p>Get the False Discovery Rate (FDR) in LISA.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetLISAValues</span></code>(idx)</p></td>
-<td><p>Get the local spatial autocorrelation values returned from LISA computation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetLabels</span></code>()</p></td>
-<td><p>Get the cluster labels of LISA computation.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetNumNeighbors</span></code>()</p></td>
-<td><p>Get the number of neighbors of every observations in LISA computation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetPValues</span></code>(idx)</p></td>
-<td><p>Get the local pseudo-p values of significance returned from LISA computation.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Run</span></code>()</p></td>
-<td><p>Call to run LISA computation</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetPermutations</span></code>(num_perm)</p></td>
-<td><p>Set the number of permutations for the LISA computation</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetThreads</span></code>(num_threads)</p></td>
-<td><p>Set the number of CPU threads for the LISA computation</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pygeoda.batchlisa.__init__" title="pygeoda.batchlisa.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(lisa_obj)</p></td>
 <td><p>Constructor of lisa object</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_bo</span></code>(p)</p></td>
+<td><p>Bonferroni bound value Get Bonferroni bound value based on current LISA computation and current significat p-value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_clusters</span></code>(idx)</p></td>
+<td><p>Get the local cluster indicators returned from LISA computation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_colors</span></code>()</p></td>
+<td><p>Get cluster colors Get the cluster colors of LISA computation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_fdr</span></code>(p)</p></td>
+<td><p>False Discovery Rate value of local spatial autocorrelation Get False Discovery Rate value based on current LISA computation and current significant p-value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_labels</span></code>()</p></td>
+<td><p>Get cluster labels Get the cluster labels of LISA computation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_num_nbrs</span></code>()</p></td>
+<td><p>Get numbers of neighbors for all observations Get the number of neighbors of every observations in LISA computation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_pvalues</span></code>(idx)</p></td>
+<td><p>Get the local pseudo-p values of significance returned from LISA computation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lisa_values</span></code>(idx)</p></td>
+<td><p>Get LISA values Get the local spatial autocorrelation values returned from LISA computation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code>()</p></td>
+<td><p>Call to run LISA computation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_permutations</span></code>(num_perm)</p></td>
+<td><p>Set the number of permutations for the LISA computation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_threads</span></code>(num_threads)</p></td>
+<td><p>Set the number of CPU threads for the LISA computation</p></td>
 </tr>
 </tbody>
 </table>
@@ -345,29 +345,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pygeoda.local_moran.html" class="btn btn-neutral float-right" title="pygeoda.local_moran" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="pygeoda.lisa.html" class="btn btn-neutral float-left" title="pygeoda.lisa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="pygeoda.local_moran.html" class="btn btn-neutral float-right" title="pygeoda.local_moran" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pygeoda.lisa.html" class="btn btn-neutral float-left" title="pygeoda.lisa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -375,7 +375,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -394,6 +393,7 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 
