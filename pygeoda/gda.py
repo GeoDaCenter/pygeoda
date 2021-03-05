@@ -425,7 +425,10 @@ class geodaGpd(geoda):
         Return:
             :obj:`list` of :obj:`str`: a list of string values of selected column
         """
-        return self.df[col_name]
+        if type(col_name) == list:
+            return self.df[col_name]
+        else:
+            return self.df[col_name].to_list()
 
     def GetUndefinedVals(self, col_name):
         """Get the undefined flags from a column

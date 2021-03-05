@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pygeoda.sa.joincount &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -71,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -151,8 +155,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -161,7 +163,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -183,9 +184,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -197,11 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -209,6 +203,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -243,11 +238,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -267,25 +264,28 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.sa.joincount</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_localjoincount</span><span class="p">,</span> <span class="n">gda_localmultijoincount</span><span class="p">,</span> <span class="n">VecBool</span><span class="p">,</span> <span class="n">VecVecBool</span>
-<span class="kn">from</span> <span class="nn">.lisa</span> <span class="k">import</span> <span class="n">lisa</span>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">gda_localjoincount</span><span class="p">,</span> <span class="n">gda_localmultijoincount</span><span class="p">,</span> <span class="n">VecBool</span><span class="p">,</span> <span class="n">VecVecBool</span>
+<span class="kn">from</span> <span class="nn">.lisa</span> <span class="kn">import</span> <span class="n">lisa</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
 <div class="viewcode-block" id="local_joincount"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_joincount.html#pygeoda.local_joincount">[docs]</a><span class="k">def</span> <span class="nf">local_joincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply local join count statistics </span>
+    <span class="sd">&quot;&quot;&quot;Local Join Count Statistics</span>
+
+<span class="sd">    The function to apply local Join Count statistics.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A 1d tuple of float type values of selected variable</span>
+<span class="sd">        data (tuple): A tuple of numeric values of selected variable</span>
 <span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
+<span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
 <span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
 <span class="sd">        cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation</span>
 <span class="sd">        seed (int, optional): The seed for random number generator</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        lisa: An instance of lisa class represents the results of lisa computations </span>
+<span class="sd">        lisa: An instance of lisa class. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
@@ -293,21 +293,106 @@
     <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
     <span class="n">significance_cutoff</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="k">if</span> <span class="s1">&#39;significance_cutoff&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;significance_cutoff&#39;</span><span class="p">]</span>
     <span class="n">permutations</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;permutations&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutations&#39;</span><span class="p">]</span>
+    <span class="n">permutation_method</span> <span class="o">=</span> <span class="s1">&#39;complete&#39;</span> <span class="k">if</span> <span class="s1">&#39;permutation_method&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutation_method&#39;</span><span class="p">]</span>
     <span class="n">cpu_threads</span> <span class="o">=</span>  <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localjoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data is not binary.&quot;</span><span class="p">)</span>
+
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localjoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="local_multijoincount"><a class="viewcode-back" href="../../../generated/pygeoda.local_multijoincount.html#pygeoda.local_multijoincount">[docs]</a><span class="k">def</span> <span class="nf">local_multijoincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply multivariate local join count statistics on multi-variables</span>
+<span class="k">def</span> <span class="nf">local_bijoincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bivariate Local Join Count Statistics</span>
+
+<span class="sd">    The function to apply (no-colocation) bivariate local Join Count statistics. The bivariate local join count only applies on two variables with no-colocation.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class</span>
-<span class="sd">        data (list): A 2d numeric list with values of selected variables</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
+<span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
+<span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
+<span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
+<span class="sd">        cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation</span>
+<span class="sd">        seed (int, optional): The seed for random number generator</span>
 
-<span class="sd">    Rrturns:</span>
-<span class="sd">        lisa: An instance of lisa class represents the results of multivariate local join count</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        lisa: An instance of lisa class </span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import pygeoda</span>
+<span class="sd">        &gt;&gt;&gt; columbus = pygeoda.open(&quot;./data/columbus.shp&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; columbus_q = pygeoda.queen_weights(columbus)</span>
+<span class="sd">        &gt;&gt;&gt; nsa = columbus.GetRealCol(&quot;nsa&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; nsa_inv = [1-i for i in nsa]</span>
+<span class="sd">        &gt;&gt;&gt; lisa = pygeoda.local_bijoincount(columbus_q, [nsa, nsa_inv])</span>
+<span class="sd">        &gt;&gt;&gt; jc = lisa.lisa_values()</span>
+<span class="sd">        (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 3.0, 3.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)</span>
+<span class="sd">        &gt;&gt;&gt; pvals = lisa.lisa_pvalues()</span>
+<span class="sd">        (nan, nan, nan, nan, nan, nan, nan, nan, 0.002, 0.034, nan, nan, nan, nan, nan, nan, 0.44, nan, nan, nan, nan, 0.262, nan, 0.125, 0.079, 0.053, nan, nan, nan, nan, 0.093, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan)</span>
+<span class="sd">        &gt;&gt;&gt; nn = lisa.lisa_num_nbrs()</span>
+<span class="sd">        (2, 3, 4, 4, 8, 2, 4, 6, 8, 4, 5, 6, 4, 6, 6, 8, 3, 4, 3, 10, 3, 6, 3, 7, 8, 6, 4, 9, 7, 5, 3, 4, 4, 4, 7, 5, 6, 6, 3, 5, 3, 2, 6, 5, 4, 2, 2, 4, 3)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;DataFrame&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data should be a list of tuples of two selected variables.&quot;</span><span class="p">)</span>
+    
+    <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecVecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
+    <span class="n">significance_cutoff</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="k">if</span> <span class="s1">&#39;significance_cutoff&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;significance_cutoff&#39;</span><span class="p">]</span>
+    <span class="n">permutations</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;permutations&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutations&#39;</span><span class="p">]</span>
+    <span class="n">permutation_method</span> <span class="o">=</span> <span class="s1">&#39;complete&#39;</span> <span class="k">if</span> <span class="s1">&#39;permutation_method&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutation_method&#39;</span><span class="p">]</span>
+    <span class="n">cpu_threads</span> <span class="o">=</span>  <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
+    <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
+
+    <span class="n">data1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n1</span> <span class="o">!=</span> <span class="n">n2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The size of data1 does not match the size of data2.&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data is not binary.&quot;</span><span class="p">)</span>
+
+    <span class="n">has_colocation</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">data1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">data2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">has_colocation</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">has_colocation</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The bivariate local join count only applies on two variables with no-colocation.&quot;</span><span class="p">)</span>
+
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmultijoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span>
+
+<div class="viewcode-block" id="local_multijoincount"><a class="viewcode-back" href="../../../generated/pygeoda.local_multijoincount.html#pygeoda.local_multijoincount">[docs]</a><span class="k">def</span> <span class="nf">local_multijoincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;(Multivariate) Colocation Local Join Count Statistics</span>
+
+<span class="sd">    The function to apply (multivariate) colocation local Join Count statistics</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        w (Weight): An instance of Weight class</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
+<span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
+<span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
+<span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
+<span class="sd">        cpu_threads (int, optional): The number of cpu threads used for parallel LISA computation</span>
+<span class="sd">        seed (int, optional): The seed for random number generator</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lisa: An instance of lisa class </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Weights is None.&quot;</span><span class="p">)</span>
@@ -315,10 +400,35 @@
     <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecVecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
     <span class="n">significance_cutoff</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="k">if</span> <span class="s1">&#39;significance_cutoff&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;significance_cutoff&#39;</span><span class="p">]</span>
     <span class="n">permutations</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;permutations&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutations&#39;</span><span class="p">]</span>
+    <span class="n">permutation_method</span> <span class="o">=</span> <span class="s1">&#39;complete&#39;</span> <span class="k">if</span> <span class="s1">&#39;permutation_method&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutation_method&#39;</span><span class="p">]</span>
     <span class="n">cpu_threads</span> <span class="o">=</span>  <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmultijoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;DataFrame&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">n_vars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_vars</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The multivairate local Join Count applies to multiple (more than one) variables.&quot;</span><span class="p">)</span>
+
+    <span class="n">n_obs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n_obs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data have variables with different size.&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data is not binary.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n_vars</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="n">n_obs</span><span class="p">):</span>
+        <span class="n">no_colocation</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_obs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">no_colocation</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">no_colocation</span><span class="p">:</span> 
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input two variables have no colocations. Please use bivariate local join count: local_bijoincount().&quot;</span><span class="p">)</span>
+
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmultijoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 </pre></div>
 
@@ -326,20 +436,25 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -347,7 +462,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -366,6 +480,7 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

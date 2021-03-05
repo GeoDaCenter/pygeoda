@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>_ESDA with pygeoda and geopandas &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pygeoda API reference" href="api.html" />
@@ -73,6 +76,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -153,8 +157,6 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -163,7 +165,6 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -185,9 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -199,11 +197,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -211,6 +205,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -245,18 +240,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>_ESDA with pygeoda and geopandas</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/esda_geopandas.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -368,7 +365,7 @@ a map on a plot (matplotlib):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="./images/guerry1.png"><img alt="./images/guerry1.png" src="./images/guerry1.png" style="width: 300px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="images/guerry1.png"><img alt="images/guerry1.png" src="images/guerry1.png" style="width: 300px; height: 300px;" /></a>
 </div>
 <div class="section" id="create-pygeoda-object-from-geodataframe">
 <h3>3.2 Create pygeoda object from geodataframe<a class="headerlink" href="#create-pygeoda-object-from-geodataframe" title="Permalink to this headline">¶</a></h3>
@@ -440,7 +437,7 @@ by generating a LISA cluster map:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_moran.png" src="./images/guerry_moran.png" />
+<img alt="images/guerry_moran.png" src="images/guerry_moran.png" />
 <p>From the above code, you can see that we still use <cite>gpf</cite> object to do
 plotting. The values of cluster indicators from pygeoda’s <cite>crm_lisa</cite> object
 are used to make the LISA map.This emphasis that pygeoda is a API focused
@@ -462,7 +459,7 @@ GeoDa software when you save LISA results to a table.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_moran_sig.png" src="./images/guerry_moran_sig.png" />
+<img alt="images/guerry_moran_sig.png" src="images/guerry_moran_sig.png" />
 <p><strong>Local Geary Cluster Map</strong></p>
 <p>Another example is to create a map of local Geary:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">crm_geary</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_geary</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
@@ -492,7 +489,7 @@ GeoDa software when you save LISA results to a table.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_geary.png" src="./images/guerry_geary.png" />
+<img alt="images/guerry_geary.png" src="images/guerry_geary.png" />
 <p><strong>Local G Cluster Map</strong></p>
 <p>To create a map of local Getis-Order G:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">crm_g</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_g</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
@@ -522,7 +519,7 @@ GeoDa software when you save LISA results to a table.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_g.png" src="./images/guerry_g.png" />
+<img alt="images/guerry_g.png" src="images/guerry_g.png" />
 <p><strong>SKATER Map</strong></p>
 <p>To create a map of SKATER clustering results, we first run skater clustering
 on the data of 6 selected variables:</p>
@@ -560,7 +557,7 @@ belongs to:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_skater.png" src="./images/guerry_skater.png" />
+<img alt="images/guerry_skater.png" src="images/guerry_skater.png" />
 <p><strong>Max-p Clustering Map</strong></p>
 <p>To make a map of Max-p clustering results, we first run skater clustering
 on the data of 6 selected variables:</p>
@@ -579,7 +576,7 @@ on the data of 6 selected variables:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="./images/guerry_maxp.png" src="./images/guerry_maxp.png" />
+<img alt="images/guerry_maxp.png" src="images/guerry_maxp.png" />
 </div>
 </div>
 </div>
@@ -589,29 +586,29 @@ on the data of 6 selected variables:</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="api.html" class="btn btn-neutral float-right" title="pygeoda API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="spatial_clustering.html" class="btn btn-neutral float-left" title="6 Spatial Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="api.html" class="btn btn-neutral float-right" title="pygeoda API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spatial_clustering.html" class="btn btn-neutral float-left" title="6 Spatial Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -619,7 +616,6 @@ on the data of 6 selected variables:</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -638,6 +634,7 @@ on the data of 6 selected variables:</p>
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

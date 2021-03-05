@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pygeoda.clustering.skater &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -71,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -151,8 +155,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -161,7 +163,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -183,9 +184,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -197,11 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -209,6 +203,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -243,11 +238,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -269,8 +266,9 @@
   <h1>Source code for pygeoda.clustering.skater</h1><div class="highlight"><pre>
 <span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">VecVecDouble</span><span class="p">,</span> <span class="n">VecDouble</span>
-<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="k">import</span> <span class="n">gda_skater</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">VecVecDouble</span><span class="p">,</span> <span class="n">VecDouble</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">gda_skater</span>
+<span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">gda_betweensumofsquare</span><span class="p">,</span> <span class="n">gda_totalsumofsquare</span><span class="p">,</span> <span class="n">gda_withinsumofsquare</span><span class="p">,</span> <span class="n">flat_2dclusters</span>
 
 <div class="viewcode-block" id="skater"><a class="viewcode-back" href="../../../generated/pygeoda.skater.html#pygeoda.clustering.skater">[docs]</a><span class="k">def</span> <span class="nf">skater</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Spatial C(K)luster Analysis by Tree Edge Removal</span>
@@ -280,47 +278,72 @@
 <span class="sd">    Arguments:</span>
 <span class="sd">        k (int): number of clusters</span>
 <span class="sd">        w (Weight): An instance of Weight class</span>
-<span class="sd">        data (tuple):   A list of numeric vectors of selected variable</span>
-<span class="sd">        bound_vals (tuple, optional): A numeric vector of selected bounding variable</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
+<span class="sd">        bound_variable (tuple, optional): A numeric vector of selected bounding variable</span>
 <span class="sd">        min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than </span>
+<span class="sd">        scale_method (str, optional): One of the scaling methods {&#39;raw&#39;, &#39;standardize&#39;, &#39;demean&#39;, &#39;mad&#39;, &#39;range_standardize&#39;, &#39;range_adjust&#39;} to apply on input data. Default is &#39;standardize&#39; (Z-score normalization).</span>
 <span class="sd">        distance_method (str, optional): {&quot;euclidean&quot;, &quot;manhattan&quot;} the distance method used to compute the distance betwen observation i and j. Defaults to &quot;euclidean&quot;. Options are &quot;euclidean&quot; and &quot;manhattan&quot;</span>
 <span class="sd">        random_seed (int,optional): the seed for random number generator. Defaults to 123456789. </span>
 <span class="sd">        cpu_threads (int, optional): The number of cpu threads used for parallel computation</span>
 
 <span class="sd">    Return: </span>
-<span class="sd">        list: A list of numeric vectors represents a group of clusters</span>
+<span class="sd">        dict: A dict with keys {&quot;Clusters&quot;, &quot;TotalSS&quot;, &quot;Within-clusterSS&quot;, &quot;TotalWithin-clusterSS&quot;, &quot;Ratio&quot;}</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">min_bound</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;min_bound&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;min_bound&#39;</span><span class="p">]</span>
-    <span class="n">bound_vals</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="s1">&#39;bound_vals&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;bound_vals&#39;</span><span class="p">]</span>
+    <span class="n">bound_variable</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="s1">&#39;bound_variable&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;bound_variable&#39;</span><span class="p">]</span>
+    <span class="n">scale_method</span> <span class="o">=</span> <span class="s2">&quot;standardize&quot;</span> <span class="k">if</span> <span class="s2">&quot;scale_method&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;scale_method&#39;</span><span class="p">]</span>
     <span class="n">distance_method</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span> <span class="k">if</span> <span class="s1">&#39;distance_method&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;distance_method&#39;</span><span class="p">]</span> 
     <span class="n">random_seed</span> <span class="o">=</span> <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;random_seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;random_seed&#39;</span><span class="p">]</span>
     <span class="n">cpu_threads</span> <span class="o">=</span> <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
 
     <span class="n">in_data</span> <span class="o">=</span> <span class="n">VecVecDouble</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;DataFrame&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
     <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
         <span class="n">in_data</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">gda_skater</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">in_data</span><span class="p">,</span> <span class="n">distance_method</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">)</span></div>
+    <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">gda_skater</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">in_data</span><span class="p">,</span> <span class="n">scale_method</span><span class="p">,</span> <span class="n">distance_method</span><span class="p">,</span> <span class="n">bound_variable</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">)</span>
+
+    <span class="n">between_ss</span> <span class="o">=</span> <span class="n">gda_betweensumofsquare</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">,</span> <span class="n">in_data</span><span class="p">)</span>
+    <span class="n">total_ss</span> <span class="o">=</span> <span class="n">gda_totalsumofsquare</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">between_ss</span> <span class="o">/</span> <span class="n">total_ss</span>
+    <span class="n">within_ss</span> <span class="o">=</span> <span class="n">gda_withinsumofsquare</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">,</span> <span class="n">in_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;Total sum of squares&quot;</span> <span class="p">:</span> <span class="n">total_ss</span><span class="p">,</span>
+        <span class="s2">&quot;Within-cluster sum of squares&quot;</span> <span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">within_ss</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">within_ss</span><span class="p">)),</span>
+        <span class="s2">&quot;Total within-cluster sum of squares&quot;</span> <span class="p">:</span> <span class="n">between_ss</span><span class="p">,</span>
+        <span class="s2">&quot;The ratio of between to total sum of squares&quot;</span> <span class="p">:</span> <span class="n">ratio</span><span class="p">,</span>
+        <span class="s2">&quot;Clusters&quot;</span> <span class="p">:</span> <span class="n">flat_2dclusters</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">num_obs</span><span class="p">,</span> <span class="n">cluster_ids</span><span class="p">),</span>
+    <span class="p">}</span></div>
 </pre></div>
 
            </div>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -328,7 +351,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -347,6 +369,7 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

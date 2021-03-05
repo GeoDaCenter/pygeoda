@@ -1,6 +1,31 @@
-pygeoda.maxp
+﻿pygeoda.maxp
 ============
 
-.. currentmodule:: pygeoda
+.. automodule:: pygeoda.maxp
 
-.. autofunction:: maxp
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      maxp_greedy
+      maxp_sa
+      maxp_tabu
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,6 +1,31 @@
-pygeoda.weights.distance
+﻿pygeoda.weights.distance
 ========================
 
-.. currentmodule:: pygeoda.weights
+.. automodule:: pygeoda.weights.distance
 
-.. autofunction:: distance
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      distance_weights
+      knn_weights
+      min_distthreshold
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

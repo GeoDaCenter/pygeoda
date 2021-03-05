@@ -1,6 +1,30 @@
-pygeoda.quantile\_lisa
+﻿pygeoda.quantile\_lisa
 ======================
 
-.. currentmodule:: pygeoda
+.. automodule:: pygeoda.quantile_lisa
 
-.. autofunction:: quantile_lisa
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      local_multiquantilelisa
+      local_quantilelisa
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

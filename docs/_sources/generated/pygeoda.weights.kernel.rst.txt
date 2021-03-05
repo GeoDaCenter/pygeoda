@@ -1,6 +1,30 @@
-pygeoda.weights.kernel
+﻿pygeoda.weights.kernel
 ======================
 
-.. currentmodule:: pygeoda.weights
+.. automodule:: pygeoda.weights.kernel
 
-.. autofunction:: kernel
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      kernel_knn_weights
+      kernel_weights
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

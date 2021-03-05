@@ -1,38 +1,41 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pygeoda.redcap &mdash; pygeoda 0.0.4 rc documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygeoda.maxp" href="pygeoda.maxp.html" />
@@ -73,6 +76,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -153,8 +157,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">pygeoda API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.geopandas_to_geoda.html">pygeoda.geopandas_to_geoda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda_to_geopandas.html">pygeoda.geoda_to_geopandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.geoda.html">pygeoda.geoda</a></li>
 </ul>
 </li>
@@ -163,7 +165,6 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.knn.html">pygeoda.weights.knn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
 </ul>
 </li>
@@ -185,9 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">pygeoda.redcap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp.html">pygeoda.maxp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.between_sumofsquare.html">pygeoda.between_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.total_sumofsquare.html">pygeoda.total_sumofsquare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.within_sumofsquare.html">pygeoda.within_sumofsquare</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -199,11 +197,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.mds.html">pygeoda.mds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygeoda.PCA.html">pygeoda.PCA</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -211,6 +205,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -245,11 +240,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../api.html">pygeoda API reference</a> &raquo;</li>
         
@@ -258,7 +255,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/generated/pygeoda.redcap.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -274,9 +271,9 @@
             
   <div class="section" id="pygeoda-redcap">
 <h1>pygeoda.redcap<a class="headerlink" href="#pygeoda-redcap" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="pygeoda.redcap">
-<code class="sig-prename descclassname">pygeoda.</code><code class="sig-name descname">redcap</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">w</em>, <em class="sig-param">data</em>, <em class="sig-param">method</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/clustering/redcap.html#redcap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygeoda.redcap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pygeoda.</span></code><code class="sig-name descname"><span class="pre">redcap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/clustering/redcap.html#redcap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.redcap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regionalization with dynamically constrained agglomerative clustering and partitioning (REDCAP)</p>
 <p>REDCAP starts from building a spanning tree with 4 different ways (single-linkage, average-linkage, complete-linkage and Ward-linkage).
 Then, REDCAP provides 2 different ways to prune the tree (First-order and Full-order) to build clusters.
@@ -294,18 +291,19 @@ In pygeoda, the following methods are provided:</p>
 <li><p><strong>k</strong> (<em>int</em>) – number of clusters</p></li>
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.weights.Weight.html#pygeoda.weights.Weight" title="pygeoda.weights.Weight"><em>Weight</em></a>) – An instance of Weight class</p></li>
 <li><p><strong>data</strong> (<em>tuple</em>) – A list of numeric vectors of selected variable</p></li>
-<li><p><strong>bound_vals</strong> (<em>tuple</em><em>, </em><em>optional</em>) – A numeric vector of selected bounding variable</p></li>
+<li><p><strong>bound_variable</strong> (<em>tuple</em><em>, </em><em>optional</em>) – A numeric vector of selected bounding variable</p></li>
 <li><p><strong>min_bound</strong> (<em>float</em><em>, </em><em>optional</em>) – a minimum value that the sum value of bounding variable int each cluster should be greater than</p></li>
+<li><p><strong>scale_method</strong> (<em>str</em><em>, </em><em>optional</em>) – One of the scaling methods {‘raw’, ‘standardize’, ‘demean’, ‘mad’, ‘range_standardize’, ‘range_adjust’} to apply on input data. Default is ‘standardize’ (Z-score normalization).</p></li>
 <li><p><strong>distance_method</strong> (<em>str</em><em>, </em><em>optional</em>) – {“euclidean”, “manhattan”} the distance method used to compute the distance betwen observation i and j. Defaults to “euclidean”. Options are “euclidean” and “manhattan”</p></li>
 <li><p><strong>random_seed</strong> (<em>int</em><em>,</em><em>optional</em>) – the seed for random number generator. Defaults to 123456789.</p></li>
 <li><p><strong>cpu_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of cpu threads used for parallel computation</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of numeric vectors represents a group of clusters</p>
+<dd class="field-even"><p>A dict with keys {“Clusters”, “TotalSS”, “Within-clusterSS”, “TotalWithin-clusterSS”, “Ratio”}</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -317,29 +315,29 @@ In pygeoda, the following methods are provided:</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pygeoda.maxp.html" class="btn btn-neutral float-right" title="pygeoda.maxp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="pygeoda.skater.html" class="btn btn-neutral float-left" title="pygeoda.skater" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="pygeoda.maxp.html" class="btn btn-neutral float-right" title="pygeoda.maxp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pygeoda.skater.html" class="btn btn-neutral float-left" title="pygeoda.skater" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -347,7 +345,6 @@ In pygeoda, the following methods are provided:</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -366,6 +363,7 @@ In pygeoda, the following methods are provided:</p>
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-XXXXXXX-1', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

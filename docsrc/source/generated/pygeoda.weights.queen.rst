@@ -1,6 +1,29 @@
-pygeoda.weights.queen
+﻿pygeoda.weights.queen
 =====================
 
-.. currentmodule:: pygeoda.weights
+.. automodule:: pygeoda.weights.queen
 
-.. autofunction:: queen
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      queen_weights
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
