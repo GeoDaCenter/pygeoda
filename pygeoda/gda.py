@@ -100,7 +100,7 @@ class geoda:
             :obj:`list` of :obj:`str`: a list of string values of selected column
         """
         if type(col_name) == list:
-            result = []
+            result = list()
             ftypes = self.GetFieldTypes()
             for item in col_name:
                 ft = ftypes[item]
