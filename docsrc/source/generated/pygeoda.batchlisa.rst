@@ -1,4 +1,4 @@
-﻿pygeoda.batchlisa
+pygeoda.batchlisa
 =================
 
 .. currentmodule:: pygeoda

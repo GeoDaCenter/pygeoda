@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pygeoda API reference &mdash; pygeoda 0.0.4 rc documentation</title>
+  <title>pygeoda API reference &mdash; pygeoda 0.0.8 rc documentation</title>
   
 
   
@@ -87,20 +87,19 @@
               <p class="caption"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#live-tutorials">1.1  Live Tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.2 Open Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.1 Mac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.2 Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.3 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#windows">2.1 Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#linux">2.2 Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#mac">2.3 Mac</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#import-pygeoda">2.4 Import pygeoda</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="load_data.html">3. Load Spatial Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="load_data.html#attributes-of-geoda-object">3.1 Attributes of geoda object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="load_data.html#access-table-data">3.1 Access Table Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_data.html#access-table-data">3.2 Access Table Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="map_classification.html">4. Map Classification</a><ul>
@@ -161,31 +160,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pygeoda-weights">pygeoda.weights</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.Weight.html">pygeoda.weights.Weight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.queen.html">pygeoda.weights.queen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.rook.html">pygeoda.weights.rook</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.distance.html">pygeoda.weights.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.weights.kernel.html">pygeoda.weights.kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Weight.html">pygeoda.Weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.queen_weights.html">pygeoda.queen_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.rook_weights.html">pygeoda.rook_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.min_distthreshold.html">pygeoda.min_distthreshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.distance_weights.html">pygeoda.distance_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.knn_weights.html">pygeoda.knn_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.kernel_weights.html">pygeoda.kernel_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_bijoincount.html">pygeoda.local_bijoincount</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.quantile_lisa.html">pygeoda.quantile_lisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_quantilelisa.html">pygeoda.local_quantilelisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multiquantilelisa.html">pygeoda.local_multiquantilelisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.neighbor_match_test.html">pygeoda.neighbor_match_test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.skater.html">pygeoda.skater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp.html">pygeoda.maxp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.schc.html">pygeoda.schc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.azp_greedy.html">pygeoda.azp_greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.azp_sa.html">pygeoda.azp_sa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.azp_tabu.html">pygeoda.azp_tabu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -197,7 +208,12 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#pygeoda-data">pygeoda (data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pygeoda-data">pygeoda (data)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.demean.html">pygeoda.demean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.standardize.html">pygeoda.standardize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.mad.html">pygeoda.mad</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -294,20 +310,29 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.weights.Weight.html#pygeoda.weights.Weight" title="pygeoda.weights.Weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.weights.Weight</span></code></a>(gda_w)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.Weight.html#pygeoda.Weight" title="pygeoda.Weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.Weight</span></code></a>(gda_w)</p></td>
 <td><p>GeoDa Weight class</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.weights.queen.html#module-pygeoda.weights.queen" title="pygeoda.weights.queen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.weights.queen</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.queen_weights.html#pygeoda.queen_weights" title="pygeoda.queen_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.queen_weights</span></code></a>(geoda_obj, **kwargs)</p></td>
+<td><p>Queen Contiguity Spatial Weights Create a Queen contiguity weights with options of “order”, “include lower order” and “precision threshold”</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.weights.rook.html#module-pygeoda.weights.rook" title="pygeoda.weights.rook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.weights.rook</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.rook_weights.html#pygeoda.rook_weights" title="pygeoda.rook_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.rook_weights</span></code></a>(geoda_obj, **kwargs)</p></td>
+<td><p>Rook Contiguity Spatial Weights Create a Rook contiguity weights with options of “order”, “include lower order” and “precision threshold”</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.weights.distance.html#module-pygeoda.weights.distance" title="pygeoda.weights.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.weights.distance</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.min_distthreshold.html#pygeoda.min_distthreshold" title="pygeoda.min_distthreshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.min_distthreshold</span></code></a>(geoda_obj[, …])</p></td>
+<td><p>Minimum Distance Threshold for Distance-based Weights Get minimum threshold of distance that makes sure each observation has at least one neighbor</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.weights.kernel.html#module-pygeoda.weights.kernel" title="pygeoda.weights.kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.weights.kernel</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.distance_weights.html#pygeoda.distance_weights" title="pygeoda.distance_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.distance_weights</span></code></a>(geoda_obj, …)</p></td>
+<td><p>Distance-based Spatial Weights Create a distance-based weights</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.knn_weights.html#pygeoda.knn_weights" title="pygeoda.knn_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.knn_weights</span></code></a>(geoda_obj, k, **kwargs)</p></td>
+<td><p>K-Nearest Neighbors-based Spatial Weights Create a k-nearest neighbors based spatial weights</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.kernel_weights.html#pygeoda.kernel_weights" title="pygeoda.kernel_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.kernel_weights</span></code></a>(geoda_obj, bandwidth, …)</p></td>
+<td><p>Distance-based Kernel Spatial Weights Create a kernel weights by specifying a bandwidth and a kernel method</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.kernel_knn_weights.html#pygeoda.kernel_knn_weights" title="pygeoda.kernel_knn_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.kernel_knn_weights</span></code></a>(geoda_obj, k, …)</p></td>
+<td><p>K-NN Kernel Spatial Weights</p></td>
 </tr>
 </tbody>
 </table>
@@ -323,14 +348,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.lisa.html#pygeoda.lisa" title="pygeoda.lisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.lisa</span></code></a>(lisa_obj)</p></td>
 <td><p>A LISA class wrappers the results of LISA computation</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.batchlisa.html#pygeoda.batchlisa" title="pygeoda.batchlisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.batchlisa</span></code></a>(lisa_obj)</p></td>
-<td><p>A BatchLISA class wrappers the results of LISA computations</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_moran.html#pygeoda.local_moran" title="pygeoda.local_moran"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_moran</span></code></a>(w, data, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_moran.html#pygeoda.local_moran" title="pygeoda.local_moran"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_moran</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>The function to apply local Moran statistics.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.batch_local_moran.html#pygeoda.batch_local_moran" title="pygeoda.batch_local_moran"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.batch_local_moran</span></code></a>(w, data, **kwargs)</p></td>
-<td><p>Apply local moran statistics on a set of variables</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_geary.html#pygeoda.local_geary" title="pygeoda.local_geary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_geary</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>Local Geary Statistics</p></td>
@@ -341,17 +360,32 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_joincount.html#pygeoda.local_joincount" title="pygeoda.local_joincount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_joincount</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>Local Join Count Statistics</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_multijoincount.html#pygeoda.local_multijoincount" title="pygeoda.local_multijoincount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_multijoincount</span></code></a>(w, data, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_bijoincount.html#pygeoda.local_bijoincount" title="pygeoda.local_bijoincount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_bijoincount</span></code></a>(w, data, **kwargs)</p></td>
+<td><p>Bivariate Local Join Count Statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_multijoincount.html#pygeoda.local_multijoincount" title="pygeoda.local_multijoincount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_multijoincount</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>(Multivariate) Colocation Local Join Count Statistics</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_g.html#pygeoda.local_g" title="pygeoda.local_g"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_g</span></code></a>(w, data, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_g.html#pygeoda.local_g" title="pygeoda.local_g"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_g</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>Local Getis-Ord’s G Statistics</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_gstar.html#pygeoda.local_gstar" title="pygeoda.local_gstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_gstar</span></code></a>(w, data, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_gstar.html#pygeoda.local_gstar" title="pygeoda.local_gstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_gstar</span></code></a>(w, data, **kwargs)</p></td>
 <td><p>Local Getis-Ord’s G* Statistics The function to apply Getis-Ord’s local G* statistics</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.quantile_lisa.html#module-pygeoda.quantile_lisa" title="pygeoda.quantile_lisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.quantile_lisa</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.local_quantilelisa.html#pygeoda.local_quantilelisa" title="pygeoda.local_quantilelisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_quantilelisa</span></code></a>(w, data, k, q, …)</p></td>
+<td><p>Quantile LISA Statistics The function to apply quantile LISA statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.local_multiquantilelisa.html#pygeoda.local_multiquantilelisa" title="pygeoda.local_multiquantilelisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.local_multiquantilelisa</span></code></a>(w, data, k, …)</p></td>
+<td><p>Multivariate Quantile LISA Statistics The function to apply multivariate quantile LISA statistics</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.neighbor_match_test.html#pygeoda.neighbor_match_test" title="pygeoda.neighbor_match_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.neighbor_match_test</span></code></a>(geoda_obj, data, …)</p></td>
+<td><p>Local Neighbor Match Test The local neighbor match test is to assess the extent of overlap between k-nearest neighbors in geographical space and k-nearest neighbors in multi-attribute space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.batchlisa.html#pygeoda.batchlisa" title="pygeoda.batchlisa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.batchlisa</span></code></a>(lisa_obj)</p></td>
+<td><p>A BatchLISA class wrappers the results of LISA computations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.batch_local_moran.html#pygeoda.batch_local_moran" title="pygeoda.batch_local_moran"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.batch_local_moran</span></code></a>(w, data, **kwargs)</p></td>
+<td><p>Apply local moran statistics on a set of variables</p></td>
 </tr>
 </tbody>
 </table>
@@ -370,8 +404,26 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.redcap.html#pygeoda.redcap" title="pygeoda.redcap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.redcap</span></code></a>(k, w, data, method, **kwargs)</p></td>
 <td><p>Regionalization with dynamically constrained agglomerative clustering and partitioning (REDCAP)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.maxp.html#module-pygeoda.maxp" title="pygeoda.maxp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.maxp</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.schc.html#pygeoda.schc" title="pygeoda.schc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.schc</span></code></a>(k, w, data, linkage_method, …)</p></td>
+<td><p>Spatially Constrained Hierarchical Clucstering (SCHC)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.azp_greedy.html#pygeoda.azp_greedy" title="pygeoda.azp_greedy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.azp_greedy</span></code></a>(p, w, data, **kwargs)</p></td>
+<td><p>A greedy algorithm to solve the AZP problem</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.azp_sa.html#pygeoda.azp_sa" title="pygeoda.azp_sa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.azp_sa</span></code></a>(p, w, data[, cooling_rate])</p></td>
+<td><p>A simulated annealing algorithm to solve the AZP problem</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.azp_tabu.html#pygeoda.azp_tabu" title="pygeoda.azp_tabu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.azp_tabu</span></code></a>(p, w, data, tabu_length, …)</p></td>
+<td><p>A tabu-search algorithm to solve the AZP problem</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.maxp_greedy.html#pygeoda.maxp_greedy" title="pygeoda.maxp_greedy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.maxp_greedy</span></code></a>(w, data, bound_variable, …)</p></td>
+<td><p>A greedy algorithm to solve the max-p-region problem</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.maxp_sa.html#pygeoda.maxp_sa" title="pygeoda.maxp_sa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.maxp_sa</span></code></a>(w, data, bound_variable, …)</p></td>
+<td><p>A simulated annealing algorithm to solve the max-p-region problem</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.maxp_tabu.html#pygeoda.maxp_tabu" title="pygeoda.maxp_tabu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.maxp_tabu</span></code></a>(w, data, bound_variable, …)</p></td>
+<td><p>A tabu-search algorithm to solve the max-p-region problem</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,6 +465,15 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.demean.html#pygeoda.demean" title="pygeoda.demean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.demean</span></code></a>(data)</p></td>
+<td><p>Demean Standardization</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/pygeoda.standardize.html#pygeoda.standardize" title="pygeoda.standardize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.standardize</span></code></a>(data)</p></td>
+<td><p>Standardization (Z)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/pygeoda.mad.html#pygeoda.mad" title="pygeoda.mad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pygeoda.mad</span></code></a>(data)</p></td>
+<td><p>Median Absolute Deviation</p></td>
+</tr>
 </tbody>
 </table>
 </div>

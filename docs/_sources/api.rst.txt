@@ -12,8 +12,6 @@ pygeoda (I/O)
    :toctree: generated/
 
    pygeoda.open
-   pygeoda.geopandas_to_geoda
-   pygeoda.geoda_to_geopandas
    pygeoda.geoda
 
 
@@ -23,12 +21,14 @@ pygeoda.weights
 .. autosummary::
    :toctree: generated/
 
-   pygeoda.weights.Weight
-   pygeoda.weights.queen
-   pygeoda.weights.rook
-   pygeoda.weights.distance
-   pygeoda.weights.knn
-   pygeoda.weights.kernel
+   pygeoda.Weight
+   pygeoda.queen_weights
+   pygeoda.rook_weights
+   pygeoda.min_distthreshold
+   pygeoda.distance_weights
+   pygeoda.knn_weights
+   pygeoda.kernel_weights
+   pygeoda.kernel_knn_weights
 
 
 pygeoda (spatial autocorrelation)
@@ -38,16 +38,19 @@ pygeoda (spatial autocorrelation)
    :toctree: generated/
 
    pygeoda.lisa
-   pygeoda.batchlisa
    pygeoda.local_moran
-   pygeoda.batch_local_moran
    pygeoda.local_geary
    pygeoda.local_multigeary
    pygeoda.local_joincount
+   pygeoda.local_bijoincount
    pygeoda.local_multijoincount
    pygeoda.local_g
    pygeoda.local_gstar
-   pygeoda.quantile_lisa
+   pygeoda.local_quantilelisa
+   pygeoda.local_multiquantilelisa
+   pygeoda.neighbor_match_test
+   pygeoda.batchlisa
+   pygeoda.batch_local_moran
 
 
 pygeoda (spatial clustering)
@@ -58,10 +61,13 @@ pygeoda (spatial clustering)
 
    pygeoda.skater
    pygeoda.redcap
-   pygeoda.maxp
-   pygeoda.between_sumofsquare
-   pygeoda.total_sumofsquare
-   pygeoda.within_sumofsquare
+   pygeoda.schc
+   pygeoda.azp_greedy
+   pygeoda.azp_sa
+   pygeoda.azp_tabu
+   pygeoda.maxp_greedy
+   pygeoda.maxp_sa
+   pygeoda.maxp_tabu
 
 
 pygeoda (classify)
@@ -84,5 +90,6 @@ pygeoda (data)
 .. autosummary::
    :toctree: generated/
 
-   pygeoda.mds
-   pygeoda.PCA
+   pygeoda.demean
+   pygeoda.standardize
+   pygeoda.mad

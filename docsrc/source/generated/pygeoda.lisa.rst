@@ -1,4 +1,4 @@
-﻿pygeoda.lisa
+pygeoda.lisa
 ============
 
 .. currentmodule:: pygeoda
