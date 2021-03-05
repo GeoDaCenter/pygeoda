@@ -18,26 +18,56 @@ pip install pygeoda
 
 #### Install from source
 
-You can install pygeoda v0.0.6 from source by using the following command in a terminal:
+You can install pygeoda from source by using the following command in a terminal:
 
 ```
 pip install git+https://github.com/geodacenter/pygeoda    
 ```
 
+See more details: https://geodacenter.github.io/pygeoda/install.html
+
 #### Docs
 
 [https://geodacenter.github.io/pygeoda](https://geodacenter.github.io/pygeoda)
 
-## Current version 0.0.6
+#### Quick Start
 
-* Map Classification
-   * NaturalBreaks
-   * QuantileBreaks
-   * Hinge15Breaks
-   * Hinge30Breaks
-   * PercentileBreaks
-   * StddevBreaks
-   
+* pygeoda + ESRI Shapefile
+```Python
+import pygeoda
+gda = pygeoda.open('./data/Guerry.shp')
+w = pygeoda.queen_weights(gda)
+lisa = pygeoda.local_moran(w, gda['Crm_prs'])
+#lisa object:
+#    lisa_values(): [0.516120231288079, 0.8182751384950308, ...]
+#    lisa_pvalues(): [0.197, 0.013, ...]
+#    lisa_num_nbrs(): [4, 6, ...]
+#    lisa_clusters(): [0, 1, ...]
+#    lisa_labels(): ('Not significant', 'High-High', 'Low-Low', 'High-Low', 'Low-High', 'Undefined', 'Isolated')
+#    lisa_colors(): ('#eeeeee', '#FF0000', '#0000FF', '#a7adf9', '#f4ada8', '#464646', '#999999')
+```
+
+* GeoPandas + pygeoda
+
+```Python
+import geopandas
+df = geopandas.read_file('./data/Guerry.shp')
+
+import pygeoda
+w = pygeoda.queen_weights(df)
+lisa = pygeoda.local_moran(w, df['Crm_prs'])
+#lisa object:
+#    lisa_values(): [0.516120231288079, 0.8182751384950308, ...]
+#    lisa_pvalues(): [0.197, 0.013, ...]
+#    lisa_num_nbrs(): [4, 6, ...]
+#    lisa_clusters(): [0, 1, ...]
+#    lisa_labels(): ('Not significant', 'High-High', 'Low-Low', 'High-Low', 'Low-High', 'Undefined', 'Isolated')
+#    lisa_colors(): ('#eeeeee', '#FF0000', '#0000FF', '#a7adf9', '#f4ada8', '#464646', '#999999')
+```
+
+
+## Current version 0.0.8
+
 * Spatial Weights
     * Queen
     * Rook
@@ -79,6 +109,14 @@ pip install git+https://github.com/geodacenter/pygeoda
       * Tabu Search
       * Simulated Annealing
       
+* Map Classification
+   * NaturalBreaks
+   * QuantileBreaks
+   * Hinge15Breaks
+   * Hinge30Breaks
+   * PercentileBreaks
+   * StddevBreaks
+   
 * Data
   * Demean standardize
   * Standardize data (Z)
