@@ -52,7 +52,6 @@ def kernel_knn_weights(geoda_obj, k, kernel, **kwargs):
             included in the weights structure. Defaults to False.
         is_inverse (bool, optional):  A bool flag indicates whether or not to apply inverse on distance value. Defaults to False.
         power (float, optional): The power (or exponent) of a number indicates how many times to use the number in a multiplication.
-cluded in the weights structure. Defaults to False.
         is_arc (bool, optional): A bool flag indicates if compute arc distance or Euclidean distance. Defaults to False (Euclidean distance) 
         is_mile (bool, optional): A bool flag indicates if the distance unit is mile or km. Defaults to True (mile).
 
