@@ -1,6 +1,6 @@
 from ..libgeoda import VecVecDouble, VecDouble
 from ..libgeoda import gda_schc
-from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare
+from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare, flat_2dclusters
 
 __author__ = "Xun Li <lixun910@gmail.com>, "
 
@@ -37,6 +37,10 @@ def schc(k, w, data, linkage_method, **kwargs):
         raise ValueError('The method has to be one of {"single", "complete", "average","ward"}')
 
     in_data = VecVecDouble()
+    
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     for d in data:
         in_data.push_back(d)
     
@@ -48,9 +52,9 @@ def schc(k, w, data, linkage_method, **kwargs):
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
 
     return {
-        "Clusters" : cluster_ids,
-        "TotalSS" : total_ss,
-        "Within-clusterSS" : within_ss,
-        "TotalWithin-clusterSS" : between_ss,
-        "Ratio" : ratio
+        "Total sum of squares" : total_ss,
+        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Total within-cluster sum of squares" : between_ss,
+        "The ratio of between to total sum of squares" : ratio,
+        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
     }

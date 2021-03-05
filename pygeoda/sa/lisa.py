@@ -130,6 +130,17 @@ class lisa:
         
         return self.gda_lisa.GetBO(p)
 
+    def __repr__(self):
+        info = "lisa object:\n\n"
+        info += "\tlisa_values(): [{0}, ...]\n".format(str(self.lisa_values()[:10])[1:-1])
+        info += "\tlisa_pvalues(): [{0}, ...]\n".format(str(self.lisa_pvalues()[:10])[1:-1])
+        info += "\tlisa_num_nbrs(): [{0}, ...]\n".format(str(self.lisa_num_nbrs()[:10])[1:-1])
+        info += "\tlisa_clusters(): [{0}, ...]\n".format(str(self.lisa_clusters()[:10])[1:-1])
+        info += "\tlisa_labels(): {0}\n".format(str(self.lisa_labels()))
+        info += "\tlisa_colors(): {0}\n".format(str(self.lisa_colors()))
+        return info
+
+
 
 class batchlisa:
     """A BatchLISA class wrappers the results of LISA computations

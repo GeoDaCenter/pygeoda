@@ -2,7 +2,7 @@ __author__ = "Xun Li <lixun910@gmail.com>"
 
 from ..libgeoda import VecVecDouble, VecPair, VecDouble, VecInt, Pair
 from ..libgeoda import gda_azp_greedy, gda_azp_sa, gda_azp_tabu
-from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare
+from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare, flat_2dclusters
 
 '''
 Changes:
@@ -50,6 +50,10 @@ def azp_greedy(p, w, data, **kwargs):
         raise ValueError("The data from selected variable is empty.")
 
     in_data = VecVecDouble()
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     for d in data:
         in_data.push_back(d)
 
@@ -69,11 +73,11 @@ def azp_greedy(p, w, data, **kwargs):
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
 
     return {
-        "Clusters" : cluster_ids,
-        "TotalSS" : total_ss,
-        "Within-clusterSS" : within_ss,
-        "TotalWithin-clusterSS" : between_ss,
-        "Ratio" : ratio
+        "Total sum of squares" : total_ss,
+        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Total within-cluster sum of squares" : between_ss,
+        "The ratio of between to total sum of squares" : ratio,
+        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
     }
 
 def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
@@ -123,6 +127,10 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
         raise ValueError("The data from selected variable is empty.")
 
     in_data = VecVecDouble()
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     for d in data:
         in_data.push_back(d)
 
@@ -142,11 +150,11 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
 
     return {
-        "Clusters" : cluster_ids,
-        "TotalSS" : total_ss,
-        "Within-clusterSS" : within_ss,
-        "TotalWithin-clusterSS" : between_ss,
-        "Ratio" : ratio
+        "Total sum of squares" : total_ss,
+        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Total within-cluster sum of squares" : between_ss,
+        "The ratio of between to total sum of squares" : ratio,
+        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
     }
 
 def azp_tabu(p, w, data, tabu_length, **kwargs):
@@ -193,6 +201,10 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
         raise ValueError("The data from selected variable is empty.")
 
     in_data = VecVecDouble()
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     for d in data:
         in_data.push_back(d)
 
@@ -212,9 +224,9 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
     within_ss = gda_withinsumofsquare(cluster_ids, in_data)
 
     return {
-        "Clusters" : cluster_ids,
-        "TotalSS" : total_ss,
-        "Within-clusterSS" : within_ss,
-        "TotalWithin-clusterSS" : between_ss,
-        "Ratio" : ratio
+        "Total sum of squares" : total_ss,
+        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Total within-cluster sum of squares" : between_ss,
+        "The ratio of between to total sum of squares" : ratio,
+        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
     }

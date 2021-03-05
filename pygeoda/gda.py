@@ -1,10 +1,3 @@
-try:
-    import geopandas
-    import pandas
-    import shapely
-except ImportError:
-    print("(Optional) GeoPandas is not found. Please install GeoPandas for ESDA features.")
-
 import sys
 import string
 import random
@@ -18,14 +11,14 @@ __all__ = ['geoda', 'open']
 
 class geoda:
     """
-    A wrapper class of GeoDa class from libgeoda
+    A wrapper class of GeoDa class from libgeoda created from ESRI Shapefile
 
     Attributes:
         num_obs (int): The number of observations
         num_cols (int): The number of columns
         field_names (tuple): A list of field names 
-        field_types (tuple): A list of field types {integer, real, string}
-        map_type (str): The map type (Point, Polygon (or LineSegment)
+        field_types (dict): A dict of field types 
+        map_type (str): The map type (Point, Polygon, LineString)
     """
     def __init__(self, gda_obj):
         """
@@ -106,14 +99,27 @@ class geoda:
         Return:
             :obj:`list` of :obj:`str`: a list of string values of selected column
         """
-        ftypes = self.GetFieldTypes()
-        ft = ftypes[col_name]
-        if ft == "integer":
-            return self.GetIntegerCol(col_name)
-        elif ft == "real":
-            return self.GetRealCol(col_name)
+        if type(col_name) == list:
+            result = []
+            ftypes = self.GetFieldTypes()
+            for item in col_name:
+                ft = ftypes[item]
+                if ft == "integer":
+                    result.append(self.GetIntegerCol(item))
+                elif ft == "real":
+                    result.append(self.GetRealCol(item))
+                else:
+                    result.append(self.GetStringCol(item))
+            return result
         else:
-            return self.GetStringCol(col_name)
+            ftypes = self.GetFieldTypes()
+            ft = ftypes[col_name]
+            if ft == "integer":
+                return self.GetIntegerCol(col_name)
+            elif ft == "real":
+                return self.GetRealCol(col_name)
+            else:
+                return self.GetStringCol(col_name)
 
     def GetIntegerCol(self, col_name):
         """Get the integer values from a column
@@ -159,9 +165,12 @@ class geoda:
             raise ValueError("The column name is not valid or not existed.")
         return self.gda.GetUndefinesCol(col_name)
 
-    def __str__(self):
+    def __repr__(self):
         info = ""
         info += "geoda object:\n"
+        info += "\t Number of observations: {0}\n".format(self.num_obs)
+        info += "\t Number of fields: {0}\n".format(self.num_cols)
+        info += "\t Geometry type(s): {0}\n".format(self.map_type)
         info += '{0:>24} {1:>28}\n'.format("field name:", "field type (shapfile):") 
         ftypes = self.GetFieldTypes()
         for fn, ft in ftypes.items():
@@ -184,6 +193,11 @@ def geopandas_to_geoda(gdf, with_table=False):
     Returns:
         (geoda): An instance of geoda class.
     """
+
+    try:
+        import geopandas
+    except ImportError:
+        print("(Optional) GeoPandas is not found. Please install GeoPandas for ESDA features.")
 
     geoms = gdf.geometry
     n_rows = len(gdf)
@@ -307,6 +321,16 @@ def geoda_to_geopandas(geoda_obj):
     return gdf
 
 class geodaGpd(geoda):
+    """
+    A wrapper class of GeoDa class from libgeoda created from a geopandas object 
+
+    Attributes:
+        num_obs (int): The number of observations
+        num_cols (int): The number of columns
+        field_names (tuple): A list of field names 
+        field_types (dict): A dict of field types 
+        map_type (str): The map type (Point, Polygon, LineString)
+    """
     def __init__(self, gpd_obj):
         self.gp = geopandas_to_geoda(gpd_obj)
         self.gda = self.gp.gda
@@ -415,9 +439,12 @@ class geodaGpd(geoda):
 
         return [i==math.nan for i in self.df[col_name]]
 
-    def __str__(self):
+    def __repr__(self):
         info = ""
         info += "geoda object:\n"
+        info += "\t Number of observations: {0}\n".format(self.num_obs)
+        info += "\t Number of fields: {0}\n".format(self.num_cols)
+        info += "\t Geometry type(s): {0}\n".format(self.map_type)
         info += '{0:>24} {1:>30}\n'.format("field name:", "field type (numpy.dtype):") 
         ftypes = self.GetFieldTypes()
         for fn, ft in ftypes.items():
