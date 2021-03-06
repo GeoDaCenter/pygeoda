@@ -61,9 +61,9 @@ def azp_greedy(p, w, data, **kwargs):
     max_bounds = VecPair()
 
     if min_bound > 0 and len(bound_variable) == w.num_obs:
-        min_bounds.push_back((min_bound, bound_variable))
+        min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_azp_greedy(p, w.gda_w, in_data, scale_method, inits, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 
@@ -89,7 +89,7 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
     Arguments:
         p (int): The number of spatially constrained clusters
         w (Weight): an instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         cooling_rate (float): The cooling rate of a simulated annealing algorithm. Defaults to 0.85
         sa_maxit (int, optional): The number of iterations of simulated annealing. Defaults to 1
         bound_variable (tuple, optional): A numeric vector of selected bounding variable
@@ -138,9 +138,9 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
     max_bounds = VecPair()
 
     if min_bound > 0 and len(bound_variable) == w.num_obs:
-        min_bounds.push_back((min_bound, bound_variable))
+        min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_azp_sa(p, w.gda_w, in_data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 
@@ -166,7 +166,7 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
     Arguments:
         p (int): The number of spatially constrained clusters
         w (Weight): an instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         tabu_length (int): The length of a tabu search heuristic of tabu algorithm. Defaults to 10.
         conv_tabu (int, optional): The number of non-improving moves. Defaults to 10.
         bound_variable (tuple, optional): A numeric vector of selected bounding variable
@@ -212,9 +212,9 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
     max_bounds = VecPair()
 
     if min_bound > 0 and len(bound_variable) == w.num_obs:
-        min_bounds.push_back((min_bound, bound_variable))
+        min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_azp_tabu(p, w.gda_w, in_data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 

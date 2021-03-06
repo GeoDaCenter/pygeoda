@@ -16,9 +16,10 @@ def local_quantilelisa(w, data, k, q, **kwargs):
 
     Args:
         w (Weight): A spatial Weights object
-        data (list or dataframe):   A numeric vectors of selected variable or a data frame of selected variable e.g. guerry['Crm_prs']
+        data (tuple/list/pandas.Series): A list of numeric values of selected variable
         k (int): The number of quantiles, range[1, n-1]
         q (int): The index of selected quantile for lisa, range[0, k-1]
+        undefs (list, optional): A list of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
         permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
@@ -49,10 +50,7 @@ def local_quantilelisa(w, data, k, q, **kwargs):
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
-    if type(data).__name__ == "DataFrame":
-        data = data.values.transpose().tolist()
-
-    lisa_obj = gda_quantilelisa(w.gda_w, k, q, data,undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
+    lisa_obj = gda_quantilelisa(w.gda_w, k, q, list(data), list(undefs), significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
 
 def local_multiquantilelisa(w, data, k, q, **kwargs):
@@ -61,7 +59,7 @@ def local_multiquantilelisa(w, data, k, q, **kwargs):
 
     Args:
         w (Weight): A spatial Weights object
-        data (list): A list of tuples with numeric values of selected variables
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         k (tuple): A tuple of "k" (int) values indicate the number of quantiles for each variable
         q (tuple): A tuple of "q" (int) values indicate which quantile or interval for each variable used in local join count statistics
         permutations (int, optional): The number of permutations for the LISA computation
@@ -89,6 +87,9 @@ def local_multiquantilelisa(w, data, k, q, **kwargs):
 
     if len(data) != len(k) or len(k) != len(q):
         raise ValueError("The size of k, q and data are not matched.")
+
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
 
     lisa_obj = gda_multiquantilelisa(w.gda_w, k, q, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)

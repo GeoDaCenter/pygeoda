@@ -16,7 +16,7 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
 
     Arguments:
         w (Weight): an instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple): A numeric vector of selected bounding variable
         min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than
         iterations (int, optional): The number of iterations of greedy algorithm. Defaults to 99.
@@ -60,9 +60,9 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
     min_bounds = VecPair()
     max_bounds = VecPair()
 
-    min_bounds.push_back((min_bound, bound_variable))
+    min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_maxp_greedy(w.gda_w, in_data, scale_method, iterations, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 
@@ -86,7 +86,7 @@ def maxp_sa(w, data, bound_variable, min_bound, cooling_rate=0.85, **kwargs):
         
     Arguments:
         w (Weight): an instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple): A numeric vector of selected bounding variable
         min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than
         cooling_rate (float): The cooling rate of a simulated annealing algorithm. Defaults to 0.85
@@ -136,9 +136,9 @@ def maxp_sa(w, data, bound_variable, min_bound, cooling_rate=0.85, **kwargs):
     min_bounds = VecPair()
     max_bounds = VecPair()
 
-    min_bounds.push_back((min_bound, bound_variable))
+    min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_maxp_sa(w.gda_w, in_data, scale_method, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 
@@ -162,7 +162,7 @@ def maxp_tabu(w, data, bound_variable, min_bound, tabu_length=10, **kwargs):
         
     Arguments:
         w (Weight): an instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple): A numeric vector of selected bounding variable
         min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than
         tabu_length (int): The length of a tabu search heuristic of tabu algorithm. Defaults to 10.
@@ -209,9 +209,9 @@ def maxp_tabu(w, data, bound_variable, min_bound, tabu_length=10, **kwargs):
     min_bounds = VecPair()
     max_bounds = VecPair()
 
-    min_bounds.push_back((min_bound, bound_variable))
+    min_bounds.push_back((min_bound, list(bound_variable)))
 
-    in_init_regions = VecInt(init_regions)
+    in_init_regions = VecInt(list(init_regions))
 
     cluster_ids = gda_maxp_tabu(w.gda_w, in_data, scale_method, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 

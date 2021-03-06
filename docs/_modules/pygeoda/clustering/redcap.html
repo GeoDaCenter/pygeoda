@@ -286,7 +286,7 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;, &quot;</span>
 
-<div class="viewcode-block" id="redcap"><a class="viewcode-back" href="../../../generated/pygeoda.redcap.html#pygeoda.clustering.redcap">[docs]</a><span class="k">def</span> <span class="nf">redcap</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="redcap"><a class="viewcode-back" href="../../../generated/pygeoda.redcap.html#pygeoda.redcap">[docs]</a><span class="k">def</span> <span class="nf">redcap</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Regionalization with dynamically constrained agglomerative clustering and partitioning (REDCAP)</span>
 
 <span class="sd">    REDCAP starts from building a spanning tree with 4 different ways (single-linkage, average-linkage, complete-linkage and Ward-linkage).</span>
@@ -302,7 +302,7 @@
 <span class="sd">    Arguments:</span>
 <span class="sd">        k (int): number of clusters</span>
 <span class="sd">        w (Weight): An instance of Weight class</span>
-<span class="sd">        data (tuple):   A list of numeric vectors of selected variable</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
 <span class="sd">        bound_variable (tuple, optional): A numeric vector of selected bounding variable</span>
 <span class="sd">        min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than </span>
 <span class="sd">        scale_method (str, optional): One of the scaling methods {&#39;raw&#39;, &#39;standardize&#39;, &#39;demean&#39;, &#39;mad&#39;, &#39;range_standardize&#39;, &#39;range_adjust&#39;} to apply on input data. Default is &#39;standardize&#39; (Z-score normalization).</span>

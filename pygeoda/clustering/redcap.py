@@ -20,7 +20,7 @@ def redcap(k, w, data, method, **kwargs):
     Arguments:
         k (int): number of clusters
         w (Weight): An instance of Weight class
-        data (tuple):   A list of numeric vectors of selected variable
+        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
         bound_variable (tuple, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).

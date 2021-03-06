@@ -286,13 +286,13 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<div class="viewcode-block" id="local_moran"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_moran.html#pygeoda.local_moran">[docs]</a><span class="k">def</span> <span class="nf">local_moran</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="local_moran"><a class="viewcode-back" href="../../../generated/pygeoda.local_moran.html#pygeoda.local_moran">[docs]</a><span class="k">def</span> <span class="nf">local_moran</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The function to apply local Moran statistics.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A tuple of numeric values of selected variable</span>
-<span class="sd">        undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null</span>
+<span class="sd">        data (tuple/list/pandas.Series): A tuple of numeric values of selected variable</span>
+<span class="sd">        undefs (tuple/list, optional): A tuple of boolean values to indicate which value is undefined or null</span>
 <span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
 <span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
 <span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
@@ -315,7 +315,7 @@
     <span class="n">cpu_threads</span> <span class="o">=</span>  <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmoran</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmoran</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">undefs</span><span class="p">),</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">local_moran_eb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">event_data</span><span class="p">,</span> <span class="n">base_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -324,8 +324,8 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class</span>
-<span class="sd">        event_data (tuple): A numeric tuple of selected &quot;event&quot; variable</span>
-<span class="sd">        base_data (tuple): A numeric tuple of selected &quot;base&quot; variable</span>
+<span class="sd">        event_data (tuple/list/pandas.Series): A numeric tuple of selected &quot;event&quot; variable</span>
+<span class="sd">        base_data (tuple/list/pandas.Series): A numeric tuple of selected &quot;base&quot; variable</span>
 <span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
 <span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
 <span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
@@ -347,7 +347,7 @@
     <span class="n">cpu_threads</span> <span class="o">=</span>  <span class="mi">6</span> <span class="k">if</span> <span class="s1">&#39;cpu_threads&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cpu_threads&#39;</span><span class="p">]</span>
     <span class="n">seed</span> <span class="o">=</span>  <span class="mi">123456789</span> <span class="k">if</span> <span class="s1">&#39;seed&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmoran_eb</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">event_data</span><span class="p">,</span> <span class="n">base_data</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localmoran_eb</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">event_data</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">base_data</span><span class="p">),</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span>
 
 <div class="viewcode-block" id="batch_local_moran"><a class="viewcode-back" href="../../../generated/pygeoda.batch_local_moran.html#pygeoda.batch_local_moran">[docs]</a><span class="k">def</span> <span class="nf">batch_local_moran</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -355,7 +355,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A list of numeric array of selected variables</span>
+<span class="sd">        data (list/pandas.dataframe): A list of numeric array of selected variables</span>
 <span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
 <span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
 <span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
@@ -373,6 +373,9 @@
 
     <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">num_obs</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>   
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The size of data doesnt not match the number of observations.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;DataFrame&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
     <span class="n">undefs</span> <span class="o">=</span> <span class="n">VecVecBool</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;undefs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;undefs&#39;</span><span class="p">]</span>
     <span class="n">permutations</span> <span class="o">=</span>  <span class="mi">999</span> <span class="k">if</span> <span class="s1">&#39;permutations&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;permutations&#39;</span><span class="p">]</span>

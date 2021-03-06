@@ -298,7 +298,7 @@
 
 <span class="sd">    Arguments:</span>
 <span class="sd">        w (Weight): an instance of Weight class</span>
-<span class="sd">        data (tuple):   A list of numeric vectors of selected variable</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
 <span class="sd">        bound_variable (tuple): A numeric vector of selected bounding variable</span>
 <span class="sd">        min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than</span>
 <span class="sd">        iterations (int, optional): The number of iterations of greedy algorithm. Defaults to 99.</span>
@@ -342,9 +342,9 @@
     <span class="n">min_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
     <span class="n">max_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
 
-    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="n">bound_variable</span><span class="p">))</span>
+    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">bound_variable</span><span class="p">)))</span>
 
-    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="n">init_regions</span><span class="p">)</span>
+    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">init_regions</span><span class="p">))</span>
 
     <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">gda_maxp_greedy</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">in_data</span><span class="p">,</span> <span class="n">scale_method</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">min_bounds</span><span class="p">,</span> <span class="n">max_bounds</span><span class="p">,</span> <span class="n">in_init_regions</span><span class="p">,</span> <span class="n">distance_method</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">)</span>
 
@@ -368,7 +368,7 @@
 <span class="sd">        </span>
 <span class="sd">    Arguments:</span>
 <span class="sd">        w (Weight): an instance of Weight class</span>
-<span class="sd">        data (tuple):   A list of numeric vectors of selected variable</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
 <span class="sd">        bound_variable (tuple): A numeric vector of selected bounding variable</span>
 <span class="sd">        min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than</span>
 <span class="sd">        cooling_rate (float): The cooling rate of a simulated annealing algorithm. Defaults to 0.85</span>
@@ -418,9 +418,9 @@
     <span class="n">min_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
     <span class="n">max_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
 
-    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="n">bound_variable</span><span class="p">))</span>
+    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">bound_variable</span><span class="p">)))</span>
 
-    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="n">init_regions</span><span class="p">)</span>
+    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">init_regions</span><span class="p">))</span>
 
     <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">gda_maxp_sa</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">in_data</span><span class="p">,</span> <span class="n">scale_method</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">cooling_rate</span><span class="p">,</span> <span class="n">sa_maxit</span><span class="p">,</span> <span class="n">min_bounds</span><span class="p">,</span> <span class="n">max_bounds</span><span class="p">,</span> <span class="n">in_init_regions</span><span class="p">,</span> <span class="n">distance_method</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">)</span>
 
@@ -444,7 +444,7 @@
 <span class="sd">        </span>
 <span class="sd">    Arguments:</span>
 <span class="sd">        w (Weight): an instance of Weight class</span>
-<span class="sd">        data (tuple):   A list of numeric vectors of selected variable</span>
+<span class="sd">        data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[&#39;Crm_prs&#39;, &#39;Literacy&#39;]]</span>
 <span class="sd">        bound_variable (tuple): A numeric vector of selected bounding variable</span>
 <span class="sd">        min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than</span>
 <span class="sd">        tabu_length (int): The length of a tabu search heuristic of tabu algorithm. Defaults to 10.</span>
@@ -491,9 +491,9 @@
     <span class="n">min_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
     <span class="n">max_bounds</span> <span class="o">=</span> <span class="n">VecPair</span><span class="p">()</span>
 
-    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="n">bound_variable</span><span class="p">))</span>
+    <span class="n">min_bounds</span><span class="o">.</span><span class="n">push_back</span><span class="p">((</span><span class="n">min_bound</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">bound_variable</span><span class="p">)))</span>
 
-    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="n">init_regions</span><span class="p">)</span>
+    <span class="n">in_init_regions</span> <span class="o">=</span> <span class="n">VecInt</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">init_regions</span><span class="p">))</span>
 
     <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">gda_maxp_tabu</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">in_data</span><span class="p">,</span> <span class="n">scale_method</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">tabu_length</span><span class="p">,</span> <span class="n">conv_tabu</span><span class="p">,</span> <span class="n">min_bounds</span><span class="p">,</span> <span class="n">max_bounds</span><span class="p">,</span> <span class="n">in_init_regions</span><span class="p">,</span> <span class="n">distance_method</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">)</span>
 

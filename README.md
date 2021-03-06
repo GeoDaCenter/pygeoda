@@ -54,8 +54,9 @@ import geopandas
 df = geopandas.read_file('./data/Guerry.shp')
 
 import pygeoda
-w = pygeoda.queen_weights(df)
-lisa = pygeoda.local_moran(w, df['Crm_prs'])
+gda = pygeoda.open(df)
+w = pygeoda.queen_weights(gda)
+lisa = pygeoda.local_moran(w, gda['Crm_prs'])
 #lisa object:
 #    lisa_values(): [0.516120231288079, 0.8182751384950308, ...]
 #    lisa_pvalues(): [0.197, 0.013, ...]
