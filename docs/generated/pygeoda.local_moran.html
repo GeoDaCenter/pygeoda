@@ -295,8 +295,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.Weight.html#pygeoda.Weight" title="pygeoda.Weight"><em>Weight</em></a>) – An instance of Weight class.</p></li>
-<li><p><strong>data</strong> (<em>tuple</em>) – A tuple of numeric values of selected variable</p></li>
-<li><p><strong>undefs</strong> (<em>tuple</em><em>, </em><em>optional</em>) – A tuple of boolean values to indicate which value is undefined or null</p></li>
+<li><p><strong>data</strong> (<em>tuple/list/pandas.Series</em>) – A tuple of numeric values of selected variable</p></li>
+<li><p><strong>undefs</strong> (<em>tuple/list</em><em>, </em><em>optional</em>) – A tuple of boolean values to indicate which value is undefined or null</p></li>
 <li><p><strong>permutations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of permutations for the LISA computation</p></li>
 <li><p><strong>permutation_method</strong> (<em>str</em><em>, </em><em>optional</em>) – The permutation method used for the LISA computation. Options are {‘complete’, ‘lookup-table’}. Default is ‘complete’.</p></li>
 <li><p><strong>significance_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – A cutoff value for significance p-values to filter not-significant clusters</p></li>

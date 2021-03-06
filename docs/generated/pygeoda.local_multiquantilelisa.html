@@ -296,7 +296,7 @@ The function to apply multivariate quantile LISA statistics</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.Weight.html#pygeoda.Weight" title="pygeoda.Weight"><em>Weight</em></a>) – A spatial Weights object</p></li>
-<li><p><strong>data</strong> (<em>list</em>) – A list of tuples with numeric values of selected variables</p></li>
+<li><p><strong>data</strong> (<em>list</em><em> or </em><em>dataframe</em>) – A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[‘Crm_prs’, ‘Literacy’]]</p></li>
 <li><p><strong>k</strong> (<em>tuple</em>) – A tuple of “k” (int) values indicate the number of quantiles for each variable</p></li>
 <li><p><strong>q</strong> (<em>tuple</em>) – A tuple of “q” (int) values indicate which quantile or interval for each variable used in local join count statistics</p></li>
 <li><p><strong>permutations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of permutations for the LISA computation</p></li>

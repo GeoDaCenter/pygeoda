@@ -306,7 +306,7 @@ In pygeoda, the following methods are provided:</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>k</strong> (<em>int</em>) – number of clusters</p></li>
 <li><p><strong>w</strong> (<a class="reference internal" href="pygeoda.Weight.html#pygeoda.Weight" title="pygeoda.Weight"><em>Weight</em></a>) – An instance of Weight class</p></li>
-<li><p><strong>data</strong> (<em>tuple</em>) – A list of numeric vectors of selected variable</p></li>
+<li><p><strong>data</strong> (<em>list</em><em> or </em><em>dataframe</em>) – A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[[‘Crm_prs’, ‘Literacy’]]</p></li>
 <li><p><strong>bound_variable</strong> (<em>tuple</em><em>, </em><em>optional</em>) – A numeric vector of selected bounding variable</p></li>
 <li><p><strong>min_bound</strong> (<em>float</em><em>, </em><em>optional</em>) – a minimum value that the sum value of bounding variable int each cluster should be greater than</p></li>
 <li><p><strong>scale_method</strong> (<em>str</em><em>, </em><em>optional</em>) – One of the scaling methods {‘raw’, ‘standardize’, ‘demean’, ‘mad’, ‘range_standardize’, ‘range_adjust’} to apply on input data. Default is ‘standardize’ (Z-score normalization).</p></li>

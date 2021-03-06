@@ -16,8 +16,8 @@ def local_multigeary(w, data, **kwargs):
 
     Args:
         w (Weight): An instance of Weight class
-        data (list): A list of numeric tuples with values of selected variables
-        undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null
+        data (list/pandas.dataframe): A list of numeric tuples with values of selected variables
+        undefs (list, optional): A list of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
         permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
@@ -37,6 +37,9 @@ def local_multigeary(w, data, **kwargs):
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
+    if type(data).__name__ == "DataFrame":
+        data = data.values.transpose().tolist()
+
     lisa_obj = gda_localmultigeary(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)
 
@@ -47,8 +50,8 @@ def local_geary(w, data, **kwargs):
 
     Args:
         w (Weight): An instance of Weight class.
-        data (tuple): A tuple of numeric values of selected variable
-        undefs (tuple, optional): A tuple of boolean values to indicate which value is undefined or null
+        data (tuple/list/pandas.Series): A list of numeric values of selected variable
+        undefs (list, optional): A list of boolean values to indicate which value is undefined or null
         permutations (int, optional): The number of permutations for the LISA computation
         permutation_method (str, optional): The permutation method used for the LISA computation. Options are {'complete', 'lookup-table'}. Default is 'complete'.
         significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters
@@ -71,5 +74,5 @@ def local_geary(w, data, **kwargs):
     cpu_threads =  6 if 'cpu_threads' not in kwargs else kwargs['cpu_threads']
     seed =  123456789 if 'seed' not in kwargs else kwargs['seed']
 
-    lisa_obj = gda_localgeary(w.gda_w, data, undefs, significance_cutoff, cpu_threads, permutations, permutation_method, seed)
+    lisa_obj = gda_localgeary(w.gda_w, list(data), list(undefs), significance_cutoff, cpu_threads, permutations, permutation_method, seed)
     return lisa(lisa_obj)

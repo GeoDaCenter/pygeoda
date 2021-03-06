@@ -286,14 +286,15 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<div class="viewcode-block" id="local_joincount"><a class="viewcode-back" href="../../../generated/pygeoda.sa.local_joincount.html#pygeoda.local_joincount">[docs]</a><span class="k">def</span> <span class="nf">local_joincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="local_joincount"><a class="viewcode-back" href="../../../generated/pygeoda.local_joincount.html#pygeoda.local_joincount">[docs]</a><span class="k">def</span> <span class="nf">local_joincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Local Join Count Statistics</span>
 
 <span class="sd">    The function to apply local Join Count statistics.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        w (Weight): An instance of Weight class.</span>
-<span class="sd">        data (tuple): A tuple of numeric values of selected variable</span>
+<span class="sd">        data (tuple/list/pandas.Series): A list of numeric values of selected variable</span>
+<span class="sd">        undefs (list, optional): A list of boolean values to indicate which value is undefined or null</span>
 <span class="sd">        permutations (int, optional): The number of permutations for the LISA computation</span>
 <span class="sd">        permutation_method (str, optional): The permutation method used for the LISA computation. Options are {&#39;complete&#39;, &#39;lookup-table&#39;}. Default is &#39;complete&#39;.</span>
 <span class="sd">        significance_cutoff (float, optional): A cutoff value for significance p-values to filter not-significant clusters</span>
@@ -317,7 +318,7 @@
         <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input data is not binary.&quot;</span><span class="p">)</span>
 
-    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localjoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">undefs</span><span class="p">,</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">lisa_obj</span> <span class="o">=</span> <span class="n">gda_localjoincount</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">gda_w</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">undefs</span><span class="p">),</span> <span class="n">significance_cutoff</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="p">,</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">permutation_method</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lisa</span><span class="p">(</span><span class="n">lisa_obj</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="local_bijoincount"><a class="viewcode-back" href="../../../generated/pygeoda.local_bijoincount.html#pygeoda.local_bijoincount">[docs]</a><span class="k">def</span> <span class="nf">local_bijoincount</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
