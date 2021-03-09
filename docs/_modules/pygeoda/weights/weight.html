@@ -284,11 +284,11 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
-<div class="viewcode-block" id="Weight"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.Weight">[docs]</a><span class="k">class</span> <span class="nc">Weight</span><span class="p">:</span>
+<div class="viewcode-block" id="Weight"><a class="viewcode-back" href="../../../generated/pygeoda.Weight.html#pygeoda.Weight">[docs]</a><span class="k">class</span> <span class="nc">Weight</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GeoDa Weight class </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.weights.Weight.html#pygeoda.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
+<div class="viewcode-block" id="Weight.__init__"><a class="viewcode-back" href="../../../generated/pygeoda.Weight.html#pygeoda.Weight.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gda_w</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of Weight class.</span>
 
@@ -392,9 +392,9 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">weight_type</span>
 
 
-    <span class="k">def</span> <span class="nf">GetNeighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute neighbors of idx-th observation</span>
+<span class="sd">        Get neighbors of idx-th observation</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -409,26 +409,27 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">GetNeighbors</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">SpatialLag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">spatial_lag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute spatial lag values of idx-th observation</span>
+<span class="sd">        Compute spatial lagged values for values of selected variable </span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        idx : int</span>
-<span class="sd">            The index of observation</span>
 <span class="sd">        values : tuple</span>
 <span class="sd">            The tuple of values of selected column</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        lag : float</span>
-<span class="sd">            the spatial lag value computed as:</span>
+<span class="sd">        lags : list</span>
+<span class="sd">            the computed spatial lagged values:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">SpatialLag</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+            <span class="n">rst</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_obs</span><span class="p">):</span>
+                <span class="n">rst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gda_w</span><span class="o">.</span><span class="n">SpatialLag</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">rst</span>
 
-    <span class="k">def</span> <span class="nf">SaveToFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_path</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">save_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_path</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Save current spatial weights to a file.</span>
 

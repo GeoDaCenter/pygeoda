@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5 Spatial Autocorrelation" href="spatial_auto.html" />
+    <link rel="next" title="5 Local Indicators of Spatial Association–LISA" href="spatial_auto.html" />
     <link rel="prev" title="4 Map Classification" href="map_classification.html" /> 
 </head>
 
@@ -129,8 +129,10 @@
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-bivariate-no-colocation-join-count">6.6 Local Bivariate (no-colocation) Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-multivariate-co-location-join-count">6.7 Local Multivariate (co-location) Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#batch-local-moran">6.9 Batch Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -285,8 +287,11 @@
             
   <div class="section" id="spatial-weights">
 <span id="spatial-weights-ref"></span><h1>5 Spatial Weights<a class="headerlink" href="#spatial-weights" title="Permalink to this headline">¶</a></h1>
-<p>Spatial weights are central components in spatial data analysis.
-The spatial weights represents the possible spatial interaction
+<p>Spatial weights are a key component in any cross-sectional analysis of
+spatial dependence. They are an essential element in the construction of
+spatial autocorrelation statistics, and provide the means to create
+spatially explicit variables, such as spatially lagged variables and spatially smoothed rates.</p>
+<p>The spatial weights represents the possible spatial interaction
 between observations in space. Like GeoDa desktop software,
 pygeoda provides a rich variety of methods to create several
 different types of spatial weights:</p>
@@ -299,21 +304,21 @@ different types of spatial weights:</p>
 <div class="section" id="queen-contiguity-weights">
 <h2>5.1 Queen Contiguity Weights<a class="headerlink" href="#queen-contiguity-weights" title="Permalink to this headline">¶</a></h2>
 <p>To create a Queen contiguity weights, we can call pygeoda’s function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">queen</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_lower_order</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_lower_order</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>by passing the GeoDa object <cite>guerry</cite> we just created:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">queen</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">queen_w</span><span class="p">)</span>
+<p>by passing the geoda object <cite>guerry</cite> created using <cite>pygeoda.open()</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:True</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:5.813148788927336</span>
-<span class="go">min neighbors:2</span>
-<span class="go">mean neighbors:4.9411764705882355</span>
-<span class="go">median neighbors:5.0</span>
-<span class="go">max neighbors:8</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                 True</span>
+<span class="go">               sparsity:  0.05813148788927336</span>
+<span class="go">        # min neighbors:                    2</span>
+<span class="go">        # max neighbors:                    8</span>
+<span class="go">       # mean neighbors:   4.9411764705882355</span>
+<span class="go">     # median neighbors:                  5.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
 <p>The function <cite>queen_weights()</cite> returns an instance of
@@ -324,72 +329,65 @@ weights by accessing the attributes of <cite>Weight</cite> object:</p>
 <h2>5.2 Attributes of <cite>Weight</cite> object<a class="headerlink" href="#attributes-of-weight-object" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>num_obs</p></li>
-<li><p>GetWeightsType()</p></li>
-<li><p>IsSymmetric()</p></li>
-<li><p>HasIsolates()</p></li>
-<li><p>GetSparsity()</p></li>
-<li><p>GetMinNbrs()</p></li>
-<li><p>GetMedianNbrs()</p></li>
-<li><p>GetMeanNbrs()</p></li>
-<li><p>GetMaxNbrs()</p></li>
-<li><p>GetDensity()</p></li>
-<li><p>[] GetNeighbors(idx)</p></li>
-<li><p>double SpatialLag(idx, [data])</p></li>
-<li><p>SaveToFile()</p></li>
+<li><p>is_symmetric()</p></li>
+<li><p>has_isolates()</p></li>
+<li><p>weights_sparsity()</p></li>
+<li><p>min_neighbors()</p></li>
+<li><p>median_neighbors()</p></li>
+<li><p>mean_neighbors()</p></li>
+<li><p>max_neighbors()</p></li>
+<li><p>get_neighbors()</p></li>
+<li><p>spatial_lag()</p></li>
+<li><p>save_weights()</p></li>
 </ul>
-<p>We can also access the details of the weights: e.g.
-list the neighbors of a specified observation, which
-is very helpful in exploratory spatial data analysis</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">GetNeighbors</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<p>We can access the details of the weights: e.g.
+get the neighbors of a specified observation, which
+is useful in exploratory spatial data analysis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">get_neighbors</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Neighbors of 0-st observation are:&quot;</span><span class="p">,</span> <span class="n">nbrs</span><span class="p">)</span>
 <span class="go">Neighbors of 0-st observation are: (35, 36, 66, 68)</span>
 </pre></div>
 </div>
 <p>We can also compute the spatial lag of a specified
 observation by passing the values of the selected variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lag0</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">SpatialLag</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spatial lag of 0-st observation is:&quot;</span><span class="p">,</span> <span class="n">lag0</span><span class="p">)</span>
-<span class="go">Spatial lag of 0-st observation is: 7899.25</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lag</span> <span class="o">=</span> <span class="n">queen_w</span><span class="o">.</span><span class="n">SpatialLag</span><span class="p">(</span><span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spatial lagged values of Crm_prp:&quot;</span><span class="p">,</span> <span class="n">lag</span><span class="p">)</span>
+<span class="go">Spatial lagged values of Crm_prp: [7899.25, 6593.5,...]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="rook-contiguity-weights">
 <h2>5.3 Rook Contiguity Weights<a class="headerlink" href="#rook-contiguity-weights" title="Permalink to this headline">¶</a></h2>
 <p>To create a Rook contiguity weights, we can call pygeoda’s function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rook_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">include_lower_order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rook_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_lower_order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precision_threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>by passing the geoda object <cite>guerry</cite> we just created:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rook_w</span> <span class="o">=</span> <span class="n">geoda</span><span class="o">.</span><span class="n">rook_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rook_w</span><span class="p">)</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:True</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:5.813148788927336</span>
-<span class="go">min neighbors:2</span>
-<span class="go">mean neighbors:4.9411764705882355</span>
-<span class="go">median neighbors:5.0</span>
-<span class="go">max neighbors:8</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                 True</span>
+<span class="go">               sparsity:  0.05813148788927336</span>
+<span class="go">        # min neighbors:                    2</span>
+<span class="go">        # max neighbors:                    8</span>
+<span class="go">       # mean neighbors:   4.9411764705882355</span>
+<span class="go">     # median neighbors:                  5.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
-<p>The weights we created are in memory, which makes it straight
-forward for spatial data analysis and also are good for
-programming your application. To save the weights to a file,
-we can call Weight’s function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SaveToFile</span><span class="p">(</span><span class="n">ofname</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">)</span>
+<p>To save the weights to a file, we can call pygeoda’s function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save_weights</span><span class="p">(</span><span class="n">ofname</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">id_name</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <cite>layer_name</cite> is the layer name of loaded dataset. For a ESRI shapefile,
 the layer name is the file name without the suffix (e.g. Guerry).</p>
-<p>The <cite>id_name</cite> is a key (column name), which means the associated column
-contains unique values, that makes sure that the weights are connected
-to the correct observations in the data table.</p>
+<p>The <cite>id_name</cite> is a key column, which contains unique values to represent observations.</p>
 <p>The <cite>id_vec</cite> is the actual column data of <cite>id_name</cite>, it could be a tuple
 of integer or string values.</p>
 <p>For example, in Guerry dataset, the column “CODE_DE” can be used as a key
 to save a weights file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rook_w</span><span class="o">.</span><span class="n">SaveToFile</span><span class="p">(</span><span class="s1">&#39;./Guerry_r.gal&#39;</span><span class="p">,</span> <span class="s1">&#39;Guerry&#39;</span><span class="p">,</span> <span class="s1">&#39;CODE_DE&#39;</span><span class="p">,</span> <span class="n">guerry</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s1">&#39;CODE_DE&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rook_w</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;./Guerry_r.gal&#39;</span><span class="p">,</span> <span class="s1">&#39;Guerry&#39;</span><span class="p">,</span> <span class="s1">&#39;CODE_DE&#39;</span><span class="p">,</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;CODE_DE&#39;</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -398,28 +396,28 @@ to save a weights file:</p>
 <div class="section" id="distance-based-weights">
 <h2>5.4 Distance Based Weights<a class="headerlink" href="#distance-based-weights" title="Permalink to this headline">¶</a></h2>
 <p>To create a Distance based weights, we can call pygeoda’s function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">is_inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_arc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_mile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">gda</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">is_inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_arc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_mile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>by passing the geoda object <cite>guerry</cite> we just created and the value
 of distance threshold. Like GeoDa, pygeoda provides a function to
 help you find a optimized distance threshold that guarantees that
 every observation has at least one neighbor:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">GeoDa</span> <span class="n">gda</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygeoda</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">GeoDa</span> <span class="n">gda</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_arc</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">is_mile</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist_thres</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dist_w</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist_thres</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">min_distthreshold</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">distance_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_w</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:False</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:4.346020761245675</span>
-<span class="go">min neighbors:1</span>
-<span class="go">mean neighbors:3.6941176470588237</span>
-<span class="go">median neighbors:4.0</span>
-<span class="go">max neighbors:7</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                 True</span>
+<span class="go">               sparsity: 0.043460207612456746</span>
+<span class="go">        # min neighbors:                    1</span>
+<span class="go">        # max neighbors:                    7</span>
+<span class="go">       # mean neighbors:   3.6941176470588237</span>
+<span class="go">     # median neighbors:                  4.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
 </div>
@@ -432,23 +430,23 @@ neighbors. To create a KNN weights, we can call pygeoda’s function:</p>
 </pre></div>
 </div>
 <p>For example, to create a 6-nearest neighbor weights using Guerry dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn6_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">knn_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn6_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">knn_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">knn6_w</span><span class="p">)</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:False</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:7.0588235294117645</span>
-<span class="go">min neighbors:6</span>
-<span class="go">mean neighbors:6.0</span>
-<span class="go">median neighbors:6.0</span>
-<span class="go">max neighbors:6</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                False</span>
+<span class="go">               sparsity:  0.07058823529411765</span>
+<span class="go">        # min neighbors:                    6</span>
+<span class="go">        # max neighbors:                    6</span>
+<span class="go">       # mean neighbors:                  6.0</span>
+<span class="go">     # median neighbors:                  6.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="kernel-weights">
 <h2>5.6 Kernel Weights<a class="headerlink" href="#kernel-weights" title="Permalink to this headline">¶</a></h2>
-<p>Kernel weights apply kernel function to determine the distance
+<p>Kernel Weights applies kernel function to determine the distance
 decay in the derived continuous weights kernel. The kernel weights
 are defined as a function K(z) of the ratio between the distance
 dij from i to j, and the bandwidth hi, with z=dij/hi.</p>
@@ -463,17 +461,17 @@ dij from i to j, and the bandwidth hi, with z=dij/hi.</p>
 <div class="section" id="kernel-weights-with-fixed-bandwidth">
 <h3>5.6.1 Kernel Weights with fixed bandwidth<a class="headerlink" href="#kernel-weights-with-fixed-bandwidth" title="Permalink to this headline">¶</a></h3>
 <p>To create a kernel weights with fixed bandwith:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">kernel_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">kernel_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">dist_thres</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kernel_w</span><span class="p">)</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:False</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:4.346020761245675</span>
-<span class="go">min neighbors:1</span>
-<span class="go">mean neighbors:3.6941176470588237</span>
-<span class="go">median neighbors:4.0</span>
-<span class="go">max neighbors:7</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                False</span>
+<span class="go">               sparsity: 0.043460207612456746</span>
+<span class="go">        # min neighbors:                    1</span>
+<span class="go">        # max neighbors:                    7</span>
+<span class="go">       # mean neighbors:   3.6941176470588237</span>
+<span class="go">     # median neighbors:                  4.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
 <p>Besides the options <cite>is_inverse</cite>, <cite>power</cite>, <cite>is_arc</cite> and
@@ -489,17 +487,17 @@ this kernel weights function has another option:</p>
 <h3>5.6.2 Kernel Weights with adaptive bandwidth<a class="headerlink" href="#kernel-weights-with-adaptive-bandwidth" title="Permalink to this headline">¶</a></h3>
 <p>To create a kernel weights with adaptive bandwidth or using
 max KNN distance as bandwidth:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adptkernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adptkernel_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">kernel_knn_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">adptkernel_w</span><span class="p">)</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:False</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:7.0588235294117645</span>
-<span class="go">min neighbors:6</span>
-<span class="go">mean neighbors:6.0</span>
-<span class="go">median neighbors:6.0</span>
-<span class="go">max neighbors:6</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                False</span>
+<span class="go">               sparsity:  0.07058823529411765</span>
+<span class="go">        # min neighbors:                    6</span>
+<span class="go">        # max neighbors:                    6</span>
+<span class="go">       # mean neighbors:                  6.0</span>
+<span class="go">     # median neighbors:                  6.0</span>
+<span class="go">           has isolates:                False</span>
 </pre></div>
 </div>
 <p>This kernel weights function two more options:</p>
@@ -523,7 +521,7 @@ max KNN distance as bandwidth:</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="spatial_auto.html" class="btn btn-neutral float-right" title="5 Spatial Autocorrelation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spatial_auto.html" class="btn btn-neutral float-right" title="5 Local Indicators of Spatial Association–LISA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="map_classification.html" class="btn btn-neutral float-left" title="4 Map Classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

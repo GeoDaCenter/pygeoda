@@ -76,7 +76,7 @@ It works with ESRI Shapefiles and `geopandas <https://geopandas.org>`_.
    3. Load Spatial Data <load_data>
    4. Map Classification <map_classification>
    5. Spatial Weights <spatial_weights>
-   6. Spatial Autocorrelation<spatial_auto>
+   6. Local Indicators of Spatial Association<spatial_auto>
    7. Spatial Clustering <spatial_clustering>
    ESDA with pygeoda and geopandas <esda_geopandas>
    

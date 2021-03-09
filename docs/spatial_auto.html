@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>5 Spatial Autocorrelation &mdash; pygeoda 0.0.8 rc documentation</title>
+  <title>5 Local Indicators of Spatial Association–LISA &mdash; pygeoda 0.0.8 rc documentation</title>
   
 
   
@@ -123,14 +123,17 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Local Indicators of Spatial Association</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#local-moran">6.1 Local Moran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lisa-object">6.2 LISA object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-bivariate-join-count">6.6 Local Bivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-multivariate-join-count">6.7 Local Multivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neighbor-match-test">6.10 Neighbor Match Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -264,7 +267,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>5 Spatial Autocorrelation</li>
+      <li>5 Local Indicators of Spatial Association–LISA</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -283,32 +286,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spatial-autocorrelation">
-<span id="spatial-sa-ref"></span><h1>5 Spatial Autocorrelation<a class="headerlink" href="#spatial-autocorrelation" title="Permalink to this headline">¶</a></h1>
-<p>pygeoda 0.0.4 provids following methods for univariate
+  <div class="section" id="local-indicators-of-spatial-associationlisa">
+<span id="spatial-sa-ref"></span><h1>5 Local Indicators of Spatial Association–LISA<a class="headerlink" href="#local-indicators-of-spatial-associationlisa" title="Permalink to this headline">¶</a></h1>
+<p>pygeoda provids following methods for univariate, bivariate and multivariate
 local spatial autocorrelation statistics:</p>
 <ul class="simple">
-<li><p>Local Moran: local_moran()</p></li>
-<li><p>Local Geary: local_geary()</p></li>
+<li><p>Local Moran: local_moran(), local_moran_eb()</p></li>
+<li><p>Local Geary: local_geary(), local_multigeary()</p></li>
 <li><p>Local Getis-Ord statistics: local_g() and local_gstar()</p></li>
-<li><p>Local Join Count: local_joincount()</p></li>
+<li><p>Local Join Count: local_joincount(), local_bijoincount(), local_multijoincount()</p></li>
+<li><p>Local Quantile LISA: local_quantilelisa(), local_multiquantilelisa()</p></li>
+<li><p>Local Neighbor Match Test: neighbor_match_test()</p></li>
 </ul>
-<p>Methods for bivariate and multivariate local spatial
-autocorrelation statistics, as well as global spatial
-autocorrelation satatistics, will be included in next
-release of pygeoda.</p>
-<p>In this tutorial, we will only introduce how to call these
-methods using pygeoda. For more information about the local
-spatial autocorrelation statisticis, please read the lab
-note that Dr. Luc Anselin wrote:
+<p>For more information about the local spatial autocorrelation statisticis,
+please read Dr. Luc Anselin’s lab notes:
 <a class="reference external" href="http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html">http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html</a>.</p>
 <div class="section" id="local-moran">
 <h2>6.1 Local Moran<a class="headerlink" href="#local-moran" title="Permalink to this headline">¶</a></h2>
 <p>The Local Moran statistic is a method to identify local clusters
 and local spatial outliers. For example, we can call  function
 <cite>local_moran()</cite> with the created Queen weights and the data
-“crm_prp” as input parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_moran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+“crm_prp = guerry[‘Crm_prp’]” as input parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_moran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [0.015431978309803657, 0.3270633223656033, ...]</span>
+<span class="go">    lisa_pvalues(): [0.414, 0.123, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;High-High&#39;, &#39;Low-Low&#39;, &#39;High-Low&#39;, &#39;Low-High&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#FF0000&#39;, &#39;#0000FF&#39;, &#39;#a7adf9&#39;, &#39;#f4ada8&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -318,32 +325,30 @@ and local spatial outliers. For example, we can call  function
 which we can call its functions to access the results of lisa
 computation. The functions include:</p>
 <ul class="simple">
-<li><p>GetClusterIndicators(): Get the local cluster indicators returned from LISA computation.</p></li>
-<li><p>GetColors(): Get the cluster colors of LISA computation.</p></li>
-<li><p>GetLabels(): Get the cluster labels of LISA computation.</p></li>
-<li><p>GetLISAValues(): Get the local spatial autocorrelation values returned from LISA computation.</p></li>
-<li><p>GetNumNeighbors(): Get the number of neighbors of every observations in LISA computation.</p></li>
-<li><p>GetPValues(): Get the local pseudo-p values of significance returned from LISA computation.</p></li>
-<li><p>GetFDR(): Get the False Discovery Rate (FDR) in LISA.</p></li>
-<li><p>SetPermutations(num_perm): Set the number of permutations for the LISA computation</p></li>
-<li><p>SetThreads(num_threads): Set the number of CPU threads for the LISA computation</p></li>
-<li><p>Run(): Call to run LISA computation</p></li>
+<li><p>lisa_clusters(): Get the local cluster indicators returned from LISA computation.</p></li>
+<li><p>lisa_colors(): Get the cluster colors of LISA computation.</p></li>
+<li><p>lisa_labels(): Get the cluster labels of LISA computation.</p></li>
+<li><p>lisa_values(): Get the local spatial autocorrelation values returned from LISA computation.</p></li>
+<li><p>lisa_num_nbrs(): Get the number of neighbors of every observations in LISA computation.</p></li>
+<li><p>lisa_pvalues(): Get the local pseudo-p values of significance returned from LISA computation.</p></li>
+<li><p>lisa_fdr(): Get the False Discovery Rate (FDR) in LISA.</p></li>
+<li><p>lisa_bo(): Get the False Discovery Rate (FDR) in LISA.</p></li>
 </ul>
 <p>For example, we can call the function <cite>GetLISAValues()</cite>
 to get the values of local Moran:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">lisa_values</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lms</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0.015431978309803657, 0.3270633223656033, 0.021295296214118884, 0.004610544790030418, -0.0028342407096540465, 0.41493771583040345, -0.13794630908086175, 0.09986576922564794, 0.2823176310018141, 0.1218745112146858, -0.09512054168698209, 0.032611193818022896, 0.3878324535340113, 1.1888723840162665, -0.6452792226077357, -0.30964927402750314, 0.3662775143008573, 2.0375343538940496, -0.005015479968822494, 0.06971105719113387)</span>
 </pre></div>
 </div>
 <p>To get the pseudo-p values of significance of local Moran computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, 0.237, 0.46, 0.258, 0.018, 0.199, 0.188, 0.131, 0.004, 0.456, 0.342)</span>
 </pre></div>
 </div>
 <p>To get the cluster indicators of local Moran computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">lisa_clusters</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cats</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
 <span class="go">(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0)</span>
 </pre></div>
@@ -359,15 +364,9 @@ to get the values of local Moran:</p>
 <li><p>6 Undefined</p></li>
 </ul>
 <p>which can be accessed via function <cite>GetLabels()</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lbls</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lbls</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">lisa_labels</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lbls</span>
-<span class="go">(&#39;Not significant&#39;,</span>
-<span class="go">&#39;High-High&#39;,</span>
-<span class="go">&#39;Low-Low&#39;,</span>
-<span class="go">&#39;High-Low&#39;,</span>
-<span class="go">&#39;Low-High&#39;,</span>
-<span class="go">&#39;Undefined&#39;,</span>
-<span class="go">&#39;Isolated&#39;)</span>
+<span class="go">(&#39;Not significant&#39;, &#39;High-High&#39;, &#39;Low-Low&#39;, &#39;High-Low&#39;, &#39;Low-High&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -377,34 +376,32 @@ labels and colors.</p>
 </div>
 <p>By default, the <cite>local_moran()</cite> function will run with
 some default parameters, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">permutation</span> <span class="n">number</span><span class="p">:</span> <span class="mi">999</span>
-<span class="n">seed</span> <span class="k">for</span> <span class="n">random</span> <span class="n">number</span> <span class="n">generator</span><span class="p">:</span> <span class="mi">123456789</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">significance_cutoff</span><span class="p">:</span> <span class="mf">0.05</span>
+<span class="n">permutation</span><span class="p">:</span> <span class="mi">999</span>
+<span class="n">permutation_method</span><span class="p">:</span> <span class="s1">&#39;complete&#39;</span>
+<span class="n">cpu_threads</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">seed</span> <span class="p">(</span><span class="k">for</span> <span class="n">random</span> <span class="n">number</span> <span class="n">generator</span><span class="p">):</span> <span class="mi">123456789</span>
 </pre></div>
 </div>
-<p>, which are identical to GeoDa desktop software so that
-we can replicate the results in GeoDa software. It is also
-easy to change the paremter and re-run the LISA computation
-by calling Run() function.</p>
-<p>For example, re-run the above local Moran example
-using 9999 permutations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lisa</span><span class="o">.</span><span class="n">SetPermutations</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lisa</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+<p>, which are identical to GeoDa desktop software so to replicate the results
+in GeoDa software.  You can set different values when calling the lisa functions.</p>
+<p>For example, re-run the above local Moran example using 9999 permutations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_moran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">9999</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, we can use the same <cite>lisa</cite> object to get the new results
 after 9999 permutations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
 <span class="go">(0.4187, 0.1265, 0.0004, 0.4679, 0.4545, 0.0728, 0.2312, 0.3071, 0.3115, 0.3088, 0.2187, 0.4803, 0.2623, 0.0113, 0.2, 0.1797, 0.1267, 0.0026, 0.4565, 0.3517)</span>
 </pre></div>
 </div>
 <p>pygeoda uses GeoDa’s C++ code, in which multi-threading is used
 to accelerate the computation of LISA. We can specify how many
 threads to run the computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lisa</span><span class="o">.</span><span class="n">SetThreads</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lisa</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.4187, 0.1265, 0.0004, 0.4679, 0.4545, 0.0728, 0.2312, 0.3071, 0.3115, 0.3088, 0.2187, 0.4834, 0.2686, 0.0102, 0.2024, 0.1795, 0.1218, 0.0025, 0.459, 0.3588)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_moran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">cpu_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()[:</span><span class="mi">20</span><span class="p">]</span>
+<span class="go">(0.4187, 0.1265, 0.0004, 0.4679, 0.4545, 0.0728, 0.2197, 0.3117, 0.3139, 0.3106, 0.2189, 0.4761, 0.2649, 0.0127, 0.2014, 0.1774, 0.1299, 0.0024, 0.4557, 0.3525)</span>
 </pre></div>
 </div>
 </div>
@@ -413,21 +410,29 @@ threads to run the computation:</p>
 <p>Local Geary is a type of LISA that focuses on squared
 differences/dissimilarity. A small value of the local geary
 statistics suggest positive spatial autocorrelation, whereas
-large values suggest negative spatial autocorrelation.</p>
+large values suggest negative spatial autocorrelation.
+For more details, please read: <a class="reference external" href="http://geodacenter.github.io/workbook/6b_local_adv/lab6b.html#local-geary">http://geodacenter.github.io/workbook/6b_local_adv/lab6b.html#local-geary</a></p>
 <p>For example, we can call the function <cite>local_geary()</cite> with the
 created Queen weights and the data “crm_prp” as
 input parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geary_crmprp</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_geary</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [7.39808330117836, 0.28361195650519017, 3.6988922226329906, 0.23250287024601668, 0.03509605454141339, 1.8488634321425461, 0.9456415438821265, 0.36881030678112625, 1.3990003912957896, 0.79132551685303, ...]</span>
+<span class="go">    lisa_pvalues(): [0.398, 0.027, 0.025, 0.126, 0.017, 0.314, 0.61, 0.141, 0.284, 0.11, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 2, 4, 0, 3, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;High-High&#39;, &#39;Low-Low&#39;, &#39;Other Positive&#39;, &#39;Negative&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#b2182b&#39;, &#39;#ef8a62&#39;, &#39;#fddbc7&#39;, &#39;#67adc7&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 <p>To get the cluster indicators of the local Geary computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">geary_crmprp</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">geary_crmprp</span><span class="o">.</span><span class="n">lisa_clusters</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cats</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0, 2, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2)</span>
 </pre></div>
 </div>
 <p>To get the pseudo-p values of the local Geary computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geary_crmprp</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geary_crmprp</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0.398, 0.027, 0.025, 0.126, 0.017, 0.314, 0.61, 0.141, 0.284, 0.11, 0.559, 0.462, 0.211, 0.236, 0.249, 0.229, 0.069, 0.041, 0.205, 0.02)</span>
 </pre></div>
@@ -439,7 +444,8 @@ input parameters:</p>
 computing a ratio of the weighted average of the values
 in the neighboring locations, not including the value at
 the location; while another type of statistic includes the
-value at the location in both numerator and denominator.</p>
+value at the location in both numerator and denominator.
+For more details, please read: <a class="reference external" href="http://geodacenter.github.io/workbook/6b_local_adv/lab6b.html#getis-ord-statistics">http://geodacenter.github.io/workbook/6b_local_adv/lab6b.html#getis-ord-statistics</a></p>
 <p>A value larger than the mean suggests a high-high cluster
 or hot spot, a value smaller than the mean indicates a
 low-low cluster or cold spot.</p>
@@ -447,16 +453,23 @@ low-low cluster or cold spot.</p>
 created Queen weights and the data “crm_prp” as
 input parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">localg_crmprp</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_g</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">localg_crmprp</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [0.012077920687925825, 0.009924096129850856, 0.018753584525825453, 0.01178494623655914, 0.011774009933407884, 0.014402421020466018, 0.009913770717138606, 0.012754984853234634, 0.01079858461945127, 0.012624434594978189, ...] lisa_pvalues(): [0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;High-High&#39;, &#39;Low-Low&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#FF0000&#39;, &#39;#0000FF&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 <p>To get the cluster indicators of the local G computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">localg_crmprp</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">localg_crmprp</span><span class="o">.</span><span class="n">lisa_clusters</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cats</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0)</span>
 </pre></div>
 </div>
 <p>To get the pseudo-p values of the local G computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">localg_crmprp</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">localg_crmprp</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
 <span class="go">(0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, 0.237, 0.46, 0.258, 0.018, 0.199, 0.188, 0.131, 0.004, 0.456, 0.342)</span>
 </pre></div>
@@ -464,7 +477,15 @@ input parameters:</p>
 <p>For the second type of local Getis-Ord statistics, we
 can call the function <cite>local_gstar()</cite> with the created
 Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localgstar_crmprp</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_gstar</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">localgstar_crmprp</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_gstar</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">localgstar_crmprp</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [0.014177043620524426, 0.0096136007223102, 0.017574324039034434, 0.01150147630889935, 0.011773152971874002, 0.014324040100669639, 0.010638678994617219, 0.01301062524443436, 0.009960482489792222, 0.012951662452195357, ...]</span>
+<span class="go">    lisa_pvalues(): [0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;High-High&#39;, &#39;Low-Low&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#FF0000&#39;, &#39;#0000FF&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -473,102 +494,138 @@ Queen weights and the data “crm_prp” as input parameters:</p>
 <p>Local Join Count is a method to identify local clusters
 for binary data by using a local version of the so-called
 BB join count statistic. The statistic is only meaningful
-for those observations with value 1.</p>
-<p>For example, we can load the columbus dataset, and call
-the function <cite>local_joincount()</cite> with a Queen weights and
-the data “nsa”, which is a set of binary (0,1) values,
-as input parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columbus</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/columbus.shp&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nsa</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s2">&quot;nsa&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">columbus_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">columbus</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">localjc_nsa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_joincount</span><span class="p">(</span><span class="n">columbus_w</span><span class="p">,</span> <span class="n">nsa</span><span class="p">)</span>
+for those observations with value 1. For more details, please read
+<a class="reference external" href="http://geodacenter.github.io/workbook/6d_local_discrete/lab6d.html">http://geodacenter.github.io/workbook/6d_local_discrete/lab6d.html</a></p>
+<p>For example, we can create a binary data manually by using the quantile
+breaks and the variable <cite>Crm_prp</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_crmprp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">9584.5</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">top_crmprp</span>
+<span class="go">[1, 0, 0, 0, 0, 1, ...]</span>
 </pre></div>
 </div>
-<p>To get the cluster indicators of the local Join Count computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">localjc_nsa</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cats</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0)</span>
+<p>If you are using geopandas, you can create such a variable using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;./data/Guerry.shp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">top_crmprp</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">9584.5</span>
 </pre></div>
 </div>
-<p>To get the pseudo-p values of the local Join Count  computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">localjc_nsa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.213, 0.07, 0.017, 0.024, 0.001, 0.226, 0.055, 0.007, 0.006, 0.275, 0.017, 0.008, 0.043, 0.004, 0.002, 0.001, 0.147, 0.049, 0.087, 0.001)</span>
+<p>Then, we can apply the function <cite>local_joincount()</cite> using a Queen weights and
+the data “top_crmprp”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ljc_topcrmprp</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_joincount</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">top_crmprp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ljc_topcrmprp</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 1.0, 0.0, 2.0, ...]</span>
+<span class="go">    lisa_pvalues(): [0.419, nan, nan, nan, nan, 0.376, nan, 0.442, nan, 0.257, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;Significant&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#348124&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 <p>To get the number of neighbors of the local Join Count computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span> <span class="o">=</span> <span class="n">localjc_nsa</span><span class="o">.</span><span class="n">GetNumNeighbors</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span> <span class="o">=</span> <span class="n">ljc_topcrmprp</span><span class="o">.</span><span class="n">lisa_num_nbrs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nn</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(2, 3, 4, 4, 8, 2, 4, 6, 8, 4, 5, 6, 4, 6, 6, 8, 3, 4, 3, 10)</span>
+<span class="go">(4, 6, 6, 4, 3, 7, 3, 3, 5, 5, 7, 3, 3, 6, 5, 5, 6, 6, 7, 3)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="local-bivariate-join-count">
+<h2>6.6 Local Bivariate Join Count<a class="headerlink" href="#local-bivariate-join-count" title="Permalink to this headline">¶</a></h2>
+<p>For demonstration of local bivariate or no-colocation join count, we create another binary data
+manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_lit</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">54.999999999999986</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Litercy&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>With no-colocation, two binary events can not be 1 at the same location.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_lit</span>
+<span class="go">[0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">top_crmprp</span>
+<span class="go">[1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of co-location, a warning message will be raised “The bivariate local join count only applies on two variables with no-colocation.”
+, and one can use pygeoda.local_multijoincount() for co-location case.</p>
+</div>
+<p>Then, we can apply the function <cite>local_bijoincount()</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lbjc_topcrm_lit</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_bijoincount</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="p">[</span><span class="n">topcrm</span><span class="p">,</span> <span class="n">toplit</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbjc_topcrm_lit</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...]</span>
+<span class="go">    lisa_pvalues(): [0.397, nan, nan, nan, nan, nan, nan, nan, nan, nan, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;Significant&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#348124&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="local-multivariate-join-count">
+<h2>6.7 Local Multivariate Join Count<a class="headerlink" href="#local-multivariate-join-count" title="Permalink to this headline">¶</a></h2>
+<p>With co-location, both binary events have to be 1 at the same location more than once.
+For demonstration, we create the third binary data manually, and using the 3 binary data
+together for the case of co-location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top_infant</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">10712.499999999996</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Donatns&#39;</span><span class="p">]]</span>
+<span class="go">[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lmjc</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_multijoincount</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="p">[</span><span class="n">topcrm</span><span class="p">,</span> <span class="n">toplit</span><span class="p">,</span> <span class="n">topdon</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="quantile-lisa">
-<h2>6.6 Quantile LISA<a class="headerlink" href="#quantile-lisa" title="Permalink to this headline">¶</a></h2>
+<h2>6.8 Quantile LISA<a class="headerlink" href="#quantile-lisa" title="Permalink to this headline">¶</a></h2>
 <p>The quantile local spatial autocorrelation converte the continuous variable
 to a binary variable that takes the value of 1 for a specific quantile.
-Then appaly a local join count to the data converted.Here a k and q need
-to be selected. More specifically, the k is the number of quantiles,
-ranging form 1 to -1, and the q is the index of selected quantile for lisa,
-ranging from 0 to k-1.</p>
-<p>For example, we can call the function <cite>quantile_lisa()</cite> with the created
-Queen weights, k is equal to 7, q is equal to 5 and the data “crm_prp” as
-input parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columbus</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/columbus.shp&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">crm_prp</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">GetIntegerCol</span><span class="p">(</span><span class="s2">&quot;crm_prp&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">columbus_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">columbus</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">quantile_lisa</span><span class="p">(</span><span class="n">columbus_w</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To get the pseudo-p values of the quantile lisa computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.434, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.031, 0.001, 0.001, 0.431, 0.026, 0.001, 0.001)</span>
-</pre></div>
-</div>
-<p>To get the number of neighbors of the quantile lisa computation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nnvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetNumNeighbors</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nnvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">    (4, 6, 6, 4, 3, 7, 3, 3, 5, 5, 7, 3, 3, 6, 5, 5, 6, 6, 7, 3)</span>
+Then appaly a local join count to the data converted. Two input parameters, k and q,
+need to be specified in the function <cite>pygeoda.quantile_lisa()</cite>: k is the number of quantiles
+(k &gt; 2), and the q is the index of selected quantile lisa
+ranging from 1 to k.</p>
+<p>For example, the examples in section 6.5 can be simply implemented as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ql</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">quantile_lisa</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 1.0, 0.0, 2.0, ...]</span>
+<span class="go">    lisa_pvalues(): [0.419, nan, nan, nan, nan, 0.376, nan, 0.442, nan, 0.257, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;Significant&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#348124&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="batch-local-moran">
-<h2>6.7 Batch Local Moran<a class="headerlink" href="#batch-local-moran" title="Permalink to this headline">¶</a></h2>
-<p>Batch Local Moran is a method to apply local moran statistics on
-a set of variables using a same weights. This is a convenient way
-to batch process Lisa with the same weight. Note the data is a 2d
-list of float type values of selected variables.</p>
-<p>For example, we can call the function <cite>batch_local_moran()</cite> with the
-created created Queen weights and the data was selected from the
-dataset as the input parameters. When we have multiple variables,
-we can create a list that contains the variables and then use a for
-loop to select variables.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./data/columbus.shp&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">slect_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">,</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">slect_vars</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">batch_local_moran</span><span class="p">(</span><span class="n">guerry_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<div class="section" id="multivariate-quantile-lisa">
+<h2>6.9 Multivariate Quantile LISA<a class="headerlink" href="#multivariate-quantile-lisa" title="Permalink to this headline">¶</a></h2>
+<p>For multiple variables, the Quantile LISA can automatiaclly detect if it is the case of
+no-colocation, in which local_bijoincount() will be called internally, or the case of
+co-location, in which local_multijoincount() will be called internally.</p>
+<p>For exmaple, the example in section 6.6 can be implemented using multivariate quantile lisa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bql</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_multiquantilelisa</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="p">[</span><span class="n">crm_prp</span><span class="p">,</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Litercy&#39;</span><span class="p">]],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bql</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...]</span>
+<span class="go">    lisa_pvalues(): [0.397, nan, nan, nan, nan, nan, nan, nan, nan, nan, ...]</span>
+<span class="go">    lisa_num_nbrs(): [4, 6, 6, 4, 3, 7, 3, 3, 5, 5, ...]</span>
+<span class="go">    lisa_clusters(): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span>
+<span class="go">    lisa_labels(): (&#39;Not significant&#39;, &#39;Significant&#39;, &#39;Undefined&#39;, &#39;Isolated&#39;)</span>
+<span class="go">    lisa_colors(): (&#39;#eeeeee&#39;, &#39;#348124&#39;, &#39;#464646&#39;, &#39;#999999&#39;)</span>
 </pre></div>
 </div>
-<p>To get the local Moran values of one of the selected variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lms</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.015, 0.327, 0.021, 0.004, -0.002, 0.414, -0.137, 0.099, 0.282, 0.121, -0.095, 0.032, 0.387, 1.188, -0.645, -0.309, 0.366, 2.037, -0.005, 0.069)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lms</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetLISAValues</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lms</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.516, 0.818, 0.794, 0.733, 0.228, 0.829, 0.615, 1.627, -0.019, 0.687, 1.707, 0.821, -0.213, 0.29, -0.184, -0.047, 0.249, 0.054, 0.862, 0.835)</span>
+</div>
+<div class="section" id="neighbor-match-test">
+<h2>6.10 Neighbor Match Test<a class="headerlink" href="#neighbor-match-test" title="Permalink to this headline">¶</a></h2>
+<p>The local neighbor match test is to assess the extent of overlap between
+k-nearest neighbors in geographical space and k-nearest neighbors in
+multi-attribute space.</p>
+<p>For example, to apply the Neighbor Match Test on 6 variables:
+‘Crm_prs’,’Crm_prp’,’Litercy’,’Donatns’,’Infants’,’Suicids’ in multi-attribute space
+and k=6 nearest neighbors in geographical space:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">,</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">,</span><span class="s1">&#39;Litercy&#39;</span><span class="p">,</span><span class="s1">&#39;Donatns&#39;</span><span class="p">,</span><span class="s1">&#39;Infants&#39;</span><span class="p">,</span><span class="s1">&#39;Suicids&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">neighbor_match_test</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nm</span>
+<span class="go">{&#39;Cardinality&#39;: [2, 3,  ...],</span>
+<span class="go"> &#39;Probability&#39;: [0.05263799873777295, 0.0037431465769082986, ...]</span>
+<span class="go">}</span>
 </pre></div>
 </div>
-<p>To get the pseudo-p values of the local moran computation of one selected variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.414, 0.123, 0.001, 0.474, 0.452, 0.087, 0.243, 0.326, 0.299, 0.303, 0.237, 0.461, 0.248, 0.015, 0.178, 0.172, 0.149, 0.001, 0.456, 0.371)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <span class="n">lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pvals</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
-<span class="go">(0.197, 0.013, 0.023, 0.068, 0.111, 0.045, 0.281, 0.048, 0.183, 0.004, 0.002, 0.052, 0.106, 0.002, 0.266, 0.244, 0.008, 0.426, 0.060, 0.115)</span>
-</pre></div>
-</div>
+<p><cite>pygeoda.neighbor_match_test()</cite> function returns a dict which has two keys “Cardinality” and “Probability”.</p>
 </div>
 </div>
 

@@ -2748,34 +2748,33 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t swig_types[49]
 #define SWIGTYPE_p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t swig_types[50]
 #define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[51]
-#define SWIGTYPE_p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t swig_types[52]
-#define SWIGTYPE_p_std__vectorT_char_p_std__allocatorT_char_p_t_t swig_types[53]
-#define SWIGTYPE_p_std__vectorT_char_std__allocatorT_char_t_t swig_types[54]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[55]
-#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[56]
-#define SWIGTYPE_p_std__vectorT_gda__PointContents_p_std__allocatorT_gda__PointContents_p_t_t swig_types[57]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[58]
-#define SWIGTYPE_p_std__vectorT_long_long_std__allocatorT_long_long_t_t swig_types[59]
-#define SWIGTYPE_p_std__vectorT_long_std__allocatorT_long_t_t swig_types[60]
-#define SWIGTYPE_p_std__vectorT_std__pairT_double_int_t_std__allocatorT_std__pairT_double_int_t_t_t swig_types[61]
-#define SWIGTYPE_p_std__vectorT_std__pairT_double_std__vectorT_double_std__allocatorT_double_t_t_t_std__allocatorT_std__pairT_double_std__vectorT_double_std__allocatorT_double_t_t_t_t_t swig_types[62]
-#define SWIGTYPE_p_std__vectorT_std__pairT_std__string_int_t_std__allocatorT_std__pairT_std__string_int_t_t_t swig_types[63]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[64]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_bool_std__allocatorT_bool_t_t_std__allocatorT_std__vectorT_bool_std__allocatorT_bool_t_t_t_t swig_types[65]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_char_std__allocatorT_char_t_t_std__allocatorT_std__vectorT_char_std__allocatorT_char_t_t_t_t swig_types[66]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t swig_types[67]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t swig_types[68]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t swig_types[69]
-#define SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t swig_types[70]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[71]
-#define SWIGTYPE_p_std__vectorT_void_p_std__allocatorT_void_p_t_t swig_types[72]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[73]
-#define SWIGTYPE_p_uint64_t swig_types[74]
-#define SWIGTYPE_p_unsigned_char swig_types[75]
-#define SWIGTYPE_p_value_type swig_types[76]
-#define SWIGTYPE_p_void swig_types[77]
-static swig_type_info *swig_types[79];
-static swig_module_info swig_module = {swig_types, 78, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__vectorT_char_p_std__allocatorT_char_p_t_t swig_types[52]
+#define SWIGTYPE_p_std__vectorT_char_std__allocatorT_char_t_t swig_types[53]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[54]
+#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_gda__PointContents_p_std__allocatorT_gda__PointContents_p_t_t swig_types[56]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[57]
+#define SWIGTYPE_p_std__vectorT_long_long_std__allocatorT_long_long_t_t swig_types[58]
+#define SWIGTYPE_p_std__vectorT_long_std__allocatorT_long_t_t swig_types[59]
+#define SWIGTYPE_p_std__vectorT_std__pairT_double_int_t_std__allocatorT_std__pairT_double_int_t_t_t swig_types[60]
+#define SWIGTYPE_p_std__vectorT_std__pairT_double_std__vectorT_double_std__allocatorT_double_t_t_t_std__allocatorT_std__pairT_double_std__vectorT_double_std__allocatorT_double_t_t_t_t_t swig_types[61]
+#define SWIGTYPE_p_std__vectorT_std__pairT_std__string_int_t_std__allocatorT_std__pairT_std__string_int_t_t_t swig_types[62]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[63]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_bool_std__allocatorT_bool_t_t_std__allocatorT_std__vectorT_bool_std__allocatorT_bool_t_t_t_t swig_types[64]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_char_std__allocatorT_char_t_t_std__allocatorT_std__vectorT_char_std__allocatorT_char_t_t_t_t swig_types[65]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t swig_types[66]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t swig_types[67]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t swig_types[68]
+#define SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t swig_types[69]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[70]
+#define SWIGTYPE_p_std__vectorT_void_p_std__allocatorT_void_p_t_t swig_types[71]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[72]
+#define SWIGTYPE_p_uint64_t swig_types[73]
+#define SWIGTYPE_p_unsigned_char swig_types[74]
+#define SWIGTYPE_p_value_type swig_types[75]
+#define SWIGTYPE_p_void swig_types[76]
+static swig_type_info *swig_types[78];
+static swig_module_info swig_module = {swig_types, 77, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -42968,7 +42967,7 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
   char *arg4 = (char *) 0 ;
-  std::vector< char const *,std::allocator< char const * > > *arg5 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg5 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -42980,8 +42979,7 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int res4 ;
   char *buf4 = 0 ;
   int alloc4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
+  int res5 = SWIG_OLDOBJ ;
   bool result;
   
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
@@ -43005,28 +43003,33 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeoDaWeight_Save" "', argument " "4"" of type '" "char const *""'");
   }
   arg4 = reinterpret_cast< char * >(buf4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t,  0  | 0);
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GeoDaWeight_Save" "', argument " "5"" of type '" "std::vector< char const *,std::allocator< char const * > > const &""'"); 
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res5 = swig::asptr(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GeoDaWeight_Save" "', argument " "5"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaWeight_Save" "', argument " "5"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg5 = ptr;
   }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaWeight_Save" "', argument " "5"" of type '" "std::vector< char const *,std::allocator< char const * > > const &""'"); 
-  }
-  arg5 = reinterpret_cast< std::vector< char const *,std::allocator< char const * > > * >(argp5);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool)(arg1)->Save((char const *)arg2,(char const *)arg3,(char const *)arg4,(std::vector< char const *,std::allocator< char const * > > const &)*arg5);
+    result = (bool)(arg1)->Save((char const *)arg2,(char const *)arg3,(char const *)arg4,(std::vector< std::string,std::allocator< std::string > > const &)*arg5);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (SWIG_IsNewObj(res5)) delete arg5;
   return resultobj;
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (SWIG_IsNewObj(res5)) delete arg5;
   return NULL;
 }
 
@@ -43054,10 +43057,10 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_Save(PyObject *self, PyObject *args) {
           int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            int res = SWIG_ConvertPtr(argv[4], 0, SWIGTYPE_p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t, SWIG_POINTER_NO_NULL | 0);
+            int res = swig::asptr(argv[4], (std::vector< int,std::allocator< int > >**)(0));
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_GeoDaWeight_Save__SWIG_1(self, argc, argv);
+              return _wrap_GeoDaWeight_Save__SWIG_0(self, argc, argv);
             }
           }
         }
@@ -43079,10 +43082,10 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_Save(PyObject *self, PyObject *args) {
           int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            int res = swig::asptr(argv[4], (std::vector< int,std::allocator< int > >**)(0));
+            int res = swig::asptr(argv[4], (std::vector< std::string,std::allocator< std::string > >**)(0));
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_GeoDaWeight_Save__SWIG_0(self, argc, argv);
+              return _wrap_GeoDaWeight_Save__SWIG_1(self, argc, argv);
             }
           }
         }
@@ -43094,7 +43097,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GeoDaWeight_Save'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    GeoDaWeight::Save(char const *,char const *,char const *,std::vector< int,std::allocator< int > > const &)\n"
-    "    GeoDaWeight::Save(char const *,char const *,char const *,std::vector< char const *,std::allocator< char const * > > const &)\n");
+    "    GeoDaWeight::Save(char const *,char const *,char const *,std::vector< std::string,std::allocator< std::string > > const &)\n");
   return 0;
 }
 
@@ -66145,7 +66148,6 @@ static swig_type_info _swigt__p_std__pairT_std__string_int_t = {"_p_std__pairT_s
 static swig_type_info _swigt__p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t = {"_p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t", "std::vector< GeoDaColumn *,std::allocator< GeoDaColumn * > > *|std::vector< GeoDaColumn * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t = {"_p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t", "std::vector< GeoDaWeight *,std::allocator< GeoDaWeight * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t = {"_p_std__vectorT_bool_std__allocatorT_bool_t_t", "std::vector< bool,std::allocator< bool > > *|std::vector< bool > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t = {"_p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t", "std::vector< char const *,std::allocator< char const * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_char_p_std__allocatorT_char_p_t_t = {"_p_std__vectorT_char_p_std__allocatorT_char_p_t_t", "std::vector< char *,std::allocator< char * > > *|std::vector< char * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_char_std__allocatorT_char_t_t = {"_p_std__vectorT_char_std__allocatorT_char_t_t", "std::vector< char > *|std::vector< char,std::allocator< char > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)0, 0};
@@ -66225,7 +66227,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t,
   &_swigt__p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t,
   &_swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t,
-  &_swigt__p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t,
   &_swigt__p_std__vectorT_char_p_std__allocatorT_char_p_t_t,
   &_swigt__p_std__vectorT_char_std__allocatorT_char_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
@@ -66305,7 +66306,6 @@ static swig_cast_info _swigc__p_std__pairT_std__string_int_t[] = {  {&_swigt__p_
 static swig_cast_info _swigc__p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t[] = {  {&_swigt__p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t[] = {  {&_swigt__p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_bool_std__allocatorT_bool_t_t[] = {  {&_swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t[] = {  {&_swigt__p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_char_p_std__allocatorT_char_p_t_t[] = {  {&_swigt__p_std__vectorT_char_p_std__allocatorT_char_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_char_std__allocatorT_char_t_t[] = {  {&_swigt__p_std__vectorT_char_std__allocatorT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -66385,7 +66385,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_GeoDaColumn_p_std__allocatorT_GeoDaColumn_p_t_t,
   _swigc__p_std__vectorT_GeoDaWeight_p_std__allocatorT_GeoDaWeight_p_t_t,
   _swigc__p_std__vectorT_bool_std__allocatorT_bool_t_t,
-  _swigc__p_std__vectorT_char_const_p_std__allocatorT_char_const_p_t_t,
   _swigc__p_std__vectorT_char_p_std__allocatorT_char_p_t_t,
   _swigc__p_std__vectorT_char_std__allocatorT_char_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,

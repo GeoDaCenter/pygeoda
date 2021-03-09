@@ -309,17 +309,11 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetNeighbors</span></code>(idx)</p></td>
-<td><p>Compute neighbors of idx-th observation</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SaveToFile</span></code>(out_path, layer_name, id_name, …)</p></td>
-<td><p>Save current spatial weights to a file.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpatialLag</span></code>(idx, values)</p></td>
-<td><p>Compute spatial lag values of idx-th observation</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pygeoda.Weight.__init__" title="pygeoda.Weight.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(gda_w)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pygeoda.Weight.__init__" title="pygeoda.Weight.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(gda_w)</p></td>
 <td><p>Constructor of Weight class.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors</span></code>(idx)</p></td>
+<td><p>Get neighbors of idx-th observation</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_isolates</span></code>()</p></td>
 <td><p>Check if any observation has no neighbors</p></td>
@@ -338,6 +332,12 @@
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_neighbors</span></code>()</p></td>
 <td><p>Get minmum number of neighbors</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_weights</span></code>(out_path, layer_name, id_name, …)</p></td>
+<td><p>Save current spatial weights to a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_lag</span></code>(values)</p></td>
+<td><p>Compute spatial lagged values for values of selected variable</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">weights_sparsity</span></code>()</p></td>
 <td><p>Get sparsity computed from weights matrix</p></td>

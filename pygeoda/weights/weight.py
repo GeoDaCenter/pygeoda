@@ -110,9 +110,9 @@ class Weight:
             return self.gda_w.weight_type
 
 
-    def GetNeighbors(self, idx):
+    def get_neighbors(self, idx):
         """
-        Compute neighbors of idx-th observation
+        Get neighbors of idx-th observation
 
         Parameters
         ----------
@@ -127,26 +127,27 @@ class Weight:
         if self.gda_w != None:
             return self.gda_w.GetNeighbors(idx)
 
-    def SpatialLag(self, idx, values):
+    def spatial_lag(self, values):
         """
-        Compute spatial lag values of idx-th observation
+        Compute spatial lagged values for values of selected variable 
 
         Parameters
         ----------
-        idx : int
-            The index of observation
         values : tuple
             The tuple of values of selected column
 
         Returns
         -------
-        lag : float
-            the spatial lag value computed as:
+        lags : list
+            the computed spatial lagged values:
         """
         if self.gda_w != None:
-            return self.gda_w.SpatialLag(idx, values)
+            rst = []
+            for i in range(self.num_obs):
+                rst.append(self.gda_w.SpatialLag(i, values))
+            return rst
 
-    def SaveToFile(self, out_path, layer_name, id_name, id_values):
+    def save_weights(self, out_path, layer_name, id_name, id_values):
         """
         Save current spatial weights to a file.
 

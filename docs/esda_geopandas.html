@@ -123,26 +123,41 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">6. Local Indicators of Spatial Association</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-moran">6.1 Local Moran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#lisa-object">6.2 LISA object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-bivariate-join-count">6.6 Local Bivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-multivariate-join-count">6.7 Local Multivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#skater">7.1 SKATER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#redcap">7.2 REDCAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#max-p">7.3 Max-p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#spatially-constrained-hierarchical-clucstering">7.3 Spatially Constrained Hierarchical Clucstering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#azp">7.3 AZP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#azp-greedy">7.3.1 AZP greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#azp-simulated-annealing">7.3.2 AZP Simulated Annealing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#azp-tabu-search">7.3.3 AZP Tabu Search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#max-p">7.4 Max-p</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#max-p-greedy">7.4.1 Max-p greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#max-p-tabu-search">7.4.2 Max-p Tabu Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ESDA with pygeoda and geopandas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#geopandas">1 GeoPandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matplotlib">2 Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#geopandas-pygeoda">3 geoPandas + pygeoda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geopandas-pygeoda">3 GeoPandas + pygeoda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#load-geospatial-data-in-geopandas">3.1 Load geospatial data in GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-pygeoda-object-from-geodataframe">3.2 Create pygeoda object from geodataframe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">3.3 ESDA with pygeoda and geopandas</a></li>
@@ -170,7 +185,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
@@ -342,7 +357,7 @@ will solve this problem:</p>
 </div>
 </div>
 <div class="section" id="geopandas-pygeoda">
-<h2>3 geoPandas + pygeoda<a class="headerlink" href="#geopandas-pygeoda" title="Permalink to this headline">¶</a></h2>
+<h2>3 GeoPandas + pygeoda<a class="headerlink" href="#geopandas-pygeoda" title="Permalink to this headline">¶</a></h2>
 <p>geopandas has been an essential python library to handle geospatial data,
 apply spatial operations and visualize maps. It is becoming an entry point
 of the spatial data analysis. A typical workflow of spatial data analysis
@@ -388,7 +403,7 @@ a map on a plot (matplotlib):</p>
 <p>pygeoda provides a utility function geopandas_to_geoda to easily create
 a pygeoda instance for spatial data analysis:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pygeoda</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">geopandas_to_geoda</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guerry</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -401,17 +416,17 @@ which can be then used to access GeoDa functions to do spatial data
 analysis. For example, to examine the local Moran of variable “crm_prs”
 (Population per Crime against persons), we first create a Queen
 contiguity weights:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">queen</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">queen_w</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">queen_weights</span><span class="p">(</span><span class="n">guerry</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">queen_w</span>
 <span class="go">Weights Meta-data:</span>
-
-<span class="go">is symmetric:True</span>
-<span class="go">sparsity:0.0</span>
-<span class="go">density:5.813148788927336</span>
-<span class="go">min neighbors:2</span>
-<span class="go">mean neighbors:4.9411764705882355</span>
-<span class="go">median neighbors:5.0</span>
-<span class="go">max neighbors:8</span>
+<span class="go"> number of observations:                   85</span>
+<span class="go">           is symmetric:                 True</span>
+<span class="go">               sparsity:  0.05813148788927336</span>
+<span class="go">        # min neighbors:                    2</span>
+<span class="go">        # max neighbors:                    8</span>
+<span class="go">       # mean neighbors:   4.9411764705882355</span>
+<span class="go">     # median neighbors:                  5.0</span>
+<span class="go">           has isolates:                Fals</span>
 </pre></div>
 </div>
 </div>
@@ -421,7 +436,7 @@ contiguity weights:</p>
 <p>Now, with the geoda object <cite>guerry</cite>, you can call pygeoda’s spatial
 analysis functions. For example, to examine the local Moran statistics
 of variable “crm_prs” (Population per Crime against persons):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">crm_prp</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Crm_prs</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">crm_prp</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crm_lisa</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_moran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">crm_prp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -431,11 +446,11 @@ by generating a LISA cluster map:</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
-<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">lisa_colors</span><span class="p">()</span>
+<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">lisa_labels</span><span class="p">()</span>
 
 <span class="c1"># attach LISA cluster indicators to geodataframe</span>
-<span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;LISA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;LISA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">lisa_clusters</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">ctype</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LISA&#39;</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">lisa_colors</span><span class="p">[</span><span class="n">ctype</span><span class="p">]</span>
@@ -465,7 +480,7 @@ integer numbers 0 (not significant), 1 (high-high cluster),
 5 (neighborless/island), 6 (undefined), which are excatly the same with
 GeoDa software when you save LISA results to a table.</p>
 <p>To create a siginificant map that is associated with the Local Moran map:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;LISA_PVAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">GetPValues</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;LISA_PVAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_lisa</span><span class="o">.</span><span class="n">lisa_pvalues</span><span class="p">()</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#eeeeee&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
 <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;LISA_PVAL&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#84f576&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -483,11 +498,11 @@ GeoDa software when you save LISA results to a table.</p>
 </div>
 <p>Then, use matplotlib to create a local geary map:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
-<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">lisa_colors</span><span class="p">()</span>
+<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">lisa_labels</span><span class="p">()</span>
 
 <span class="c1"># attach LISA cluster indicators to geodataframe</span>
-<span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;GEARY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;GEARY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_geary</span><span class="o">.</span><span class="n">lisa_clusters</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">ctype</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;GEARY&#39;</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">lisa_colors</span><span class="p">[</span><span class="n">ctype</span><span class="p">]</span>
@@ -513,8 +528,8 @@ GeoDa software when you save LISA results to a table.</p>
 </div>
 <p>Then, use matplotlib to create a local geary map:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_g</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
-<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_g</span><span class="o">.</span><span class="n">GetLabels</span><span class="p">()</span>
+<span class="n">lisa_colors</span> <span class="o">=</span> <span class="n">crm_g</span><span class="o">.</span><span class="n">lisa_colors</span><span class="p">()</span>
+<span class="n">lisa_labels</span> <span class="o">=</span> <span class="n">crm_g</span><span class="o">.</span><span class="n">lisa_labels</span><span class="p">()</span>
 
 <span class="c1"># attach LISA cluster indicators to geodataframe</span>
 <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;GO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crm_g</span><span class="o">.</span><span class="n">GetClusterIndicators</span><span class="p">()</span>
@@ -536,63 +551,6 @@ GeoDa software when you save LISA results to a table.</p>
 </pre></div>
 </div>
 <img alt="images/guerry_g.png" src="images/guerry_g.png" />
-<p><strong>SKATER Map</strong></p>
-<p>To create a map of SKATER clustering results, we first run skater clustering
-on the data of 6 selected variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">Crm_prs</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Crm_prp</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Litercy</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Donatns</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Infants</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Suicids</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skater_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">skater</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">skater_cluster</span><span class="p">)</span>
-<span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>
-</pre></div>
-</div>
-<p>The results of the <cite>skater()</cite> function is a 2d list that represents
-groups of clusters. For plotting, we first flat this 2d list to a 1d list
-that each element has a value representing which cluster this element
-belongs to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flat_cluster</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">guerry</span><span class="o">.</span><span class="n">num_obs</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="n">flat_cluster</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">cid</span>
-</pre></div>
-</div>
-<p>You can wrap above code piece as a function which can be reused:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flat_2dcluster</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
-    <span class="n">num_obs</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">)</span>
-    <span class="n">flat_cluster</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_obs</span>
-    <span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
-            <span class="n">flat_cluster</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">cid</span>
-    <span class="k">return</span> <span class="n">flat_cluster</span>
-</pre></div>
-</div>
-<p>To make a plot:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;SKATER_C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flat_2dcluster</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;SKATER_C&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Pastel1&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SKATER Clustering Map&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-</pre></div>
-</div>
-<img alt="images/guerry_skater.png" src="images/guerry_skater.png" />
-<p><strong>Max-p Clustering Map</strong></p>
-<p>To make a map of Max-p clustering results, we first run skater clustering
-on the data of 6 selected variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bound_vals</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">Pop1831</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">min_bound</span> <span class="o">=</span> <span class="mf">3236.67</span> <span class="c1"># 10% of Pop1831</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">)</span>
-<span class="go">((13, 31, 5, 45, 11, 79, 27, 78, 23, 4, 3, 43, 35, 66, 44, 30), (34, 16, 33, 55, 46, 69, 58, 47, 50, 38), (77, 9, 7, 28, 62, 29, 37, 61, 63, 10, 76), (67, 65, 83, 64, 54, 52, 51, 22, 48, 8), (0, 68, 60, 40, 2, 39, 20, 17, 21, 14), (25, 42, 24, 73, 70, 12, 71), (75, 56, 6, 1, 59, 18, 57, 72, 49, 36, 84), (80, 41, 32, 26, 19, 53, 74, 81, 15, 82))</span>
-</pre></div>
-</div>
-<p>To make a plot using matplotlib:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;MAXP_C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flat_2dcluster</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;MAXP_C&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Pastel1&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Max-p Clustering Map&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-</pre></div>
-</div>
-<img alt="images/guerry_maxp.png" src="images/guerry_maxp.png" />
 </div>
 </div>
 </div>
