@@ -36,12 +36,12 @@ def local_quantilelisa(w, data, k, q, **kwargs):
         raise ValueError("The data from selected variable is empty.")
 
     if k == None or k < 1:
-        raise ValueError("The value of k needs to be greater than or equal to 1 ")
+        raise ValueError("The value of k needs to be greater than 1 ")
 
     if q == None or q < 0:
-        raise ValueError("The value of q needs to be greater than to 0")
+        raise ValueError("The value of q needs to be greater than 0")
     elif q > k:
-        raise ValueError("The value of q needs to be smaller than or equal to the max value of k")
+        raise ValueError("The value of q needs to be smaller than or equal to k")
 
     undefs = VecBool() if 'undefs' not in kwargs else kwargs['undefs']
     significance_cutoff = 0.05 if 'significance_cutoff' not in kwargs else kwargs['significance_cutoff']

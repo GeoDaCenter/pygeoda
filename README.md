@@ -26,7 +26,7 @@ pip install git+https://github.com/geodacenter/pygeoda
 
 See more details: https://geodacenter.github.io/pygeoda/install.html
 
-#### Docs
+#### Documentation
 
 [https://geodacenter.github.io/pygeoda](https://geodacenter.github.io/pygeoda)
 
@@ -47,7 +47,7 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
 #    lisa_colors(): ('#eeeeee', '#FF0000', '#0000FF', '#a7adf9', '#f4ada8', '#464646', '#999999')
 ```
 
-* GeoPandas + pygeoda
+* pygeoda + GeoPandas
 
 ```Python
 import geopandas
@@ -76,7 +76,7 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
     * K-Nearest Neighbor
     * Kernel
     
-* Spatial Autocorrelation
+* Local Indicators of Spatial Association (LISA)
     * Local Moran
     * Local Geary
     * Local Getis-Ord 

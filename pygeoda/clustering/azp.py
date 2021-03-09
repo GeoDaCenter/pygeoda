@@ -74,7 +74,7 @@ def azp_greedy(p, w, data, **kwargs):
 
     return {
         "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
@@ -151,7 +151,7 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
 
     return {
         "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
@@ -225,7 +225,7 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
 
     return {
         "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),

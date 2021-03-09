@@ -123,26 +123,41 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../spatial_auto.html">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_auto.html">6. Local Indicators of Spatial Association</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-moran">6.1 Local Moran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#lisa-object">6.2 LISA object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-bivariate-join-count">6.6 Local Bivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#local-multivariate-join-count">6.7 Local Multivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../spatial_clustering.html">7. Spatial Clustering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#skater">7.1 SKATER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#redcap">7.2 REDCAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#max-p">7.3 Max-p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#spatially-constrained-hierarchical-clucstering">7.3 Spatially Constrained Hierarchical Clucstering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#azp">7.3 AZP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#azp-greedy">7.3.1 AZP greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#azp-simulated-annealing">7.3.2 AZP Simulated Annealing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#azp-tabu-search">7.3.3 AZP Tabu Search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_clustering.html#max-p">7.4 Max-p</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#max-p-greedy">7.4.1 Max-p greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#max-p-tabu-search">7.4.2 Max-p Tabu Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_clustering.html#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#geopandas">1 GeoPandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#matplotlib">2 Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#geopandas-pygeoda">3 geoPandas + pygeoda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../esda_geopandas.html#geopandas-pygeoda">3 GeoPandas + pygeoda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#load-geospatial-data-in-geopandas">3.1 Load geospatial data in GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#create-pygeoda-object-from-geodataframe">3.2 Create pygeoda object from geodataframe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../esda_geopandas.html#id1">3.3 ESDA with pygeoda and geopandas</a></li>
@@ -170,7 +185,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_moran.html">pygeoda.local_moran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_geary.html">pygeoda.local_geary</a></li>
@@ -291,9 +306,6 @@
 <dt id="pygeoda.open">
 <code class="sig-prename descclassname"><span class="pre">pygeoda.</span></code><code class="sig-name descname"><span class="pre">open</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/gda.html#open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a geoda object by reading a spatial dataset: either ESRI Shapefile or GeoPandas object.</p>
-<p>Since pygeoda v0.0.4, it only supports ESRI Shapefile. In pygeoda v0.0.8, one can use
-geopandas to load spatial dataset, and then use <cite>open()</cite> function to
-create a geoda object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data_source</strong> (<em>object</em>) – The data_source could be either the file path of the ESRI shapefile or a geopandas dataframe object.</p>

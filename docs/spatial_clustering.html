@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="_ESDA with pygeoda and geopandas" href="esda_geopandas.html" />
-    <link rel="prev" title="5 Spatial Autocorrelation" href="spatial_auto.html" /> 
+    <link rel="prev" title="5 Local Indicators of Spatial Association–LISA" href="spatial_auto.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -123,26 +123,41 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="spatial_auto.html">6. Local Indicators of Spatial Association</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-moran">6.1 Local Moran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#lisa-object">6.2 LISA object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-bivariate-join-count">6.6 Local Bivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#local-multivariate-join-count">6.7 Local Multivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Spatial Clustering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#skater">7.1 SKATER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#redcap">7.2 REDCAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#max-p">7.3 Max-p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spatially-constrained-hierarchical-clucstering">7.3 Spatially Constrained Hierarchical Clucstering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#azp">7.3 AZP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#azp-greedy">7.3.1 AZP greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#azp-simulated-annealing">7.3.2 AZP Simulated Annealing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#azp-tabu-search">7.3.3 AZP Tabu Search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#max-p">7.4 Max-p</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#max-p-greedy">7.4.1 Max-p greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#max-p-tabu-search">7.4.2 Max-p Tabu Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas">1 GeoPandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#matplotlib">2 Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas-pygeoda">3 geoPandas + pygeoda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="esda_geopandas.html#geopandas-pygeoda">3 GeoPandas + pygeoda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#load-geospatial-data-in-geopandas">3.1 Load geospatial data in GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#create-pygeoda-object-from-geodataframe">3.2 Create pygeoda object from geodataframe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="esda_geopandas.html#id1">3.3 ESDA with pygeoda and geopandas</a></li>
@@ -170,7 +185,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
@@ -290,20 +305,17 @@ geographic areas or points into a smaller number of regions
 based on similiarities in one or more variables.
 Spatially constrained clustering is needed when clusters are
 required to be spatially contiguous.</p>
-<p>In pygeoda v0.0.4, there are three different approaches
+<p>In pygeoda, there are three different approaches
 explicitly incorporate the contiguity constraint in the
 optimization process: SKATER, Redcap and Max-p.
-More more details, please read the lab note that
-Dr. Luc Anselin wrote:
-<a class="reference external" href="http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html">http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html</a></p>
+For more details, please read:
+* <a class="reference external" href="http://geodacenter.github.io/workbook/9c_spatial3/lab9c.html">http://geodacenter.github.io/workbook/9c_spatial3/lab9c.html</a>
+* <a class="reference external" href="http://geodacenter.github.io/workbook/9d_spatial4/lab9d.html">http://geodacenter.github.io/workbook/9d_spatial4/lab9d.html</a></p>
 <p>For example, to apply spatial clustering on the Guerry dataset,
 we use the queen weights to define the spatial contiguity
 and select 6 variables for similarity measure:
-“Crm_prs”, “Crm_prp”, “Litercy”, “Donatns”, “Infants”, “Suicids”.</p>
-<p>The following code is used to get a 2D data list for
-the selected variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Crm_prs&quot;</span><span class="p">,</span> <span class="s2">&quot;Crm_prp&quot;</span><span class="p">,</span> <span class="s2">&quot;Litercy&quot;</span><span class="p">,</span> <span class="s2">&quot;Donatns&quot;</span><span class="p">,</span> <span class="s2">&quot;Infants&quot;</span><span class="p">,</span> <span class="s2">&quot;Suicids&quot;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">select_vars</span><span class="p">]</span>
+“Crm_prs”, “Crm_prp”, “Litercy”, “Donatns”, “Infants”, “Suicids”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[[</span><span class="s2">&quot;Crm_prs&quot;</span><span class="p">,</span> <span class="s2">&quot;Crm_prp&quot;</span><span class="p">,</span> <span class="s2">&quot;Litercy&quot;</span><span class="p">,</span> <span class="s2">&quot;Donatns&quot;</span><span class="p">,</span> <span class="s2">&quot;Infants&quot;</span><span class="p">,</span> <span class="s2">&quot;Suicids&quot;</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
 </pre></div>
 </div>
@@ -331,31 +343,31 @@ that their values of selected variables are as similar as possible.</p>
 <cite>skater()</cite> with Guerry dataset, the queen weights and the
 values of the 6 selected variables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">skater_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">skater</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">)</span>
-<span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skater_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [57.890768263715266,</span>
+<span class="go">59.95241669262987,</span>
+<span class="go">28.725706194374844,</span>
+<span class="go">69.3802999471999,</span>
+<span class="go">62.30781060793979,</span>
+<span class="go">66.65808666485573],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 159.0849116292847,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.3156446659311204,</span>
+<span class="go">&#39;Clusters&#39;: (3, 2, 3, 1, 1, 1, 2, 1,...)</span>
+<span class="go">}</span>
 </pre></div>
 </div>
-<p>This <cite>skater()</cite> function returns a 2D list, which represents
-4 clusters. Each cluster is composed by several contiguity areas,
-e.g. 15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80</p>
-<p>pygeoda also provides utility functions to compute some descriptive
-statistics of the clustering results, e.g. to compute the ratio
-of between to total sum of squares:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">&lt;-</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">skater_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">totalss</span> <span class="o">&lt;-</span> <span class="n">total_sumofsquare</span><span class="p">(</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&lt;-</span>  <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.3156446659311204</span>
-</pre></div>
-</div>
+<p>This skater() function returns a names list with names “Clusters”,
+“Total sum of squares”, “Within-cluster sum of squares”,
+“Total within-cluster sum of squares”, and “The ratio of between
+to total sum of squares”.</p>
 </div>
 <div class="section" id="redcap">
 <h2>7.2 REDCAP<a class="headerlink" href="#redcap" title="Permalink to this headline">¶</a></h2>
 <p>REDCAP (Regionalization with dynamically constrained agglomerative
 clustering and partitioning) is developed by D. Guo (2008).
 Like SKATER, REDCAP starts from building a spanning tree with
-3 different ways (single-linkage, average-linkage, and the complete-linkage).
-The single-linkage way leads to build a minimum spanning tree.
+4 different ways (single-linkage, average-linkage, complete-linkage and wards-linkage).
 Then,REDCAP provides 2 different ways (first‐order and full-order
 constraining) to prune the tree to find clusters. The first-order
 approach with a minimum spanning tree is exactly the same with SKATER.
@@ -365,22 +377,142 @@ In GeoDa and pygeoda, the following methods are provided:</p>
 <li><p>Full-order and Complete-linkage</p></li>
 <li><p>Full-order and Average-linkage</p></li>
 <li><p>Full-order and Single-linkage</p></li>
+<li><p>Full-order and Wards-linkage</p></li>
 </ul>
 <p>For example, to find 4 clusters using the same dataset and weights
 as above using REDCAP with Full-order and Complete-linkage method:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">redcap_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">redcap</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;fullorder-completelinkage&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">redcap_clusters</span><span class="p">)</span>
-<span class="go">((15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80), (46, 50, 34, 38, 69, 47, 58, 19, 32, 41, 53, 26), (23, 79, 3, 29, 61, 21, 44, 11, 28, 13, 30, 35, 76, 77, 43, 9, 27, 45, 31, 78, 4, 10, 66, 37, 5, 14, 7, 63, 62), (49, 52, 72, 84, 8, 57, 56, 59, 42, 1, 25, 51, 48, 54, 64, 75, 18, 83, 73, 36, 24, 71, 6, 67, 65, 70, 22, 12))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">redcap_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">totalss</span> <span class="o">=</span> <span class="n">total_sumofsquare</span><span class="p">(</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.1905641377254551</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">redcap_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [59.33033487635985,</span>
+<span class="go">55.0157958268228,</span>
+<span class="go">28.202717566163827,</span>
+<span class="go">68.5897406247226,</span>
+<span class="go">61.2723190783986,</span>
+<span class="go">54.63519052499109],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 176.95390150254138,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.35109901091774076,</span>
+<span class="go">&#39;Clusters&#39;: (1, 2, 1, 3, 3, 1, 2,...)</span>
+<span class="go">}</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="spatially-constrained-hierarchical-clucstering">
+<h2>7.3 Spatially Constrained Hierarchical Clucstering<a class="headerlink" href="#spatially-constrained-hierarchical-clucstering" title="Permalink to this headline">¶</a></h2>
+<p>Spatially constrained hierarchical clustering is a special form of constrained clustering,
+where the constraint is based on contiguity (common borders). The method builds up the
+clusters using agglomerative hierarchical clustering methods: single linkage,
+complete linkage, average linkage and Ward’s method (a special form of centroid linkage).
+Meanwhile, it also maintains the spatial contiguity when merging two clusters.</p>
+<p>For example, to find 4 spatially constrained clusters using the same dataset and weights
+as above using Complete-linkage method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">schc_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">schc</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;complete&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schc</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [78.13831458170165,</span>
+<span class="go">54.758683422512384,</span>
+<span class="go">81.49770916157574,</span>
+<span class="go">63.48674702445253,</span>
+<span class="go">80.60111094248678,</span>
+<span class="go">65.74388628224132],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 79.77354858502969,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.15828085036712236,</span>
+<span class="go">&#39;Clusters&#39;: (1,1,1,1,1,1,...)</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="azp">
+<h2>7.3 AZP<a class="headerlink" href="#azp" title="Permalink to this headline">¶</a></h2>
+<p>The automatic zoning procedure (AZP) was initially outlined in Openshaw (1977) as
+a way to address some of the consequences of the modifiable areal unit problem
+(MAUP). In essence, it consists of a heuristic to find the best set of
+combinations of contiguous spatial units into p regions, minimizing the
+within-sum of squares as a criterion of homogeneity. The number of regions
+needs to be specified beforehand, as in most other clustering methods considered so far.</p>
+<p>pygeoda provides three different heuristic algorithms to find an optimal solution for AZP:</p>
+<ul class="simple">
+<li><p>greedy</p></li>
+<li><p>Tabu Search</p></li>
+<li><p>Simulated Annealing</p></li>
+</ul>
+<div class="section" id="azp-greedy">
+<h3>7.3.1 AZP greedy<a class="headerlink" href="#azp-greedy" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>The original AZP heuristic is a local optimization procedure that cycles through</dt><dd><p>a series of possible swaps between spatial units at the boundary of a set
+of regions. The process starts with an initial feasible solution, i.e.,
+a grouping of n spatial units into p contiguous regions. This initial
+solution can be constructed in several different ways. The initial
+solution must satisfy the contiguity constraints. For example, this
+can be accomplished by growing a set of contiguous regions from p
+randomly selected seed units by adding neighboring locations until
+the contiguity constraint can no longer be met.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">azp_greedy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [47.20702629865675,</span>
+<span class="go">60.10164576171729,</span>
+<span class="go">32.71213364540346,</span>
+<span class="go">57.69759599152196,</span>
+<span class="go">59.4167280770582,</span>
+<span class="go">65.49840467351049],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 181.3664655521319,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.3598540983177219,</span>
+<span class="go">&#39;Clusters&#39;: (5, 2, 3, 1, 1, 1, ...)</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="azp-simulated-annealing">
+<h3>7.3.2 AZP Simulated Annealing<a class="headerlink" href="#azp-simulated-annealing" title="Permalink to this headline">¶</a></h3>
+<p>To call AZP simulate annealing algorithm, one needs to specify cooling_rate (default: 0.85):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">azp_sa</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cooling_rate</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [55.44537005496083,</span>
+<span class="go">44.49165717470521,</span>
+<span class="go">31.26639087099905,</span>
+<span class="go">44.79845917679877,</span>
+<span class="go">61.49413146833172,</span>
+<span class="go">54.251299642381724],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 212.25269161182268,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.42113629288060045,</span>
+<span class="go">&#39;Clusters&#39;: (5, 2, 5, 1, 1, 1, 2, 1, ...}</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="azp-tabu-search">
+<h3>7.3.3 AZP Tabu Search<a class="headerlink" href="#azp-tabu-search" title="Permalink to this headline">¶</a></h3>
+<p>To call AZP Tabu search algorithm, one needs to specify tabu_length (deafult: 10) ,
+or conv_tabu (default: 10):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">azp_tabu</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">tabu_length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">conv_tabu</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [52.20795794704135,</span>
+<span class="go">39.86439151302456,</span>
+<span class="go">30.75532090551626,</span>
+<span class="go">54.95105937296297,</span>
+<span class="go">54.004395690763246,</span>
+<span class="go">59.41930677822133],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 212.79756779247032,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.4222173964136315,</span>
+<span class="go">&#39;Clusters&#39;: (4, 1, 2, 3, 3, 3, ...)</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NOTE: the AZP algorithm is very sensitive to the initial positions for constructing final solutions.
+Therefore, the random seed, which is used to determine the initial positions, could be used
+to execute several rounds of max-p algorithms for sensitive analysis.</p>
+</div>
+</div>
+</div>
 <div class="section" id="max-p">
-<h2>7.3 Max-p<a class="headerlink" href="#max-p" title="Permalink to this headline">¶</a></h2>
+<h2>7.4 Max-p<a class="headerlink" href="#max-p" title="Permalink to this headline">¶</a></h2>
 <p>The so-called max-p regions model (outlined in Duque, Anselin, and Rey 2012)
 uses a different approach and considers the regionalization problem as
 an application of integer programming. In addition, the number of regions
@@ -400,11 +532,13 @@ as an input paramter, max-p doesn’t allow to specify the number of
 clusters explicitly, but a constrained variable and the minimum bounding
 value that each cluster should reach that are used to find an optimized
 number of clusters.</p>
+<div class="section" id="max-p-greedy">
+<h3>7.4.1 Max-p greedy<a class="headerlink" href="#max-p-greedy" title="Permalink to this headline">¶</a></h3>
 <p>For example, to use <cite>greedy</cite> algorithm in maxp function with the same
 dataset and weights as above to find optimal clusters using max-p:</p>
 <p>First, we need to specify, for example, every cluster must have
 population &gt;= 3236.67 thousands people:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bound_vals</span> <span class="o">=</span> <span class="n">guerry</span><span class="o">.</span><span class="n">GetRealCol</span><span class="p">(</span><span class="s2">&quot;Pop1831&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bound_vals</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[</span><span class="s2">&quot;Pop1831&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">min_bound</span> <span class="o">=</span> <span class="mf">3236.67</span> <span class="c1"># 10% of Pop1831</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bound_vals</span><span class="p">)</span>
 <span class="go">(346.03, 513.0, 298.26, 155.9, 129.1, 340.73, 289.62, 253.12, 246.36, 270.13, 359.06, 359.47, 494.7, 258.59, 362.53, 445.25, 256.06, 294.83, 375.88, 598.87, 265.38, 482.75, 265.54, 299.56, 424.25, 278.82, 524.4, 357.38, 427.86, 312.16, 554.23, 346.3, 547.05, 245.29, 297.02, 550.26, 312.5, 281.5, 235.75, 391.22, 292.08, 470.09, 305.28, 283.83, 346.89, 140.35, 467.87, 591.28, 337.08, 249.83, 352.59, 415.57, 314.59, 433.52, 417.0, 282.52, 989.94, 397.73, 441.88, 655.22, 573.11, 428.4, 233.03, 157.05, 540.21, 424.26, 434.43, 338.91, 523.97, 457.37, 935.11, 693.68, 323.89, 448.18, 297.85, 543.7, 333.84, 242.51, 317.5, 239.11, 330.36, 282.73, 285.13, 397.99, 352.49)</span>
@@ -412,38 +546,82 @@ population &gt;= 3236.67 thousands people:</p>
 </div>
 <p>Then, we can call the max-p function with “greedy” algorithm,
 the bound values and minimum bound value:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.507018079733202</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp_greedy</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [58.53340105931292,</span>
+<span class="go">44.29869690985993,</span>
+<span class="go">26.788351483048764,</span>
+<span class="go">50.6761352058351,</span>
+<span class="go">50.075425319038615,</span>
+<span class="go">46.844568220802984],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 226.7834218021017,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.4499671067502017,</span>
+<span class="go">&#39;Clusters&#39;: (4,8,6,3,4,3,...)</span>
+<span class="go">}</span>
 </pre></div>
 </div>
-<p>We can also specify using <cite>tabu search</cite> algorithm in maxp function
+</div>
+<div class="section" id="max-p-tabu-search">
+<h3>7.4.2 Max-p Tabu Search<a class="headerlink" href="#max-p-tabu-search" title="Permalink to this headline">¶</a></h3>
+<p>We can also specify using <cite>Tabu Search</cite> algorithm in maxp function
 with the parameter of tabu length:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_tabu_clusters</span> <span class="o">=</span> <span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;tabu&quot;</span><span class="p">,</span> <span class="n">tabu_length</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_tabu_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.5280299052291919</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_tabu_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp_tabu</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span>  <span class="n">tabu_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">conv_tabu</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_tabu_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [41.67029875441199,</span>
+<span class="go">38.07924627625834,</span>
+<span class="go">26.226691715076896,</span>
+<span class="go">52.738669711271385,</span>
+<span class="go">44.51343645827698,</span>
+<span class="go">54.13078236136856],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 246.6408747233359,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.4893668149272537,</span>
+<span class="go">&#39;Clusters&#39;: (6,2,6,1,1,6,2,1,3,...)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="max-p-simulated-annealing">
+<h3>7.4.3 Max-p Simulated Annealing<a class="headerlink" href="#max-p-simulated-annealing" title="Permalink to this headline">¶</a></h3>
 <p>To apply <cite>simulated annealing</cite> algorithm in maxp function with
 the parameter of cooling rate:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_sa_clusters</span> <span class="o">=</span> <span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;sa&quot;</span><span class="p">,</span> <span class="n">cool_rate</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">&lt;-</span> <span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_sa_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">&lt;-</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The ratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.5260248902417842</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_sa_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp_sa</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="n">cooling_rate</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">sa_maxit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_sa_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: [49.54630063745117,</span>
+<span class="go">52.715283326199796,</span>
+<span class="go">31.389297593661983,</span>
+<span class="go">47.57063859231485,</span>
+<span class="go">44.96761523907647,</span>
+<span class="go">46.709112570389934],</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 231.10175204090598,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.4585352223033848,</span>
+<span class="go">&#39;Clusters&#39;: (2,8,5,2,2,4,8,...)</span>
+<span class="go">}</span>
 </pre></div>
 </div>
 <p>We can also increase the number of iterations for local search process by specifying the parameter <cite>initial</cite> (default value is 99):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">betweenss</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">between_sumofsquare</span><span class="p">(</span><span class="n">maxp_clusters</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">betweenss</span> <span class="o">/</span> <span class="n">totalss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tratio of between to total sum of square:&quot;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
-<span class="go">The ratio of between to total sum of square: 0.5260248902417843</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">maxp_greedy</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bound_vals</span><span class="p">,</span> <span class="n">min_bound</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">199</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maxp_clusters</span>
+<span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
+<span class="go">&#39;Within-cluster sum of squares&#39;: (50.454710071353645,</span>
+<span class="go">42.41705106362629,</span>
+<span class="go">23.35406627133095,</span>
+<span class="go">52.46200977080593,</span>
+<span class="go">47.809353880636685,</span>
+<span class="go">46.88761433133685),</span>
+<span class="go">&#39;Total within-cluster sum of squares&#39;: 240.61519461090978,</span>
+<span class="go">&#39;The ratio of between to total sum of squares&#39;: 0.4774111004184717,</span>
+<span class="go">&#39;Clusters&#39;: (2,7,4,2,2,2,7,...)</span>
+<span class="go">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NOTE: the max-p algorithm is very sensitive to the initial positions for constructing final solutions.
+Therefore, the random seed, which is used to determine the initial positions, could be used
+to execute several rounds of max-p algorithms for sensitive analysis.</p>
+</div>
 </div>
 </div>
 </div>
@@ -455,7 +633,7 @@ the parameter of cooling rate:</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="esda_geopandas.html" class="btn btn-neutral float-right" title="_ESDA with pygeoda and geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="spatial_auto.html" class="btn btn-neutral float-left" title="5 Spatial Autocorrelation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="spatial_auto.html" class="btn btn-neutral float-left" title="5 Local Indicators of Spatial Association–LISA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

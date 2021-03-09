@@ -73,7 +73,7 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
 
     return {
         "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
@@ -149,7 +149,7 @@ def maxp_sa(w, data, bound_variable, min_bound, cooling_rate=0.85, **kwargs):
 
     return {
        "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
@@ -222,7 +222,7 @@ def maxp_tabu(w, data, bound_variable, min_bound, tabu_length=10, **kwargs):
 
     return {
         "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : list(within_ss) + [0]*(len(cluster_ids) - len(within_ss)),
+        "Within-cluster sum of squares" : within_ss,
         "Total within-cluster sum of squares" : between_ss,
         "The ratio of between to total sum of squares" : ratio,
         "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),

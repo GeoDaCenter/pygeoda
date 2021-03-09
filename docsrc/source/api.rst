@@ -31,7 +31,7 @@ pygeoda.weights
    pygeoda.kernel_knn_weights
 
 
-pygeoda (spatial autocorrelation)
+pygeoda (LISA)
 ---------------------------------
 
 .. autosummary::
