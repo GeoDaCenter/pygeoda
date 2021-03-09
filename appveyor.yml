@@ -14,14 +14,6 @@ environment:
 
   matrix:
 
-    - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "64"
-
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "32"
@@ -54,6 +46,13 @@ environment:
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "64"
 
+    - PYTHON: "C:\\Python39"
+      PYTHON_VERSION: "3.9.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python39-x64"
+      PYTHON_VERSION: "3.9.x"
+      PYTHON_ARCH: "64"
 
 matrix:
   fast_finish: true
@@ -75,10 +74,10 @@ matrix:
       PYTHON: "C:\\Python38"
     - image: Visual Studio 2015
       PYTHON: "C:\\Python38-x64"
-    - image: Visual Studio 2017
-      PYTHON: "C:\\Python27"
-    - image: Visual Studio 2017
-      PYTHON: "C:\\Python27-x64"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python39"
+    - image: Visual Studio 2015
+      PYTHON: "C:\\Python39-x64"
     
 install:
   # note: VS 2010 has stdint.h bundled so simply copy it. Cython should not
