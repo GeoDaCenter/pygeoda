@@ -70,6 +70,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     EXTRA_COMPILE_ARGS += [
         '/EHsc', #MSVC is not throwing exceptions, boost::throw_exception error
         '/MD', # only for python 27  amd64
+        '/DNOMINMAX', # for win Macro define for min/max that impacts std::numeric_limits<int>::max()
     ]
 else:
     EXTRA_COMPILE_ARGS = [
