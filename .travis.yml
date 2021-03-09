@@ -1,5 +1,10 @@
 language: python
-
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  - "3.9"
+  
 jobs:
   include:
     # perform a linux build
@@ -16,7 +21,7 @@ env:
     # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
 
 install:
-  - python3 -m pip install twine cibuildwheel==1.6.3
+  - python3 -m pip install twine cibuildwheel
 
 script:
   # build the wheels, put them into './wheelhouse'
