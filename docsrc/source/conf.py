@@ -61,8 +61,8 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['static']
 
 html_theme_options = {
-    'canonical_url': '',
-    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
+    'canonical_url': 'https://geodacenter.github.io/pygeoda',
+    'analytics_id': 'UA-182260526-2',  #  Provided by Google in your dashboard
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
