@@ -1,7 +1,7 @@
 # pygeoda
 
-[![Build Status](https://travis-ci.org/lixun910/pygeoda.svg?branch=master)](https://travis-ci.org/lixun910/pygeoda)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/lixun910/pygeoda?svg=true)](https://ci.appveyor.com/project/lixun910/pygeoda)
+[![Build Status](https://travis-ci.org/geodacenter/pygeoda.svg?branch=master)](https://travis-ci.org/geodacenter/pygeoda)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/geodacenter/pygeoda?svg=true)](https://ci.appveyor.com/project/geodacenter/pygeoda)
 [![PyPI version](https://badge.fury.io/py/pygeoda.svg)](https://badge.fury.io/py/pygeoda)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pygeoda)
 
