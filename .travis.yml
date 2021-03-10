@@ -1,5 +1,8 @@
 language: python
   
+python:
+  - '3.8'
+  
 jobs:
   include:
     # perform a linux build
@@ -16,15 +19,18 @@ env:
     # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
 
 install:
-  - python3 -m pip install twine cibuildwheel
+  - python3 -m pip install twine setuptools wheel
 
 script:
   # build the wheels, put them into './wheelhouse'
-  - python3 -m cibuildwheel --output-dir wheelhouse
+  - pip wheel -v -w wheelhouse --no-deps .
 
-after_success:
-  # if the release was tagged, upload them to PyPI
-  - |
-    if [[ $TRAVIS_TAG ]]; then
-      python3 -m twine upload wheelhouse/*.whl
-    fi
+deploy:
+  provider: pypi
+  distributions: "sdist bdist_wheel"
+  skip_existing: true
+  username: "__token__"
+  password:
+    secure: IcYbVdo5MAa0M6f0T+6GzxR1U7452cmAQHqV03SZVVEMf4N7PrJMa3B8CKjTX73fywN/JJvgtO61prJKmGyMMrfNc94qqbiaV7rVc0gzVM+/dLUTn95rf+EZNzgqlthsbFH1w0kWRJxUOomJutAcbEYZS07JWjDAZzjGMBvCCcc+MBe/h+B36ngR+JIDOkWc7y9wdQk1kUIec6sCn872PdBd3AVk7fnYJanU4K7LHyXY9KkWwtbQ+in+mGOTf8erLJIqikxPQlq6HIVGa58CJLJJ3EBGr4V4msjJ6T5TLARhuzeajjvEgV9Dz2nnGw/clQ9RaqQ2c1+45MefTmvHrSEe5R5xMUgqVBMQApZOjxrVzqcyWLM/GPC6zhR6CsUrUrkxiCIn3ooWXKkK8Erh4OtRFBNgjJhuLUKV2AHhOuG1z+gz8n5gFEOB8nXHq8EslaxSFum6qvy0Q016BGBTilTEaGjE/qkHsJ9Pa6y0cfVrS28thZTjZzop0YfXtmFG/sYSIq3f+fY8vhk6gBEvpkk1q68Bq9jcsdsQWTiuJWYlARLPunGFMvaAFgUfDO1M3INycuwd8yDi9mymvZWc6F8jeXDFdwsx1+HdqzWvOysYdSDulV9trvWc4xLUMIXiydhCYxHVdIsTrnftZ1L1kv53MPywCK2gXjTyq5ZQbA8=
+  on:
+    tags: true
