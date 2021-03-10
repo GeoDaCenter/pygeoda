@@ -2,10 +2,6 @@ image:
   - Visual Studio 2019
   - Visual Studio 2017
 
-branches:
-  only:
-    - /^v\d+\.\d+\.\d+$/
-    
 environment:
   global:
     TWINE_USERNAME: "lixun910"
@@ -58,6 +54,22 @@ matrix:
   fast_finish: true
 
   exclude:
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python35"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python35-x64"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python36"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python36-x64"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python37"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python37-x64"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python38"
+    - image: Visual Studio 2019
+      PYTHON: "C:\\Python38-x64"
     - image: Visual Studio 2017
       PYTHON: "C:\\Python39"
     - image: Visual Studio 2017
