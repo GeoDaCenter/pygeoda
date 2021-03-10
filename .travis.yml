@@ -4,20 +4,23 @@ jobs:
   include:
     # perform a linux build
     - services: docker
+      env:
+        CIBW_SKIP: "cp27-* cp33-* cp34-* cp35-*"
     # and a mac build
     - os: osx
       # PyPy 7.3.2 needs macOS >= 10.14
       osx_image: xcode10.2
       language: shell
+      env:
+        CIBW_SKIP: "cp27-* cp33-* cp34-* cp35-*"
 
 env:
   global:
-    - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-*"
     - TWINE_USERNAME=__token__
     # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
 
 install:
-  - python3 -m pip install twine cibuildwheel
+  - python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
 
 script:
   # build the wheels, put them into './wheelhouse'
