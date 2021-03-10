@@ -4,19 +4,15 @@ jobs:
   include:
     # perform a linux build
     - services: docker
-      env:
-        CIBW_SKIP: "cp27-* cp33-* cp34-* cp35-*"
     # and a mac build
     - os: osx
       # PyPy 7.3.2 needs macOS >= 10.14
       osx_image: xcode10.2
       language: shell
-      env:
-        CIBW_SKIP: "cp27-* cp33-* cp34-* cp35-*"
 
 env:
   global:
-    - TWINE_USERNAME=__token__
+    - TWINE_USERNAME=lixun910
     # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
 
 install:
