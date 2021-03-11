@@ -9,6 +9,7 @@ jobs:
       # PyPy 7.3.2 needs macOS >= 10.14
       osx_image: xcode10.2
       language: shell
+      compiler: clang++
 
 env:
   global:

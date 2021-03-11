@@ -76,12 +76,9 @@ else:
     EXTRA_COMPILE_ARGS = [
         '-w',
         '-fvisibility=hidden',
+        '-std=c++14',
         '-D__USE_PTHREAD__' # use pthread!!! on *nix
     ]
-    if OS_NAME == 'linux':
-        EXTRA_COMPILE_ARGS += [ '-std=c++14']
-    elif OS_NAME == 'osx':
-        EXTRA_COMPILE_ARGS += [ '-x c++ -std=c++1z']
 
 ###########################################################
 #  Link args
