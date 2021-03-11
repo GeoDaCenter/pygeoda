@@ -81,7 +81,7 @@ else:
     if OS_NAME == 'linux':
         EXTRA_COMPILE_ARGS += [ '-std=c++14']
     elif OS_NAME == 'osx':
-        EXTRA_COMPILE_ARGS += [ '-std=c++1z']
+        EXTRA_COMPILE_ARGS += [ '-x c++ -std=c++1z']
 
 ###########################################################
 #  Link args
