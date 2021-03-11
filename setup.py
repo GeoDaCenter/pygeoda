@@ -109,20 +109,20 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     BOOST_ARC = 'x32' if OS_NAME == 'win32' else 'x64'
     pyversion = sys.version[:3]
     MSVC_VER = ''
-    BOOST_VER = '1_69'
-    if pyversion in ['2.6', '2.7', '3.0', '3.1', '3.2']:
-        MSVC_VER = 'vc90'
-    elif pyversion in ['3.3', '3.4']:
-        MSVC_VER = 'vc100'
-    elif pyversion in ['3.5', '3.6', '3.7', '3.8', '3.9']:
+    BOOST_VER = '1_75'
+    if pyversion in ['3.5', '3.6']:
+        MSVC_VER = 'vc140'
+    elif pyversion in ['3.7', '3.8', '3.9']:
         MSVC_VER = 'vc141'
+    elif pyversion in ['3.9']:
+        MSVC_VER = 'vc142'
 
 
     EXTRA_OBJECTS = [
         '.\\boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
         '.\\boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        '.\\boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        '.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
+        #'.\\boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        #'.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [

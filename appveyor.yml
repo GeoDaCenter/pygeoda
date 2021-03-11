@@ -3,6 +3,15 @@ image:
   - Visual Studio 2017
   - Visual Studio 2015
 
+# Start builds on tags only (GitHub and BitBucket)
+skip_non_tags: false
+
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: true
+
+# Maximum number of concurrent jobs for the project
+max_jobs: 1
+
 environment:
   global:
     TWINE_USERNAME: "lixun910"
