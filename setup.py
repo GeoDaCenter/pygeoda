@@ -75,6 +75,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 else:
     EXTRA_COMPILE_ARGS = [
         '-w',
+        '-std=c++14',
         '-fvisibility=hidden',
         '-D__USE_PTHREAD__' # use pthread!!! on *nix
     ]
