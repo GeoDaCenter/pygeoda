@@ -112,7 +112,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     BOOST_VER = '1_75'
     if pyversion in ['3.5', '3.6']:
         MSVC_VER = 'vc140'
-    elif pyversion in ['3.7', '3.8', '3.9']:
+    elif pyversion in ['3.7', '3.8']:
         MSVC_VER = 'vc141'
     elif pyversion in ['3.9']:
         MSVC_VER = 'vc142'
