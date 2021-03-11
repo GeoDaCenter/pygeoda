@@ -122,7 +122,7 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
         '.\\boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
         '.\\boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
         '.\\boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
-        #'.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [
