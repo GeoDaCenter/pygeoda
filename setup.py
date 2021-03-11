@@ -75,8 +75,8 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 else:
     EXTRA_COMPILE_ARGS = [
         '-w',
-        '-fvisibility=hidden',
         '-std=c++14',
+        '-fvisibility=hidden',
         '-D__USE_PTHREAD__' # use pthread!!! on *nix
     ]
 
@@ -137,11 +137,11 @@ SOURCE_FILES  = [
     './' + LIBGEODA_SRC + '/GenGeomAlgs.cpp',
     './' + LIBGEODA_SRC + '/GenUtils.cpp',
     './' + LIBGEODA_SRC + '/SpatialIndAlgs.cpp',
-    './' + LIBGEODA_SRC + '/pg/geoms.c',
-    './' + LIBGEODA_SRC + '/pg/utils.c',
-    './' + LIBGEODA_SRC + '/shapelib/shpopen.c',
-    './' + LIBGEODA_SRC + '/shapelib/dbfopen.c',
-    './' + LIBGEODA_SRC + '/shapelib/safileio.c',
+    './' + LIBGEODA_SRC + '/pg/geoms.cpp',
+    './' + LIBGEODA_SRC + '/pg/utils.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/shpopen.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/dbfopen.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/safileio.cpp',
     './' + LIBGEODA_SRC + '/weights/PointsToContigWeights.cpp',
     './' + LIBGEODA_SRC + '/weights/PolysToContigWeights.cpp',
     './' + LIBGEODA_SRC + '/weights/GalWeight.cpp',
@@ -209,7 +209,6 @@ setup (name = 'pygeoda',
        description = """pygeoda is a python library for spatial data analysis based on GeoDa and libgeoda.""",
        ext_modules = extensions,
        package_data = package_data,
-       #cmdclass = {"develop": update_submodules},
        include_package_data = include_package_data,
        packages=['pygeoda','pygeoda.weights','pygeoda.sa','pygeoda.clustering', 'pygeoda.classify', 'pygeoda.data']
       )
