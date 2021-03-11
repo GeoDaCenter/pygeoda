@@ -5,6 +5,14 @@
 
 Pygeoda for windows is built using Appveyor (see: appveyor.yml)
 
+NOTE:
+
+python 3.5.0 msc 1900 visual c++ 2015
+python 3.6.1 msc 1900 visual c++ 2015
+python 3.7.0 msc 1914 visual c++ 2017
+python 3.8.1 msc 1916 visual c++ 2017
+python 3.9.1 msc 1921 visual c++ 2019
+
 Pygeoda for Linux and Mac OSX is built using Travis (see .travis.yml)
 
 For conda-forge, the pygeoda PyPI package is used as the source. So, when 
