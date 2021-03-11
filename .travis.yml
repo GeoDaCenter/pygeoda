@@ -20,7 +20,8 @@ install:
 
 script:
   # build the wheels, put them into './wheelhouse'
-  - python3 -m cibuildwheel --output-dir wheelhouse
+  #- python3 -m cibuildwheel --output-dir wheelhouse
+  - python3 -m pip wheel -v -w wheelhouse --no-deps .
   - python3 setup.py sdist
 
 after_success:
