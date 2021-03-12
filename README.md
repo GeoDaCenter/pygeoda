@@ -14,7 +14,7 @@ pygeoda is a python library for spatial data analysis based on libgeoda and GeoD
 pip install pygeoda
 ```
 
-You can install pygeoda from source by using the following command in a terminal:
+It will be in conda-forge soon. You can also install pygeoda from source by using the following command in a terminal:
 
 ```
 pip install git+https://github.com/geodacenter/pygeoda    
@@ -118,3 +118,12 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
   * Demean standardize
   * Standardize data (Z)
   * Median absolute deviation
+
+
+## Authors
+
+Xun Li and Luc Anselin
+
+## Contributors
+
+Guanpeng Dong; Yong Liu; Hang Zhang; Yeqing Han;
