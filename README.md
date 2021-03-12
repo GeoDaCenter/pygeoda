@@ -1,26 +1,31 @@
 # pygeoda
 
 [![PyPI version](https://badge.fury.io/py/pygeoda.svg)](https://badge.fury.io/py/pygeoda)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/pygeoda)
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/pygeoda.svg)](https://anaconda.org/conda-forge/pygeoda)
 
 
 pygeoda is a python library for spatial data analysis based on libgeoda and GeoDa. It provides spatial data analysis functionalities including Exploratory Spatial Data Analysis, Spatial Cluster Detection and Clustering Analysis, Regionalization, etc. based on the C++ source code of GeoDa, which is an open-source software tool that serves as an introduction to spatial data analysis. 
 
 ### Installation
 
-#### Install from pip
+To install from PyPi:
 
 ```
 pip install pygeoda
 ```
 
-It will be in conda-forge soon. You can also install pygeoda from source by using the following command in a terminal:
+To install with conda run:
+
+```
+conda install -c conda-forge pygeoda 
+```
+
+To install from source: (See more details: https://geodacenter.github.io/pygeoda/install.html)
 
 ```
 pip install git+https://github.com/geodacenter/pygeoda    
 ```
 
-See more details: https://geodacenter.github.io/pygeoda/install.html
 
 #### Documentation
 
