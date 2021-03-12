@@ -202,7 +202,7 @@ extensions = [Extension('pygeoda._libgeoda',
                         extra_objects=EXTRA_OBJECTS),]
 
 setup (name = 'pygeoda',
-       version = '0.0.7.3',
+       version = '0.0.7.4',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
        url = "https://github.com/geodacenter/pygeoda",
