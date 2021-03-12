@@ -75,14 +75,10 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
 else:
     EXTRA_COMPILE_ARGS = [
         '-w',
+        '-std=c++14',
         '-fvisibility=hidden',
         '-D__USE_PTHREAD__' # use pthread!!! on *nix
     ]
-    if OS_NAME == 'osx':
-        EXTRA_COMPILE_ARGS += [
-        ]
-
-
 
 ###########################################################
 #  Link args
@@ -109,13 +105,13 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     BOOST_ARC = 'x32' if OS_NAME == 'win32' else 'x64'
     pyversion = sys.version[:3]
     MSVC_VER = ''
-    BOOST_VER = '1_69'
-    if pyversion in ['2.6', '2.7', '3.0', '3.1', '3.2']:
-        MSVC_VER = 'vc90'
-    elif pyversion in ['3.3', '3.4']:
-        MSVC_VER = 'vc100'
-    elif pyversion in ['3.5', '3.6', '3.7', '3.8', '3.9']:
+    BOOST_VER = '1_75'
+    if pyversion in ['3.5']:
+        MSVC_VER = 'vc140'
+    elif pyversion in ['3.6', '3.7', '3.8']:
         MSVC_VER = 'vc141'
+    elif pyversion in ['3.9']:
+        MSVC_VER = 'vc142'
 
 
     EXTRA_OBJECTS = [
@@ -141,11 +137,11 @@ SOURCE_FILES  = [
     './' + LIBGEODA_SRC + '/GenGeomAlgs.cpp',
     './' + LIBGEODA_SRC + '/GenUtils.cpp',
     './' + LIBGEODA_SRC + '/SpatialIndAlgs.cpp',
-    './' + LIBGEODA_SRC + '/pg/geoms.c',
-    './' + LIBGEODA_SRC + '/pg/utils.c',
-    './' + LIBGEODA_SRC + '/shapelib/shpopen.c',
-    './' + LIBGEODA_SRC + '/shapelib/dbfopen.c',
-    './' + LIBGEODA_SRC + '/shapelib/safileio.c',
+    './' + LIBGEODA_SRC + '/pg/geoms.cpp',
+    './' + LIBGEODA_SRC + '/pg/utils.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/shpopen.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/dbfopen.cpp',
+    './' + LIBGEODA_SRC + '/shapelib/safileio.cpp',
     './' + LIBGEODA_SRC + '/weights/PointsToContigWeights.cpp',
     './' + LIBGEODA_SRC + '/weights/PolysToContigWeights.cpp',
     './' + LIBGEODA_SRC + '/weights/GalWeight.cpp',
@@ -206,14 +202,13 @@ extensions = [Extension('pygeoda._libgeoda',
                         extra_objects=EXTRA_OBJECTS),]
 
 setup (name = 'pygeoda',
-       version = '0.0.7.1',
+       version = '0.0.8',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
        url = "https://github.com/geodacenter/pygeoda",
        description = """pygeoda is a python library for spatial data analysis based on GeoDa and libgeoda.""",
        ext_modules = extensions,
        package_data = package_data,
-       #cmdclass = {"develop": update_submodules},
        include_package_data = include_package_data,
        packages=['pygeoda','pygeoda.weights','pygeoda.sa','pygeoda.clustering', 'pygeoda.classify', 'pygeoda.data']
       )

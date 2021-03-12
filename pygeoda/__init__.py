@@ -1,4 +1,4 @@
-__version__ = "0.0.4"
+__version__ = "0.0.8"
 # __version__ has to be define in the first line
 
 __author__ = "Xun Li <lixun910@gmail.com>, "
