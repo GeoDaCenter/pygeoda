@@ -1,5 +1,10 @@
 language: python
-  
+python:
+  - "3.6" 
+  - "3.7" 
+  - "3.8" 
+  - "3.9" 
+
 jobs:
   include:
     # perform a linux build
@@ -9,7 +14,6 @@ jobs:
       # PyPy 7.3.2 needs macOS >= 10.14
       osx_image: xcode10.2
       language: shell
-      compiler: clang++
 
 env:
   global:
@@ -23,6 +27,7 @@ script:
   # build the wheels, put them into './wheelhouse'
   #- python3 -m cibuildwheel --output-dir wheelhouse
   - python3 -m pip wheel -v -w wheelhouse --no-deps .
+  - auditwheel repair wheelhouse/pygeoda*whl -w output/
   - python3 setup.py sdist
 
 after_success:
@@ -30,6 +35,6 @@ after_success:
   - |
     if [[ $TRAVIS_TAG ]]; then
       python3 -m pip install twine
-      python3 -m twine upload wheelhouse/*.whl
+      python3 -m twine upload output/*.whl
       python3 -m twine upload dist/*.tar.gz
     fi
