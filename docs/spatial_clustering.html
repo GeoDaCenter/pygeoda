@@ -1,43 +1,40 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>6 Spatial Clustering &mdash; pygeoda 0.0.8 rc documentation</title>
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
   
-  
-
   
   
     <link rel="canonical" href="https://geodacenter.github.io/pygeodaspatial_clustering.html"/>
   
 
   
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="_ESDA with pygeoda and geopandas" href="esda_geopandas.html" />
@@ -78,7 +75,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -238,7 +234,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -273,20 +268,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
       <li>6 Spatial Clustering</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/spatial_clustering.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -440,8 +433,8 @@ needs to be specified beforehand, as in most other clustering methods considered
 </ul>
 <div class="section" id="azp-greedy">
 <h3>7.3.1 AZP greedy<a class="headerlink" href="#azp-greedy" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt>The original AZP heuristic is a local optimization procedure that cycles through</dt><dd><p>a series of possible swaps between spatial units at the boundary of a set
+<p>The original AZP heuristic is a local optimization procedure that cycles
+through a series of possible swaps between spatial units at the boundary of a set
 of regions. The process starts with an initial feasible solution, i.e.,
 a grouping of n spatial units into p contiguous regions. This initial
 solution can be constructed in several different ways. The initial
@@ -449,8 +442,6 @@ solution must satisfy the contiguity constraints. For example, this
 can be accomplished by growing a set of contiguous regions from p
 randomly selected seed units by adding neighboring locations until
 the contiguity constraint can no longer be met.</p>
-</dd>
-</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">azp_greedy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">queen_w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">azp_clusters</span>
 <span class="go">{&#39;Total sum of squares&#39;: 504.0000000000001,</span>
@@ -633,29 +624,29 @@ to execute several rounds of max-p algorithms for sensitive analysis.</p>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="esda_geopandas.html" class="btn btn-neutral float-right" title="_ESDA with pygeoda and geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="spatial_auto.html" class="btn btn-neutral float-left" title="5 Local Indicators of Spatial Association–LISA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="esda_geopandas.html" class="btn btn-neutral float-right" title="_ESDA with pygeoda and geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spatial_auto.html" class="btn btn-neutral float-left" title="5 Local Indicators of Spatial Association–LISA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, Xun Li; Luc Anselin..
+        &copy; Copyright 2019, Xun Li; Luc Anselin.
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -663,6 +654,7 @@ to execute several rounds of max-p algorithms for sensitive analysis.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
@@ -681,7 +673,6 @@ to execute several rounds of max-p algorithms for sensitive analysis.</p>
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-182260526-2', 'auto');
-    
     ga('send', 'pageview');
     </script>
 
