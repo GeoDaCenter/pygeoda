@@ -1,0 +1,42 @@
+name: Ubuntu and Mac builds
+
+on: 
+  push
+
+workflow_dispatch:
+
+jobs:
+  build_and_publish:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install pacakges
+        - run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
+
+      - name: Build pygeoda 
+        - run: |
+            python3 -m cibuildwheel --output-dir wheelhouse
+            python3 setup.py sdist
+
+      - name: Test pygeoda
+        - run: |
+            pip install --no-index --find-links wheelhouse pygeoda"
+            python -m unittest discover -v -s tests -p \"test_*.py\"
+
+      - name: Publish pygeoda
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          ls -lrt wheelhouse/*
+          python3 -m twine upload wheelhouse/*.whl
+          python3 -m twine upload dist/*.tar.gz
