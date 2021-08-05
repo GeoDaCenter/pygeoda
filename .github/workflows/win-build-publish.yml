@@ -58,7 +58,7 @@ jobs:
           architecture: 'x64'
 
       - name: Setup Python Architecture x86
-        if: "contains(matrix.msvc_arch, 'amd64')"
+        if: "!contains(matrix.msvc_arch, 'amd64')"
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python_ver }}
