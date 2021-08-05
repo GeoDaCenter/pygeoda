@@ -37,6 +37,11 @@ jobs:
           arch: amd64
           toolset: 14.1
 
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+
       - name: Build and Test
         shell: pwsh
         run: |
