@@ -28,6 +28,7 @@ jobs:
         run: |
           ls -lrt wheelhouse/*
           pip3 install --no-index --find-links wheelhouse pygeoda
+          mv pygeoda pygeoda_back
           python3 -m unittest discover -v -s tests -p "test_*.py"
 
       - name: Publish pygeoda
