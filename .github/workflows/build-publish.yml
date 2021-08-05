@@ -26,7 +26,7 @@ jobs:
 
       - name: Test pygeoda
         run: |
-            pip install --no-index --find-links wheelhouse pygeoda"
+            pip install --no-index --find-links wheelhouse pygeoda
             python -m unittest discover -v -s tests -p "test_*.py"
 
       - name: Publish pygeoda
