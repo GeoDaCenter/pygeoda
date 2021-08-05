@@ -15,17 +15,9 @@ on:
 
 jobs:
   windows_build:
-    runs-on: ${{ matrix.config.os }}
+    runs-on: windows-latest
     #if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.name }})  (${{ matrix.config.python }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - {os: windows-latest, name: VS2017, python: 3.6, cc: cl, cxx: cl, platform: x64}
-    
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -35,11 +27,11 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: amd64
-          toolset: 14.1
+          toolset: 14.2
 
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.6'
+          python-version: '3.9'
           architecture: 'x64'
 
       - name: Build and Test
