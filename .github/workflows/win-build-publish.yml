@@ -87,6 +87,7 @@ jobs:
           path: wheelhouse/
 
       - name: Publish to Pypi
+        if: github.event_name == 'release' && github.event.action == 'created'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

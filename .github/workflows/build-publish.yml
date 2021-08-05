@@ -13,7 +13,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
-    
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,10 +22,10 @@ jobs:
       - name: Install pacakges
         run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
 
-      - name: Build and Test 
-        run: |
-          python3 setup.py build_ext --inplace
-          python3 -m unittest discover -v -s tests -p "test_*.py"
+      #- name: Build and Test 
+      #  run: |
+      #    python3 setup.py build_ext --inplace
+      #    python3 -m unittest discover -v -s tests -p "test_*.py"
 
       - name: Build Wheels
         run: |
@@ -33,7 +33,13 @@ jobs:
             python3 setup.py sdist
             ls -lrt wheelhouse/*
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pygeoda-${{ matrix.os }}
+          path: wheelhouse/
+
       - name: Publish to Pypi
+        if: github.event_name == 'release' && github.event.action == 'created'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
