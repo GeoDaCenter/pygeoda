@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, name: VS2017, python: 3.7, cc: cl, cxx: cl, platform: x64}
+          - {os: windows-latest, name: VS2017, python: 3.8, cc: cl, cxx: cl, platform: x64}
     
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -45,4 +45,4 @@ jobs:
           python -m virtualenv venv
           venv\\Scripts\\activate
           python setup.py build_ext --inplace
-          python -m unittest discover -v -s tests -p \"test_*.py\"
+          python -m unittest
