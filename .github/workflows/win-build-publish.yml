@@ -1,0 +1,104 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Windows builds
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  windows_build:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+
+    strategy:
+      matrix:
+        include:
+          - VS_VERSION: Visual Studio 2019
+            VS_VER: 2019
+            MSVC_VER: 1920
+            platform: x64
+          - VS_VERSION: Visual Studio 2019
+            VS_VER: 2019
+            MSVC_VER: 1920
+            platform: x86
+          - VS_VERSION: Visual Studio 2017
+            VS_VER: 2017
+            MSVC_VER: 1910
+            platform: x64
+          - VS_VERSION: Visual Studio 2017
+            VS_VER: 2017
+            MSVC_VER: 1910
+            platform: x86
+          - VS_VERSION: Visual Studio 2015
+            VS_VER: 2015
+            MSVC_VER: 1900
+            platform: x64
+          - VS_VERSION: Visual Studio 2015
+            VS_VER: 2015
+            MSVC_VER: 1900
+            platform: x86
+            
+    env:
+      VS_VERSION: ${{ matrix.VS_VERSION }}
+      VS_VER: ${{ matrix.VS_VER }}
+      MSVC_VER: ${{ matrix.MSVC_VER }}
+      platform: ${{ matrix.platform }}
+    
+    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      # Set environment
+      - name: Set environment
+        shell: pwsh
+        run: |
+          if($env:platform -eq "x86")
+          {
+              $env:ARCHITECTURE="x86"
+              $env:WIN64_ARG=""
+              $env:CMAKE_ARCHITECTURE="Win32"
+          }
+          else
+          {
+              $env:ARCHITECTURE="amd64"
+              $env:WIN64_ARG="WIN64=YES"
+              $env:CMAKE_ARCHITECTURE="x64"
+          }
+          echo "::set-env name=PATH::$env:PATH"
+          echo "::set-env name=ARCHITECTURE::$env:ARCHITECTURE"
+          echo "::set-env name=WIN64_ARG::$env:WIN64_ARG"
+
+      # Set compiler environment
+      - name: Set compiler environment
+        shell: cmd
+        run: |
+          if "%VS_VER%" == "2019" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=%ARCHITECTURE%
+          echo ::set-env name=PATH::%PATH%
+          echo ::set-env name=INCLUDE::%INCLUDE%
+          echo ::set-env name=LIB::%LIB%
+          echo ::set-env name=LIBPATH::%LIBPATH%
+                  
+      - name: Build and Test
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade setuptools wheel virtualenv
+          python -m virtualenv venv
+          venv\\Scripts\\activate
+          python -c \"import sys; print(sys.executable)\"
+          python setup.py build_ext --inplace
+          python -m unittest discover -v -s tests -p \"test_*.py\"
