@@ -49,7 +49,7 @@ jobs:
         run: |
           venv\\Scripts\\activate
           pip wheel -v -w wheelhouse --no-deps .
-          ls -lrt wheelhouse/*
+          dir wheelhouse/*
 
       - name: Publish to Pypi
         env:
