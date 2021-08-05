@@ -19,19 +19,18 @@ jobs:
       - name: Install pacakges
         run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
 
-      - name: Build pygeoda 
+      - name: Build and Test 
+        run: |
+          python3 setup.py build_ext --inplace
+          python3 -m unittest discover -v -s tests -p "test_*.py"
+
+      - name: Build Wheels
         run: |
             python3 -m cibuildwheel --output-dir wheelhouse
             python3 setup.py sdist
+            ls -lrt wheelhouse/*
 
-      - name: Test pygeoda
-        run: |
-          ls -lrt wheelhouse/*
-          pip3 install --no-index --find-links wheelhouse pygeoda
-          mv pygeoda pygeoda_back
-          python3 -m unittest discover -v -s tests -p "test_*.py"
-
-      - name: Publish pygeoda
+      - name: Publish to Pypi
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
