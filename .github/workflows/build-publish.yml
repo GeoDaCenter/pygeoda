@@ -26,14 +26,14 @@ jobs:
 
       - name: Test pygeoda
         run: |
-            pip install --no-index --find-links wheelhouse pygeoda
-            python -m unittest discover -v -s tests -p "test_*.py"
+          ls -lrt wheelhouse/*
+          pip3 install --no-index --find-links wheelhouse pygeoda
+          python3 -m unittest discover -v -s tests -p "test_*.py"
 
       - name: Publish pygeoda
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          ls -lrt wheelhouse/*
           python3 -m twine upload wheelhouse/*.whl
           python3 -m twine upload dist/*.tar.gz
