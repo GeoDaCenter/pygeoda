@@ -56,7 +56,7 @@ computation. The functions include:
 * lisa_fdr(): Get the False Discovery Rate (FDR) in LISA.
 * lisa_bo(): Get the False Discovery Rate (FDR) in LISA.
 
-For example, we can call the function `GetLISAValues()`
+For example, we can call the function `lisa_values()`
 to get the values of local Moran:
 ::
 

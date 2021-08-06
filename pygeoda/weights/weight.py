@@ -1,4 +1,4 @@
-from ..libgeoda import VecInt64
+from ..libgeoda import GeoDa, VecInt, VecInt64, gda_load_gal, gda_load_gwt, gda_load_swm, GeoDaWeight
 
 __author__ = "Xun Li <lixun910@gmail.com>"
 
@@ -181,3 +181,82 @@ class Weight:
             info += '{0:>24} {1:>20}\n'.format("# median neighbors:", self.median_neighbors()) 
             info += '{0:>24} {1:>20}\n'.format("has isolates:", "True" if self.has_isolates() else "False") 
             return info
+
+def read_gal(file_path, id_vec):
+    """Read GAL Weights
+    Create a spatial weights object from a .GAL file
+
+    Args:
+        file_path (str): The file paht of the .GAL file
+        id_vec (tuple): The id values used in the .GAL file. e.g. [1,2,3,4,...]
+
+    Returns:
+        Weight: An instance of Weight class 
+    """
+
+    f = open(file_path)
+    first_line = f.readline()
+
+    items = first_line.split(" ")
+
+    if len(items) < 1:
+        raise ValueError("The content of weights file is not correct.")
+
+    num_obs = int(items[1])
+
+    if len(id_vec) != num_obs:
+        raise ValueError("The id_vec size does not match the number of observations in weights file.")
+
+    gda_w = gda_load_gal(file_path, id_vec)
+
+    return Weight(gda_w)
+
+def read_gwt(file_path, id_vec):
+    """Read GWT Weights
+    Create a spatial weights object from a .GWT file
+
+    Args:
+        file_path (str): The file paht of the .GAL file
+        id_vec (tuple): The id values used in the .GAL file. e.g. [1,2,3,4,...]
+
+    Returns:
+        Weight: An instance of Weight class 
+    """
+
+    f = open(file_path)
+    first_line = f.readline()
+
+    items = first_line.split(" ")
+
+    if len(items) < 1:
+        raise ValueError("The content of weights file is not correct.")
+
+    num_obs = int(items[1])
+
+    if len(id_vec) != num_obs:
+        raise ValueError("The id_vec size does not match the number of observations in weights file.")
+
+    gda_w = gda_load_gwt(file_path, id_vec)
+
+    return Weight(gda_w)
+
+def read_swm(file_path, **kwargs):
+    """Read SWM Weights
+    Create a spatial weights object from a .swm file
+
+    Args:
+        file_path (str): The file paht of the .swm file
+        id_vec (tuple): The id values used in the .sfile. e.g. [1,2,3,4,...] (optional)
+
+    Returns:
+        Weight: An instance of Weight class 
+    """
+
+    id_vec = [] if 'id_vec'  not in kwargs else kwargs['id_vec']
+
+    if not all(isinstance(x, int) for x in id_vec):
+        raise ValueError("The values of id_vec has to be integer type.")
+
+    gda_w = gda_load_swm(file_path, VecInt(id_vec))
+
+    return Weight(gda_w)

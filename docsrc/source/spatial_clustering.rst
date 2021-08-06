@@ -157,15 +157,15 @@ pygeoda provides three different heuristic algorithms to find an optimal solutio
 7.3.1 AZP greedy
 ^^^^^^^^^^^^^^^^
 
-The original AZP heuristic is a local optimization procedure that cycles through
- a series of possible swaps between spatial units at the boundary of a set 
- of regions. The process starts with an initial feasible solution, i.e., 
- a grouping of n spatial units into p contiguous regions. This initial 
- solution can be constructed in several different ways. The initial 
- solution must satisfy the contiguity constraints. For example, this 
- can be accomplished by growing a set of contiguous regions from p 
- randomly selected seed units by adding neighboring locations until 
- the contiguity constraint can no longer be met.
+The original AZP heuristic is a local optimization procedure that cycles 
+through a series of possible swaps between spatial units at the boundary of a set 
+of regions. The process starts with an initial feasible solution, i.e., 
+a grouping of n spatial units into p contiguous regions. This initial 
+solution can be constructed in several different ways. The initial 
+solution must satisfy the contiguity constraints. For example, this 
+can be accomplished by growing a set of contiguous regions from p 
+randomly selected seed units by adding neighboring locations until 
+the contiguity constraint can no longer be met.
 ::
 
     >>> azp_clusters = pygeoda.azp_greedy(5, queen_w, data)

@@ -1959,6 +1959,9 @@ class GeoDaWeight(object):
     __repr__ = _swig_repr
     __swig_destroy__ = _libgeoda.delete_GeoDaWeight
 
+    def CheckConnectivity(self):
+        return _libgeoda.GeoDaWeight_CheckConnectivity(self)
+
     def CheckNeighbor(self, obs_idx, nbr_idx):
         return _libgeoda.GeoDaWeight_CheckNeighbor(self, obs_idx, nbr_idx)
 
@@ -1986,6 +1989,12 @@ class GeoDaWeight(object):
     def Save(self, *args):
         return _libgeoda.GeoDaWeight_Save(self, *args)
 
+    def SetNeighbors(self, id, nbr_ids):
+        return _libgeoda.GeoDaWeight_SetNeighbors(self, id, nbr_ids)
+
+    def SetNeighborsAndWeights(self, id, nbr_ids, w):
+        return _libgeoda.GeoDaWeight_SetNeighborsAndWeights(self, id, nbr_ids, w)
+
     def IsSymmetric(self):
         return _libgeoda.GeoDaWeight_IsSymmetric(self)
 
@@ -2009,6 +2018,9 @@ class GeoDaWeight(object):
 
     def IsInternalUse(self):
         return _libgeoda.GeoDaWeight_IsInternalUse(self)
+
+    def IsMasked(self, obs_idx):
+        return _libgeoda.GeoDaWeight_IsMasked(self, obs_idx)
 
     def GetTitle(self):
         return _libgeoda.GeoDaWeight_GetTitle(self)
@@ -2528,8 +2540,8 @@ def gda_fdr(lisa, current_p):
 def gda_bo(lisa, current_p):
     return _libgeoda.gda_bo(lisa, current_p)
 
-def gda_neighbor_match_test(geoda, k, power, is_inverse, is_arc, is_mile, data, scale_method, dist_type):
-    return _libgeoda.gda_neighbor_match_test(geoda, k, power, is_inverse, is_arc, is_mile, data, scale_method, dist_type)
+def gda_neighbor_match_test(*args):
+    return _libgeoda.gda_neighbor_match_test(*args)
 
 def gda_demean(data):
     return _libgeoda.gda_demean(data)
@@ -2570,8 +2582,11 @@ def gda_queen_weights(geoda, order, include_lower_order, precision_threshold):
 def gda_rook_weights(geoda, order, include_lower_order, precision_threshold):
     return _libgeoda.gda_rook_weights(geoda, order, include_lower_order, precision_threshold)
 
-def gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagnals, polyid):
-    return _libgeoda.gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagnals, polyid)
+def gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagonals, polyid):
+    return _libgeoda.gda_knn_weights(geoda, k, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagonals, polyid)
+
+def gda_knn_weights_sub(geoda, k, start, end, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagonals, polyid):
+    return _libgeoda.gda_knn_weights_sub(geoda, k, start, end, power, is_inverse, is_arc, is_mile, kernel, bandwidth, adaptive_bandwidth, use_kernel_diagonals, polyid)
 
 def gda_min_distthreshold(geoda, is_arc, is_mile):
     return _libgeoda.gda_min_distthreshold(geoda, is_arc, is_mile)
@@ -2579,8 +2594,14 @@ def gda_min_distthreshold(geoda, is_arc, is_mile):
 def gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals):
     return _libgeoda.gda_distance_weights(geoda, dist_thres, polyid, power, is_inverse, is_arc, is_mile, kernel, use_kernel_diagonals)
 
-def gda_load_weights(weights_path):
-    return _libgeoda.gda_load_weights(weights_path)
+def gda_load_gal(*args):
+    return _libgeoda.gda_load_gal(*args)
+
+def gda_load_gwt(*args):
+    return _libgeoda.gda_load_gwt(*args)
+
+def gda_load_swm(*args):
+    return _libgeoda.gda_load_swm(*args)
 
 def gda_azp_greedy(p, w, _data, scale_method, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed):
     return _libgeoda.gda_azp_greedy(p, w, _data, scale_method, inits, min_bounds, max_bounds, init_regions, distance_method, rnd_seed)
@@ -2623,6 +2644,24 @@ def gda_betweensumofsquare(solution, data):
 
 def utf8_strlen(str):
     return _libgeoda.utf8_strlen(str)
+
+def RateStandardizeEB(nObs, P, E, results, undefined):
+    return _libgeoda.RateStandardizeEB(nObs, P, E, results, undefined)
+
+def RateSmoother_RawRate(obs, P, E, results, undefined):
+    return _libgeoda.RateSmoother_RawRate(obs, P, E, results, undefined)
+
+def RateSmoother_ExcessRisk(obs, P, E, results, undefined):
+    return _libgeoda.RateSmoother_ExcessRisk(obs, P, E, results, undefined)
+
+def RateSmoother_EBS(obs, P, E, results, undefined):
+    return _libgeoda.RateSmoother_EBS(obs, P, E, results, undefined)
+
+def RateSmoother_SEBS(obs, w, P, E, results, undefined):
+    return _libgeoda.RateSmoother_SEBS(obs, w, P, E, results, undefined)
+
+def RateSmoother_SRS(obs, w, P, E, results, undefined):
+    return _libgeoda.RateSmoother_SRS(obs, w, P, E, results, undefined)
 
 def SuggestDoubleParams(length, decimals, suggest_len, suggest_dec):
     return _libgeoda.SuggestDoubleParams(length, decimals, suggest_len, suggest_dec)

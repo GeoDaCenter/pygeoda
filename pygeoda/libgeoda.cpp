@@ -42602,6 +42602,33 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GeoDaWeight_CheckConnectivity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaWeight_CheckConnectivity" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaWeight * >(argp1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)(arg1)->CheckConnectivity();
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GeoDaWeight_CheckNeighbor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
@@ -43102,6 +43129,117 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GeoDaWeight_SetNeighbors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
+  int arg2 ;
+  std::vector< int,std::allocator< int > > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeoDaWeight_SetNeighbors", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaWeight_SetNeighbors" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaWeight * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeoDaWeight_SetNeighbors" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeoDaWeight_SetNeighbors" "', argument " "3"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaWeight_SetNeighbors" "', argument " "3"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    (arg1)->SetNeighbors(arg2,(std::vector< int,std::allocator< int > > const &)*arg3);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaWeight_SetNeighborsAndWeights(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
+  int arg2 ;
+  std::vector< int,std::allocator< int > > *arg3 = 0 ;
+  std::vector< double,std::allocator< double > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeoDaWeight_SetNeighborsAndWeights", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaWeight * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "3"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "3"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeoDaWeight_SetNeighborsAndWeights" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    (arg1)->SetNeighborsAndWeights(arg2,(std::vector< int,std::allocator< int > > const &)*arg3,(std::vector< double,std::allocator< double > > const &)*arg4);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GeoDaWeight_IsSymmetric(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
@@ -43309,6 +43447,40 @@ SWIGINTERN PyObject *_wrap_GeoDaWeight_IsInternalUse(PyObject *SWIGUNUSEDPARM(se
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     result = (bool)((GeoDaWeight const *)arg1)->IsInternalUse();
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeoDaWeight_IsMasked(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeoDaWeight_IsMasked", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeoDaWeight_IsMasked" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaWeight * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeoDaWeight_IsMasked" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)(arg1)->IsMasked(arg2);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -51330,7 +51502,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_gda_neighbor_match_test__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   AbstractGeoDa *arg1 = (AbstractGeoDa *) 0 ;
   unsigned int arg2 ;
@@ -51356,10 +51528,9 @@ SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *SWIGUNUSEDPARM(self
   int res7 = SWIG_OLDOBJ ;
   int res8 = SWIG_OLDOBJ ;
   int res9 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[9] ;
   std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "gda_neighbor_match_test", 9, 9, swig_obj)) SWIG_fail;
+  if ((nobjs < 9) || (nobjs > 9)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_AbstractGeoDa, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_neighbor_match_test" "', argument " "1"" of type '" "AbstractGeoDa *""'"); 
@@ -51438,6 +51609,180 @@ fail:
   if (SWIG_IsNewObj(res8)) delete arg8;
   if (SWIG_IsNewObj(res9)) delete arg9;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_neighbor_match_test__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  GeoDaWeight *arg1 = (GeoDaWeight *) 0 ;
+  unsigned int arg2 ;
+  std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *arg3 = 0 ;
+  std::string *arg4 = 0 ;
+  std::string *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  int res5 = SWIG_OLDOBJ ;
+  std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > result;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_neighbor_match_test" "', argument " "1"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg1 = reinterpret_cast< GeoDaWeight * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "gda_neighbor_match_test" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *ptr = (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "gda_neighbor_match_test" "', argument " "3"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_neighbor_match_test" "', argument " "3"" of type '" "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "gda_neighbor_match_test" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_neighbor_match_test" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res5 = SWIG_AsPtr_std_string(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "gda_neighbor_match_test" "', argument " "5"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_neighbor_match_test" "', argument " "5"" of type '" "std::string const &""'"); 
+    }
+    arg5 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = gda_neighbor_match_test(arg1,arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3,(std::string const &)*arg4,(std::string const &)*arg5);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  if (SWIG_IsNewObj(res5)) delete arg5;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  if (SWIG_IsNewObj(res5)) delete arg5;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_neighbor_match_test(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[10] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "gda_neighbor_match_test", 0, 9, argv))) SWIG_fail;
+  --argc;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_GeoDaWeight, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            int res = SWIG_AsPtr_std_string(argv[4], (std::string**)(0));
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_gda_neighbor_match_test__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 9) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_AbstractGeoDa, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_bool(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_bool(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                int res = swig::asptr(argv[6], (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > >**)(0));
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  int res = SWIG_AsPtr_std_string(argv[7], (std::string**)(0));
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    int res = SWIG_AsPtr_std_string(argv[8], (std::string**)(0));
+                    _v = SWIG_CheckState(res);
+                    if (_v) {
+                      return _wrap_gda_neighbor_match_test__SWIG_0(self, argc, argv);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'gda_neighbor_match_test'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    gda_neighbor_match_test(AbstractGeoDa *,unsigned int,double,bool,bool,bool,std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &,std::string const &,std::string const &)\n"
+    "    gda_neighbor_match_test(GeoDaWeight *,unsigned int,std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &,std::string const &,std::string const &)\n");
+  return 0;
 }
 
 
@@ -52180,6 +52525,142 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_gda_knn_weights_sub(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AbstractGeoDa *arg1 = (AbstractGeoDa *) 0 ;
+  unsigned int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  double arg5 ;
+  bool arg6 ;
+  bool arg7 ;
+  bool arg8 ;
+  std::string *arg9 = 0 ;
+  double arg10 ;
+  bool arg11 ;
+  bool arg12 ;
+  std::string *arg13 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  bool val6 ;
+  int ecode6 = 0 ;
+  bool val7 ;
+  int ecode7 = 0 ;
+  bool val8 ;
+  int ecode8 = 0 ;
+  int res9 = SWIG_OLDOBJ ;
+  double val10 ;
+  int ecode10 = 0 ;
+  bool val11 ;
+  int ecode11 = 0 ;
+  bool val12 ;
+  int ecode12 = 0 ;
+  int res13 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[13] ;
+  GeoDaWeight *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "gda_knn_weights_sub", 13, 13, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_AbstractGeoDa, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_knn_weights_sub" "', argument " "1"" of type '" "AbstractGeoDa *""'"); 
+  }
+  arg1 = reinterpret_cast< AbstractGeoDa * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "gda_knn_weights_sub" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "gda_knn_weights_sub" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "gda_knn_weights_sub" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "gda_knn_weights_sub" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "gda_knn_weights_sub" "', argument " "6"" of type '" "bool""'");
+  } 
+  arg6 = static_cast< bool >(val6);
+  ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "gda_knn_weights_sub" "', argument " "7"" of type '" "bool""'");
+  } 
+  arg7 = static_cast< bool >(val7);
+  ecode8 = SWIG_AsVal_bool(swig_obj[7], &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "gda_knn_weights_sub" "', argument " "8"" of type '" "bool""'");
+  } 
+  arg8 = static_cast< bool >(val8);
+  {
+    std::string *ptr = (std::string *)0;
+    res9 = SWIG_AsPtr_std_string(swig_obj[8], &ptr);
+    if (!SWIG_IsOK(res9)) {
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "gda_knn_weights_sub" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_knn_weights_sub" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    arg9 = ptr;
+  }
+  ecode10 = SWIG_AsVal_double(swig_obj[9], &val10);
+  if (!SWIG_IsOK(ecode10)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "gda_knn_weights_sub" "', argument " "10"" of type '" "double""'");
+  } 
+  arg10 = static_cast< double >(val10);
+  ecode11 = SWIG_AsVal_bool(swig_obj[10], &val11);
+  if (!SWIG_IsOK(ecode11)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "gda_knn_weights_sub" "', argument " "11"" of type '" "bool""'");
+  } 
+  arg11 = static_cast< bool >(val11);
+  ecode12 = SWIG_AsVal_bool(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "gda_knn_weights_sub" "', argument " "12"" of type '" "bool""'");
+  } 
+  arg12 = static_cast< bool >(val12);
+  {
+    std::string *ptr = (std::string *)0;
+    res13 = SWIG_AsPtr_std_string(swig_obj[12], &ptr);
+    if (!SWIG_IsOK(res13)) {
+      SWIG_exception_fail(SWIG_ArgError(res13), "in method '" "gda_knn_weights_sub" "', argument " "13"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_knn_weights_sub" "', argument " "13"" of type '" "std::string const &""'"); 
+    }
+    arg13 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_knn_weights_sub(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,(std::string const &)*arg9,arg10,arg11,arg12,(std::string const &)*arg13);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res13)) delete arg13;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res9)) delete arg9;
+  if (SWIG_IsNewObj(res13)) delete arg13;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_gda_min_distthreshold(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   AbstractGeoDa *arg1 = (AbstractGeoDa *) 0 ;
@@ -52326,25 +52807,66 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_gda_load_weights(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_gda_load_gal__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  GeoDaWeight *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_gal" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "gda_load_gal" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_load_gal" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_gal((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_gal__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
-  PyObject *swig_obj[1] ;
   GeoDaWeight *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_weights" "', argument " "1"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_gal" "', argument " "1"" of type '" "char const *""'");
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (GeoDaWeight *)gda_load_weights((char const *)arg1);
+    result = (GeoDaWeight *)gda_load_gal((char const *)arg1);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
@@ -52353,6 +52875,262 @@ SWIGINTERN PyObject *_wrap_gda_load_weights(PyObject *SWIGUNUSEDPARM(self), PyOb
 fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_gal(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "gda_load_gal", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_gda_load_gal__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_gda_load_gal__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'gda_load_gal'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    gda_load_gal(char const *,std::vector< std::string,std::allocator< std::string > > const &)\n"
+    "    gda_load_gal(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_gwt__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  GeoDaWeight *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_gwt" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "gda_load_gwt" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_load_gwt" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_gwt((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_gwt__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  GeoDaWeight *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_gwt" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_gwt((char const *)arg1);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_gwt(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "gda_load_gwt", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_gda_load_gwt__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_gda_load_gwt__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'gda_load_gwt'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    gda_load_gwt(char const *,std::vector< std::string,std::allocator< std::string > > const &)\n"
+    "    gda_load_gwt(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_swm__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< int,std::allocator< int > > *arg2 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  GeoDaWeight *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_swm" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "gda_load_swm" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "gda_load_swm" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_swm((char const *)arg1,(std::vector< int,std::allocator< int > > const &)*arg2);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_swm__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  GeoDaWeight *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gda_load_swm" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (GeoDaWeight *)gda_load_swm((char const *)arg1);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_gda_load_swm(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "gda_load_swm", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_gda_load_swm__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector< int,std::allocator< int > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_gda_load_swm__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'gda_load_swm'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    gda_load_swm(char const *,std::vector< int,std::allocator< int > > const &)\n"
+    "    gda_load_swm(char const *)\n");
+  return 0;
 }
 
 
@@ -53822,6 +54600,388 @@ SWIGINTERN PyObject *_wrap_utf8_strlen(PyObject *SWIGUNUSEDPARM(self), PyObject 
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateStandardizeEB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg5 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject *swig_obj[5] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateStandardizeEB", 5, 5, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateStandardizeEB" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateStandardizeEB" "', argument " "2"" of type '" "double const *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateStandardizeEB" "', argument " "3"" of type '" "double const *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateStandardizeEB" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateStandardizeEB" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateStandardizeEB" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg5 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp5);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateStandardizeEB(arg1,(double const *)arg2,(double const *)arg3,arg4,*arg5);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateSmoother_RawRate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg5 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject *swig_obj[5] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateSmoother_RawRate", 5, 5, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateSmoother_RawRate" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateSmoother_RawRate" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateSmoother_RawRate" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateSmoother_RawRate" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateSmoother_RawRate" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateSmoother_RawRate" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg5 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp5);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateSmoother_RawRate(arg1,arg2,arg3,arg4,*arg5);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateSmoother_ExcessRisk(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg5 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject *swig_obj[5] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateSmoother_ExcessRisk", 5, 5, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateSmoother_ExcessRisk" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateSmoother_ExcessRisk" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateSmoother_ExcessRisk" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateSmoother_ExcessRisk" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateSmoother_ExcessRisk" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateSmoother_ExcessRisk" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg5 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp5);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateSmoother_ExcessRisk(arg1,arg2,arg3,arg4,*arg5);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateSmoother_EBS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg5 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject *swig_obj[5] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateSmoother_EBS", 5, 5, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateSmoother_EBS" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateSmoother_EBS" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateSmoother_EBS" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateSmoother_EBS" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateSmoother_EBS" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateSmoother_EBS" "', argument " "5"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg5 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp5);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateSmoother_EBS(arg1,arg2,arg3,arg4,*arg5);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateSmoother_SEBS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  double *arg5 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg6 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  PyObject *swig_obj[6] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateSmoother_SEBS", 6, 6, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateSmoother_SEBS" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateSmoother_SEBS" "', argument " "2"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg2 = reinterpret_cast< GeoDaWeight * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateSmoother_SEBS" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateSmoother_SEBS" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateSmoother_SEBS" "', argument " "5"" of type '" "double *""'"); 
+  }
+  arg5 = reinterpret_cast< double * >(argp5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "RateSmoother_SEBS" "', argument " "6"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateSmoother_SEBS" "', argument " "6"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg6 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp6);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateSmoother_SEBS(arg1,arg2,arg3,arg4,arg5,*arg6);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RateSmoother_SRS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  GeoDaWeight *arg2 = (GeoDaWeight *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  double *arg5 = (double *) 0 ;
+  std::vector< bool,std::allocator< bool > > *arg6 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  PyObject *swig_obj[6] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "RateSmoother_SRS", 6, 6, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "RateSmoother_SRS" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_GeoDaWeight, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RateSmoother_SRS" "', argument " "2"" of type '" "GeoDaWeight *""'"); 
+  }
+  arg2 = reinterpret_cast< GeoDaWeight * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RateSmoother_SRS" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RateSmoother_SRS" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RateSmoother_SRS" "', argument " "5"" of type '" "double *""'"); 
+  }
+  arg5 = reinterpret_cast< double * >(argp5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "RateSmoother_SRS" "', argument " "6"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RateSmoother_SRS" "', argument " "6"" of type '" "std::vector< bool,std::allocator< bool > > &""'"); 
+  }
+  arg6 = reinterpret_cast< std::vector< bool,std::allocator< bool > > * >(argp6);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool)GdaAlgs::RateSmoother_SRS(arg1,arg2,arg3,arg4,arg5,*arg6);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -65591,6 +66751,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VecPair_swigregister", VecPair_swigregister, METH_O, NULL},
 	 { "VecPair_swiginit", VecPair_swiginit, METH_VARARGS, NULL},
 	 { "delete_GeoDaWeight", _wrap_delete_GeoDaWeight, METH_O, NULL},
+	 { "GeoDaWeight_CheckConnectivity", _wrap_GeoDaWeight_CheckConnectivity, METH_O, NULL},
 	 { "GeoDaWeight_CheckNeighbor", _wrap_GeoDaWeight_CheckNeighbor, METH_VARARGS, NULL},
 	 { "GeoDaWeight_GetNeighbors", _wrap_GeoDaWeight_GetNeighbors, METH_VARARGS, NULL},
 	 { "GeoDaWeight_GetNeighborWeights", _wrap_GeoDaWeight_GetNeighborWeights, METH_VARARGS, NULL},
@@ -65600,6 +66761,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeoDaWeight_GetNbrSize", _wrap_GeoDaWeight_GetNbrSize, METH_VARARGS, NULL},
 	 { "GeoDaWeight_SpatialLag", _wrap_GeoDaWeight_SpatialLag, METH_VARARGS, NULL},
 	 { "GeoDaWeight_Save", _wrap_GeoDaWeight_Save, METH_VARARGS, NULL},
+	 { "GeoDaWeight_SetNeighbors", _wrap_GeoDaWeight_SetNeighbors, METH_VARARGS, NULL},
+	 { "GeoDaWeight_SetNeighborsAndWeights", _wrap_GeoDaWeight_SetNeighborsAndWeights, METH_VARARGS, NULL},
 	 { "GeoDaWeight_IsSymmetric", _wrap_GeoDaWeight_IsSymmetric, METH_O, NULL},
 	 { "GeoDaWeight_GetSparsity", _wrap_GeoDaWeight_GetSparsity, METH_O, NULL},
 	 { "GeoDaWeight_GetMinNbrs", _wrap_GeoDaWeight_GetMinNbrs, METH_O, NULL},
@@ -65608,6 +66771,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeoDaWeight_GetMedianNbrs", _wrap_GeoDaWeight_GetMedianNbrs, METH_O, NULL},
 	 { "GeoDaWeight_GetNumObs", _wrap_GeoDaWeight_GetNumObs, METH_O, NULL},
 	 { "GeoDaWeight_IsInternalUse", _wrap_GeoDaWeight_IsInternalUse, METH_O, NULL},
+	 { "GeoDaWeight_IsMasked", _wrap_GeoDaWeight_IsMasked, METH_VARARGS, NULL},
 	 { "GeoDaWeight_GetTitle", _wrap_GeoDaWeight_GetTitle, METH_O, NULL},
 	 { "GeoDaWeight_GetIDName", _wrap_GeoDaWeight_GetIDName, METH_O, NULL},
 	 { "GeoDaWeight_GetUID", _wrap_GeoDaWeight_GetUID, METH_O, NULL},
@@ -65826,9 +66990,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "gda_queen_weights", _wrap_gda_queen_weights, METH_VARARGS, NULL},
 	 { "gda_rook_weights", _wrap_gda_rook_weights, METH_VARARGS, NULL},
 	 { "gda_knn_weights", _wrap_gda_knn_weights, METH_VARARGS, NULL},
+	 { "gda_knn_weights_sub", _wrap_gda_knn_weights_sub, METH_VARARGS, NULL},
 	 { "gda_min_distthreshold", _wrap_gda_min_distthreshold, METH_VARARGS, NULL},
 	 { "gda_distance_weights", _wrap_gda_distance_weights, METH_VARARGS, NULL},
-	 { "gda_load_weights", _wrap_gda_load_weights, METH_O, NULL},
+	 { "gda_load_gal", _wrap_gda_load_gal, METH_VARARGS, NULL},
+	 { "gda_load_gwt", _wrap_gda_load_gwt, METH_VARARGS, NULL},
+	 { "gda_load_swm", _wrap_gda_load_swm, METH_VARARGS, NULL},
 	 { "gda_azp_greedy", _wrap_gda_azp_greedy, METH_VARARGS, NULL},
 	 { "gda_azp_sa", _wrap_gda_azp_sa, METH_VARARGS, NULL},
 	 { "gda_azp_tabu", _wrap_gda_azp_tabu, METH_VARARGS, NULL},
@@ -65843,6 +67010,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "gda_withinsumofsquare", _wrap_gda_withinsumofsquare, METH_VARARGS, NULL},
 	 { "gda_betweensumofsquare", _wrap_gda_betweensumofsquare, METH_VARARGS, NULL},
 	 { "utf8_strlen", _wrap_utf8_strlen, METH_O, NULL},
+	 { "RateStandardizeEB", _wrap_RateStandardizeEB, METH_VARARGS, NULL},
+	 { "RateSmoother_RawRate", _wrap_RateSmoother_RawRate, METH_VARARGS, NULL},
+	 { "RateSmoother_ExcessRisk", _wrap_RateSmoother_ExcessRisk, METH_VARARGS, NULL},
+	 { "RateSmoother_EBS", _wrap_RateSmoother_EBS, METH_VARARGS, NULL},
+	 { "RateSmoother_SEBS", _wrap_RateSmoother_SEBS, METH_VARARGS, NULL},
+	 { "RateSmoother_SRS", _wrap_RateSmoother_SRS, METH_VARARGS, NULL},
 	 { "SuggestDoubleParams", _wrap_SuggestDoubleParams, METH_VARARGS, NULL},
 	 { "GetMaxDouble", _wrap_GetMaxDouble, METH_VARARGS, NULL},
 	 { "GetMaxDoubleString", _wrap_GetMaxDoubleString, METH_VARARGS, NULL},
