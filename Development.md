@@ -2,7 +2,14 @@
 
 ## Deployment
 
+1. update libgeoda/
+2. ./swig.sh
+3. add test cases in pygeoda
+4. add modules in pygeoda
+5. local dev and test
+6. pr
 
+**deprecated**
 Pygeoda for windows is built using Appveyor (see: appveyor.yml)
 
 NOTE:
@@ -17,6 +24,13 @@ python 3.9.1 msc 1928 visual c++ 2019  msvc14.2  (vs2019)
 
 Pygeoda for Linux and Mac OSX is built using Travis (see .travis.yml)
 
+## Sphinx Doc
+
+1. use venv
+2. pip install -U sphinx
+3. pip install matplotlib
+4. goto docsrc/
+5. make github
 
 ## conda-forge
 

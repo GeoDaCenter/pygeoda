@@ -7,12 +7,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; pygeoda 0.0.8 rc documentation</title>
+  <title>Index &mdash; pygeoda 0.0.8 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -84,7 +87,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
@@ -134,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#bivariate-local-moran">6.11 Bivariate Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -152,6 +156,7 @@
 <li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#validation">7.5 Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
@@ -166,7 +171,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
@@ -188,6 +193,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_bimoran.html">pygeoda.local_bimoran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
@@ -212,6 +218,13 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.spatial_validation.html">pygeoda.spatial_validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Fragmentation.html">pygeoda.Fragmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Diameter.html">pygeoda.Diameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Compactness.html">pygeoda.Compactness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.JoinCountRatio.html">pygeoda.JoinCountRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.ValidationResult.html">pygeoda.ValidationResult</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.make_spatial.html">pygeoda.make_spatial</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -303,10 +316,14 @@
  <a href="#_"><strong>_</strong></a>
  | <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -316,6 +333,7 @@
  | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
 </div>
@@ -325,9 +343,19 @@
       <li><a href="generated/pygeoda.batchlisa.html#pygeoda.batchlisa.__init__">__init__() (pygeoda.batchlisa method)</a>
 
       <ul>
+        <li><a href="generated/pygeoda.Compactness.html#pygeoda.Compactness.__init__">(pygeoda.Compactness method)</a>
+</li>
+        <li><a href="generated/pygeoda.Diameter.html#pygeoda.Diameter.__init__">(pygeoda.Diameter method)</a>
+</li>
+        <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.__init__">(pygeoda.Fragmentation method)</a>
+</li>
         <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.__init__">(pygeoda.geoda method)</a>
 </li>
+        <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio.__init__">(pygeoda.JoinCountRatio method)</a>
+</li>
         <li><a href="generated/pygeoda.lisa.html#pygeoda.lisa.__init__">(pygeoda.lisa method)</a>
+</li>
+        <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.__init__">(pygeoda.ValidationResult method)</a>
 </li>
         <li><a href="generated/pygeoda.Weight.html#pygeoda.Weight.__init__">(pygeoda.Weight method)</a>
 </li>
@@ -338,6 +366,8 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.Compactness.html#pygeoda.Compactness.area">area (pygeoda.Compactness attribute)</a>
+</li>
       <li><a href="generated/pygeoda.azp_greedy.html#pygeoda.azp_greedy">azp_greedy() (in module pygeoda)</a>
 </li>
   </ul></td>
@@ -361,14 +391,40 @@
   </ul></td>
 </tr></table>
 
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.cluster_fragmentation">cluster_fragmentation (pygeoda.ValidationResult attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.Compactness.html#pygeoda.Compactness">Compactness (class in pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.compactness">compactness (pygeoda.ValidationResult attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/pygeoda.demean.html#pygeoda.demean">demean() (in module pygeoda)</a>
 </li>
+      <li><a href="generated/pygeoda.Diameter.html#pygeoda.Diameter">Diameter (class in pygeoda)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.diameter">diameter (pygeoda.ValidationResult attribute)</a>
+</li>
       <li><a href="generated/pygeoda.distance_weights.html#pygeoda.distance_weights">distance_weights() (in module pygeoda)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.entropy">entropy (pygeoda.Fragmentation attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -378,9 +434,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.field_names">field_names (pygeoda.geoda attribute)</a>
 </li>
+      <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.field_types">field_types (pygeoda.geoda attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.field_types">field_types (pygeoda.geoda attribute)</a>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.fragmantation">fragmantation (pygeoda.ValidationResult attribute)</a>
+</li>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation">Fragmentation (class in pygeoda)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -405,6 +465,28 @@
   </ul></td>
 </tr></table>
 
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.Compactness.html#pygeoda.Compactness.isoperimeter_quotient">isoperimeter_quotient (pygeoda.Compactness attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio.join_count">join_count (pygeoda.JoinCountRatio attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.joincount_ratio">joincount_ratio (pygeoda.ValidationResult attribute)</a>
+</li>
+      <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio">JoinCountRatio (class in pygeoda)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -425,6 +507,8 @@
       <li><a href="generated/pygeoda.lisa.html#pygeoda.lisa">lisa (class in pygeoda)</a>
 </li>
       <li><a href="generated/pygeoda.local_bijoincount.html#pygeoda.local_bijoincount">local_bijoincount() (in module pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.local_bimoran.html#pygeoda.local_bimoran">local_bimoran() (in module pygeoda)</a>
 </li>
       <li><a href="generated/pygeoda.local_g.html#pygeoda.local_g">local_g() (in module pygeoda)</a>
 </li>
@@ -454,12 +538,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/pygeoda.mad.html#pygeoda.mad">mad() (in module pygeoda)</a>
 </li>
-      <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.map_type">map_type (pygeoda.geoda attribute)</a>
+      <li><a href="generated/pygeoda.make_spatial.html#pygeoda.make_spatial">make_spatial() (in module pygeoda)</a>
 </li>
-      <li><a href="generated/pygeoda.maxp_greedy.html#pygeoda.maxp_greedy">maxp_greedy() (in module pygeoda)</a>
+      <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.map_type">map_type (pygeoda.geoda attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.maxp_greedy.html#pygeoda.maxp_greedy">maxp_greedy() (in module pygeoda)</a>
+</li>
       <li><a href="generated/pygeoda.maxp_sa.html#pygeoda.maxp_sa">maxp_sa() (in module pygeoda)</a>
 </li>
       <li><a href="generated/pygeoda.maxp_tabu.html#pygeoda.maxp_tabu">maxp_tabu() (in module pygeoda)</a>
@@ -472,12 +558,22 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/pygeoda.natural_breaks.html#pygeoda.natural_breaks">natural_breaks() (in module pygeoda)</a>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.n">n (pygeoda.Fragmentation attribute)</a>
+
+      <ul>
+        <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio.n">(pygeoda.JoinCountRatio attribute)</a>
 </li>
-      <li><a href="generated/pygeoda.neighbor_match_test.html#pygeoda.neighbor_match_test">neighbor_match_test() (in module pygeoda)</a>
+        <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.n">(pygeoda.ValidationResult attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/pygeoda.natural_breaks.html#pygeoda.natural_breaks">natural_breaks() (in module pygeoda)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.neighbor_match_test.html#pygeoda.neighbor_match_test">neighbor_match_test() (in module pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio.neighbors">neighbors (pygeoda.JoinCountRatio attribute)</a>
+</li>
       <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.num_cols">num_cols (pygeoda.geoda attribute)</a>
 </li>
       <li><a href="generated/pygeoda.geoda.html#pygeoda.geoda.num_obs">num_obs (pygeoda.geoda attribute)</a>
@@ -499,6 +595,10 @@
       <li><a href="generated/pygeoda.percentile_breaks.html#pygeoda.percentile_breaks">percentile_breaks() (in module pygeoda)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.Compactness.html#pygeoda.Compactness.perimeter">perimeter (pygeoda.Compactness attribute)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="Q">Q</h2>
@@ -516,10 +616,16 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/pygeoda.redcap.html#pygeoda.redcap">redcap() (in module pygeoda)</a>
+      <li><a href="generated/pygeoda.Diameter.html#pygeoda.Diameter.ratio">ratio (pygeoda.Diameter attribute)</a>
+
+      <ul>
+        <li><a href="generated/pygeoda.JoinCountRatio.html#pygeoda.JoinCountRatio.ratio">(pygeoda.JoinCountRatio attribute)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.redcap.html#pygeoda.redcap">redcap() (in module pygeoda)</a>
+</li>
       <li><a href="generated/pygeoda.rook_weights.html#pygeoda.rook_weights">rook_weights() (in module pygeoda)</a>
 </li>
   </ul></td>
@@ -530,13 +636,33 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/pygeoda.schc.html#pygeoda.schc">schc() (in module pygeoda)</a>
 </li>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.simpson">simpson (pygeoda.Fragmentation attribute)</a>
+</li>
       <li><a href="generated/pygeoda.skater.html#pygeoda.skater">skater() (in module pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.spatial_validation.html#pygeoda.spatial_validation">spatial_validation() (in module pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult.spatially_constrained">spatially_constrained (pygeoda.ValidationResult attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/pygeoda.standardize.html#pygeoda.standardize">standardize() (in module pygeoda)</a>
 </li>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.std_entropy">std_entropy (pygeoda.Fragmentation attribute)</a>
+</li>
+      <li><a href="generated/pygeoda.Fragmentation.html#pygeoda.Fragmentation.std_simpson">std_simpson (pygeoda.Fragmentation attribute)</a>
+</li>
       <li><a href="generated/pygeoda.stddev_breaks.html#pygeoda.stddev_breaks">stddev_breaks() (in module pygeoda)</a>
+</li>
+      <li><a href="generated/pygeoda.Diameter.html#pygeoda.Diameter.steps">steps (pygeoda.Diameter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/pygeoda.ValidationResult.html#pygeoda.ValidationResult">ValidationResult (class in pygeoda)</a>
 </li>
   </ul></td>
 </tr></table>

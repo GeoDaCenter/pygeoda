@@ -13,11 +13,15 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
 
   
   
 
   
+  
+    <link rel="canonical" href="https://geodacenter.github.io/pygeoda_modules/pygeoda/clustering/schc.html"/>
   
 
   
@@ -29,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -82,7 +87,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#open-resources">1.1 Open Resources</a></li>
@@ -164,69 +169,15 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-weights">pygeoda.weights</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.Weight.html">pygeoda.Weight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.queen_weights.html">pygeoda.queen_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.rook_weights.html">pygeoda.rook_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.min_distthreshold.html">pygeoda.min_distthreshold</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.distance_weights.html">pygeoda.distance_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.knn_weights.html">pygeoda.knn_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.kernel_weights.html">pygeoda.kernel_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_bijoincount.html">pygeoda.local_bijoincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_quantilelisa.html">pygeoda.local_quantilelisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multiquantilelisa.html">pygeoda.local_multiquantilelisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.neighbor_match_test.html">pygeoda.neighbor_match_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.schc.html">pygeoda.schc</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_greedy.html">pygeoda.azp_greedy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_sa.html">pygeoda.azp_sa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_tabu.html">pygeoda.azp_tabu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.quantile_breaks.html">pygeoda.quantile_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.demean.html">pygeoda.demean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.standardize.html">pygeoda.standardize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mad.html">pygeoda.mad</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-weights">pygeoda.weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-lisa">pygeoda (LISA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -404,7 +355,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('create', 'UA-182260526-2', 'auto');
     
     ga('send', 'pageview');
     </script>

@@ -7,12 +7,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pygeoda.batch_local_moran &mdash; pygeoda 0.0.8 rc documentation</title>
+  <title>pygeoda.batch_local_moran &mdash; pygeoda 0.0.8 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -86,7 +89,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#open-resources">1.1 Open Resources</a></li>
@@ -136,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_auto.html#bivariate-local-moran">6.11 Bivariate Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -168,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">pygeoda API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
@@ -190,6 +194,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#pygeoda-lisa">pygeoda (LISA)</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.local_bimoran.html">pygeoda.local_bimoran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_geary.html">pygeoda.local_geary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
@@ -214,6 +219,12 @@
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.spatial_validation.html">pygeoda.spatial_validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.Fragmentation.html">pygeoda.Fragmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.Diameter.html">pygeoda.Diameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.Compactness.html">pygeoda.Compactness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.JoinCountRatio.html">pygeoda.JoinCountRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygeoda.make_spatial.html">pygeoda.make_spatial</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -305,8 +316,8 @@
   <div class="section" id="pygeoda-batch-local-moran">
 <h1>pygeoda.batch_local_moran<a class="headerlink" href="#pygeoda-batch-local-moran" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="pygeoda.batch_local_moran">
-<code class="sig-prename descclassname"><span class="pre">pygeoda.</span></code><code class="sig-name descname"><span class="pre">batch_local_moran</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/moran.html#batch_local_moran"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.batch_local_moran" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pygeoda.batch_local_moran">
+<span class="sig-prename descclassname"><span class="pre">pygeoda.</span></span><span class="sig-name descname"><span class="pre">batch_local_moran</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pygeoda/sa/moran.html#batch_local_moran"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pygeoda.batch_local_moran" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply local moran statistics on a set of variables</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

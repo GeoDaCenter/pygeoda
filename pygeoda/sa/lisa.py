@@ -5,7 +5,7 @@ __author__ = "Xun Li <lixun910@gmail.com>, Yeqing Han <yeqinghan_geo@163.com>"
 
 class lisa:
     """A LISA class wrappers the results of LISA computation
-    
+  
     Attributes:
         gda_lisa An object of GeoDaLISA
     """

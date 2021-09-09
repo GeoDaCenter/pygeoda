@@ -2504,6 +2504,9 @@ def CreateGeoDaFromSHP(pDsPath, layer_name=None):
 def gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
     return _libgeoda.gda_localmoran(w, data, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
+def gda_bi_localmoran(w, data1, data2, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
+    return _libgeoda.gda_bi_localmoran(w, data1, data2, undefs, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
+
 def gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used):
     return _libgeoda.gda_localmoran_eb(w, event_data, base_data, significance_cutoff, nCPUs, permutations, permutation_method, last_seed_used)
 
@@ -2641,6 +2644,99 @@ def gda_withinsumofsquare(solution, vals):
 
 def gda_betweensumofsquare(solution, data):
     return _libgeoda.gda_betweensumofsquare(solution, data)
+class Fragmentation(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    n = property(_libgeoda.Fragmentation_n_get, _libgeoda.Fragmentation_n_set)
+    entropy = property(_libgeoda.Fragmentation_entropy_get, _libgeoda.Fragmentation_entropy_set)
+    std_entropy = property(_libgeoda.Fragmentation_std_entropy_get, _libgeoda.Fragmentation_std_entropy_set)
+    simpson = property(_libgeoda.Fragmentation_simpson_get, _libgeoda.Fragmentation_simpson_set)
+    std_simpson = property(_libgeoda.Fragmentation_std_simpson_get, _libgeoda.Fragmentation_std_simpson_set)
+    min_cluster_size = property(_libgeoda.Fragmentation_min_cluster_size_get, _libgeoda.Fragmentation_min_cluster_size_set)
+    max_cluster_size = property(_libgeoda.Fragmentation_max_cluster_size_get, _libgeoda.Fragmentation_max_cluster_size_set)
+    mean_cluster_size = property(_libgeoda.Fragmentation_mean_cluster_size_get, _libgeoda.Fragmentation_mean_cluster_size_set)
+    is_spatially_contiguous = property(_libgeoda.Fragmentation_is_spatially_contiguous_get, _libgeoda.Fragmentation_is_spatially_contiguous_set)
+    fraction = property(_libgeoda.Fragmentation_fraction_get, _libgeoda.Fragmentation_fraction_set)
+
+    def __init__(self):
+        _libgeoda.Fragmentation_swiginit(self, _libgeoda.new_Fragmentation())
+    __swig_destroy__ = _libgeoda.delete_Fragmentation
+
+# Register Fragmentation in _libgeoda:
+_libgeoda.Fragmentation_swigregister(Fragmentation)
+
+class Compactness(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    isoperimeter_quotient = property(_libgeoda.Compactness_isoperimeter_quotient_get, _libgeoda.Compactness_isoperimeter_quotient_set)
+    area = property(_libgeoda.Compactness_area_get, _libgeoda.Compactness_area_set)
+    perimeter = property(_libgeoda.Compactness_perimeter_get, _libgeoda.Compactness_perimeter_set)
+
+    def __init__(self):
+        _libgeoda.Compactness_swiginit(self, _libgeoda.new_Compactness())
+    __swig_destroy__ = _libgeoda.delete_Compactness
+
+# Register Compactness in _libgeoda:
+_libgeoda.Compactness_swigregister(Compactness)
+
+class Diameter(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    steps = property(_libgeoda.Diameter_steps_get, _libgeoda.Diameter_steps_set)
+    ratio = property(_libgeoda.Diameter_ratio_get, _libgeoda.Diameter_ratio_set)
+
+    def __init__(self):
+        _libgeoda.Diameter_swiginit(self, _libgeoda.new_Diameter())
+    __swig_destroy__ = _libgeoda.delete_Diameter
+
+# Register Diameter in _libgeoda:
+_libgeoda.Diameter_swigregister(Diameter)
+
+class JoinCountRatio(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    cluster = property(_libgeoda.JoinCountRatio_cluster_get, _libgeoda.JoinCountRatio_cluster_set)
+    n = property(_libgeoda.JoinCountRatio_n_get, _libgeoda.JoinCountRatio_n_set)
+    totalNeighbors = property(_libgeoda.JoinCountRatio_totalNeighbors_get, _libgeoda.JoinCountRatio_totalNeighbors_set)
+    totalJoinCount = property(_libgeoda.JoinCountRatio_totalJoinCount_get, _libgeoda.JoinCountRatio_totalJoinCount_set)
+    ratio = property(_libgeoda.JoinCountRatio_ratio_get, _libgeoda.JoinCountRatio_ratio_set)
+
+    def __init__(self):
+        _libgeoda.JoinCountRatio_swiginit(self, _libgeoda.new_JoinCountRatio())
+    __swig_destroy__ = _libgeoda.delete_JoinCountRatio
+
+# Register JoinCountRatio in _libgeoda:
+_libgeoda.JoinCountRatio_swigregister(JoinCountRatio)
+
+class ValidationResult(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    spatially_constrained = property(_libgeoda.ValidationResult_spatially_constrained_get, _libgeoda.ValidationResult_spatially_constrained_set)
+    fragmentation = property(_libgeoda.ValidationResult_fragmentation_get, _libgeoda.ValidationResult_fragmentation_set)
+    cluster_fragmentation = property(_libgeoda.ValidationResult_cluster_fragmentation_get, _libgeoda.ValidationResult_cluster_fragmentation_set)
+    cluster_diameter = property(_libgeoda.ValidationResult_cluster_diameter_get, _libgeoda.ValidationResult_cluster_diameter_set)
+    cluster_compactness = property(_libgeoda.ValidationResult_cluster_compactness_get, _libgeoda.ValidationResult_cluster_compactness_set)
+    joincount_ratio = property(_libgeoda.ValidationResult_joincount_ratio_get, _libgeoda.ValidationResult_joincount_ratio_set)
+
+    def __init__(self):
+        _libgeoda.ValidationResult_swiginit(self, _libgeoda.new_ValidationResult())
+    __swig_destroy__ = _libgeoda.delete_ValidationResult
+
+# Register ValidationResult in _libgeoda:
+_libgeoda.ValidationResult_swigregister(ValidationResult)
+
+
+def gda_spatialvalidation(geoda, clusters, w):
+    return _libgeoda.gda_spatialvalidation(geoda, clusters, w)
+
+def gda_makespatial(clusters, w):
+    return _libgeoda.gda_makespatial(clusters, w)
+
+def gda_all_joincount_ratio(items):
+    return _libgeoda.gda_all_joincount_ratio(items)
+
+def gda_joincount_ratio(clusters, w):
+    return _libgeoda.gda_joincount_ratio(clusters, w)
 
 def utf8_strlen(str):
     return _libgeoda.utf8_strlen(str)
@@ -3096,6 +3192,430 @@ class VecGeoDaColumn(object):
 
 # Register VecGeoDaColumn in _libgeoda:
 _libgeoda.VecGeoDaColumn_swigregister(VecGeoDaColumn)
+
+class VecJoinCountRatio(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _libgeoda.VecJoinCountRatio_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _libgeoda.VecJoinCountRatio___nonzero__(self)
+
+    def __bool__(self):
+        return _libgeoda.VecJoinCountRatio___bool__(self)
+
+    def __len__(self):
+        return _libgeoda.VecJoinCountRatio___len__(self)
+
+    def __getslice__(self, i, j):
+        return _libgeoda.VecJoinCountRatio___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _libgeoda.VecJoinCountRatio___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _libgeoda.VecJoinCountRatio___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _libgeoda.VecJoinCountRatio___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _libgeoda.VecJoinCountRatio___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _libgeoda.VecJoinCountRatio___setitem__(self, *args)
+
+    def pop(self):
+        return _libgeoda.VecJoinCountRatio_pop(self)
+
+    def append(self, x):
+        return _libgeoda.VecJoinCountRatio_append(self, x)
+
+    def empty(self):
+        return _libgeoda.VecJoinCountRatio_empty(self)
+
+    def size(self):
+        return _libgeoda.VecJoinCountRatio_size(self)
+
+    def swap(self, v):
+        return _libgeoda.VecJoinCountRatio_swap(self, v)
+
+    def begin(self):
+        return _libgeoda.VecJoinCountRatio_begin(self)
+
+    def end(self):
+        return _libgeoda.VecJoinCountRatio_end(self)
+
+    def rbegin(self):
+        return _libgeoda.VecJoinCountRatio_rbegin(self)
+
+    def rend(self):
+        return _libgeoda.VecJoinCountRatio_rend(self)
+
+    def clear(self):
+        return _libgeoda.VecJoinCountRatio_clear(self)
+
+    def get_allocator(self):
+        return _libgeoda.VecJoinCountRatio_get_allocator(self)
+
+    def pop_back(self):
+        return _libgeoda.VecJoinCountRatio_pop_back(self)
+
+    def erase(self, *args):
+        return _libgeoda.VecJoinCountRatio_erase(self, *args)
+
+    def __init__(self, *args):
+        _libgeoda.VecJoinCountRatio_swiginit(self, _libgeoda.new_VecJoinCountRatio(*args))
+
+    def push_back(self, x):
+        return _libgeoda.VecJoinCountRatio_push_back(self, x)
+
+    def front(self):
+        return _libgeoda.VecJoinCountRatio_front(self)
+
+    def back(self):
+        return _libgeoda.VecJoinCountRatio_back(self)
+
+    def assign(self, n, x):
+        return _libgeoda.VecJoinCountRatio_assign(self, n, x)
+
+    def resize(self, *args):
+        return _libgeoda.VecJoinCountRatio_resize(self, *args)
+
+    def insert(self, *args):
+        return _libgeoda.VecJoinCountRatio_insert(self, *args)
+
+    def reserve(self, n):
+        return _libgeoda.VecJoinCountRatio_reserve(self, n)
+
+    def capacity(self):
+        return _libgeoda.VecJoinCountRatio_capacity(self)
+    __swig_destroy__ = _libgeoda.delete_VecJoinCountRatio
+
+# Register VecJoinCountRatio in _libgeoda:
+_libgeoda.VecJoinCountRatio_swigregister(VecJoinCountRatio)
+
+class VecCompactness(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _libgeoda.VecCompactness_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _libgeoda.VecCompactness___nonzero__(self)
+
+    def __bool__(self):
+        return _libgeoda.VecCompactness___bool__(self)
+
+    def __len__(self):
+        return _libgeoda.VecCompactness___len__(self)
+
+    def __getslice__(self, i, j):
+        return _libgeoda.VecCompactness___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _libgeoda.VecCompactness___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _libgeoda.VecCompactness___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _libgeoda.VecCompactness___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _libgeoda.VecCompactness___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _libgeoda.VecCompactness___setitem__(self, *args)
+
+    def pop(self):
+        return _libgeoda.VecCompactness_pop(self)
+
+    def append(self, x):
+        return _libgeoda.VecCompactness_append(self, x)
+
+    def empty(self):
+        return _libgeoda.VecCompactness_empty(self)
+
+    def size(self):
+        return _libgeoda.VecCompactness_size(self)
+
+    def swap(self, v):
+        return _libgeoda.VecCompactness_swap(self, v)
+
+    def begin(self):
+        return _libgeoda.VecCompactness_begin(self)
+
+    def end(self):
+        return _libgeoda.VecCompactness_end(self)
+
+    def rbegin(self):
+        return _libgeoda.VecCompactness_rbegin(self)
+
+    def rend(self):
+        return _libgeoda.VecCompactness_rend(self)
+
+    def clear(self):
+        return _libgeoda.VecCompactness_clear(self)
+
+    def get_allocator(self):
+        return _libgeoda.VecCompactness_get_allocator(self)
+
+    def pop_back(self):
+        return _libgeoda.VecCompactness_pop_back(self)
+
+    def erase(self, *args):
+        return _libgeoda.VecCompactness_erase(self, *args)
+
+    def __init__(self, *args):
+        _libgeoda.VecCompactness_swiginit(self, _libgeoda.new_VecCompactness(*args))
+
+    def push_back(self, x):
+        return _libgeoda.VecCompactness_push_back(self, x)
+
+    def front(self):
+        return _libgeoda.VecCompactness_front(self)
+
+    def back(self):
+        return _libgeoda.VecCompactness_back(self)
+
+    def assign(self, n, x):
+        return _libgeoda.VecCompactness_assign(self, n, x)
+
+    def resize(self, *args):
+        return _libgeoda.VecCompactness_resize(self, *args)
+
+    def insert(self, *args):
+        return _libgeoda.VecCompactness_insert(self, *args)
+
+    def reserve(self, n):
+        return _libgeoda.VecCompactness_reserve(self, n)
+
+    def capacity(self):
+        return _libgeoda.VecCompactness_capacity(self)
+    __swig_destroy__ = _libgeoda.delete_VecCompactness
+
+# Register VecCompactness in _libgeoda:
+_libgeoda.VecCompactness_swigregister(VecCompactness)
+
+class VecDiameter(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _libgeoda.VecDiameter_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _libgeoda.VecDiameter___nonzero__(self)
+
+    def __bool__(self):
+        return _libgeoda.VecDiameter___bool__(self)
+
+    def __len__(self):
+        return _libgeoda.VecDiameter___len__(self)
+
+    def __getslice__(self, i, j):
+        return _libgeoda.VecDiameter___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _libgeoda.VecDiameter___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _libgeoda.VecDiameter___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _libgeoda.VecDiameter___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _libgeoda.VecDiameter___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _libgeoda.VecDiameter___setitem__(self, *args)
+
+    def pop(self):
+        return _libgeoda.VecDiameter_pop(self)
+
+    def append(self, x):
+        return _libgeoda.VecDiameter_append(self, x)
+
+    def empty(self):
+        return _libgeoda.VecDiameter_empty(self)
+
+    def size(self):
+        return _libgeoda.VecDiameter_size(self)
+
+    def swap(self, v):
+        return _libgeoda.VecDiameter_swap(self, v)
+
+    def begin(self):
+        return _libgeoda.VecDiameter_begin(self)
+
+    def end(self):
+        return _libgeoda.VecDiameter_end(self)
+
+    def rbegin(self):
+        return _libgeoda.VecDiameter_rbegin(self)
+
+    def rend(self):
+        return _libgeoda.VecDiameter_rend(self)
+
+    def clear(self):
+        return _libgeoda.VecDiameter_clear(self)
+
+    def get_allocator(self):
+        return _libgeoda.VecDiameter_get_allocator(self)
+
+    def pop_back(self):
+        return _libgeoda.VecDiameter_pop_back(self)
+
+    def erase(self, *args):
+        return _libgeoda.VecDiameter_erase(self, *args)
+
+    def __init__(self, *args):
+        _libgeoda.VecDiameter_swiginit(self, _libgeoda.new_VecDiameter(*args))
+
+    def push_back(self, x):
+        return _libgeoda.VecDiameter_push_back(self, x)
+
+    def front(self):
+        return _libgeoda.VecDiameter_front(self)
+
+    def back(self):
+        return _libgeoda.VecDiameter_back(self)
+
+    def assign(self, n, x):
+        return _libgeoda.VecDiameter_assign(self, n, x)
+
+    def resize(self, *args):
+        return _libgeoda.VecDiameter_resize(self, *args)
+
+    def insert(self, *args):
+        return _libgeoda.VecDiameter_insert(self, *args)
+
+    def reserve(self, n):
+        return _libgeoda.VecDiameter_reserve(self, n)
+
+    def capacity(self):
+        return _libgeoda.VecDiameter_capacity(self)
+    __swig_destroy__ = _libgeoda.delete_VecDiameter
+
+# Register VecDiameter in _libgeoda:
+_libgeoda.VecDiameter_swigregister(VecDiameter)
+
+class VecFragmentation(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _libgeoda.VecFragmentation_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _libgeoda.VecFragmentation___nonzero__(self)
+
+    def __bool__(self):
+        return _libgeoda.VecFragmentation___bool__(self)
+
+    def __len__(self):
+        return _libgeoda.VecFragmentation___len__(self)
+
+    def __getslice__(self, i, j):
+        return _libgeoda.VecFragmentation___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _libgeoda.VecFragmentation___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _libgeoda.VecFragmentation___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _libgeoda.VecFragmentation___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _libgeoda.VecFragmentation___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _libgeoda.VecFragmentation___setitem__(self, *args)
+
+    def pop(self):
+        return _libgeoda.VecFragmentation_pop(self)
+
+    def append(self, x):
+        return _libgeoda.VecFragmentation_append(self, x)
+
+    def empty(self):
+        return _libgeoda.VecFragmentation_empty(self)
+
+    def size(self):
+        return _libgeoda.VecFragmentation_size(self)
+
+    def swap(self, v):
+        return _libgeoda.VecFragmentation_swap(self, v)
+
+    def begin(self):
+        return _libgeoda.VecFragmentation_begin(self)
+
+    def end(self):
+        return _libgeoda.VecFragmentation_end(self)
+
+    def rbegin(self):
+        return _libgeoda.VecFragmentation_rbegin(self)
+
+    def rend(self):
+        return _libgeoda.VecFragmentation_rend(self)
+
+    def clear(self):
+        return _libgeoda.VecFragmentation_clear(self)
+
+    def get_allocator(self):
+        return _libgeoda.VecFragmentation_get_allocator(self)
+
+    def pop_back(self):
+        return _libgeoda.VecFragmentation_pop_back(self)
+
+    def erase(self, *args):
+        return _libgeoda.VecFragmentation_erase(self, *args)
+
+    def __init__(self, *args):
+        _libgeoda.VecFragmentation_swiginit(self, _libgeoda.new_VecFragmentation(*args))
+
+    def push_back(self, x):
+        return _libgeoda.VecFragmentation_push_back(self, x)
+
+    def front(self):
+        return _libgeoda.VecFragmentation_front(self)
+
+    def back(self):
+        return _libgeoda.VecFragmentation_back(self)
+
+    def assign(self, n, x):
+        return _libgeoda.VecFragmentation_assign(self, n, x)
+
+    def resize(self, *args):
+        return _libgeoda.VecFragmentation_resize(self, *args)
+
+    def insert(self, *args):
+        return _libgeoda.VecFragmentation_insert(self, *args)
+
+    def reserve(self, n):
+        return _libgeoda.VecFragmentation_reserve(self, n)
+
+    def capacity(self):
+        return _libgeoda.VecFragmentation_capacity(self)
+    __swig_destroy__ = _libgeoda.delete_VecFragmentation
+
+# Register VecFragmentation in _libgeoda:
+_libgeoda.VecFragmentation_swigregister(VecFragmentation)
 
 
 

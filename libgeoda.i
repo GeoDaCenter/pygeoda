@@ -104,5 +104,9 @@
 %include <GenUtils.h>
 
 %template(VecGeoDaColumn) std::vector<GeoDaColumn*>;
+%template(VecJoinCountRatio) std::vector<JoinCountRatio>;
+%template(VecCompactness) std::vector<Compactness>;
+%template(VecDiameter) std::vector<Diameter>;
+%template(VecFragmentation) std::vector<Fragmentation>;
 
 

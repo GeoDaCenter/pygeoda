@@ -13,11 +13,15 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
 
   
   
 
   
+  
+    <link rel="canonical" href="https://geodacenter.github.io/pygeoda_modules/pygeoda/weights/weight.html"/>
   
 
   
@@ -29,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -82,7 +87,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#open-resources">1.1 Open Resources</a></li>
@@ -121,26 +126,41 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../spatial_auto.html">6. Spatial Autocorrelation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../spatial_auto.html">6. Local Indicators of Spatial Association</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-moran">6.1 Local Moran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#lisa-object">6.2 LISA object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-geary">6.3 Local Geary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-getis-ord-statistics">6.4 Local Getis-Ord Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-join-count">6.5 Local Join Count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#quantile-lisa">6.6 Quantile LISA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#batch-local-moran">6.7 Batch Local Moran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-bivariate-join-count">6.6 Local Bivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#local-multivariate-join-count">6.7 Local Multivariate Join Count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../spatial_clustering.html">7. Spatial Clustering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#skater">7.1 SKATER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#redcap">7.2 REDCAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#max-p">7.3 Max-p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#spatially-constrained-hierarchical-clucstering">7.3 Spatially Constrained Hierarchical Clucstering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#azp">7.3 AZP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#azp-greedy">7.3.1 AZP greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#azp-simulated-annealing">7.3.2 AZP Simulated Annealing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#azp-tabu-search">7.3.3 AZP Tabu Search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../spatial_clustering.html#max-p">7.4 Max-p</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#max-p-greedy">7.4.1 Max-p greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#max-p-tabu-search">7.4.2 Max-p Tabu Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spatial_clustering.html#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#geopandas">1 GeoPandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#matplotlib">2 Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#geopandas-pygeoda">3 geoPandas + pygeoda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../esda_geopandas.html#geopandas-pygeoda">3 GeoPandas + pygeoda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#load-geospatial-data-in-geopandas">3.1 Load geospatial data in GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#create-pygeoda-object-from-geodataframe">3.2 Create pygeoda object from geodataframe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../esda_geopandas.html#id1">3.3 ESDA with pygeoda and geopandas</a></li>
@@ -149,69 +169,15 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">pygeoda API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.open.html">pygeoda.open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.geoda.html">pygeoda.geoda</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-weights">pygeoda.weights</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.Weight.html">pygeoda.Weight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.queen_weights.html">pygeoda.queen_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.rook_weights.html">pygeoda.rook_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.min_distthreshold.html">pygeoda.min_distthreshold</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.distance_weights.html">pygeoda.distance_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.knn_weights.html">pygeoda.knn_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.kernel_weights.html">pygeoda.kernel_weights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.kernel_knn_weights.html">pygeoda.kernel_knn_weights</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-autocorrelation">pygeoda (spatial autocorrelation)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_bijoincount.html">pygeoda.local_bijoincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multijoincount.html">pygeoda.local_multijoincount</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_g.html">pygeoda.local_g</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_gstar.html">pygeoda.local_gstar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_quantilelisa.html">pygeoda.local_quantilelisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.local_multiquantilelisa.html">pygeoda.local_multiquantilelisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.neighbor_match_test.html">pygeoda.neighbor_match_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batchlisa.html">pygeoda.batchlisa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.batch_local_moran.html">pygeoda.batch_local_moran</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.skater.html">pygeoda.skater</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.redcap.html">pygeoda.redcap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.schc.html">pygeoda.schc</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_greedy.html">pygeoda.azp_greedy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_sa.html">pygeoda.azp_sa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.azp_tabu.html">pygeoda.azp_tabu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge15_breaks.html">pygeoda.hinge15_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.hinge30_breaks.html">pygeoda.hinge30_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.natural_breaks.html">pygeoda.natural_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.quantile_breaks.html">pygeoda.quantile_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.percentile_breaks.html">pygeoda.percentile_breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.stddev_breaks.html">pygeoda.stddev_breaks</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.demean.html">pygeoda.demean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.standardize.html">pygeoda.standardize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../generated/pygeoda.mad.html">pygeoda.mad</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-i-o">pygeoda (I/O)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-weights">pygeoda.weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-lisa">pygeoda (LISA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-spatial-clustering">pygeoda (spatial clustering)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-classify">pygeoda (classify)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#pygeoda-data">pygeoda (data)</a></li>
 </ul>
 </li>
 </ul>
@@ -280,7 +246,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pygeoda.weights.weight</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">VecInt64</span>
+<span></span><span class="kn">from</span> <span class="nn">..libgeoda</span> <span class="kn">import</span> <span class="n">GeoDa</span><span class="p">,</span> <span class="n">VecInt</span><span class="p">,</span> <span class="n">VecInt64</span><span class="p">,</span> <span class="n">gda_load_gal</span><span class="p">,</span> <span class="n">gda_load_gwt</span><span class="p">,</span> <span class="n">gda_load_swm</span><span class="p">,</span> <span class="n">GeoDaWeight</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Xun Li &lt;lixun910@gmail.com&gt;&quot;</span>
 
@@ -463,6 +429,85 @@
             <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;# median neighbors:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">median_neighbors</span><span class="p">())</span> 
             <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{0:&gt;24}</span><span class="s1"> </span><span class="si">{1:&gt;20}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;has isolates:&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_isolates</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span> 
             <span class="k">return</span> <span class="n">info</span></div>
+
+<span class="k">def</span> <span class="nf">read_gal</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read GAL Weights</span>
+<span class="sd">    Create a spatial weights object from a .GAL file</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): The file paht of the .GAL file</span>
+<span class="sd">        id_vec (tuple): The id values used in the .GAL file. e.g. [1,2,3,4,...]</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="n">first_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+    <span class="n">items</span> <span class="o">=</span> <span class="n">first_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The content of weights file is not correct.&quot;</span><span class="p">)</span>
+
+    <span class="n">num_obs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_vec</span><span class="p">)</span> <span class="o">!=</span> <span class="n">num_obs</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The id_vec size does not match the number of observations in weights file.&quot;</span><span class="p">)</span>
+
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_load_gal</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">read_gwt</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read GWT Weights</span>
+<span class="sd">    Create a spatial weights object from a .GWT file</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): The file paht of the .GAL file</span>
+<span class="sd">        id_vec (tuple): The id values used in the .GAL file. e.g. [1,2,3,4,...]</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="n">first_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+    <span class="n">items</span> <span class="o">=</span> <span class="n">first_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The content of weights file is not correct.&quot;</span><span class="p">)</span>
+
+    <span class="n">num_obs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_vec</span><span class="p">)</span> <span class="o">!=</span> <span class="n">num_obs</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The id_vec size does not match the number of observations in weights file.&quot;</span><span class="p">)</span>
+
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_load_gwt</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">id_vec</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">read_swm</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read SWM Weights</span>
+<span class="sd">    Create a spatial weights object from a .swm file</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): The file paht of the .swm file</span>
+<span class="sd">        id_vec (tuple): The id values used in the .sfile. e.g. [1,2,3,4,...] (optional)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Weight: An instance of Weight class </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">id_vec</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="s1">&#39;id_vec&#39;</span>  <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;id_vec&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">id_vec</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The values of id_vec has to be integer type.&quot;</span><span class="p">)</span>
+
+    <span class="n">gda_w</span> <span class="o">=</span> <span class="n">gda_load_swm</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">VecInt</span><span class="p">(</span><span class="n">id_vec</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">Weight</span><span class="p">(</span><span class="n">gda_w</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -512,7 +557,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('create', 'UA-182260526-2', 'auto');
     
     ga('send', 'pageview');
     </script>
