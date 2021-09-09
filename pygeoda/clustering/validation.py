@@ -7,7 +7,7 @@ class Diameter:
 
     Attributes:
         steps (int): the longest shortest distance between any pairs
-        ratio (float): the ratio of number of steps to the number of elements in the cluster
+        ratio (float): the ratio of steps over the number of elements in the cluster
     """
     def __init__(self, diam):
         """Constructor of Diameter
