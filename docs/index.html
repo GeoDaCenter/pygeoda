@@ -7,12 +7,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pygeoda 0.0.8 &mdash; pygeoda 0.0.8 rc documentation</title>
+  <title>pygeoda 0.0.8 &mdash; pygeoda 0.0.8 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -85,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
@@ -135,6 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#bivariate-local-moran">6.11 Bivariate Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -153,6 +157,7 @@
 <li class="toctree-l3"><a class="reference internal" href="spatial_clustering.html#max-p-simulated-annealing">7.4.3 Max-p Simulated Annealing</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#validation">7.5 Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
@@ -167,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
@@ -189,6 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_bimoran.html">pygeoda.local_bimoran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
@@ -213,6 +219,13 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.spatial_validation.html">pygeoda.spatial_validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Fragmentation.html">pygeoda.Fragmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Diameter.html">pygeoda.Diameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Compactness.html">pygeoda.Compactness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.JoinCountRatio.html">pygeoda.JoinCountRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.ValidationResult.html">pygeoda.ValidationResult</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.make_spatial.html">pygeoda.make_spatial</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -360,7 +373,7 @@ It works with ESRI Shapefiles and <a class="reference external" href="https://ge
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">USER GUIDE</span></p>
+<p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
@@ -406,6 +419,7 @@ It works with ESRI Shapefiles and <a class="reference external" href="https://ge
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#quantile-lisa">6.8 Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#neighbor-match-test">6.10 Neighbor Match Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_auto.html#bivariate-local-moran">6.11 Bivariate Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -414,6 +428,7 @@ It works with ESRI Shapefiles and <a class="reference external" href="https://ge
 <li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#spatially-constrained-hierarchical-clucstering">7.3 Spatially Constrained Hierarchical Clucstering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#azp">7.3 AZP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#max-p">7.4 Max-p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_clustering.html#validation">7.5 Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="esda_geopandas.html">ESDA with pygeoda and geopandas</a><ul>
@@ -426,7 +441,7 @@ It works with ESRI Shapefiles and <a class="reference external" href="https://ge
 </div>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a></li>

@@ -380,7 +380,33 @@ and k=6 nearest neighbors in geographical space:
 ::
 
     >>> data = guerry[['Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids']]
-    >>> nm = pygeoda.neighbor_match_test(guerry, data, 6)
+    >>> lm = pygeoda.neighbor_match_test(guerry, data, 6)
+    >>> lm
+    lisa object:
+        lisa_values(): [0.39266344763810573, 0.75613610603433934, -0.87851057571266755, ...]
+        lisa_pvalues(): [0.269, 0.021, 0.001, ...]
+        ...
+
+6.11 Bivariate Local Moran
+--------------------------
+
+The bivariate Local Moran’s I captures the relationship between the value for one variable at location i, 
+and the average of the neighboring values for another variable. 
+
+Please note this statistic needs to be interpreted with caution, since it ignores in-situ 
+correlation between the two variables. The most meaningful application of the bivariate Local 
+Moran statistic is comparing the same variable at two time periods. 
+
+See: https://geodacenter.github.io/workbook/6c_local_multi/lab6c.html#bivariate-local-moran
+
+For example, to apply the Neighbor Match Test on 6 variables: 
+'Crm_prs','Crm_prp','Litercy','Donatns','Infants','Suicids' in multi-attribute space
+and k=6 nearest neighbors in geographical space:
+::
+
+    >>> data1 = guerry['Crm_prs']
+    >>> data2 = guerry['Litercy']
+    >>> nm = pygeoda.local_bimoran(queen_w, data1, data2)
     >>> nm
     {'Cardinality': [2, 3,  ...],
      'Probability': [0.05263799873777295, 0.0037431465769082986, ...]

@@ -39,6 +39,7 @@ pygeoda (LISA)
 
    pygeoda.lisa
    pygeoda.local_moran
+   pygeoda.local_bimoran
    pygeoda.local_geary
    pygeoda.local_multigeary
    pygeoda.local_joincount
@@ -68,6 +69,13 @@ pygeoda (spatial clustering)
    pygeoda.maxp_greedy
    pygeoda.maxp_sa
    pygeoda.maxp_tabu
+   pygeoda.spatial_validation
+   pygeoda.Fragmentation
+   pygeoda.Diameter
+   pygeoda.Compactness
+   pygeoda.JoinCountRatio
+   pygeoda.ValidationResult
+   pygeoda.make_spatial
 
 
 pygeoda (classify)

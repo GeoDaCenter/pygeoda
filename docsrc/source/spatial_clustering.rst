@@ -351,3 +351,57 @@ We can also increase the number of iterations for local search process by specif
     NOTE: the max-p algorithm is very sensitive to the initial positions for constructing final solutions.
     Therefore, the random seed, which is used to determine the initial positions, could be used 
     to execute several rounds of max-p algorithms for sensitive analysis.
+
+7.5 Validation
+--------------
+
+Spatial validation provides a collection of validation measures including 
+(1) fragmentations (entropy, simpson), (2) join count ratio, (3) compactness 
+(isoperimeter quotient) and (4) diameter.
+
+Fragmentation is a measure of spatial validation of clusters. It includes: 
+
+    1. entropy, which measures the fraction of observations in each cluster
+    2. std_entropy, which is the standardized entropy measure
+    3. simpson, which is a index for diversity measure in each cluster
+    4. std_simpson, which is the standardized simpson measure
+
+For non-spatially constrained cluster, the validation also reports `cluster_fragmentation`,
+which is a list of Fragmentation objects for each cluster, or None for spatially 
+constrained clusters.
+
+JoinCountRatio is measure of join counts (the number of times a category is surrounded by 
+neighbors of the same category) over the  total number of neighbors after converting each 
+category to a dummy variable. It includes:
+
+    1. neighbors, the total number of neighbors of elements in a cluster
+    2. join_count, the total join count of elements in a cluster
+    3. ratio: the ratio of total join count over total neighbors
+
+Compactness is a measure of isoperimeter quotient for each spatially constrained cluster.
+It includes:
+
+    1. area, the area of a cluster. For points, the convex hull is used to compute the area.
+    2. perimeter, the perimeter of a cluster. For points, the convex hull is used to compute the perimeter
+    3. isoperimeter_quotient, (4 * pi * area) / (perimeter^2)
+
+Diameter is a measure of the longest shortest distance between any pairs in a cluster.
+It includes:
+
+    1. steps, the longest shortest distance between any pairs
+    2. ratio, the ratio of steps over the number of elements in the cluster
+
+
+For example:
+::
+
+    >>> skater_clusters = pygeoda.skater(6, queen_w, data)
+    >>> result = pygeoda.spatial_validation(guerry, skater_clusters['Clusters'], queen_w) 
+    {'Spatially Constrained': True,
+    'Join Count Ratio': [...],
+    'All Join Count Ratio': [...],
+    'Fragmentation': [...],
+    'Cluster Fragmentation': None,
+    'Compactness': [...],
+    'Diameter': [...]
+    }

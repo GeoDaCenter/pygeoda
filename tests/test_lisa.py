@@ -9,6 +9,7 @@ class TestLISA(unittest.TestCase):
         self.guerry = pygeoda.open("./data/Guerry.shp")
         self.queen_w = pygeoda.queen_weights(self.guerry)
         self.crm_prp = self.guerry.GetIntegerCol("Crm_prp")
+        self.crm_prs = self.guerry.GetIntegerCol("Crm_prs")
         self.litercy = self.guerry.GetIntegerCol("Litercy")
         slect_vars = ['Crm_prp','Crm_prs']
         self.data = [self.guerry.GetRealCol(v) for v in slect_vars]
@@ -77,6 +78,19 @@ class TestLISA(unittest.TestCase):
         self.assertEqual(cvals[0], 0)
         self.assertEqual(cvals[1], 0)
         self.assertEqual(cvals[2], 1)
+
+    def test_local_bimoran(self):
+        lisa = pygeoda.local_bimoran(self.queen_w, self.crm_prs, self.litercy, permutation_method="complete")
+
+        lms = lisa.lisa_values()
+        self.assertEqual(lms[0], 0.39266344763810573)
+        self.assertEqual(lms[1], 0.75613610603433934)
+        self.assertEqual(lms[2], -0.87851057571266755)
+
+        pvals = lisa.lisa_pvalues()
+        self.assertEqual(pvals[0], 0.269)
+        self.assertEqual(pvals[1], 0.021)
+        self.assertEqual(pvals[2], 0.001)
 
     def test_local_geary(self):
         lisa = pygeoda.local_geary(self.queen_w, self.crm_prp)

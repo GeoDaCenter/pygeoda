@@ -1,40 +1,46 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>5 Local Indicators of Spatial Association–LISA &mdash; pygeoda 0.0.8 rc documentation</title>
+  <title>5 Local Indicators of Spatial Association–LISA &mdash; pygeoda 0.0.8 documentation</title>
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
   
+  
+
   
   
     <link rel="canonical" href="https://geodacenter.github.io/pygeodaspatial_auto.html"/>
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6 Spatial Clustering" href="spatial_clustering.html" />
@@ -75,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -82,7 +89,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">USER GUIDE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#open-resources">1.1 Open Resources</a></li>
@@ -132,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#quantile-lisa">6.8 Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multivariate-quantile-lisa">6.9 Multivariate Quantile LISA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#neighbor-match-test">6.10 Neighbor Match Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bivariate-local-moran">6.11 Bivariate Local Moran</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spatial_clustering.html">7. Spatial Clustering</a><ul>
@@ -164,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pygeoda API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-i-o">pygeoda (I/O)</a><ul>
@@ -186,6 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-lisa">pygeoda (LISA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.lisa.html">pygeoda.lisa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_moran.html">pygeoda.local_moran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_bimoran.html">pygeoda.local_bimoran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_geary.html">pygeoda.local_geary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_multigeary.html">pygeoda.local_multigeary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.local_joincount.html">pygeoda.local_joincount</a></li>
@@ -210,6 +219,12 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_greedy.html">pygeoda.maxp_greedy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_sa.html">pygeoda.maxp_sa</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.maxp_tabu.html">pygeoda.maxp_tabu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.spatial_validation.html">pygeoda.spatial_validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Fragmentation.html">pygeoda.Fragmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Diameter.html">pygeoda.Diameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.Compactness.html">pygeoda.Compactness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.JoinCountRatio.html">pygeoda.JoinCountRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/pygeoda.make_spatial.html">pygeoda.make_spatial</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#pygeoda-classify">pygeoda (classify)</a><ul>
@@ -234,6 +249,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -268,18 +284,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>5 Local Indicators of Spatial Association–LISA</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/spatial_auto.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -625,7 +643,29 @@ multi-attribute space.</p>
 ‘Crm_prs’,’Crm_prp’,’Litercy’,’Donatns’,’Infants’,’Suicids’ in multi-attribute space
 and k=6 nearest neighbors in geographical space:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">,</span><span class="s1">&#39;Crm_prp&#39;</span><span class="p">,</span><span class="s1">&#39;Litercy&#39;</span><span class="p">,</span><span class="s1">&#39;Donatns&#39;</span><span class="p">,</span><span class="s1">&#39;Infants&#39;</span><span class="p">,</span><span class="s1">&#39;Suicids&#39;</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">neighbor_match_test</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">neighbor_match_test</span><span class="p">(</span><span class="n">guerry</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span>
+<span class="go">lisa object:</span>
+<span class="go">    lisa_values(): [0.39266344763810573, 0.75613610603433934, -0.87851057571266755, ...]</span>
+<span class="go">    lisa_pvalues(): [0.269, 0.021, 0.001, ...]</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bivariate-local-moran">
+<h2>6.11 Bivariate Local Moran<a class="headerlink" href="#bivariate-local-moran" title="Permalink to this headline">¶</a></h2>
+<p>The bivariate Local Moran’s I captures the relationship between the value for one variable at location i,
+and the average of the neighboring values for another variable.</p>
+<p>Please note this statistic needs to be interpreted with caution, since it ignores in-situ
+correlation between the two variables. The most meaningful application of the bivariate Local
+Moran statistic is comparing the same variable at two time periods.</p>
+<p>See: <a class="reference external" href="https://geodacenter.github.io/workbook/6c_local_multi/lab6c.html#bivariate-local-moran">https://geodacenter.github.io/workbook/6c_local_multi/lab6c.html#bivariate-local-moran</a></p>
+<p>For example, to apply the Neighbor Match Test on 6 variables:
+‘Crm_prs’,’Crm_prp’,’Litercy’,’Donatns’,’Infants’,’Suicids’ in multi-attribute space
+and k=6 nearest neighbors in geographical space:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data1</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Crm_prs&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span> <span class="o">=</span> <span class="n">guerry</span><span class="p">[</span><span class="s1">&#39;Litercy&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nm</span> <span class="o">=</span> <span class="n">pygeoda</span><span class="o">.</span><span class="n">local_bimoran</span><span class="p">(</span><span class="n">queen_w</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nm</span>
 <span class="go">{&#39;Cardinality&#39;: [2, 3,  ...],</span>
 <span class="go"> &#39;Probability&#39;: [0.05263799873777295, 0.0037431465769082986, ...]</span>
@@ -641,29 +681,29 @@ and k=6 nearest neighbors in geographical space:</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="spatial_clustering.html" class="btn btn-neutral float-right" title="6 Spatial Clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="spatial_weights.html" class="btn btn-neutral float-left" title="5 Spatial Weights" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="spatial_clustering.html" class="btn btn-neutral float-right" title="6 Spatial Clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spatial_weights.html" class="btn btn-neutral float-left" title="5 Spatial Weights" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Xun Li; Luc Anselin.
+        &#169; Copyright 2019, Xun Li; Luc Anselin..
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -671,7 +711,6 @@ and k=6 nearest neighbors in geographical space:</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
@@ -690,6 +729,7 @@ and k=6 nearest neighbors in geographical space:</p>
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-182260526-2', 'auto');
+    
     ga('send', 'pageview');
     </script>
 

@@ -22,7 +22,7 @@ copyright = '2019, Xun Li; Luc Anselin.'
 author = 'Xun Li; Luc Anselin'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.8 rc'
+release = '0.0.8'
 
 
 # -- General configuration ---------------------------------------------------
