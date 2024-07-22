@@ -33,6 +33,11 @@ pip install git+https://github.com/geodacenter/pygeoda
 
 [https://geodacenter.github.io/pygeoda](https://geodacenter.github.io/pygeoda)
 
+#### Citation
+
+Anselin, L., Li, X. and Koschinsky, J. (2022), GeoDa, From the Desktop to an Ecosystem for Exploring Spatial Data. Geogr Anal, 54: 439-466. [Download Citation](https://onlinelibrary.wiley.com/action/showCitFormats?doi=10.1111%2Fgean.12311)
+
+
 #### Quick Start
 
 * pygeoda + ESRI Shapefile
