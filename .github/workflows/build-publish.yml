@@ -27,6 +27,8 @@ jobs:
 
       - name: Build Wheels
         run: |
+            export CXXFLAGS='-Wno-enum-constexpr-conversion'
+            export CFLAGS='-Wno-enum-constexpr-conversion'
             python3 -m venv venv
             source venv/bin/activate
             python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
