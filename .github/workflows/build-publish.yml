@@ -17,8 +17,8 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install pacakges
-        run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
+      # - name: Install pacakges
+      #   run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
 
       #- name: Build and Test 
       #  run: |
@@ -27,6 +27,9 @@ jobs:
 
       - name: Build Wheels
         run: |
+            python3 -m venv venv
+            source venv/bin/activate
+            python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
             python3 -m cibuildwheel --output-dir wheelhouse
             python3 setup.py sdist
             ls -lrt wheelhouse/*
@@ -42,11 +45,15 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
+          source venv/bin/activate
           python3 -m pip install --upgrade twine
           python3 -m twine upload wheelhouse/*.whl
 
       - name: Publish Source to Pypi
         if: matrix.os == 'macos-latest' && startsWith(github.ref, 'refs/tags/v')
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          packages-dir: wheelhouse/
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          source venv/bin/activate
+          python3 -m twine upload dist/*.tar.gz

@@ -18,6 +18,9 @@ jobs:
           - 3.12
           - 3.13
 
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
