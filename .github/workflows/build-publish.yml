@@ -17,11 +17,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-          enable: true  # Enable PyPy builds
+      # - name: Setup Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.x'
+      #     enable: true  # Enable PyPy builds
 
       # - name: Install pacakges
       #   run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
@@ -38,7 +38,7 @@ jobs:
             python3 -m venv venv
             source venv/bin/activate
             python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
-            CIBW_ARCHS_MACOS=arm64,x86_64 python3 -m cibuildwheel --output-dir wheelhouse
+            CIBW_ARCHS_MACOS=arm64 python3 -m cibuildwheel --output-dir wheelhouse
             python3 setup.py sdist
             ls -lrt wheelhouse/*
 
