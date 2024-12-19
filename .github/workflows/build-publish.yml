@@ -11,10 +11,9 @@ jobs:
           - macos-latest
 
     runs-on: ${{ matrix.os }}
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -32,7 +31,7 @@ jobs:
             python3 setup.py sdist
             ls -lrt wheelhouse/*
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: pygeoda-${{ matrix.os }}
           path: wheelhouse/
@@ -48,8 +47,6 @@ jobs:
 
       - name: Publish Source to Pypi
         if: matrix.os == 'macos-latest' && startsWith(github.ref, 'refs/tags/v')
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          python3 -m twine upload dist/*.tar.gz
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: wheelhouse/

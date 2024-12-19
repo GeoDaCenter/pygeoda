@@ -14,9 +14,9 @@ jobs:
           - amd64
 
         python_ver:
+          - 3.11
           - 3.12
           - 3.13
-          - 3.14
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -24,7 +24,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup for Python 3.12
+      - name: Setup MSVC toolset for Python 3.11
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvc_arch }}
@@ -61,9 +61,6 @@ jobs:
 
       - name: Publish to Pypi
         if: startsWith(github.ref, 'refs/tags/v')
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          python -m pip install --upgrade twine
-          python -m twine upload wheelhouse/*.whl
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: wheelhouse/
