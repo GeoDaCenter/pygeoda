@@ -7,19 +7,14 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   windows_build:
     runs-on: windows-latest
-    #if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
 
     strategy:
       matrix:
         msvc_arch:
           - amd64
-          - win32
 
         python_ver:
-          - 3.6
-          - 3.7
-          - 3.8
-          - 3.9
+          - 3.12
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -27,33 +22,18 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup for Python 3.9
-        if: "contains(matrix.python_ver, '3.9')"
+      - name: Setup for Python 3.12
+        if: matrix.python_ver == '3.12'
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvc_arch }}
           toolset: 14.2
 
-      - name: Setup for Python 3.6, 3.7, 3.8
-        if: "!contains(matrix.python_ver, '3.9')"
-        uses: ilammy/msvc-dev-cmd@v1
-        with:
-          arch: ${{ matrix.msvc_arch }}
-          toolset: 14.1
-
       - name: Setup Python Architecture x64
-        if: "contains(matrix.msvc_arch, 'amd64')"
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python_ver }}
           architecture: 'x64'
-
-      - name: Setup Python Architecture x86
-        if: "!contains(matrix.msvc_arch, 'amd64')"
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python_ver }}
-          architecture: 'x86'
 
       - name: Build and Test
         shell: pwsh
