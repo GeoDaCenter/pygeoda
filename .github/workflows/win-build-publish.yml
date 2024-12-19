@@ -52,7 +52,7 @@ jobs:
           pip wheel -v -w wheelhouse --no-deps .
           dir wheelhouse/*
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: pygeoda-${{ matrix.python_ver }}-${{ matrix.msvc_arch }}-win
           path: wheelhouse/
