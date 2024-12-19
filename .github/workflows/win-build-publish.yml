@@ -2,7 +2,7 @@
 
 name: Windows builds
 
-on: [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   windows_build:
@@ -20,7 +20,7 @@ jobs:
 
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
-      
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
