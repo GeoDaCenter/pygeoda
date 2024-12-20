@@ -77,7 +77,8 @@ else:
         '-w',
         '-std=c++14',
         '-fvisibility=hidden',
-        '-D__USE_PTHREAD__' # use pthread!!! on *nix
+        '-D__USE_PTHREAD__', # use pthread!!! on *nix
+        '-Wno-enum-constexpr-conversion'  # disable enumeration warnings
     ]
 
 ###########################################################
