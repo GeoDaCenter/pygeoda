@@ -6,9 +6,8 @@ jobs:
   build_and_publish:
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
+        # macos-13 is an intel runner, macos-14+ is apple silicon
+        os: [ubuntu-latest, macos-13, macos-14, macos-15]
 
     runs-on: ${{ matrix.os }}
 
@@ -47,7 +46,7 @@ jobs:
         env:
             CXXFLAGS: -Wno-enum-constexpr-conversion
             CFLAGS: -Wno-enum-constexpr-conversion
-            CIBW_BUILD: cp310-cp313
+            CIBW_BUILD: cp311-*
 
       - uses: actions/upload-artifact@v4
         with:
