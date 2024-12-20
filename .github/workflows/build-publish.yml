@@ -47,6 +47,8 @@ jobs:
             CXXFLAGS: -Wno-enum-constexpr-conversion
             CFLAGS: -Wno-enum-constexpr-conversion
             CIBW_BUILD: cp311-*
+            CIBW_PROJECT_REQUIRES_PYTHON: ">=3.10"
+            MACOSX_DEPLOYMENT_TARGET: 15.2
 
       - uses: actions/upload-artifact@v4
         with:
