@@ -180,7 +180,7 @@ class TestSpatialClustering(unittest.TestCase):
         clusters = pygeoda.azp_sa(p, self.queen_w, self.data, cooling_rate)
 
         self.assertAlmostEqual(
-            clusters["The ratio of between to total sum of squares"], 0.424288)
+            clusters["The ratio of between to total sum of squares"], 0.424288839)
 
     def test_AZP_tabu(self):
         p = 5
