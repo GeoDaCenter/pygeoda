@@ -3068,12 +3068,12 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t swig_types[80]
 #define SWIGTYPE_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t swig_types[81]
 #define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t swig_types[82]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[83]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[84]
+#define SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t swig_types[83]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[84]
 #define SWIGTYPE_p_std__vectorT_void_p_std__allocatorT_void_p_t_t swig_types[85]
 #define SWIGTYPE_p_swig__SwigPyIterator swig_types[86]
-#define SWIGTYPE_p_unsigned_char swig_types[87]
-#define SWIGTYPE_p_unsigned_long_long swig_types[88]
+#define SWIGTYPE_p_uint64_t swig_types[87]
+#define SWIGTYPE_p_unsigned_char swig_types[88]
 #define SWIGTYPE_p_value_type swig_types[89]
 #define SWIGTYPE_p_void swig_types[90]
 static swig_type_info *swig_types[92];
@@ -45406,8 +45406,8 @@ SWIGINTERN PyObject *_wrap_LISA_CalcPseudoP_range(PyObject *self, PyObject *args
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  unsigned long long val4 ;
-  int ecode4 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
   PyObject *swig_obj[4] ;
   
   if (!SWIG_Python_UnpackTuple(args, "LISA_CalcPseudoP_range", 4, 4, swig_obj)) SWIG_fail;
@@ -45426,11 +45426,19 @@ SWIGINTERN PyObject *_wrap_LISA_CalcPseudoP_range(PyObject *self, PyObject *args
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LISA_CalcPseudoP_range" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "LISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
-  } 
-  arg4 = static_cast< uint64_t >(val4);
+  {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "LISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->CalcPseudoP_range(arg2,arg3,arg4);
@@ -45484,8 +45492,8 @@ SWIGINTERN PyObject *_wrap_LISA_PermCreateRange(PyObject *self, PyObject *args) 
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
-  unsigned long long val5 ;
-  int ecode5 = 0 ;
+  void *argp5 ;
+  int res5 = 0 ;
   PyObject *swig_obj[5] ;
   
   if (!SWIG_Python_UnpackTuple(args, "LISA_PermCreateRange", 5, 5, swig_obj)) SWIG_fail;
@@ -45509,11 +45517,19 @@ SWIGINTERN PyObject *_wrap_LISA_PermCreateRange(PyObject *self, PyObject *args) 
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "LISA_PermCreateRange" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
-  ecode5 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "LISA_PermCreateRange" "', argument " "5"" of type '" "uint64_t""'");
-  } 
-  arg5 = static_cast< uint64_t >(val5);
+  {
+    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "LISA_PermCreateRange" "', argument " "5"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp5) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LISA_PermCreateRange" "', argument " "5"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp5);
+      arg5 = *temp;
+      if (SWIG_IsNewObj(res5)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->PermCreateRange(arg2,arg3,arg4,arg5);
@@ -45564,8 +45580,8 @@ SWIGINTERN PyObject *_wrap_LISA_PermCalcPseudoP_range(PyObject *self, PyObject *
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  unsigned long long val4 ;
-  int ecode4 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
   PyObject *swig_obj[4] ;
   
   if (!SWIG_Python_UnpackTuple(args, "LISA_PermCalcPseudoP_range", 4, 4, swig_obj)) SWIG_fail;
@@ -45584,11 +45600,19 @@ SWIGINTERN PyObject *_wrap_LISA_PermCalcPseudoP_range(PyObject *self, PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LISA_PermCalcPseudoP_range" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "LISA_PermCalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
-  } 
-  arg4 = static_cast< uint64_t >(val4);
+  {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "LISA_PermCalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LISA_PermCalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->PermCalcPseudoP_range(arg2,arg3,arg4);
@@ -45856,10 +45880,10 @@ SWIGINTERN PyObject *_wrap_LISA_CountLargerSA(PyObject *self, PyObject *args) {
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (uint64_t)(arg1)->CountLargerSA(arg2,(std::vector< double,std::allocator< double > > const &)*arg3);
+    result = (arg1)->CountLargerSA(arg2,(std::vector< double,std::allocator< double > > const &)*arg3);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
+  resultobj = SWIG_NewPointerObj((new uint64_t(result)), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
@@ -46219,10 +46243,10 @@ SWIGINTERN PyObject *_wrap_LISA_GetLastUsedSeed(PyObject *self, PyObject *args) 
   arg1 = reinterpret_cast< LISA * >(argp1);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (uint64_t)(arg1)->GetLastUsedSeed();
+    result = (arg1)->GetLastUsedSeed();
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
+  resultobj = SWIG_NewPointerObj((new uint64_t(result)), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -46235,8 +46259,8 @@ SWIGINTERN PyObject *_wrap_LISA_SetLastUsedSeed(PyObject *self, PyObject *args) 
   uint64_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args, "LISA_SetLastUsedSeed", 2, 2, swig_obj)) SWIG_fail;
@@ -46245,11 +46269,19 @@ SWIGINTERN PyObject *_wrap_LISA_SetLastUsedSeed(PyObject *self, PyObject *args) 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LISA_SetLastUsedSeed" "', argument " "1"" of type '" "LISA *""'"); 
   }
   arg1 = reinterpret_cast< LISA * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = static_cast< uint64_t >(val2);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->SetLastUsedSeed(arg2);
@@ -46889,8 +46921,8 @@ SWIGINTERN PyObject *_wrap_BatchLISA_CalcPseudoP_range(PyObject *self, PyObject 
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  unsigned long long val4 ;
-  int ecode4 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
   PyObject *swig_obj[4] ;
   
   if (!SWIG_Python_UnpackTuple(args, "BatchLISA_CalcPseudoP_range", 4, 4, swig_obj)) SWIG_fail;
@@ -46909,11 +46941,19 @@ SWIGINTERN PyObject *_wrap_BatchLISA_CalcPseudoP_range(PyObject *self, PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BatchLISA_CalcPseudoP_range" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BatchLISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
-  } 
-  arg4 = static_cast< uint64_t >(val4);
+  {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BatchLISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BatchLISA_CalcPseudoP_range" "', argument " "4"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->CalcPseudoP_range(arg2,arg3,arg4);
@@ -47004,7 +47044,7 @@ SWIGINTERN PyObject *_wrap_BatchLISA_CountLargerSA(PyObject *self, PyObject *arg
   int ecode2 = 0 ;
   int res3 = SWIG_OLDOBJ ;
   PyObject *swig_obj[3] ;
-  SwigValueWrapper< std::vector< unsigned long long,std::allocator< unsigned long long > > > result;
+  SwigValueWrapper< std::vector< uint64_t,std::allocator< uint64_t > > > result;
   
   if (!SWIG_Python_UnpackTuple(args, "BatchLISA_CountLargerSA", 3, 3, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_BatchLISA, 0 |  0 );
@@ -47033,7 +47073,7 @@ SWIGINTERN PyObject *_wrap_BatchLISA_CountLargerSA(PyObject *self, PyObject *arg
     result = (arg1)->CountLargerSA(arg2,(std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &)*arg3);
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_NewPointerObj((new std::vector< uint64_t,std::allocator< uint64_t > >(result)), SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new std::vector< uint64_t,std::allocator< uint64_t > >(result)), SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t, SWIG_POINTER_OWN |  0 );
   if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
@@ -47401,10 +47441,10 @@ SWIGINTERN PyObject *_wrap_BatchLISA_GetLastUsedSeed(PyObject *self, PyObject *a
   arg1 = reinterpret_cast< BatchLISA * >(argp1);
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (uint64_t)(arg1)->GetLastUsedSeed();
+    result = (arg1)->GetLastUsedSeed();
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
+  resultobj = SWIG_NewPointerObj((new uint64_t(result)), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -47417,8 +47457,8 @@ SWIGINTERN PyObject *_wrap_BatchLISA_SetLastUsedSeed(PyObject *self, PyObject *a
   uint64_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args, "BatchLISA_SetLastUsedSeed", 2, 2, swig_obj)) SWIG_fail;
@@ -47427,11 +47467,19 @@ SWIGINTERN PyObject *_wrap_BatchLISA_SetLastUsedSeed(PyObject *self, PyObject *a
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BatchLISA_SetLastUsedSeed" "', argument " "1"" of type '" "BatchLISA *""'"); 
   }
   arg1 = reinterpret_cast< BatchLISA * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BatchLISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = static_cast< uint64_t >(val2);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BatchLISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BatchLISA_SetLastUsedSeed" "', argument " "2"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
     (arg1)->SetLastUsedSeed(arg2);
@@ -58606,24 +58654,32 @@ fail:
 SWIGINTERN PyObject *_wrap_ThomasWangHashUInt64(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   uint64_t arg1 ;
-  unsigned long long val1 ;
-  int ecode1 = 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
   PyObject *swig_obj[1] ;
   uint64_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ThomasWangHashUInt64" "', argument " "1"" of type '" "uint64_t""'");
-  } 
-  arg1 = static_cast< uint64_t >(val1);
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThomasWangHashUInt64" "', argument " "1"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ThomasWangHashUInt64" "', argument " "1"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (uint64_t)Gda::ThomasWangHashUInt64(arg1);
+    result = Gda::ThomasWangHashUInt64(SWIG_STD_MOVE(arg1));
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
+  resultobj = SWIG_NewPointerObj((new uint64_t(result)), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -58633,21 +58689,29 @@ fail:
 SWIGINTERN PyObject *_wrap_ThomasWangHashDouble(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   uint64_t arg1 ;
-  unsigned long long val1 ;
-  int ecode1 = 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ThomasWangHashDouble" "', argument " "1"" of type '" "uint64_t""'");
-  } 
-  arg1 = static_cast< uint64_t >(val1);
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThomasWangHashDouble" "', argument " "1"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ThomasWangHashDouble" "', argument " "1"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double)Gda::ThomasWangHashDouble(arg1);
+    result = (double)Gda::ThomasWangHashDouble(SWIG_STD_MOVE(arg1));
     SWIG_PYTHON_THREAD_END_ALLOW;
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
@@ -58667,7 +58731,7 @@ SWIGINTERN PyObject *_wrap_ThomasWangDouble(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_unsigned_long_long,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_uint64_t,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThomasWangDouble" "', argument " "1"" of type '" "uint64_t &""'"); 
   }
@@ -78523,12 +78587,12 @@ static swig_type_info _swigt__p_std__vectorT_std__vectorT_char_std__allocatorT_c
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t = {"_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t", "std::vector< std::vector< double,std::allocator< double > > > *|std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *|std::vector< std::vector< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t = {"_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t", "std::vector< std::vector< int,std::allocator< int > > > *|std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > *|std::vector< std::vector< int > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t = {"_p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t", "std::vector< std::vector< unsigned char,std::allocator< unsigned char > > > *|std::vector< std::vector< unsigned char,std::allocator< unsigned char > >,std::allocator< std::vector< unsigned char,std::allocator< unsigned char > > > > *|std::vector< std::vector< unsigned char > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t = {"_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t", "std::vector< uint64_t,std::allocator< uint64_t > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t = {"_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t", "std::vector< unsigned char,std::allocator< unsigned char > > *|std::vector< unsigned char > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t = {"_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t", "std::vector< uint64_t,std::allocator< uint64_t > > *|std::vector< unsigned long long,std::allocator< unsigned long long > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_void_p_std__allocatorT_void_p_t_t = {"_p_std__vectorT_void_p_std__allocatorT_void_p_t_t", "std::vector< void *,std::allocator< void * > > *|std::vector< void * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_uint64_t = {"_p_uint64_t", "uint64_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint64_t *|unsigned long long *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "std::vector< void * >::value_type|void *", 0, 0, (void*)0, 0};
 
@@ -78616,12 +78680,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t,
   &_swigt__p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t,
   &_swigt__p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t,
+  &_swigt__p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t,
   &_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
-  &_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
   &_swigt__p_std__vectorT_void_p_std__allocatorT_void_p_t_t,
   &_swigt__p_swig__SwigPyIterator,
+  &_swigt__p_uint64_t,
   &_swigt__p_unsigned_char,
-  &_swigt__p_unsigned_long_long,
   &_swigt__p_value_type,
   &_swigt__p_void,
 };
@@ -78709,12 +78773,12 @@ static swig_cast_info _swigc__p_std__vectorT_std__vectorT_char_std__allocatorT_c
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t[] = {  {&_swigt__p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_void_p_std__allocatorT_void_p_t_t[] = {  {&_swigt__p_std__vectorT_void_p_std__allocatorT_void_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_uint64_t[] = {  {&_swigt__p_uint64_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -78802,12 +78866,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t,
   _swigc__p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t,
   _swigc__p_std__vectorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_std__allocatorT_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t_t_t,
+  _swigc__p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t,
   _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
-  _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
   _swigc__p_std__vectorT_void_p_std__allocatorT_void_p_t_t,
   _swigc__p_swig__SwigPyIterator,
+  _swigc__p_uint64_t,
   _swigc__p_unsigned_char,
-  _swigc__p_unsigned_long_long,
   _swigc__p_value_type,
   _swigc__p_void,
 };

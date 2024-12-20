@@ -65,7 +65,7 @@ def azp_greedy(p, w, data, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_azp_greedy(p, w.gda_w, in_data, scale_method, inits, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
+    cluster_ids = gda_azp_greedy(p, w.gda_w, in_data, scale_method, inits, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, 0)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
@@ -142,7 +142,7 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_azp_sa(p, w.gda_w, in_data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
+    cluster_ids = gda_azp_sa(p, w.gda_w, in_data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, 0)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
@@ -216,7 +216,7 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_azp_tabu(p, w.gda_w, in_data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
+    cluster_ids = gda_azp_tabu(p, w.gda_w, in_data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, 0)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)

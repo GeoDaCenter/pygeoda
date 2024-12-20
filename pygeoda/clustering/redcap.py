@@ -52,7 +52,7 @@ def redcap(k, w, data, method, **kwargs):
     
     #in_bound_variable = VecDouble(bound_variable)
 
-    cluster_ids = gda_redcap(k, w.gda_w, in_data, scale_method, method, distance_method, bound_variable, min_bound, random_seed, cpu_threads)
+    cluster_ids = gda_redcap(k, w.gda_w, in_data, scale_method, method, distance_method, bound_variable, min_bound, random_seed, cpu_threads, 0)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
