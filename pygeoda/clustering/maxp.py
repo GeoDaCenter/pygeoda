@@ -64,7 +64,7 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_maxp_greedy(w.gda_w, in_data, scale_method, iterations, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads, 0)
+    cluster_ids = gda_maxp_greedy(w.gda_w, in_data, scale_method, iterations, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
@@ -140,7 +140,7 @@ def maxp_sa(w, data, bound_variable, min_bound, cooling_rate=0.85, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_maxp_sa(w.gda_w, in_data, scale_method, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads, 0)
+    cluster_ids = gda_maxp_sa(w.gda_w, in_data, scale_method, iterations, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
@@ -213,7 +213,7 @@ def maxp_tabu(w, data, bound_variable, min_bound, tabu_length=10, **kwargs):
 
     in_init_regions = VecInt(list(init_regions))
 
-    cluster_ids = gda_maxp_tabu(w.gda_w, in_data, scale_method, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads, 0)
+    cluster_ids = gda_maxp_tabu(w.gda_w, in_data, scale_method, iterations, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed, cpu_threads)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)

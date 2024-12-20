@@ -44,7 +44,7 @@ def schc(k, w, data, linkage_method, **kwargs):
     for d in data:
         in_data.push_back(d)
     
-    cluster_ids = gda_schc(k, w.gda_w, in_data, linkage_method, scale_method, distance_method, bound_variable, min_bound, 0)
+    cluster_ids = gda_schc(k, w.gda_w, in_data, linkage_method, scale_method, distance_method, bound_variable, min_bound)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
