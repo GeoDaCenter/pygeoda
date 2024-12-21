@@ -18,9 +18,6 @@ jobs:
           - 3.12
           - 3.13
 
-    permissions:
-      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
-
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -64,6 +61,11 @@ jobs:
 
       - name: Publish to Pypi
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          packages-dir: wheelhouse/
+        # not on windows: pypa/gh-action-pypi-publish@release/v1
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          venv\\Scripts\\activate
+          python -m pip install --upgrade twine
+          python -m twine upload wheelhouse/*.whl
