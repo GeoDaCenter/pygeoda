@@ -77,7 +77,8 @@ else:
         '-w',
         '-std=c++14',
         '-fvisibility=hidden',
-        '-D__USE_PTHREAD__' # use pthread!!! on *nix
+        '-D__USE_PTHREAD__', # use pthread!!! on *nix
+        '-Wno-enum-constexpr-conversion'  # disable enumeration warnings
     ]
 
 ###########################################################
@@ -106,11 +107,8 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     pyversion = sys.version[:3]
     MSVC_VER = ''
     BOOST_VER = '1_75'
-    if pyversion in ['3.5']:
-        MSVC_VER = 'vc140'
-    elif pyversion in ['3.6', '3.7', '3.8']:
-        MSVC_VER = 'vc141'
-    elif pyversion in ['3.9']:
+    MSVC_VER = 'vc142'
+    if pyversion in ['3.12']:
         MSVC_VER = 'vc142'
 
 
@@ -206,7 +204,7 @@ extensions = [Extension('pygeoda._libgeoda',
                         extra_objects=EXTRA_OBJECTS),]
 
 setup (name = 'pygeoda',
-       version = '0.0.8.post1',
+       version = '0.0.9',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
        url = "https://github.com/geodacenter/pygeoda",

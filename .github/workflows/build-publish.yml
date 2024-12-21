@@ -1,38 +1,40 @@
 name: Ubuntu and Mac builds
 
-on: [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   build_and_publish:
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
+        # macos-13 is an intel runner, macos-14+ is apple silicon
+        os: [ubuntu-latest, macos-13, macos-14, macos-15]
 
     runs-on: ${{ matrix.os }}
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install pacakges
-        run: python3 -m pip install --upgrade --upgrade-strategy eager twine cibuildwheel
-
-      #- name: Build and Test 
-      #  run: |
-      #    python3 setup.py build_ext --inplace
-      #    python3 -m unittest discover -v -s tests -p "test_*.py"
+      - name: Install dependencies on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libc6-dev
 
       - name: Build Wheels
-        run: |
-            python3 -m cibuildwheel --output-dir wheelhouse
-            python3 setup.py sdist
-            ls -lrt wheelhouse/*
+        uses: pypa/cibuildwheel@v2.22.0
+        env:
+          CXXFLAGS: -Wno-enum-constexpr-conversion
+          CFLAGS: -Wno-enum-constexpr-conversion
+          CIBW_BUILD: cp311-* cp312-* cp313-*
+          CIBW_PROJECT_REQUIRES_PYTHON: '>=3.10'
+          MACOSX_DEPLOYMENT_TARGET: 15.2
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: pygeoda-${{ matrix.os }}
           path: wheelhouse/
@@ -43,13 +45,17 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          python3 -m pip install --upgrade twine
+          python3 -m venv venv
+          source venv/bin/activate
+          python3 -m pip install --upgrade --upgrade-strategy eager twine setuptools
           python3 -m twine upload wheelhouse/*.whl
 
-      - name: Publish Source to Pypi
-        if: matrix.os == 'macos-latest' && startsWith(github.ref, 'refs/tags/v')
+      - name: Publish source to Pypi
+        if: startsWith(github.ref, 'refs/tags/v')
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
+          source venv/bin/activate
+          python3 setup.py sdist
           python3 -m twine upload dist/*.tar.gz

@@ -2,66 +2,48 @@
 
 name: Windows builds
 
-on: [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   windows_build:
     runs-on: windows-latest
-    #if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
 
     strategy:
       matrix:
         msvc_arch:
           - amd64
-          - win32
 
         python_ver:
-          - 3.6
-          - 3.7
-          - 3.8
-          - 3.9
+          - 3.11
+          - 3.12
+          - 3.13
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Setup for Python 3.9
-        if: "contains(matrix.python_ver, '3.9')"
+      - name: Setup MSVC toolset for Python 3.11
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvc_arch }}
           toolset: 14.2
 
-      - name: Setup for Python 3.6, 3.7, 3.8
-        if: "!contains(matrix.python_ver, '3.9')"
-        uses: ilammy/msvc-dev-cmd@v1
-        with:
-          arch: ${{ matrix.msvc_arch }}
-          toolset: 14.1
-
       - name: Setup Python Architecture x64
-        if: "contains(matrix.msvc_arch, 'amd64')"
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python_ver }}
           architecture: 'x64'
-
-      - name: Setup Python Architecture x86
-        if: "!contains(matrix.msvc_arch, 'amd64')"
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python_ver }}
-          architecture: 'x86'
 
       - name: Build and Test
         shell: pwsh
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade setuptools wheel virtualenv twine
+          python -m pip install --upgrade virtualenv
           python -m virtualenv venv
           venv\\Scripts\\activate
+          pip install --upgrade setuptools wheel virtualenv twine
           python setup.py build_ext --inplace
           python -m unittest
 
@@ -72,16 +54,18 @@ jobs:
           pip wheel -v -w wheelhouse --no-deps .
           dir wheelhouse/*
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: pygeoda-${{ matrix.python_ver }}-${{ matrix.msvc_arch }}-win
           path: wheelhouse/
 
       - name: Publish to Pypi
         if: startsWith(github.ref, 'refs/tags/v')
+        # not on windows: pypa/gh-action-pypi-publish@release/v1
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
+          venv\\Scripts\\activate
           python -m pip install --upgrade twine
           python -m twine upload wheelhouse/*.whl
