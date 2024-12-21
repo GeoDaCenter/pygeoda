@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         # macos-13 is an intel runner, macos-14+ is apple silicon
-        os: [ubuntu-latest, macos-13, macos-14, macos-15]
+        os: [ubuntu-latest, macos-13]
 
     runs-on: ${{ matrix.os }}
 
@@ -48,6 +48,14 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           python3 -m pip install --upgrade --upgrade-strategy eager twine setuptools
-          python3 setup.py sdist
-          python3 -m twine upload dist/*.tar.gz
           python3 -m twine upload wheelhouse/*.whl
+
+      # - name: Publish source to Pypi
+      #   if: startsWith(github.ref, 'refs/tags/v')
+      #   env:
+      #     TWINE_USERNAME: __token__
+      #     TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      #   run: |
+      #     source venv/bin/activate
+      #     python3 setup.py sdist
+      #     python3 -m twine upload dist/*.tar.gz
