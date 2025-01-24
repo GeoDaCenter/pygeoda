@@ -12,3 +12,5 @@ temp/
 test.ipynb
 .ipynb_checkpoints/
 Untitled.ipynb
+wheelhouse/
+.venv/

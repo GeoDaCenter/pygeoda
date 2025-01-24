@@ -75,7 +75,7 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
 ```
 
 
-## Current version 0.0.8
+## Current version 0.1.0
 
 * Spatial Weights
     * Queen

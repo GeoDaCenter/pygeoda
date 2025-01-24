@@ -17,7 +17,7 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
     Arguments:
         w (Weight): an instance of Weight class
         data (list or dataframe):   A list of numeric vectors of selected variable or a data frame of selected variables e.g. guerry[['Crm_prs', 'Literacy']]
-        bound_variable (tuple): A numeric vector of selected bounding variable
+        bound_variable (tuple or pandas.core.series.Series, optional): A numeric vector of selected bounding variable
         min_bound (float): A minimum value that the sum value of bounding variable int each cluster should be greater than
         iterations (int, optional): The number of iterations of greedy algorithm. Defaults to 99.
         init_regions (tuple, optional): The initial regions that the local search starts with. Default is empty. means the local search starts with a random process to "grow" clusters
@@ -43,17 +43,20 @@ def maxp_greedy(w, data, bound_variable, min_bound, **kwargs):
     if len(data) < 1:
         raise ValueError("The data from selected variable is empty.")
 
+    # check if bound_variable is pandas.core.series.Series, if so, convert to list
+    if type(bound_variable).__name__ == "Series":
+        bound_variable = bound_variable.values.tolist()
+        
     if len(bound_variable) != w.num_obs:
         raise ValueError("The bound_variable has to be a list of numeric values, e.g. a column of input table.")
 
     if min_bound <= 0:
         raise ValueError("The min_bound has to be a positive numeric value.")
     
-    in_data = VecVecDouble()
-
     if type(data).__name__ == "DataFrame":
         data = data.values.transpose().tolist()
-
+ 
+    in_data = VecVecDouble()
     for d in data:
         in_data.push_back(d)
 

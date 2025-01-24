@@ -19,7 +19,7 @@ def schc(k, w, data, linkage_method, **kwargs):
         w (Weight): An instance of Weight class
         data (tuple): A list of numeric vectors of selected variable
         linkage_method (str): The method of agglomerative hierarchical clustering: {"single", "complete", "average","ward"}. Defaults to "ward".
-        bound_variable (tuple, optional): A numeric vector of selected bounding variable
+        bound_variable (tuple or pandas.core.series.Series, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): a minimum value that the sum value of bounding variable int each cluster should be greater than 
         scale_method (str, optional): One of the scaling methods {'raw', 'standardize', 'demean', 'mad', 'range_standardize', 'range_adjust'} to apply on input data. Default is 'standardize' (Z-score normalization).
         distance_method (str, optional): {"euclidean", "manhattan"} the distance method used to compute the distance betwen observation i and j. Defaults to "euclidean". Options are "euclidean" and "manhattan"
@@ -33,18 +33,29 @@ def schc(k, w, data, linkage_method, **kwargs):
     scale_method = "standardize" if "scale_method" not in kwargs else kwargs['scale_method']
     distance_method = 'euclidean' if 'distance_method' not in kwargs else kwargs['distance_method'] 
 
-    if linkage_method not in ["single", "complete", "average","ward"]:
-        raise ValueError('The method has to be one of {"single", "complete", "average","ward"}')
+    if linkage_method not in ["single", "complete", "average", "ward"]:
+        raise ValueError('The method has to be one of {"single", "complete", "average", "ward"}')
 
-    in_data = VecVecDouble()
+    # check if bound_variable is pandas.core.series.Series, if so, convert to list
+    if type(bound_variable).__name__ == "Series":
+        bound_variable = bound_variable.values.tolist()
+        
+    # if bound_variable is not empty, check if it has the same length as the number of observations
+    if len(bound_variable) > 0 and len(bound_variable) != w.num_obs:
+        raise ValueError("The bound_variable has to be a list of numeric values, e.g. a column of input table.")
     
+    # check if min_bound is available when bound_variable is not empty
+    if len(bound_variable) > 0 and min_bound == 0:
+        raise ValueError("min_bound is required and greater than 0 when bound_variable is not empty.")
+
     if type(data).__name__ == "DataFrame":
         data = data.values.transpose().tolist()
 
+    in_data = VecVecDouble()
     for d in data:
         in_data.push_back(d)
-    
-    cluster_ids = gda_schc(k, w.gda_w, in_data, linkage_method, scale_method, distance_method, bound_variable, min_bound)
+   
+    cluster_ids = gda_schc(k, w.gda_w, in_data, scale_method, linkage_method, distance_method, bound_variable, min_bound)
 
     between_ss = gda_betweensumofsquare(cluster_ids, in_data)
     total_ss = gda_totalsumofsquare(in_data)
