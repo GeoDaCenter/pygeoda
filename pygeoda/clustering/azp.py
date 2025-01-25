@@ -19,7 +19,7 @@ def azp_greedy(p, w, data, **kwargs):
         p (int): The number of spatially constrained clusters
         w (Weight): an instance of Weight class
         data (tuple):  A list of numeric vectors of selected variable
-        bound_variable (tuple, optional): A numeric vector of selected bounding variable
+        bound_variable (tuple or pandas.core.series.Series, optional): A numeric vector of selected bounding variable
         min_bound (float, optional): A minimum value that the sum value of bounding variable int each cluster should be greater than
         inits (int, optional): The number of construction re-runs, which is for ARiSeL "automatic regionalization with initial seed location"
         init_regions (tuple, optional): The initial regions that the local search starts with. Default is empty. means the local search starts with a random process to "grow" clusters
@@ -49,11 +49,18 @@ def azp_greedy(p, w, data, **kwargs):
     if len(data) < 1:
         raise ValueError("The data from selected variable is empty.")
 
-    in_data = VecVecDouble()
-
+    # check if bound_variable is pandas.core.series.Series, if so, convert to list
+    if type(bound_variable).__name__ == "Series":
+        bound_variable = bound_variable.values.tolist()
+        
+    # if bound_variable is not empty, check if it has the same length as the number of observations
+    if len(bound_variable) > 0 and len(bound_variable) != w.num_obs:
+        raise ValueError("The bound_variable has to be a list of numeric values, e.g. a column of input table.")
+    
     if type(data).__name__ == "DataFrame":
         data = data.values.transpose().tolist()
 
+    in_data = VecVecDouble()
     for d in data:
         in_data.push_back(d)
 
