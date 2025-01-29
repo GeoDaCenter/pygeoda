@@ -1,6 +1,6 @@
-from ..libgeoda import VecVecDouble, VecDouble
+from pygeoda.clustering.utils import calculate_clustering_statistics
+from ..libgeoda import VecVecDouble
 from ..libgeoda import gda_schc
-from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare, flat_2dclusters
 
 __author__ = "Xun Li <lixun910@gmail.com>, "
 
@@ -57,15 +57,4 @@ def schc(k, w, data, linkage_method, **kwargs):
    
     cluster_ids = gda_schc(k, w.gda_w, in_data, scale_method, linkage_method, distance_method, bound_variable, min_bound)
 
-    between_ss = gda_betweensumofsquare(cluster_ids, in_data)
-    total_ss = gda_totalsumofsquare(in_data)
-    ratio = between_ss / total_ss
-    within_ss = gda_withinsumofsquare(cluster_ids, in_data)
-
-    return {
-        "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : within_ss,
-        "Total within-cluster sum of squares" : between_ss,
-        "The ratio of between to total sum of squares" : ratio,
-        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
-    }
+    return calculate_clustering_statistics(cluster_ids, in_data, w.num_obs)
