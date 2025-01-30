@@ -1,5 +1,6 @@
 __author__ = "Xun Li <lixun910@gmail.com>"
 
+from pygeoda.clustering.utils import calculate_clustering_statistics
 from ..libgeoda import VecVecDouble, VecPair, VecDouble, VecInt, Pair
 from ..libgeoda import gda_azp_greedy, gda_azp_sa, gda_azp_tabu
 from ..libgeoda import gda_betweensumofsquare, gda_totalsumofsquare, gda_withinsumofsquare, flat_2dclusters
@@ -74,18 +75,7 @@ def azp_greedy(p, w, data, **kwargs):
 
     cluster_ids = gda_azp_greedy(p, w.gda_w, in_data, scale_method, inits, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 
-    between_ss = gda_betweensumofsquare(cluster_ids, in_data)
-    total_ss = gda_totalsumofsquare(in_data)
-    ratio = between_ss / total_ss
-    within_ss = gda_withinsumofsquare(cluster_ids, in_data)
-
-    return {
-        "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : within_ss,
-        "Total within-cluster sum of squares" : between_ss,
-        "The ratio of between to total sum of squares" : ratio,
-        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
-    }
+    return calculate_clustering_statistics(cluster_ids, in_data, w.num_obs)
 
 def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
     ''' A simulated annealing algorithm to solve the AZP problem 
@@ -151,18 +141,7 @@ def azp_sa(p, w, data, cooling_rate=0.85, **kwargs):
 
     cluster_ids = gda_azp_sa(p, w.gda_w, in_data, scale_method, inits, cooling_rate, sa_maxit, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 
-    between_ss = gda_betweensumofsquare(cluster_ids, in_data)
-    total_ss = gda_totalsumofsquare(in_data)
-    ratio = between_ss / total_ss
-    within_ss = gda_withinsumofsquare(cluster_ids, in_data)
-
-    return {
-        "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : within_ss,
-        "Total within-cluster sum of squares" : between_ss,
-        "The ratio of between to total sum of squares" : ratio,
-        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
-    }
+    return calculate_clustering_statistics(cluster_ids, in_data, w.num_obs)
 
 def azp_tabu(p, w, data, tabu_length, **kwargs):
     ''' A tabu-search algorithm to solve the AZP problem 
@@ -225,15 +204,4 @@ def azp_tabu(p, w, data, tabu_length, **kwargs):
 
     cluster_ids = gda_azp_tabu(p, w.gda_w, in_data, scale_method, inits, tabu_length, conv_tabu, min_bounds, max_bounds, in_init_regions, distance_method, random_seed)
 
-    between_ss = gda_betweensumofsquare(cluster_ids, in_data)
-    total_ss = gda_totalsumofsquare(in_data)
-    ratio = between_ss / total_ss
-    within_ss = gda_withinsumofsquare(cluster_ids, in_data)
-
-    return {
-        "Total sum of squares" : total_ss,
-        "Within-cluster sum of squares" : within_ss,
-        "Total within-cluster sum of squares" : between_ss,
-        "The ratio of between to total sum of squares" : ratio,
-        "Clusters" : flat_2dclusters(w.num_obs, cluster_ids),
-    }
+    return calculate_clustering_statistics(cluster_ids, in_data, w.num_obs)
