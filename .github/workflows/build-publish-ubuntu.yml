@@ -1,0 +1,59 @@
+name: Ubuntu builds
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build_and_publish:
+    strategy:
+      matrix:
+        # macos-13 is an intel runner, macos-14+ is apple silicon
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies on Ubuntu
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libc6-dev
+
+      - name: Build Wheels
+        uses: pypa/cibuildwheel@v2.22.0
+        env:
+          CXXFLAGS: -Wno-enum-constexpr-conversion
+          CFLAGS: -Wno-enum-constexpr-conversion
+          CIBW_BUILD: cp311-* cp312-* cp313-*
+          CIBW_PROJECT_REQUIRES_PYTHON: '>=3.10'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pygeoda-${{ matrix.os }}
+          path: wheelhouse/
+
+      - name: Publish to Pypi
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          python3 -m pip install --upgrade --upgrade-strategy eager twine setuptools
+          python3 -m twine upload wheelhouse/*.whl
+
+      - name: Publish source to Pypi
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          source venv/bin/activate
+          python3 setup.py sdist
+          python3 -m twine upload dist/*.tar.gz

@@ -1,4 +1,4 @@
-name: Ubuntu and Mac builds
+name: Mac builds
 
 on: [push, workflow_dispatch]
 
@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         # macos-13 is an intel runner, macos-14+ is apple silicon
-        os: [ubuntu-latest, macos-13, macos-14, macos-15]
+        os: [macos-13, macos-14, macos-15]
 
     runs-on: ${{ matrix.os }}
 
@@ -18,12 +18,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-
-      - name: Install dependencies on Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential libc6-dev
 
       - name: Build Wheels
         uses: pypa/cibuildwheel@v2.22.0
