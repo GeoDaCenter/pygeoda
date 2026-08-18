@@ -20,7 +20,7 @@ jobs:
           submodules: recursive
 
       - name: Build Wheels
-        uses: pypa/cibuildwheel@v2.22.0
+        uses: pypa/cibuildwheel@v2.23.4
         env:
           CIBW_BUILD: cp311-* cp312-* cp313-*
           CIBW_PROJECT_REQUIRES_PYTHON: '>=3.10'
