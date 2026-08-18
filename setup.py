@@ -15,10 +15,15 @@ if sys.platform == "win32":
 
 elif sys.platform == "darwin":
     OS_NAME = 'osx'
-    os.environ["ARCHFLAGS"] = "-arch x86_64"
-    if platform.machine() == 'arm64':
-        os.environ["ARCHFLAGS"] = "-arch arm64"
-    os.environ['MACOSX_DEPLOYMENT_TARGET'] = platform.mac_ver()[0]
+    # Respect externally-set values (e.g. cibuildwheel sets MACOSX_DEPLOYMENT_TARGET
+    # and ARCHFLAGS for the target platform); only fall back to the build machine's
+    # values when building locally.
+    if 'ARCHFLAGS' not in os.environ:
+        os.environ["ARCHFLAGS"] = "-arch x86_64"
+        if platform.machine() == 'arm64':
+            os.environ["ARCHFLAGS"] = "-arch arm64"
+    if 'MACOSX_DEPLOYMENT_TARGET' not in os.environ:
+        os.environ['MACOSX_DEPLOYMENT_TARGET'] = platform.mac_ver()[0]
 
 elif sys.platform == "linux2":
     OS_NAME = 'linux'
@@ -78,7 +83,6 @@ else:
         '-std=c++14',
         '-fvisibility=hidden',
         '-D__USE_PTHREAD__', # use pthread!!! on *nix
-        '-Wno-enum-constexpr-conversion'  # disable enumeration warnings
     ]
 
 ###########################################################
@@ -204,7 +208,7 @@ extensions = [Extension('pygeoda._libgeoda',
                         extra_objects=EXTRA_OBJECTS),]
 
 setup (name = 'pygeoda',
-       version = '0.1.2',
+       version = '0.1.3',
        author = "Xun Li",
        author_email = "lixun910@gmail.com",
        url = "https://github.com/geodacenter/pygeoda",

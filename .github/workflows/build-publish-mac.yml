@@ -6,8 +6,10 @@ jobs:
   build_and_publish:
     strategy:
       matrix:
-        # macos-13 is an intel runner, macos-14+ is apple silicon
-        os: [macos-13, macos-14, macos-15]
+        # macos-14+ are apple silicon runners; macos-13 (intel) was removed
+        # because GitHub's intel macOS runners are being deprecated and are
+        # too scarce to schedule reliably.
+        os: [macos-14, macos-15]
 
     runs-on: ${{ matrix.os }}
 
@@ -20,10 +22,8 @@ jobs:
           submodules: recursive
 
       - name: Build Wheels
-        uses: pypa/cibuildwheel@v2.22.0
+        uses: pypa/cibuildwheel@v2.23.4
         env:
-          CXXFLAGS: -Wno-enum-constexpr-conversion
-          CFLAGS: -Wno-enum-constexpr-conversion
           CIBW_BUILD: cp311-* cp312-* cp313-*
           CIBW_PROJECT_REQUIRES_PYTHON: '>=3.10'
           MACOSX_DEPLOYMENT_TARGET: 15.2
