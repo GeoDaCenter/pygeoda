@@ -1,4 +1,4 @@
-name: Build wheels
+name: Ubuntu builds
 
 on: [push, workflow_dispatch]
 
@@ -6,8 +6,7 @@ jobs:
   build_and_publish:
     strategy:
       matrix:
-        # macos-13 is an intel runner, macos-14+ is apple silicon
-        os: [ubuntu-latest, macos-13, macos-14]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -20,7 +19,6 @@ jobs:
           submodules: recursive
 
       - name: Install dependencies on Ubuntu
-        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libc6-dev
@@ -48,7 +46,7 @@ jobs:
           python3 -m twine upload wheelhouse/*.whl
 
       - name: Publish source to Pypi
-        if: startsWith(github.ref, 'refs/tags/v') && matrix.os == 'ubuntu-latest'
+        if: startsWith(github.ref, 'refs/tags/v')
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

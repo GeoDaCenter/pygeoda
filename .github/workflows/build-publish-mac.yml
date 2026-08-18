@@ -22,8 +22,6 @@ jobs:
       - name: Build Wheels
         uses: pypa/cibuildwheel@v2.22.0
         env:
-          CXXFLAGS: -Wno-enum-constexpr-conversion
-          CFLAGS: -Wno-enum-constexpr-conversion
           CIBW_BUILD: cp311-* cp312-* cp313-*
           CIBW_PROJECT_REQUIRES_PYTHON: '>=3.10'
           MACOSX_DEPLOYMENT_TARGET: 15.2
